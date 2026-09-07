@@ -1,0 +1,30 @@
+{
+  "checked_at_utc": "2026-09-07T07:06:19.267632+00:00",
+  "baseline_commit": "6b57f015b25204ec0488eced6814112becea6dad",
+  "scope": "A2 citation and mathematical source-to-contract exposition; no executable Lean change",
+  "all_tracked_lean_files_checked": 881,
+  "all_lean_sources_identical_after_comment_removal": true,
+  "changed_lean_files": [
+    {
+      "file": "LogdetLean/GramHafnian/UltimateHiding/DenseScore/Literature/H6_A2Prime_TakagiWeylSymmetricIntegration.lean",
+      "before_sha256": "eb6547013b2dedf8f3402c306a8b712f200bd9e10bc0601b4fad9c8f23c7b531",
+      "after_sha256": "92adac05a6b90701300e7fd14723f478009cef23eb55ff2d085b8f7deed21154",
+      "comments_removed_sha256": "4e61b740692ba29263e614e724a8a3ddd3fa700334a1e7be672a3e5e18138a8f"
+    }
+  ],
+  "project_axioms": 4,
+  "vendored_companion_files_unchanged": true,
+  "source_audit_passed": true,
+  "module_elaboration": {
+    "command": "LEAN_NUM_THREADS=4 lake env lean LogdetLean/GramHafnian/UltimateHiding/DenseScore/Literature/H6_A2Prime_TakagiWeylSymmetricIntegration.lean",
+    "exit_code": 0,
+    "log": "A2_module_elaboration.log",
+    "log_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "used_existing_pinned_import_cache": true
+  },
+  "full_project_build_rerun": false,
+  "previous_full_build_receipt": "build_receipt.json",
+  "source_derivation_separately_formalized": false,
+  "manuscript_A2_sha256": "78f4625e3354cc535b63708a0d6047a46755948479c4c5485c959841c0d08d67",
+  "bibliography_sha256": "25d130ec55ffd1f208dab38b3d649cb3fa1993ddeb155dc3f4fc54af70af7efe"
+}

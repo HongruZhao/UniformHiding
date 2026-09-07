@@ -26,4 +26,10 @@ The build used pinned dependency caches and reused local modules already compile
 
 ## Mathematical scope
 
+### A2 citation revision — 7 September 2026
+
+The A2 source attribution and its mathematical derivation were revised to match the manuscript and the existing Lean contract. See [the source-to-contract derivation](../docs/A2_SOURCE_DERIVATION.md). The only edited Lean file has comment changes; its source after removing comments is identical to the previously verified version. No definition, theorem statement, proof term, import, or axiom declaration changed, and the four-literature-input boundary is unchanged.
+
+The revised A2 module was elaborated successfully with the pinned Lean toolchain and the existing dependency cache. The portable source audit was also rerun. [The dated revision receipt](A2_revision_receipt.json) distinguishes these new checks from the full-project build and endpoint axiom audit recorded on 6 September. The latter receipts remain evidence for that earlier build; no new full-project build or Lean proof of A2's mathematical source derivation is claimed.
+
 Theorem 2.1 and Route 1 of Theorem 3.2, including the infimum over nonnegative physical additive thresholds, are conditional formal proofs relative to the four cited inputs. The companion endpoints add no scientific axioms. Route 2 hiding is not proved: its conditional deduction does not establish its comparison premise. See [PAPER_COMPARISON.md](../docs/PAPER_COMPARISON.md) for the optical model convention, Haar-marginal hypothesis and remaining coverage limits. A successful build is not a claim that every sentence of the manuscript is formally verified.

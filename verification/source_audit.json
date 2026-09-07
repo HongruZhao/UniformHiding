@@ -22,7 +22,7 @@
     },
     {
       "file": "LogdetLean/GramHafnian/UltimateHiding/DenseScore/Literature/H6_A2Prime_TakagiWeylSymmetricIntegration.lean",
-      "line": 100,
+      "line": 113,
       "name": "A2Prime_complexSymmetricTakagiWeyl_symmetricIntegration"
     },
     {
@@ -701,7 +701,7 @@
     "LogdetLean/GramHafnian/UltimateHiding/DenseScore/H9_Proof.lean": "250f340908da9ebca3d582a0b4de44d3010817ea528d455d9a1d0f83f47994ed",
     "LogdetLean/GramHafnian/UltimateHiding/DenseScore/H9_U03GaussianFourth.lean": "71db21575b5f0223d6287ee441710c2b3e296637e70dd9d108333d55088c112d",
     "LogdetLean/GramHafnian/UltimateHiding/DenseScore/HyperSharpFourthScoreBound.lean": "9572b35480c5d91ae0ac878588288c3eda1361fc421b6219e99ca342f82eae01",
-    "LogdetLean/GramHafnian/UltimateHiding/DenseScore/Literature/H6_A2Prime_TakagiWeylSymmetricIntegration.lean": "eb6547013b2dedf8f3402c306a8b712f200bd9e10bc0601b4fad9c8f23c7b531",
+    "LogdetLean/GramHafnian/UltimateHiding/DenseScore/Literature/H6_A2Prime_TakagiWeylSymmetricIntegration.lean": "92adac05a6b90701300e7fd14723f478009cef23eb55ff2d085b8f7deed21154",
     "LogdetLean/GramHafnian/UltimateHiding/DenseScore/MatrixInverseMeasurability.lean": "94ecaf00d580f79e98f02322a8fdf6913b3cf7d92dda1183bac5f42927b95d43",
     "LogdetLean/GramHafnian/UltimateHiding/DenseScore/MatsumotoA4IntegrabilityClosure.lean": "46047e55d2cc3e47b37054ba5ff1fdd8f41444a2b97549f5f3dcee2b5f360478",
     "LogdetLean/GramHafnian/UltimateHiding/DenseScore/MatsumotoA4InternalClosure.lean": "5934a48475dbc63a1565e3ee1d3ab66cf56eb7e97d5c6d1ab641b9a8f30000a6",

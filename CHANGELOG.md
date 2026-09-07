@@ -14,4 +14,10 @@ Compared with the published hiding archive version 1.0.0, which used the title *
 - Separates historical equation coverage from the selected revised endpoints.
 - Provides Lean sources and verification records without manuscript PDFs or LaTeX sources.
 
+## A2 citation correction — 2026-09-07
+
+- Replaces the A2 Helgason/Chen attribution with FitzGerald–Warren (2020), Section 6, p. 165, the flat Jacobian after Eq. (70), and An–Wang–Yan (2006), Theorem 4.2 and its measurable-integrand remark.
+- Adds a complete source-to-contract derivation covering the independent complex-symmetric coordinates, squared singular values, one positive constant, arbitrary measurable invariant tests, and the globally measurable concrete spectrum selector.
+- Aligns the manuscript and GitHub explanation of A2 with the existing Lean contract. No Lean declaration, definition, or proof term changes; no project axiom is added.
+
 This version is prepared for private GitHub review and an unpublished Zenodo draft.

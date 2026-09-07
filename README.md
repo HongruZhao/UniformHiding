@@ -94,11 +94,11 @@ The repository retains `UniformHiding.routeTwoConditional` and the [Route 2 inte
 | Input | Mathematical content | Source |
 | --- | --- | --- |
 | A1 | COE principal-block determinant density | Friedman–Mello (1985), Eqs. (1.2), (3.7) |
-| A2 | Complex-symmetric Takagi–Weyl radial integration | Helgason (2000), Ch. I, Thm. 5.17; coordinate factors in Chen et al. (2019), App. A.2 |
+| A2 | Complex-symmetric Takagi–Weyl radial integration | FitzGerald–Warren (2020), §6, p. 165, Jacobian after (70); measurable integration: An–Wang–Yan (2006), Thm. 4.2 and following remark |
 | A3 | Gaussian GSVD beta-Jacobi law | Edelman–Sutton (2008), Def. 1.1 and Prop. 1.2 |
 | A4 | Wishart and inverse-Wishart tensor moments | Matsumoto (2012), Thm. 3 |
 
-[AXIOMS.md](docs/AXIOMS.md) gives the precise declarations, source links, parameter substitutions, measure conventions, and the measurable extension included in A2. These inputs are assumed, not reproved. In addition, Lean uses `propext`, `Classical.choice`, and `Quot.sound`. The theorem axiom check must match this exact set of four literature inputs plus three foundations; the imported anticoncentration endpoints must match only the three foundations.
+[AXIOMS.md](docs/AXIOMS.md) gives the precise declarations, source links, parameter substitutions, and measure conventions. [The A2 derivation](docs/A2_SOURCE_DERIVATION.md) explains how the cited flat Jacobian implies the full paper and Lean statement, including the concrete spectrum map and arbitrary measurable invariant tests. These inputs and the source-to-contract deductions are assumed in Lean, not reproved there. In addition, Lean uses `propext`, `Classical.choice`, and `Quot.sound`. The theorem axiom check must match this exact set of four literature inputs plus three foundations; the imported anticoncentration endpoints must match only the three foundations.
 
 ## Files and verification
 

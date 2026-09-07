@@ -24,6 +24,12 @@ The marginal hypothesis `Measure.map amplitude μ = scaledHaarGramHafnianLaw H M
 
 The event argument uses $\Delta p=\widetilde p-p_S$, $\eta=\tau/p_1$, and $\eta/\rho=\tau/(\rho p_1)$. It preserves $\delta_1=\min(1,615172(2n)^2/M)$ instead of silently replacing it by an uncapped error. The optimized endpoint is the infimum of the fully assembled physical-threshold bound, not merely an isolated scalar optimization certificate.
 
+## A2 source-to-statement correspondence
+
+Manuscript Appendix A and the Lean structure `TakagiWeylSymmetricIntegrationLaw` use the same contract: for every $N\ge1$, the concrete spectrum map is measurable on all complex square matrices, and one positive finite constant gives the flat radial pushforward identity for every measurable permutation-invariant map into any measurable space. The symmetric-matrix measure is embedded in the full matrix space, while the radial measure is defined on the unordered positive orthant.
+
+The source is FitzGerald–Warren (2020), Section 6, printed p. 165, the Jacobian immediately after Eq. (70). The exact deduction to the shared paper/Lean statement is in [A2_SOURCE_DERIVATION.md](A2_SOURCE_DERIVATION.md), with An–Wang–Yan (2006), Theorem 4.2 and the following remark supplying a numbered measurable integration theorem. The 2026-09-07 revision changes the citation and explains this deduction; it does not strengthen the Lean axiom or add an assumption. This is mathematical source correspondence, not a separate Lean proof of the imported result.
+
 ## Scope beyond the selected endpoints
 
 The source tree includes supporting calculations and older application interfaces. The published archive's older equation crosswalk addresses its own manuscript snapshot; it must not be read as a claim that every equation of the current manuscript has a single unconditional endpoint.

@@ -22,17 +22,22 @@ The documentation labels this second input **A2**. The existing Lean declaration
 
 **Declaration:** `LogdetLean.GramHafnian.UltimateHiding.DenseScore.A2Prime_complexSymmetricTakagiWeyl_symmetricIntegration` in [H6_A2Prime_TakagiWeylSymmetricIntegration.lean](../LogdetLean/GramHafnian/UltimateHiding/DenseScore/Literature/H6_A2Prime_TakagiWeylSymmetricIntegration.lean).
 
-**References:** S. Helgason, *Groups and Geometric Analysis*, AMS, 2000, Chapter I, Theorem 5.17 ([DOI](https://doi.org/10.1090/surv/083)); R. C. Chen, Y. H. Kim, J. D. Lichtman, S. J. Miller, S. Sweitzer and E. Winsor, *Spectral Statistics of Non-Hermitian Random Matrix Ensembles*, Random Matrices: Theory and Applications 8 (2019), 1950005, Appendix A.2, Eqs. (A.15), (A.16), (A.19), (A.20) ([DOI](https://doi.org/10.1142/S2010326319500059), [preprint](https://arxiv.org/abs/1803.08127)).
+**Direct source:** W. FitzGerald and J. Warren, *Point-to-line last passage percolation and the invariant measure of a system of reflecting Brownian motions*, Probability Theory and Related Fields **178** (2020), 121–171, Section 6, printed p. 165, the unnumbered Jacobian immediately after Eq. (70). [DOI](https://doi.org/10.1007/s00440-020-00972-z), [published PDF](https://link.springer.com/content/pdf/10.1007/s00440-020-00972-z.pdf).
 
-For complex-symmetric $C$, let $\lambda_i$ be its squared Takagi singular values. For every measurable permutation-invariant test $F$, the axiom asserts
+**Measurable integration theorem:** J. An, Z. Wang and K. Yan, *A generalization of random matrix ensemble I. General theory*, Pacific Journal of Mathematics **228** (2006), 1–17, Theorem 4.2 and the following remark, printed p. 13. [DOI](https://doi.org/10.2140/pjm.2006.228.1), [publisher PDF](https://msp.org/pjm/2006/228-1/pjm-v228-n1-p01-p.pdf). Its application to unitary congruence is detailed in [A2_SOURCE_DERIVATION.md](A2_SOURCE_DERIVATION.md).
+
+For each $N\ge1$, define $\lambda^L(C)=1-\operatorname{eig}(I-C^*C)$ using the code's fixed ordering of Hermitian eigenvalues. This map is measurable on **all** complex $N\times N$ matrices. On the complex-symmetric subspace its coordinates are the squared Takagi singular values. There is **one** constant $c_N\in(0,\infty)$, independent of the target and test, such that every measurable permutation-invariant map $F:\mathbb R^N\to Z$ into any measurable space satisfies
 
 ```math
- (F\circ\lambda)_{\#}(dC)=c_N F_{\#}\!\left(
- \mathbf{1}_{\lambda_i\gt 0}\prod_{i\lt j}|\lambda_i-\lambda_j|\,d\lambda\right),
- \qquad 0\lt c_N\lt \infty.
+ (F\circ\lambda^L)_{\#}(dC_{\mathrm{sym}})=c_N F_{\#}(\rho_N),
+ \qquad
+ \rho_N(d\lambda)=\mathbf{1}_{(0,\infty)^N}(\lambda)
+ \prod_{i\lt j}|\lambda_i-\lambda_j|\,d\lambda.
 ```
 
-It also supplies measurability of the spectral map. This is the type-CI tangent-space Weyl formula with coordinate normalization. The extension from continuous compactly supported invariant tests to arbitrary measurable invariant pushforwards is **included in the assumed contract**, not separately formalized. There is no assertion equating an ordered selector with an unordered vector law. See the source module for the precise data-valued structure.
+Here $dC_{\mathrm{sym}}$ is Lebesgue measure on the independent upper-triangular complex entries, embedded in the full matrix space. FitzGerald–Warren give exactly the flat squared-singular-value Jacobian. Integrating out angles gives the scalar formula; testing it on the indicators of $F^{-1}(B)$ gives the displayed pushforward identity for every measurable $B\subseteq Z$. Continuity of ordered Hermitian eigenvalues gives the global selector measurability. The full argument, including null exceptional sets, chamber multiplicity, and $N=1$, is in [A2_SOURCE_DERIVATION.md](A2_SOURCE_DERIVATION.md).
+
+This is a **derived formulation of the cited result**, not a verbatim theorem quotation. The derivation establishes mathematical agreement between the source, manuscript A2, and every field of the Lean contract. These deductions remain inside the imported A2 boundary; they are not separately formalized in Lean. Permutation invariance is essential: no ordered-selector law on the unordered orthant is asserted.
 
 ## A3: Gaussian GSVD beta-Jacobi law
 
@@ -69,4 +74,4 @@ L. Shou, A. V. Gorshkov, V. Galitski and S. H. Miller, *Proof of the Hiding Conj
 
 ## Source-check status
 
-The source modules retain the original parameter dictionaries and manuscript Appendix A explains the same translations. For this release, the author-hosted Edelman–Sutton manuscript and the Chen, Matsumoto and Shou preprints were accessed again. The Friedman–Mello and Helgason DOI links did not expose their full texts through the available retrieval tool; their pinpoint references are retained from the existing source documentation, not described as newly independently checked. In particular, A2 is an explicitly disclosed mathematical extension of its cited integration formula.
+The source modules retain the original parameter dictionaries and manuscript Appendix A explains the same translations. The A2 source revision of 2026-09-07 uses the published FitzGerald–Warren Jacobian and the published An–Wang–Yan measurable integration theorem at the exact locations above. The source-to-contract argument is printed in the manuscript and [A2_SOURCE_DERIVATION.md](A2_SOURCE_DERIVATION.md). It replaces the earlier Helgason/Chen attribution without changing the A2 declaration or the four-input dependency boundary. Earlier build receipts remain records of their own source snapshots; this citation revision does not claim a new Lean proof of A2.

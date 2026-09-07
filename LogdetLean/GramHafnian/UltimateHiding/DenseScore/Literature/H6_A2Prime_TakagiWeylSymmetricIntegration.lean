@@ -1,9 +1,10 @@
 import LogdetLean.GramHafnian.UltimateHiding.DenseScore.H6_CanonicalGapWeylReduction
 
 /-!
-# A2-prime: symmetric-test complex-symmetric Takagi--Weyl formula
+# A2: symmetric-test complex-symmetric Takagi--Weyl formula
 
-This module contains only the user-approved replacement literature atom A2'.
+This module contains only the literature input A2. The historical filename
+and declaration retain `A2Prime` for source compatibility.
 It is the invariant (symmetric-test) Weyl integration formula for flat
 Lebesgue measure on complex symmetric matrices.  It mentions no COE
 determinant weight, project dimension `K`, A1, A3, Wishart source, trace
@@ -26,30 +27,42 @@ orthant.  The invariant statement below therefore tests only
 permutation-invariant maps; the finite permutation multiplicity is absorbed
 into the unspecified positive orbit constant.
 
-Primary literature provenance:
+Primary literature provenance, revised 2026-09-07:
 
-* S. Helgason, *Groups and Geometric Analysis*, AMS Mathematical Surveys and
-  Monographs 83 (2000), Chapter I, Theorem 5.17, gives the tangent-space Weyl
-  integration formula.  Applied to `Sp(N,R)/U(N)`, whose tangent space is
-  identified with complex symmetric matrices under unitary congruence, its
-  restricted-root Jacobian is the product displayed above.  Helgason states the
-  formula on compactly supported continuous tests.  Equality on those tests
-  identifies the corresponding Radon measures, hence gives the measurable
-  pushforward formulation used below.
-* R. C. Chen, Y. H. Kim, J. D. Lichtman, S. J. Miller, S. Sweitzer, and
-  E. Winsor, *Spectral Statistics of Non-Hermitian Random Matrix Ensembles*,
-  Random Matrices: Theory and Applications 8 (2019), 1950005,
-  doi:10.1142/S2010326319500059, Appendix A.2, equations (A.15)--(A.16),
-  calculate the complex-symmetric Takagi coordinate scaling factors directly;
-  equations (A.19)--(A.20) state the resulting positive factor
-  `prod_{j<k} |sigma_k^2-sigma_j^2| * prod_j |2 sigma_j|`.  Equation (A.17)
-  has an apparent inversion typo in its printed final equality, so it is not
-  used here to choose the orientation of the Jacobian.
+* W. FitzGerald and J. Warren, *Point-to-line last passage percolation and
+  the invariant measure of a system of reflecting Brownian motions*,
+  Probability Theory and Related Fields 178 (2020), 121--171,
+  doi:10.1007/s00440-020-00972-z, Section 6, printed page 165, the unnumbered
+  Jacobian immediately after equation (70). It uses independent complex
+  coordinates of a symmetric matrix and eigenvalues of its adjoint product,
+  and gives exactly the flat squared-coordinate factor `|Delta(lambda)|`.
+* J. An, Z. Wang, and K. Yan, *A generalization of random matrix ensemble I.
+  General theory*, Pacific Journal of Mathematics 228 (2006), 1--17,
+  doi:10.2140/pjm.2006.228.1, Theorem 4.2 and its following remark, printed
+  page 13. The theorem gives orbit integration; the remark permits measurable
+  integrands. Unitary congruence on complex symmetric matrices satisfies its
+  hypotheses, as detailed in `docs/A2_SOURCE_DERIVATION.md`.
 
-Thus Helgason supports the unrestricted Lebesgue integration formula, while
-Chen et al. corroborate the exact Takagi-coordinate factors used here.  A2' is
-not the retired ensemble-specific axiom `A2_forrester_equation_1_7`: it states
-only flat Takagi--Weyl radialization.
+Integrating the compact angular variables gives the scalar formula for every
+nonnegative measurable symmetric test, allowing infinite integrals. For any
+measurable invariant `F` and measurable target set `B`, apply that formula to
+the indicator of `F`'s inverse image of `B`. This yields the pushforward
+identity below with one positive finite constant independent of `F` and its
+target. Permutation multiplicity changes only that constant; for `N = 1`,
+ordinary planar polar coordinates give the constant `pi`.
+
+The other field, global measurability of `canonicalGapSquaredSpectrum`,
+follows because `C |-> 1 - C.conjTranspose * C` is continuous on all square
+complex matrices and ordered Hermitian eigenvalues are continuous, including
+at multiplicities. The fixed coordinate reindexing in the eigenvalue routine
+does not change this. The entries are squared singular values as a multiset;
+permutation invariance removes the source/code ordering difference.
+
+These deductions establish the mathematical implication from the cited
+formula to every field of this contract; they are not separately formalized
+here. The contract is a derived formulation, not a verbatim source theorem.
+The revision changes only provenance comments, not the declaration, its
+fields, or any proof term. No additional project axiom is introduced.
 -/
 
 open scoped ENNReal
@@ -91,7 +104,7 @@ theorem TakagiWeylSymmetricIntegrationLaw.orbitConstant_ne_zero
     h.orbitConstant ≠ 0 :=
   ne_of_gt h.orbitConstant_pos
 
-/-- **Approved literature atom A2'.**  Raw complex-symmetric Takagi--Weyl
+/-- **Literature input A2.** Raw complex-symmetric Takagi--Weyl
 integration for arbitrary measurable permutation-invariant spectral tests.
 
 The axiom returns data rather than an existential proposition so its fields

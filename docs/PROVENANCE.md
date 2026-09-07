@@ -8,4 +8,6 @@ One shared hiding file, `CurrentPRL/CoefficientPaperEndpoints.lean`, previously 
 
 The new Route 1 proof imports `ComplexGramHafnians` and calls its public `theorem2_1`. Source vendoring is used for reproducibility while both repositories are private. This is not a separate Lake git dependency or submodule.
 
+The A2 documentation revision of 2026-09-07 replaces the former Helgason/Chen attribution with the published FitzGerald–Warren flat Takagi Jacobian and the An–Wang–Yan measurable integration theorem. [A2_SOURCE_DERIVATION.md](A2_SOURCE_DERIVATION.md) proves the mathematical implication to the existing contract, including the concrete globally measurable selector. Only the A2 source comments and documentation change; its declaration, definitions, proof terms, and the pinned companion source remain unchanged. Historical build and axiom receipts retain their original source-snapshot meaning.
+
 The independent statement/proof/check organization is inspired by [PrimeGaps186](https://github.com/openai/PrimeGaps186). We do not claim its comparator or independent kernel-checker runs. The build log and axiom report state exactly what was executed for this release.
