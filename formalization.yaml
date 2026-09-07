@@ -1,12 +1,84 @@
-version: "v0.4"
-name: UniformHiding
-title: Uniform Hiding and Two Routes to Relative Accuracy in Gaussian Boson Sampling
-repository: https://github.com/HongruZhao/UniformHiding
-language: Lean 4
-statement: HidingStatement.lean
-proof: UniformHiding.lean
-verification: HidingVerification.lean
-scope:
-  - Theorem 2.1, conditional on four literature axioms
-  - Theorem 3.2, Route 1 and its infimum over nonnegative thresholds
-  - Route 2 conditional deductions only; symmetric hiding input not formalized
+version: v0.4
+project:
+  name: UniformHiding
+  description: Uniform Hiding and Two Routes to Relative Accuracy in Gaussian Boson
+    Sampling
+  authors:
+  - Hongru Zhao
+  license: GPL-3.0-only
+sources:
+- title: Uniform Hiding and Two Routes to Relative Accuracy in Gaussian Boson Sampling
+  authors:
+  - Hongru Zhao
+  type: article
+  location: Theorem 2.1 and Route 1 of Theorem 3.2
+  relationship: formalizes
+  note: Revised local manuscript; literature assumptions are documented in docs/AXIOMS.md.
+classification:
+  arxiv:
+  - quant-ph
+  - math.PR
+status:
+  scope: Uniform matrix hiding and the assembled Route 1 relative bound, conditional
+    on four literature axioms. Route 2 hiding is not formalized.
+  main_results:
+  - declaration: UniformHiding.theorem2_1
+    file: UniformHiding.lean
+    sorry_count: 0
+    axioms: &id001
+    - propext
+    - Classical.choice
+    - Quot.sound
+    - LogdetLean.GramHafnian.UltimateHiding.DenseScore.FriedmanMelloA1.matrixLaw_external
+    - LogdetLean.GramHafnian.UltimateHiding.DenseScore.A2Prime_complexSymmetricTakagiWeyl_symmetricIntegration
+    - LogdetLean.GramHafnian.UltimateHiding.DenseScore.A3_edelmanSutton_proposition_1_2
+    - MatsumotoPaper.A4_matsumoto_theorem_3
+  - declaration: UniformHiding.routeOneSmallBall
+    file: UniformHiding.lean
+    sorry_count: 0
+    axioms: *id001
+  - declaration: UniformHiding.theorem3_2_route1
+    file: UniformHiding.lean
+    sorry_count: 0
+    axioms: *id001
+  - declaration: UniformHiding.theorem3_2_route1_optimized
+    file: UniformHiding.lean
+    sorry_count: 0
+    axioms: *id001
+automation:
+  methods:
+  - method: agent
+    models:
+    - GPT-6
+    framework: Codex
+    tool_setup: Lean 4.33.0-rc2, pinned mathlib, Lake, Lean.collectAxioms, and Python
+      source/package checks.
+  notes: New focused release assembled from the existing author proof library under
+    human direction.
+review:
+  status: self-assessed
+  notes: See verification/STATUS.md for the actual build and exact axiom audit. The
+    four literature atoms and the unformalized Route 2 input are documented separately.
+    No comparator or independent checker run is claimed.
+alignment:
+  namespace: UniformHiding
+  statements:
+  - source: Theorem 2.1
+    lean: UniformHiding.theorem2_1
+    module: UniformHiding
+    status: conditional on four literature axioms
+  - source: Theorem 3.1, Route 1
+    lean: UniformHiding.routeOneSmallBall
+    module: UniformHiding
+    status: conditional on four literature axioms
+  - source: Theorem 3.2, Route 1
+    lean: UniformHiding.theorem3_2_route1
+    module: UniformHiding
+    status: conditional on four literature axioms
+  - source: Theorem 3.2, Route 1 infimum
+    lean: UniformHiding.theorem3_2_route1_optimized
+    module: UniformHiding
+    status: conditional on four literature axioms
+acknowledgements: Lean, mathlib and Lake contributors; the author proof library; PrimeGaps186
+  for statement/proof/assumption organization; ComplexGramHafnians for the source-pinned
+  anticoncentration dependency.

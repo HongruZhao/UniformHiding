@@ -31,7 +31,7 @@
       "name": "A4_matsumoto_theorem_3"
     }
   ],
-  "scope": "Checks every shipped Lean source including Challenge and Verification; excludes dependency/build caches.",
+  "scope": "Checks every shipped Lean source including the companion Challenge and HidingVerification; excludes dependency/build caches.",
   "source_sha256": {
     "Challenge.lean": "b34ff3372e32c09e7a7afba12519213509dd7ad992978b9390cfc0d15b8a5bba",
     "ComplexGramHafnians.lean": "9f566dd83c76672ecdf26309132bf4dd715e743a45f7fb81ab681e178adaa70b",
@@ -913,7 +913,7 @@
     "LogdetLean/WishartScalarThird.lean": "381ecca4ffcb3f7d4842a4e27ea9f5ec22c4ca20a9badb1db058a5718f45b5f9",
     "LogdetLean/WishartSequentialKernel.lean": "852405969330906b01edda42100c85448c5889699fb66abb3d0bae5a8fd618d3",
     "LogdetLean/WishartSpectralRotation.lean": "186ab45cabe2ba79cb528cda9331b750d9bd88cd06c9fc72f06d8a02ef73b83f",
-    "UniformHiding.lean": "6c8f9eef3cb82bff827e60ba5a2266353b2d3fb74fac68c3281d57350458a55c"
+    "UniformHiding.lean": "681dddb78ba218069eabdfd7ff64b76d60f8f0cb5b1d8213cd435977f135ec77"
   },
   "unreachable_modules": []
 }

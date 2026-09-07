@@ -2,7 +2,7 @@
 
 Lean verification accompanying Hongru Zhao's manuscript. The main hiding theorem and the Route 1 part of the relative-accuracy theorem are proved **conditional on four explicitly cited literature axioms**. The companion Gaussian anticoncentration theorem has no additional scientific axioms.
 
-The organization follows the statement/proof/verification separation used by [PrimeGaps186](https://github.com/openai/PrimeGaps186) and [ComplexGramHafnians](https://github.com/HongruZhao/ComplexGramHafnians). This does not claim their independent-checker infrastructure or an independent mathematical review.
+The organization follows the statement/proof/verification separation used by [PrimeGaps186](https://github.com/openai/PrimeGaps186) and [ComplexGramHafnians](https://github.com/HongruZhao/ComplexGramHafnians).
 
 ## Results and probability conventions
 
@@ -13,20 +13,20 @@ Let $U$ be Haar distributed on the unitary group $\mathrm{U}(M)$, and let $U_{N,
 ```math
  d_{\mathrm{TV}}\!\left(\mathcal L\!\left(\frac{M}{\sqrt K}U_{N,K}U_{N,K}^{T}\right),
  \mathcal L\!\left(\frac{1}{\sqrt K}GG^{T}\right)\right)
- \le \min\!\left\{1,615172\frac{N^2}{M}\right\}.
+ \le \min\!\left\lbrace 1,615172\frac{N^2}{M}\right\rbrace .
 ```
 
 The public declaration is `UniformHiding.theorem2_1`, with specification `UniformHiding.Theorem21`. The inherited `GBSHiding.AllInputs` module also handles $K<N$ under its stated dimension conditions.
 
 ## Hafnian and the physical output probability
 
-Put $N=2n$. For a complex symmetric $2n\times2n$ matrix $A$, let $\mathcal P_2(2n)$ be the perfect matchings of $\{1,\ldots,2n\}$. Define
+Put $N=2n$. For a complex symmetric $2n\times2n$ matrix $A$, let $\mathcal P_2(2n)$ be the perfect matchings of $\lbrace 1,\ldots,2n\rbrace $. Define
 
 ```math
- \mathrm{haf}(A)=\sum_{\pi\in\mathcal P_2(2n)}\ \prod_{\{i,j\}\in\pi} A_{ij}.
+ \mathrm{haf}(A)=\sum_{\pi\in\mathcal P_2(2n)}\ \prod_{\lbrace i,j\rbrace \in\pi} A_{ij}.
 ```
 
-The diagonal entries do not occur. For $\xi>0$, squeeze the first $K$ input modes equally by $\xi$ and leave the others in vacuum. For a fixed collision-free output pattern $S\subseteq\{1,\ldots,M\}$ with $|S|=2n$, write
+The diagonal entries do not occur. For $\xi>0$, squeeze the first $K$ input modes equally by $\xi$ and leave the others in vacuum. For a fixed collision-free output pattern $S\subseteq\lbrace 1,\ldots,M\rbrace $ with $|S|=2n$, write
 
 ```math
  A_S=U_{S,[K]}U_{S,[K]}^T,\qquad
@@ -48,14 +48,14 @@ Assume $n\ge1$, $4n\le K\le M$, and $\xi>0$. Set
 
 ```math
  p_1=\frac{\tanh(\xi)^{2n}}{M^{2n}\cosh(\xi)^K}\sigma_{K,n}^2,
- \qquad \delta_1=\min\left\{1,615172\frac{(2n)^2}{M}\right\}.
+ \qquad \delta_1=\min\left\lbrace 1,615172\frac{(2n)^2}{M}\right\rbrace .
 ```
 
 For one randomized estimate $\widetilde p$, put $\Delta p=\widetilde p-p_S$, $\gamma(\tau)=\Pr(|\Delta p|>\tau)$ and $F_\rho=\Pr(|\Delta p|>\rho p_S)$. For every physical additive threshold $\tau\ge0$ and relative tolerance $\rho>0$,
 
 ```math
  F_\rho\le E_1(\tau)
- =\min\left\{1,\gamma(\tau)+B_{K,n}\frac{\tau}{\rho p_1}+\delta_1\right\},
+ =\min\left\lbrace 1,\gamma(\tau)+B_{K,n}\frac{\tau}{\rho p_1}+\delta_1\right\rbrace ,
  \qquad F_\rho\le\inf_{\tau\ge0}E_1(\tau).
 ```
 
@@ -77,7 +77,14 @@ If a certified bound $\delta_2$ is supplied for the total variation distance fro
 
 ```math
  F_\rho\le E_2(\tau)
- =\min\left\{1,\gamma(\tau)+b_nR_{K,n}\frac{\tau}{\rho p_1}+\delta_2\right\}.
+ =\min\left\lbrace 1,\gamma(\tau)+b_nR_{K,n}\frac{\tau}{\rho p_1}+\delta_2\right\rbrace .
+```
+
+Under that additional comparison input, the manuscript combines the routes for the **same estimator and threshold**:
+
+```math
+ F_\rho\le\min\lbrace E_1(\tau),E_2(\tau)\rbrace,
+ \qquad F_\rho\le\min\left\lbrace\inf_{\tau\ge0}E_1(\tau),\inf_{\tau\ge0}E_2(\tau)\right\rbrace.
 ```
 
 The additional external input is [Shou, Gorshkov, Galitski and Miller (2026), Theorem 1.1](https://arxiv.org/html/2608.19314v1), which states an asymptotic $O(N/\sqrt K)$ symmetric-Gaussian hiding bound. Its implicit constant is not an explicit numerical finite-size certificate.
@@ -110,7 +117,7 @@ With [elan](https://github.com/leanprover/elan) installed, run:
 
 ```sh
 lake exe cache get
-lake build
+LEAN_NUM_THREADS=4 lake build
 python3 scripts/source_audit.py
 ```
 

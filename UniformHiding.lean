@@ -33,7 +33,7 @@ theorem routeOneSmallBall
   have hanti := (ComplexGramHafnians.theorem2_1 n K hn hK).shiftedSmallBall z eps heps
   let := scaledHaarGramHafnianLaw_isProbability H (show 2 * n ≤ M by omega) hKM
   apply le_min measureReal_le_one
-  exact htransfer.trans (add_le_add_right (hanti.trans (min_le_right _ _)) _)
+  exact htransfer.trans (add_le_add (hanti.trans (min_le_right _ _)) le_rfl)
 
 /-- Route 1 of Theorem 3.2 at the physical threshold tau. The marginal
 hypothesis specifies the Haar amplitude on a joint space that may include
@@ -86,7 +86,7 @@ theorem theorem3_2_route1_optimized
     μ.real (relativeFailureEvent deltaP
       (fun ω ↦ gbsProbabilityFromScaledAmplitude r M K n (amplitude ω)) rho) ≤
       optimizedRouteOneBound μ deltaP r M K n rho := by
-  letI : Nonempty {t : ℝ // 0 ≤ t} := ⟨⟨0, le_refl _⟩⟩
+  let : Nonempty {t : ℝ // 0 ≤ t} := ⟨⟨0, le_refl _⟩⟩
   apply le_ciInf
   intro tau
   exact theorem3_2_route1 μ amplitude hamplitude deltaP H hr hn hK hKM

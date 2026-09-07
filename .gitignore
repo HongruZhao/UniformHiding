@@ -6,4 +6,4 @@ __pycache__/
 *.olean.private
 *.olean.server
 
-verification/build.log
+verification/build*.log

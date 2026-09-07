@@ -1,0 +1,114 @@
+{
+  "verified_at_utc": "2026-09-07T00:38:04.267369+00:00",
+  "toolchain": "leanprover/lean4:v4.33.0-rc2",
+  "commands": [
+    {
+      "command": "LEAN_NUM_THREADS=4 lake build",
+      "exit_code": 0,
+      "jobs": 9585,
+      "log": "public_build.log"
+    },
+    {
+      "command": "LEAN_NUM_THREADS=4 lake env lean HidingVerification.lean",
+      "exit_code": 0,
+      "log": "axiom_audit.log"
+    },
+    {
+      "command": "python3 scripts/source_audit.py",
+      "exit_code": 0,
+      "report": "source_audit.json"
+    }
+  ],
+  "cache_policy": "Pinned dependency caches and previously compiled local modules were reused; new public proof and verification modules were compiled by the successful build. The separate axiom audit command was freshly executed. This is not a claim of a fully uncached build or independent checker execution.",
+  "source_module_count": 881,
+  "companion_files_unchanged": 225,
+  "axiom_checks": [
+    {
+      "declaration": "UniformHiding.theorem2_1",
+      "axiom_count": 7,
+      "reported_axioms": [
+        "propext",
+        "Classical.choice",
+        "MatsumotoPaper.A4_matsumoto_theorem_3",
+        "Quot.sound",
+        "LogdetLean.GramHafnian.UltimateHiding.DenseScore.A2Prime_complexSymmetricTakagiWeyl_symmetricIntegration",
+        "LogdetLean.GramHafnian.UltimateHiding.DenseScore.A3_edelmanSutton_proposition_1_2",
+        "LogdetLean.GramHafnian.UltimateHiding.DenseScore.FriedmanMelloA1.matrixLaw_external"
+      ]
+    },
+    {
+      "declaration": "UniformHiding.routeOneSmallBall",
+      "axiom_count": 7,
+      "reported_axioms": [
+        "propext",
+        "Classical.choice",
+        "MatsumotoPaper.A4_matsumoto_theorem_3",
+        "Quot.sound",
+        "LogdetLean.GramHafnian.UltimateHiding.DenseScore.A2Prime_complexSymmetricTakagiWeyl_symmetricIntegration",
+        "LogdetLean.GramHafnian.UltimateHiding.DenseScore.A3_edelmanSutton_proposition_1_2",
+        "LogdetLean.GramHafnian.UltimateHiding.DenseScore.FriedmanMelloA1.matrixLaw_external"
+      ]
+    },
+    {
+      "declaration": "UniformHiding.theorem3_2_route1",
+      "axiom_count": 7,
+      "reported_axioms": [
+        "propext",
+        "Classical.choice",
+        "MatsumotoPaper.A4_matsumoto_theorem_3",
+        "Quot.sound",
+        "LogdetLean.GramHafnian.UltimateHiding.DenseScore.A2Prime_complexSymmetricTakagiWeyl_symmetricIntegration",
+        "LogdetLean.GramHafnian.UltimateHiding.DenseScore.A3_edelmanSutton_proposition_1_2",
+        "LogdetLean.GramHafnian.UltimateHiding.DenseScore.FriedmanMelloA1.matrixLaw_external"
+      ]
+    },
+    {
+      "declaration": "UniformHiding.theorem3_2_route1_optimized",
+      "axiom_count": 7,
+      "reported_axioms": [
+        "propext",
+        "Classical.choice",
+        "MatsumotoPaper.A4_matsumoto_theorem_3",
+        "Quot.sound",
+        "LogdetLean.GramHafnian.UltimateHiding.DenseScore.A2Prime_complexSymmetricTakagiWeyl_symmetricIntegration",
+        "LogdetLean.GramHafnian.UltimateHiding.DenseScore.A3_edelmanSutton_proposition_1_2",
+        "LogdetLean.GramHafnian.UltimateHiding.DenseScore.FriedmanMelloA1.matrixLaw_external"
+      ]
+    },
+    {
+      "declaration": "ComplexGramHafnians.theorem2_1",
+      "axiom_count": 3,
+      "reported_axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ]
+    },
+    {
+      "declaration": "ComplexGramHafnians.theorem2_3",
+      "axiom_count": 3,
+      "reported_axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ]
+    },
+    {
+      "declaration": "UniformHiding.routeTwoConditional",
+      "axiom_count": 3,
+      "reported_axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ]
+    }
+  ],
+  "files_sha256": {
+    "HidingStatement.lean": "97db82508f51bad49ecd87bad9d80b38912732b7bccd055e8c8431e695ef5bfb",
+    "UniformHiding.lean": "681dddb78ba218069eabdfd7ff64b76d60f8f0cb5b1d8213cd435977f135ec77",
+    "HidingVerification.lean": "beb9008faae743439d738d3f70ec23d83bddcf06a0615b19d2d0b5bb1636e685",
+    "verification/public_build.log": "d75fa1c5a9606d9c74de5f4573ab215be8d51925e37ae8fc0ddd504cc35a2367",
+    "verification/axiom_audit.log": "6299052b8021f0b95880ff6eda5e97c40f1d47b1135eaeb4b29081b2d5155b3f",
+    "verification/source_audit.json": "0a80f2713f337351dc46d7017fd2c3b0fbf921e6f7015767b1c9a0860b933236"
+  }
+}

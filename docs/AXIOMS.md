@@ -38,7 +38,7 @@ It also supplies measurability of the spectral map. This is the type-CI tangent-
 
 **Reference:** A. Edelman and B. D. Sutton, *The Beta-Jacobi Matrix Model, the CS Decomposition, and Generalized Singular Value Problems*, Foundations of Computational Mathematics 8 (2008), 259–285, Definition 1.1 and Proposition 1.2. [DOI](https://doi.org/10.1007/s10208-006-0215-9), [author manuscript](https://math.mit.edu/~edelman/publications/beta-jacobi.pdf).
 
-For $n\ge1$, nonnegative integer parameters $a,b$, and $\beta\in\{1,2\}$, the squared generalized singular values of the specified independent Gaussian pair obey the beta-Jacobi law when tested by measurable permutation-invariant functions. Its density on $(0,1)^n$ is proportional to
+For $n\ge1$, nonnegative integer parameters $a,b$, and $\beta\in\lbrace 1,2\rbrace $, the squared generalized singular values of the specified independent Gaussian pair obey the beta-Jacobi law when tested by measurable permutation-invariant functions. Its density on $(0,1)^n$ is proportional to
 
 ```math
  \prod_i\lambda_i^{\beta(a+1)/2-1}(1-\lambda_i)^{\beta(b+1)/2-1}

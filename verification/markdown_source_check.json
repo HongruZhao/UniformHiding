@@ -1,0 +1,27 @@
+{
+  "passed": true,
+  "local_link_errors": [],
+  "files": [
+    {
+      "file": "README.md",
+      "fence_count": 20,
+      "unsafe_markdown_set_braces": false
+    },
+    {
+      "file": "docs/AXIOMS.md",
+      "fence_count": 8,
+      "unsafe_markdown_set_braces": false
+    },
+    {
+      "file": "docs/PROVENANCE.md",
+      "fence_count": 0,
+      "unsafe_markdown_set_braces": false
+    },
+    {
+      "file": "docs/PAPER_COMPARISON.md",
+      "fence_count": 0,
+      "unsafe_markdown_set_braces": false
+    }
+  ],
+  "note": "Syntax/link checks only; live GitHub mathematical rendering is checked separately."
+}

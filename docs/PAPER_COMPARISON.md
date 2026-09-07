@@ -16,6 +16,8 @@ The theorem numbers refer to the revised manuscript, *Uniform Hiding and Two Rou
 
 ## Route 1 model correspondence
 
+Lean uses `r` for the squeezing parameter $\xi$. Its `n` is the pair count, so the photon count is $N=2n$. The companion describes a $K\times2n$ column matrix $X$; the hiding paper writes $G=X^T$, giving $X^TX=GG^T$. The literal Gaussian pushforward identification is proved in `PRLCommonDefinitions.lean`.
+
 Lean uses the hafnian of $M U_{2n,K}U_{2n,K}^T$, hence the amplitude equals $M^n$ times the unscaled hafnian. Its physical probability multiplies the squared norm by the optical factor divided by $M^{2n}$. The Gaussian reference probability is the same factor times $\sigma_{K,n}^2$. The exact coefficient `paperBkn K n` comes from the companion's public specification.
 
 The marginal hypothesis `Measure.map amplitude μ = scaledHaarGramHafnianLaw H M n K` permits any joint experiment containing that Haar-distributed amplitude and estimator randomness. It is a model assumption about the experiment. It is not an assumed anticoncentration estimate or an additional global axiom. Haar invariance justifies using any fixed preselected row pattern in the mathematical paper; no adaptive pattern selection is asserted by this public theorem.
