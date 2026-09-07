@@ -16,7 +16,9 @@ For Haar $U\in\mathrm U(n)$, the leading $m\times m$ block $s$ of $UU^T$, with $
 
 against Lebesgue measure on independent complex-symmetric coordinates. Normalization is the reciprocal of the density integral, not an assumed Gamma-product formula. The source convention $U^TU$ and our $UU^T$ have the same Haar law. The axiom includes this convention translation. In the hiding proof, $n=K$ and $m=N$.
 
-## A2′: flat Takagi–Weyl integration
+## A2: flat Takagi–Weyl integration
+
+The documentation labels this second input **A2**. The existing Lean declaration and filename retain `A2Prime` for compatibility with the verified source tree.
 
 **Declaration:** `LogdetLean.GramHafnian.UltimateHiding.DenseScore.A2Prime_complexSymmetricTakagiWeyl_symmetricIntegration` in [H6_A2Prime_TakagiWeylSymmetricIntegration.lean](../LogdetLean/GramHafnian/UltimateHiding/DenseScore/Literature/H6_A2Prime_TakagiWeylSymmetricIntegration.lean).
 
@@ -25,8 +27,8 @@ against Lebesgue measure on independent complex-symmetric coordinates. Normaliza
 For complex-symmetric $C$, let $\lambda_i$ be its squared Takagi singular values. For every measurable permutation-invariant test $F$, the axiom asserts
 
 ```math
- (F\circ\lambda)_\#dC=c_N F_\#\!\left(
- \mathbf1_{\lambda_i>0}\prod_{i<j}|\lambda_i-\lambda_j|\,d\lambda\right),
+ (F\circ\lambda)_{\#}(dC)=c_N F_{\#}\!\left(
+ \mathbf{1}_{\lambda_i>0}\prod_{i<j}|\lambda_i-\lambda_j|\,d\lambda\right),
  \qquad 0<c_N<\infty.
 ```
 
@@ -63,8 +65,8 @@ The hiding dictionary is $d=N$, $\beta=(K-N)/2$, hence $\gamma=(K-2N-1)/2$. The 
 
 ## The additional Route 2 reference is not a Lean axiom
 
-L. Shou, A. V. Gorshkov, V. Galitski and S. H. Miller, *Proof of the Hiding Conjecture for Gaussian Boson Sampling with an Arbitrary Number of Squeezed Input Modes* (2026), [arXiv:2608.19314, Theorem 1.1](https://arxiv.org/html/2608.19314v1), gives the symmetric-Gaussian hiding rate $O(N/\sqrt K)$. The formal Route 2 interface takes an explicit comparison premise. It does not assert the existence of a certified finite constant or prove that literature theorem. This is the fifth external input in the discussion; A2′ itself has two supporting bibliographic references.
+L. Shou, A. V. Gorshkov, V. Galitski and S. H. Miller, *Proof of the Hiding Conjecture for Gaussian Boson Sampling with an Arbitrary Number of Squeezed Input Modes* (2026), [arXiv:2608.19314, Theorem 1.1](https://arxiv.org/html/2608.19314v1), gives the symmetric-Gaussian hiding rate $O(N/\sqrt K)$. The formal Route 2 interface takes an explicit comparison premise. It does not assert the existence of a certified finite constant or prove that literature theorem. This is the fifth external input in the discussion; A2 itself has two supporting bibliographic references.
 
 ## Source-check status
 
-The source modules retain the original parameter dictionaries and manuscript Appendix A explains the same translations. For this release, the author-hosted Edelman–Sutton manuscript and the Chen, Matsumoto and Shou preprints were accessed again. The Friedman–Mello and Helgason DOI links did not expose their full texts through the available retrieval tool; their pinpoint references are retained from the existing source documentation, not described as newly independently checked. In particular, A2′ is an explicitly disclosed mathematical extension of its cited integration formula.
+The source modules retain the original parameter dictionaries and manuscript Appendix A explains the same translations. For this release, the author-hosted Edelman–Sutton manuscript and the Chen, Matsumoto and Shou preprints were accessed again. The Friedman–Mello and Helgason DOI links did not expose their full texts through the available retrieval tool; their pinpoint references are retained from the existing source documentation, not described as newly independently checked. In particular, A2 is an explicitly disclosed mathematical extension of its cited integration formula.

@@ -2,8 +2,6 @@
 
 Lean verification accompanying Hongru Zhao's manuscript. The main hiding theorem and the Route 1 part of the relative-accuracy theorem are proved **conditional on four explicitly cited literature axioms**. The companion Gaussian anticoncentration theorem has no additional scientific axioms.
 
-The organization follows the statement/proof/verification separation used by [PrimeGaps186](https://github.com/openai/PrimeGaps186) and [ComplexGramHafnians](https://github.com/HongruZhao/ComplexGramHafnians).
-
 ## Results and probability conventions
 
 Let $U$ be Haar distributed on the unitary group $\mathrm{U}(M)$, and let $U_{N,K}$ be its first $N$ rows and $K$ columns. Let $G$ be an $N\times K$ matrix of independent circular complex Gaussians with density $\pi^{-1}e^{-|z|^2}$; each real and imaginary component has variance $1/2$. The superscript $T$ denotes ordinary transpose. Total variation is $d_{\mathrm{TV}}(\mu,\nu)=\sup_E|\mu(E)-\nu(E)|$, with measurable $E$.
@@ -96,11 +94,11 @@ The repository retains `UniformHiding.routeTwoConditional` and the [Route 2 inte
 | Input | Mathematical content | Source |
 | --- | --- | --- |
 | A1 | COE principal-block determinant density | Friedman–Mello (1985), Eqs. (1.2), (3.7) |
-| A2′ | Complex-symmetric Takagi–Weyl radial integration | Helgason (2000), Ch. I, Thm. 5.17; coordinate factors in Chen et al. (2019), App. A.2 |
+| A2 | Complex-symmetric Takagi–Weyl radial integration | Helgason (2000), Ch. I, Thm. 5.17; coordinate factors in Chen et al. (2019), App. A.2 |
 | A3 | Gaussian GSVD beta-Jacobi law | Edelman–Sutton (2008), Def. 1.1 and Prop. 1.2 |
 | A4 | Wishart and inverse-Wishart tensor moments | Matsumoto (2012), Thm. 3 |
 
-[AXIOMS.md](docs/AXIOMS.md) gives the precise declarations, source links, parameter substitutions, measure conventions, and the measurable extension included in A2′. These inputs are assumed, not reproved. In addition, Lean uses `propext`, `Classical.choice`, and `Quot.sound`. The theorem axiom check must match this exact set of four literature inputs plus three foundations; the imported anticoncentration endpoints must match only the three foundations.
+[AXIOMS.md](docs/AXIOMS.md) gives the precise declarations, source links, parameter substitutions, measure conventions, and the measurable extension included in A2. These inputs are assumed, not reproved. In addition, Lean uses `propext`, `Classical.choice`, and `Quot.sound`. The theorem axiom check must match this exact set of four literature inputs plus three foundations; the imported anticoncentration endpoints must match only the three foundations.
 
 ## Files and verification
 
@@ -128,3 +126,7 @@ The pinned toolchain is selected automatically. A successful build checks these 
 The [published Zenodo record](https://doi.org/10.5281/zenodo.22122730) is version 1.0.0. The [version 1.1.0 draft](https://zenodo.org/uploads/22558885) is unpublished (reserved DOI `10.5281/zenodo.22558885`); it contains this source release, broader verification material, and the coverage ledger. The new upload contains no manuscript PDFs or LaTeX sources. Cite the version actually used. See [CITATION.cff](CITATION.cff).
 
 Copyright © 2026 Hongru Zhao. Licensed under GPL-3.0-only. This repository is private during preparation.
+
+## Acknowledgments
+
+The organization follows the statement/proof/verification separation used by [PrimeGaps186](https://github.com/openai/PrimeGaps186) and [ComplexGramHafnians](https://github.com/HongruZhao/ComplexGramHafnians).
