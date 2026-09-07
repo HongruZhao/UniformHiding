@@ -11,7 +11,7 @@ Theorem 2.1 and the assembled Route 1 conclusions depend on four project declara
 For Haar $U\in\mathrm U(n)$, the leading $m\times m$ block $s$ of $UU^T$, with $1\le m$ and $2m\le n$, has density proportional to
 
 ```math
- \mathbf 1_{I-s^*s>0}\det(I-s^*s)^{(n-2m-1)/2}
+ \mathbf 1_{I-s^*s\gt 0}\det(I-s^*s)^{(n-2m-1)/2}
 ```
 
 against Lebesgue measure on independent complex-symmetric coordinates. Normalization is the reciprocal of the density integral, not an assumed Gamma-product formula. The source convention $U^TU$ and our $UU^T$ have the same Haar law. The axiom includes this convention translation. In the hiding proof, $n=K$ and $m=N$.
@@ -28,8 +28,8 @@ For complex-symmetric $C$, let $\lambda_i$ be its squared Takagi singular values
 
 ```math
  (F\circ\lambda)_{\#}(dC)=c_N F_{\#}\!\left(
- \mathbf{1}_{\lambda_i>0}\prod_{i<j}|\lambda_i-\lambda_j|\,d\lambda\right),
- \qquad 0<c_N<\infty.
+ \mathbf{1}_{\lambda_i\gt 0}\prod_{i\lt j}|\lambda_i-\lambda_j|\,d\lambda\right),
+ \qquad 0\lt c_N\lt \infty.
 ```
 
 It also supplies measurability of the spectral map. This is the type-CI tangent-space Weyl formula with coordinate normalization. The extension from continuous compactly supported invariant tests to arbitrary measurable invariant pushforwards is **included in the assumed contract**, not separately formalized. There is no assertion equating an ordered selector with an unordered vector law. See the source module for the precise data-valued structure.
@@ -44,7 +44,7 @@ For $n\ge1$, nonnegative integer parameters $a,b$, and $\beta\in\lbrace 1,2\rbra
 
 ```math
  \prod_i\lambda_i^{\beta(a+1)/2-1}(1-\lambda_i)^{\beta(b+1)/2-1}
- \prod_{i<j}|\lambda_i-\lambda_j|^\beta.
+ \prod_{i\lt j}|\lambda_i-\lambda_j|^\beta.
 ```
 
 The hiding substitution is $n=N$, $a=1$, $b=K-2N$, $\beta=1$. Reflection, odds transformations, normalization adapters and project trace transport are proved downstream. The exact declaration keeps the source parameters, not an opaque final hiding estimate.
@@ -58,7 +58,7 @@ The hiding substitution is $n=N$, $a=1$, $b=K-2N$, $\beta=1$. Reflection, odds t
 The axiom supplies the positive and inverse tensor-moment identities for $W_d(\beta,\sigma)$, arbitrary inserted matrices and matching permutations. The admissibility condition for moment order $q$ is
 
 ```math
- \gamma=\beta-(d+1)/2>q-1.
+ \gamma=\beta-(d+1)/2\gt q-1.
 ```
 
 The hiding dictionary is $d=N$, $\beta=(K-N)/2$, hence $\gamma=(K-2N-1)/2$. The order-four use requires $K\ge2N+8$. In Matsumoto's convention the Laplace transform uses $\det(I-\sigma\theta)^{-\beta}$; standard real Gaussian samples give scale $2I$. The variance-$1/2$ Gaussian realization has scale $I$. Scale conversion and project contractions are separate proved lemmas. See the source for the full tensor expressions; the symbol $q$ here avoids confusing the source moment order with the paper's hafnian pair count.
