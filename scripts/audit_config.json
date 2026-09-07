@@ -1,0 +1,29 @@
+{
+  "local_roots": [
+    "LogdetLean",
+    "GBSHiding",
+    "Challenge",
+    "ComplexGramHafnians",
+    "UniformHiding",
+    "HidingStatement",
+    "HidingVerification"
+  ],
+  "axioms": [
+    {
+      "file": "LogdetLean/GramHafnian/UltimateHiding/DenseScore/H6_A3_EdelmanSuttonProp12Conditional.lean",
+      "name": "A3_edelmanSutton_proposition_1_2"
+    },
+    {
+      "file": "LogdetLean/GramHafnian/UltimateHiding/DenseScore/H5_FriedmanMelloA1External.lean",
+      "name": "matrixLaw_external"
+    },
+    {
+      "file": "LogdetLean/GramHafnian/UltimateHiding/DenseScore/MatsumotoTheorem3External.lean",
+      "name": "A4_matsumoto_theorem_3"
+    },
+    {
+      "file": "LogdetLean/GramHafnian/UltimateHiding/DenseScore/Literature/H6_A2Prime_TakagiWeylSymmetricIntegration.lean",
+      "name": "A2Prime_complexSymmetricTakagiWeyl_symmetricIntegration"
+    }
+  ]
+}

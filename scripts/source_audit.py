@@ -1,0 +1,129 @@
+#!/usr/bin/env python3
+"""Portable source/import audit. This does not run Lean or certify mathematics."""
+from pathlib import Path
+import hashlib
+import json
+import re
+import sys
+import os
+
+
+def stripped(text):
+    """Remove nested Lean comments and strings, preserving line positions."""
+    out = []
+    i = depth = 0
+    string = False
+    while i < len(text):
+        if depth:
+            if text.startswith('/-', i):
+                depth += 1
+                out.extend('  ')
+                i += 2
+            elif text.startswith('-/', i):
+                depth -= 1
+                out.extend('  ')
+                i += 2
+            else:
+                out.append('\n' if text[i] == '\n' else ' ')
+                i += 1
+        elif string:
+            if text[i] == '\\' and i + 1 < len(text):
+                out.extend('  ')
+                i += 2
+            elif text[i] == '"':
+                string = False
+                out.append(' ')
+                i += 1
+            else:
+                out.append('\n' if text[i] == '\n' else ' ')
+                i += 1
+        elif text.startswith('/-', i):
+            depth = 1
+            out.extend('  ')
+            i += 2
+        elif text.startswith('--', i):
+            end = text.find('\n', i)
+            end = len(text) if end < 0 else end
+            out.extend(' ' * (end - i))
+            i = end
+        elif text[i] == '"':
+            string = True
+            out.append(' ')
+            i += 1
+        else:
+            out.append(text[i])
+            i += 1
+    if depth or string:
+        raise ValueError('Unterminated comment or string')
+    return ''.join(out)
+
+
+def audit(root):
+    cfg = json.loads((root / 'scripts/audit_config.json').read_text())
+    paths = []
+    for directory, subdirs, names in os.walk(root):
+        subdirs[:] = [d for d in subdirs if d not in ['.lake', '.git']]
+        paths.extend(Path(directory) / name for name in names if name.endswith('.lean'))
+    paths.sort()
+    sources = {str(p.relative_to(root)).removesuffix('.lean').replace('/', '.'): p for p in paths}
+    graph = {}
+    missing = []
+    forbidden = []
+    axioms = []
+    hashes = {}
+    for module, path in sources.items():
+        rel = str(path.relative_to(root))
+        hashes[rel] = hashlib.sha256(path.read_bytes()).hexdigest()
+        code = stripped(path.read_text())
+        imports = [m for line in code.splitlines()
+                   if re.match(r'^\s*(?:public\s+)?import\s', line)
+                   for m in re.sub(r'^\s*(?:public\s+)?import\s+', '', line).split()]
+        local = [m for m in imports if m.split('.')[0] in cfg['local_roots']]
+        graph[module] = local
+        missing.extend({'module': module, 'import': m} for m in local if m not in sources)
+        for match in re.finditer(r'\b(sorry|admit|unsafe|native_decide)\b', code):
+            forbidden.append({'file': rel, 'line': code.count('\n', 0, match.start()) + 1,
+                              'token': match[1]})
+        for match in re.finditer(r'(?m)^[ \t]*(?:private[ \t]+)?axiom[ \t]+(\S+)', code):
+            axioms.append({'file': rel, 'line': code.count('\n', 0, match.start()) + 1,
+                           'name': match[1]})
+    seen = set()
+    active = set()
+    cycles = []
+
+    def visit(module, trail):
+        if module in active:
+            cycles.append(trail + [module])
+            return
+        if module in seen:
+            return
+        active.add(module)
+        for dependency in graph.get(module, []):
+            visit(dependency, trail + [module])
+        active.remove(module)
+        seen.add(module)
+
+    visit('HidingVerification', [])
+    unreachable = sorted(set(sources) - seen)
+    actual_axioms = sorted((item['file'], item['name']) for item in axioms)
+    expected_axioms = sorted((item['file'], item['name']) for item in cfg['axioms'])
+    inherited = json.loads((root / 'docs/ANTICONCENTRATION_SNAPSHOT.json').read_text())['files']
+    changed_inherited = [rel for rel, digest in inherited.items() if hashes.get(rel) != digest]
+    passed = not (missing or forbidden or cycles or unreachable or changed_inherited) and actual_axioms == expected_axioms
+    result = {'audit_type': 'source-only', 'lean_executed_by_this_script': False,
+              'passed': passed, 'module_count': len(paths),
+              'inherited_module_count': len(inherited), 'missing_imports': missing,
+              'forbidden_tokens': forbidden, 'project_axiom_declarations': axioms,
+              'axiom_declarations_match_expected': actual_axioms == expected_axioms,
+              'import_cycles': cycles, 'unreachable_modules': unreachable,
+              'changed_inherited_sources': changed_inherited, 'source_sha256': hashes,
+              'scope': 'Checks every shipped Lean source including the companion Challenge and HidingVerification; excludes dependency/build caches.'}
+    target = root / 'verification/source_audit.json'
+    target.parent.mkdir(exist_ok=True)
+    target.write_text(json.dumps(result, indent=2, sort_keys=True) + '\n')
+    print(json.dumps({key: value for key, value in result.items() if key != 'source_sha256'}, indent=2))
+    return passed
+
+
+if __name__ == '__main__':
+    sys.exit(0 if audit(Path(__file__).resolve().parents[1]) else 1)

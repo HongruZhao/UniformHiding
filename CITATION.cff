@@ -1,0 +1,12 @@
+cff-version: 1.2.0
+message: "Please cite the manuscript and the exact software version used."
+title: 'Lean Verification for "Uniform Hiding and Two Routes to Relative Accuracy in Gaussian Boson Sampling"'
+type: software
+authors:
+  - family-names: Zhao
+    given-names: Hongru
+    orcid: 'https://orcid.org/0000-0002-1753-4709'
+version: 1.1.0
+repository-code: 'https://github.com/HongruZhao/UniformHiding'
+url: 'https://doi.org/10.5281/zenodo.22122729'
+license: GPL-3.0-only

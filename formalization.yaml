@@ -1,0 +1,12 @@
+version: "v0.4"
+name: UniformHiding
+title: Uniform Hiding and Two Routes to Relative Accuracy in Gaussian Boson Sampling
+repository: https://github.com/HongruZhao/UniformHiding
+language: Lean 4
+statement: HidingStatement.lean
+proof: UniformHiding.lean
+verification: HidingVerification.lean
+scope:
+  - Theorem 2.1, conditional on four literature axioms
+  - Theorem 3.2, Route 1 and its infimum over nonnegative thresholds
+  - Route 2 conditional deductions only; symmetric hiding input not formalized
