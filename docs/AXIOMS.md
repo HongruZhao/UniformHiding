@@ -4,7 +4,7 @@ This document explains **what Lean assumes and why the cited mathematical result
 
 **Part 1 of each axiom is its exact mathematical translation into the paper's notation. It is neither Lean code nor a verbatim quotation from a publication.** Parts 2–4 give the source statement, the justification of differences, and the notation dictionary. Mathematical source-to-axiom arguments are distinguished from separately checked Lean deductions. There are four literature axioms; there is no A5 axiom.
 
-All finite-dimensional spaces have their Borel structures. The notation $`f_{\#}\mu`$ means the pushforward measure. A permutation invariant test satisfies $`F(x\circ\pi)=F(x)`$ for every coordinate permutation $`\pi`$. Equation tags retain the manuscript's Appendix A numbering.
+All finite-dimensional spaces have their Borel structures. The notation $`f_{\#}\mu`$ means the pushforward measure. A permutation invariant test satisfies $`F(x\circ\pi)=F(x)`$ for every coordinate permutation $`\pi`$. Equation labels retain the manuscript's Appendix A numbering.
 
 Theorem 2.1 and the assembled Route 1 conclusions use these four literature axioms together with `propext`, `Classical.choice`, and `Quot.sound`. [HidingVerification.lean](../HidingVerification.lean) checks the actual endpoint dependencies. The companion Gaussian anticoncentration endpoints use only the three foundations.
 
@@ -37,10 +37,11 @@ w_{N,K}(C)=
 
 The imported law identity is
 
+**Equation (A.1).**
+
 ```math
 (C_{N,K})_\#h_K
 =Z_{N,K}^{-1}w_{N,K}(C)\,\,\mathrm{d} C.
-\tag{A.1}
 ```
 
 The right-hand side is defined by normalizing the raw measure by its own total mass.  No closed gamma or pi prefactor is part of the axiom, and no separate differentiability or moment conclusion is imported.  On the support, the determinant is positive and real, so its real power is exactly the weight used in the formalization.  The use of $`N,K`$ here is a renaming of the axiom's general block and ambient dimensions, not a restriction of its scope.
@@ -72,11 +73,12 @@ Second, the axiom uses independent symmetric coordinates and their embedding, ra
 
 The dimension and matrix dictionary is
 
+**Equation (A.2).**
+
 ```math
 n_{\mathrm{source}}=K,\qquad
 m_{\mathrm{source}}=N,\qquad
 s_{\mathrm{source}}\overset{\mathrm{d}}{=} C_{N,K}.
-\tag{A.2}
 ```
 
 The source's $`\dagger`$ is this paper's $`*`$; both mean conjugate transpose. Its $`S=U^{\mathsf{T}}U`$ corresponds in law to our $`UU^{\mathsf{T}}`$.  Its independent corner-entry volume becomes $`\,\mathrm{d} C`$, and its unspecified normalizer becomes $`Z_{N,K}^{-1}`$.  With this dictionary the imported Lean law is the density in Eq. (C.1).  Boundary regularity and score estimates are not part of A1.
@@ -117,9 +119,10 @@ where $`\mathrm{eig}`$ uses a fixed ordering of the Hermitian eigenvalues, with 
 
 Then $`\lambda:\mathcal M_N\to\mathbb R^N`$ is measurable, and there is *one* finite constant $`c_N\gt 0`$, depending only on $`N`$, such that for *every* measurable space $`\mathcal Y`$ and every measurable map $`F:\mathbb R^N\to\mathcal Y`$ satisfying $`F(\lambda\circ\pi)=F(\lambda)`$ for every $`\lambda\in\mathbb R^N`$ and every coordinate permutation $`\pi`$,
 
+**Equation (A.3).**
+
 ```math
 (F\circ\lambda)_\#(\,\mathrm{d} C)=c_N F_\#\rho_N.
-\tag{A.3}
 ```
 
 The quantifier for $`c_N`$ precedes those for $`\mathcal Y`$ and $`F`$. No standard Borel assumption on $`\mathcal Y`$ or finite-mass assumption is needed.  These are exactly the data asserted by A2 in the formalization: a positive finite constant, measurability of the selected spectrum on all square matrices, and the displayed equality for arbitrary measurable permutation invariant tests.
@@ -197,19 +200,21 @@ Here the matrix square root is the positive semidefinite one, the inverse is the
 
 Let $`\mathsf J_{N,a,b,\beta}`$ be the measure obtained by normalizing the following kernel by its own integral $`Z_{N,a,b,\beta}`$:
 
+**Equation (A.4).**
+
 ```math
 \mathsf J_{N,a,b,\beta}(\,\mathrm{d} t)=
 \frac{\mathbf{1}_{(0,1)^N}(t)}{Z_{N,a,b,\beta}}
 \prod_{i=1}^N t_i^{\beta(a+1)/2-1}(1-t_i)^{\beta(b+1)/2-1}
 \prod_{i\lt j}|t_i-t_j|^\beta\,\,\mathrm{d} t.
-\tag{A.4}
 ```
 
 The imported assertion has two conclusions: $`x:\Omega_{N,a,b}\to\mathbb R^N`$ is measurable on the whole sample space, and, for every measurable space $`\mathcal Y`$ and every measurable permutation invariant $`F:\mathbb R^N\to\mathcal Y`$,
 
+**Equation (A.5).**
+
 ```math
 (F\circ x)_\#\mu_{N,a,b,\beta}=F_\#\mathsf J_{N,a,b,\beta}.
-\tag{A.5}
 ```
 
 Collision nullity, project parameter substitutions, and later trace laws are not additional conclusions of this axiom.
@@ -248,10 +253,11 @@ Finally, a permutation invariant $`F`$ has the same value on every ordering of t
 
 The source's $`n,N_1,N_2,c_i^2`$ correspond respectively to this subsection's $`N,X_1,X_2,x_i`$ up to ordering.  The Gaussian variances and the parameters $`a,b,\beta`$ are unchanged.  The formalization uses the specialization
 
+**Equation (A.6).**
+
 ```math
 n_{\mathrm{source}}=N,\qquad a=1,\qquad
 b=K-2N,\qquad\beta=1,\qquad K\ge2N.
-\tag{A.6}
 ```
 
 The two matrix sizes become $`(N+1)\times N`$ and $`(K-N)\times N`$; the two individual-coordinate exponents become $`0`$ and $`(K-2N-1)/2`$.  This is the radial kernel obtained from A1 and A2.  Reflection, odds transformation, and trace power maps give the beta prime trace law only after these inputs are combined.
@@ -266,9 +272,10 @@ The two matrix sizes become $`(N+1)\times N`$ and $`(K-N)\times N`$; the two ind
 
 Let $`N,q\ge1`$, $`\beta,\gamma\in\mathbb R`$, and $`\sigma\in\mathrm{Sym}_N^+(\mathbb R)`$, with
 
+**Equation (A.7).**
+
 ```math
 \gamma=\beta-\frac{N+1}{2},\qquad \gamma\gt q-1.
-\tag{A.7}
 ```
 
 Here $`q`$ is the moment order, and $`\beta`$ is the Wishart shape parameter, not the real or complex index in A3.  Let $`\mu`$ be a probability measure on $`\mathrm{Sym}_N^+(\mathbb R)`$ satisfying, for every real symmetric $`\theta`$ such that $`\sigma^{-1}-\theta\gt 0`$,
@@ -282,11 +289,12 @@ This supplied probability law and its transform identity are hypotheses of A4, t
 
 For arbitrary complex $`N\times N`$ matrices $`m_1,\ldots,m_q`$, a permutation $`g\in S_{2q}`$, and real symmetric $`w`$, define
 
+**Equation (A.8).**
+
 ```math
 T_g(w;m)=\sum_{j_1,\ldots,j_{2q}=1}^N
 \left(\prod_{r=1}^q(m_r)_{j_{2r-1},j_{2r}}\right)
 \left(\prod_{r=1}^q w_{j_{g(2r-1)},j_{g(2r)}}\right).
-\tag{A.8}
 ```
 
 Let $`\mathcal M(2q)`$ be the perfect matchings of $`\lbrace 1,\ldots,2q\rbrace`$ and $`M_0=\lbrace \lbrace 1,2\rbrace ,\ldots,\lbrace 2q-1,2q\rbrace \rbrace`$.  Represent a matching $`M`$ by the permutation $`g_M`$ that lists each pair increasingly and lists the first members of pairs increasingly.  Let $`\ell(M,L)`$ count the connected components in $`M\cup L`$ and put $`\kappa(g)=\ell(M_0,gM_0)`$. The coefficient used in the axiom is defined by the finite matching matrix:
@@ -301,21 +309,23 @@ G_z(M,L)=z^{\ell(M,L)},\qquad
 
 The subscript $`\mathrm L`$ distinguishes this definition from the source's definition below.  The matrix inverse is the ordinary inverse at $`z=-2\gamma`$; its existence throughout the stated range is justified in part (3).  The imported conclusion is the conjunction
 
+**Equation (A.9).**
+
 ```math
 \mathbb{E}_\mu T_g(W;m)
 =2^{-q}\sum_{M\in\mathcal M(2q)}
 (2\beta)^{\kappa(g^{-1}g_M)}T_{g_M}(\sigma;m),
-\tag{A.9}
 ```
 
 
+
+**Equation (A.10).**
 
 ```math
 \mathbb{E}_\mu T_g(W^{-1};m)
 =\sum_{M\in\mathcal M(2q)}
 \widetilde{\mathrm{Wg}}_{\mathrm L}(g^{-1}g_M;\gamma)
 T_{g_M}(\sigma^{-1};m).
-\tag{A.10}
 ```
 
 These are equalities of complex integrals.  The declaration does not return separate integrability conclusions or any specialized trace or score bound.
@@ -395,10 +405,11 @@ This proves mathematical equivalence of the two definitions in the whole range u
 
 The source's matrix dimension $`d`$ is our $`N`$, and its moment order $`n`$ is our $`q`$.  This $`n`$ is unrelated to the half-photon count in $`N=2n`$ elsewhere in the paper.  The symbols $`\beta,\gamma,\sigma,m_r,g`$ keep their meanings; the source's $`\widetilde{\mathrm{Wg}}`$ equals $`\widetilde{\mathrm{Wg}}_{\mathrm L}`$ by part (3).  For the denominator Wishart calculation, the dictionary is
 
+**Equation (A.11).**
+
 ```math
 d=N,\qquad n=q=4,\qquad k=K-N,\qquad
 \beta=\frac{K-N}{2},\qquad\gamma=\frac{K-2N-1}{2}.
-\tag{A.11}
 ```
 
 The condition $`K\ge2N+8`$ gives $`\gamma\ge7/2\gt 3=q-1`$. Variance-$`1/2`$ Gaussian entries give source scale $`\sigma=I_N`$; variance-one entries give $`\sigma=2I_N`$.  The deterministic factor of two relates these Gram matrices.  Choosing the permutation and insertion matrices so that $`T_g(W^{-1};m)=\mathrm{tr}(W^{-4})`$ is a later specialization, followed by the matching sum, integrability closure, centering, and score estimates.  None of these specialized estimates is built into A4.

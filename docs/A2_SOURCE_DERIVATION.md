@@ -34,9 +34,10 @@ where $`\mathrm{eig}`$ uses a fixed ordering of the Hermitian eigenvalues, with 
 
 Then $`\lambda:\mathcal M_N\to\mathbb R^N`$ is measurable, and there is *one* finite constant $`c_N\gt 0`$, depending only on $`N`$, such that for *every* measurable space $`\mathcal Y`$ and every measurable map $`F:\mathbb R^N\to\mathcal Y`$ satisfying $`F(\lambda\circ\pi)=F(\lambda)`$ for every $`\lambda\in\mathbb R^N`$ and every coordinate permutation $`\pi`$,
 
+**Equation (A.3).**
+
 ```math
 (F\circ\lambda)_\#(\,\mathrm{d} C)=c_N F_\#\rho_N.
-\tag{A.3}
 ```
 
 The quantifier for $`c_N`$ precedes those for $`\mathcal Y`$ and $`F`$. No standard Borel assumption on $`\mathcal Y`$ or finite-mass assumption is needed.  These are exactly the data asserted by A2 in the formalization: a positive finite constant, measurability of the selected spectrum on all square matrices, and the displayed equality for arbitrary measurable permutation invariant tests.

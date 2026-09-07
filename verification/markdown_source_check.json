@@ -3,48 +3,48 @@
   "files": [
     {
       "file": "CHANGELOG.md",
-      "display_math_count": 0,
-      "inline_math_count": 0,
-      "sha256": "425dc034396c23f61fef275c5b94f06c92ee2795c050717ba8d9ce1e52658503"
+      "display_math": 0,
+      "inline_math": 0,
+      "sha256": "be9a14d316cf1510ea734848981151b7d3984280165c175abcfdc83eebcb8819"
     },
     {
       "file": "README.md",
-      "display_math_count": 9,
-      "inline_math_count": 41,
-      "sha256": "ef9571f5e48dc0e54b176a92b68e36db8d3ddeca219a76cddf67e2a32331ad0a"
+      "display_math": 9,
+      "inline_math": 41,
+      "sha256": "0a37dacc5209edae84bcacfd9c79331b2426a0e5a3a5dbee4ef7506924ffbd90"
     },
     {
       "file": "docs/A2_SOURCE_DERIVATION.md",
-      "display_math_count": 15,
-      "inline_math_count": 116,
-      "sha256": "53d46077141b2bc2bfad53e3968d92c1ce819ba8f44b486c666bfcb4bc854153"
+      "display_math": 15,
+      "inline_math": 116,
+      "sha256": "7741f8ba6cce0eb47e787f46219ccb8be1fb0e6a4849a017c5e2a38f3f7a9bd1"
     },
     {
       "file": "docs/AXIOMS.md",
-      "display_math_count": 31,
-      "inline_math_count": 223,
-      "sha256": "3dfaa13c7d607ddbf48595c1672fc3c932028cf783a47340e311d96ff6096fa1"
+      "display_math": 31,
+      "inline_math": 223,
+      "sha256": "ddd900453480990fcea7d9dbd6b157a2f828ddabc7c8515f96474e5802dd9984"
     },
     {
       "file": "docs/PAPER_COMPARISON.md",
-      "display_math_count": 0,
-      "inline_math_count": 17,
-      "sha256": "832bfe27db51265903a8dab25fc2bf3fb1d9f9272c01edb3ce31a2ae52336334"
+      "display_math": 0,
+      "inline_math": 17,
+      "sha256": "9f5d02da76113f3eebb034a731ce0459a5c22b4c18da0ed5281414ef1292a578"
     },
     {
       "file": "docs/PROVENANCE.md",
-      "display_math_count": 0,
-      "inline_math_count": 0,
-      "sha256": "d7affb0685e51d1cebc38c85bfb4a3f169c60c7fa418cc0d3409de700fda223b"
+      "display_math": 0,
+      "inline_math": 0,
+      "sha256": "453d3e68d8989926cb24ec9dc86b8e99c4dd55f7659484ac6352b9f93d08e5d9"
     },
     {
       "file": "verification/STATUS.md",
-      "display_math_count": 0,
-      "inline_math_count": 0,
-      "sha256": "4c7d0cb361008b6bbf3a347a791577f6212e5581aa6b6c251a74436f52fc51fc"
+      "display_math": 0,
+      "inline_math": 0,
+      "sha256": "6096f3804f1e8b2ba0eb66ab030f35edd884709ca976cda04cf86eab4e5b8417"
     }
   ],
-  "local_link_errors": [],
-  "math_expressions_compiled": 452,
-  "note": "Protected GitHub inline math, paired math fences, local file and anchor links, and LaTeX expression syntax checked. Live GitHub rendering is checked separately."
+  "errors": [],
+  "math_expression_count": 452,
+  "scope": "Source delimiters, supported equation-label convention, TeX grouping, and local links. A populated math element is not evidence of correct layout; inspect the rendered GitHub page separately."
 }
