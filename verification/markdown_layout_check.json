@@ -1,0 +1,89 @@
+{
+  "date_utc": "2026-09-07T17:28:05.811894+00:00",
+  "passed": true,
+  "browser": "Chrome",
+  "viewport_width": 1606,
+  "git_math_content_commit": "0c332195124e749332e4fd6fb4b150b9a7bcace7",
+  "baseline_commit": "c2e3fc2c034b999fcbdab3dbfa07bede366e34e3",
+  "pages": [
+    {
+      "file": "README.md",
+      "display_math": 9,
+      "inline_math": 41,
+      "rendered": 50,
+      "math_errors": 0,
+      "unsupported_numbered_rows": 0,
+      "horizontal_overflow": 0
+    },
+    {
+      "file": "docs/AXIOMS.md",
+      "display_math": 31,
+      "inline_math": 223,
+      "rendered": 254,
+      "math_errors": 0,
+      "unsupported_numbered_rows": 0,
+      "horizontal_overflow": 0
+    },
+    {
+      "file": "docs/A2_SOURCE_DERIVATION.md",
+      "display_math": 15,
+      "inline_math": 116,
+      "rendered": 131,
+      "math_errors": 0,
+      "unsupported_numbered_rows": 0,
+      "horizontal_overflow": 0
+    },
+    {
+      "file": "docs/PAPER_COMPARISON.md",
+      "display_math": 0,
+      "inline_math": 18,
+      "rendered": 18,
+      "math_errors": 0,
+      "unsupported_numbered_rows": 0,
+      "horizontal_overflow": 0
+    },
+    {
+      "file": "docs/PROVENANCE.md",
+      "display_math": 0,
+      "inline_math": 0,
+      "rendered": 0,
+      "math_errors": 0,
+      "unsupported_numbered_rows": 0,
+      "horizontal_overflow": 0
+    },
+    {
+      "file": "verification/STATUS.md",
+      "display_math": 0,
+      "inline_math": 0,
+      "rendered": 0,
+      "math_errors": 0,
+      "unsupported_numbered_rows": 0,
+      "horizontal_overflow": 0
+    },
+    {
+      "file": "CHANGELOG.md",
+      "display_math": 0,
+      "inline_math": 0,
+      "rendered": 0,
+      "math_errors": 0,
+      "unsupported_numbered_rows": 0,
+      "horizontal_overflow": 0
+    }
+  ],
+  "math_expressions_checked": 453,
+  "display_equations_checked": 55,
+  "source_markdown_files_checked": 7,
+  "numbered_displays_corrected": 12,
+  "a2_equation_height_before": 177.078125,
+  "a2_equation_height_after": 29.88,
+  "visual_inspection": [
+    "All 12 corrected numbered displays, including A2 in both documents",
+    "All 9 README display equations",
+    "The paper comparison table and inline notation"
+  ],
+  "source_formulas_preserved": true,
+  "additional_inline_formatting": "The previously plain-text subgroup K is now inline math.",
+  "lean_files_unchanged": 881,
+  "lean_executed_for_this_layout_revision": false,
+  "scope": "Live DOM rendering, unsupported MathML row detection, glyph/container bounds, and the listed screenshot inspections at the current browser width; source delimiters and links checked separately. This is a notation/layout audit, not a new mathematical proof audit."
+}

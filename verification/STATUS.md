@@ -1,5 +1,13 @@
 # Verification status
 
+## Markdown equation layout — 7 September 2026
+
+**Passed.** The seven Markdown files contain 453 math expressions, including 55 display equations. The live GitHub check found no renderer errors, unsupported numbered rows, or horizontal overflow at the current browser width. All 12 corrected numbered displays and all nine README display equations were also inspected visually. [The layout receipt](markdown_layout_check.json) records the checks and their scope.
+
+The earlier check counted rendered math elements but missed the vertical stacking caused by embedded equation numbers. Those 12 labels now appear as ordinary Markdown outside the math blocks, retaining the manuscript numbering. The formulas are preserved, and one previously plain-text subgroup variable is now inline math. [The portable Markdown audit](../scripts/markdown_audit.py) rejects the problematic label syntax and checks delimiters, grouping, and local links. Browser layout checks remain separate.
+
+All 881 Lean sources are unchanged by this formatting correction. Lean was not rerun; the successful build and exact axiom audit from the naming revision below remain applicable.
+
 ## Journal-independent names and fresh Lean verification — 7 September 2026
 
 **Passed.** After the module and identifier renaming, the pinned project build and a separate execution of `HidingVerification.lean` both returned exit code zero. All seven public endpoints matched their exact expected axiom sets: four hiding/Route 1 endpoints use the four literature axioms plus three foundations; the two companion endpoints and the conditional Route 2 deduction use only the three foundations. No project axiom was added.
