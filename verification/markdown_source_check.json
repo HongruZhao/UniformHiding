@@ -5,7 +5,7 @@
       "file": "CHANGELOG.md",
       "display_math": 0,
       "inline_math": 0,
-      "sha256": "be9a14d316cf1510ea734848981151b7d3984280165c175abcfdc83eebcb8819"
+      "sha256": "5a49a531d889594079281afce6bcb7df28ddf0140e5fe87543f0a5893cab203a"
     },
     {
       "file": "README.md",
@@ -28,8 +28,8 @@
     {
       "file": "docs/PAPER_COMPARISON.md",
       "display_math": 0,
-      "inline_math": 17,
-      "sha256": "9f5d02da76113f3eebb034a731ce0459a5c22b4c18da0ed5281414ef1292a578"
+      "inline_math": 18,
+      "sha256": "d3b94b413fa1badbe1a02f0d1f8d4d078d57ac7b7e5f070702c25e71222a85ce"
     },
     {
       "file": "docs/PROVENANCE.md",
@@ -45,6 +45,6 @@
     }
   ],
   "errors": [],
-  "math_expression_count": 452,
+  "math_expression_count": 453,
   "scope": "Source delimiters, supported equation-label convention, TeX grouping, and local links. A populated math element is not evidence of correct layout; inspect the rendered GitHub page separately."
 }

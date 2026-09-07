@@ -28,7 +28,7 @@ The event argument uses $`\Delta p=\widetilde p-p_S`$, $`\eta=\tau/p_1`$, and $`
 
 The revised Appendix A (7 September 2026, pages 12–18) documents what the formalization assumes and why the cited sources justify those assumptions. It is not a list of missing steps in the mathematical proof. It has four axiom subsections and no A.5 subsection.
 
-[AXIOMS.md](AXIOMS.md) follows the same four-part structure for every input: **(1) exact mathematical translation of the Lean axiom, (2) source statement, (3) differences and their justification, and (4) notation correspondence**. The translation is checked against the declaration and the definitions it uses, rather than relying on a code comment calling the result verbatim. Equation tags retain the paper's numbering.
+[AXIOMS.md](AXIOMS.md) follows the same four-part structure for every input: **(1) exact mathematical translation of the Lean axiom, (2) source statement, (3) differences and their justification, and (4) notation correspondence**. The translation is checked against the declaration and the definitions it uses, rather than relying on a code comment calling the result verbatim. Equation labels retain the paper's numbering.
 
 | Input | Source-to-Lean correspondence |
 | --- | --- |
@@ -37,7 +37,7 @@ The revised Appendix A (7 September 2026, pages 12–18) documents what the form
 | [A3](AXIOMS.md#a3) | The unordered squared GSVD law is represented by a concrete Hermitian matrix; the total inverse is zero on singular samples. Global measurability is part of the imported assertion. |
 | [A4](AXIOMS.md#a4) | A Wishart probability law satisfying the transform identity is supplied as a hypothesis. The paired moments use an inverse matching-Gram coefficient, identified with the cited zonal formula with its exact normalization. |
 
-[The expanded A2 justification](A2_SOURCE_DERIVATION.md) retains the full argument from FitzGerald–Warren's unnumbered Jacobian after Eq. (70) and An–Wang–Yan's Theorem 4.2 and following remark. It checks the positive ordered chamber, diagonal sign stabilizer, one-sheeted covering, differential, exceptional null set, coordinate-volume factor, chamber factor, and arbitrary measurable tests. In the notation dictionary, the integration theorem's subgroup K is explicitly distinguished from the paper's ambient dimension.
+[The expanded A2 justification](A2_SOURCE_DERIVATION.md) retains the full argument from FitzGerald–Warren's unnumbered Jacobian after Eq. (70) and An–Wang–Yan's Theorem 4.2 and following remark. It checks the positive ordered chamber, diagonal sign stabilizer, one-sheeted covering, differential, exceptional null set, coordinate-volume factor, chamber factor, and arbitrary measurable tests. In the notation dictionary, the integration theorem's subgroup $`K`$ is explicitly distinguished from the paper's ambient dimension.
 
 These source-to-axiom arguments explain why the imported mathematical statements are justified. They are not presented as separate proofs checked in Lean. The naming revision preserves the mathematical contracts of the four axioms and the public theorem endpoints under the recorded identifier substitutions.
 

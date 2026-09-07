@@ -35,3 +35,9 @@ Compared with the published hiding archive version 1.0.0, which used the title *
 - Updates imports, namespaces, identifiers, and documentation links consistently across 206 Lean sources. Public theorem entry points and the four-axiom boundary are preserved.
 - Records reversible naming edits and source hashes for all 881 Lean modules. The portable audit restores all 225 companion sources and checks their exact original upstream hashes.
 - Keeps historical receipts as evidence for their original snapshots; current verification is recorded separately in [verification/STATUS.md](verification/STATUS.md).
+
+## Markdown equation layout correction — 2026-09-07
+
+- Moves all 12 manuscript equation numbers outside the rendered math blocks, preventing numbered formulas from collapsing into vertical stacks in GitHub.
+- Preserves the mathematical formulas, manuscript equation references, and all Lean sources.
+- Adds a portable Markdown source check and a separate browser layout audit; counting rendered math elements alone does not check visual correctness.
