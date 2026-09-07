@@ -1,4 +1,6 @@
-# Verification status — 6 September 2026
+# Verification status
+
+## Lean build and endpoint audit — 6 September 2026
 
 **Passed.** The pinned project build completed successfully with 9,585 jobs. The new `UniformHiding` proof module and `HidingVerification` module were compiled during that successful build. A separate execution of the axiom audit also returned exit code zero.
 
@@ -31,5 +33,11 @@ The build used pinned dependency caches and reused local modules already compile
 The A2 source attribution and its mathematical derivation were revised to match the manuscript and the existing Lean contract. See [the source-to-contract derivation](../docs/A2_SOURCE_DERIVATION.md). The only edited Lean file has comment changes; its source after removing comments is identical to the previously verified version. No definition, theorem statement, proof term, import, or axiom declaration changed, and the four-literature-input boundary is unchanged.
 
 The revised A2 module was elaborated successfully with the pinned Lean toolchain and the existing dependency cache. The portable source audit was also rerun. [The dated revision receipt](A2_revision_receipt.json) distinguishes these new checks from the full-project build and endpoint axiom audit recorded on 6 September. The latter receipts remain evidence for that earlier build; no new full-project build or Lean proof of A2's mathematical source derivation is claimed.
+
+### Appendix A documentation alignment — 7 September 2026
+
+The README, the four-axiom audit, the expanded A2 justification, and the correspondence documents now match the rewritten Appendix A. Each axiom is translated mathematically before presenting the source statement, source-to-axiom justification, and notation dictionary. A3's all-sample measurability and A4's supplied-law premise and coefficient conversion are explicit.
+
+All 881 Lean files are byte-identical to commit `d3ea171e4c328989507c7188279c363944df642b`; all 225 companion files still match the pinned snapshot. This update checks documentation, mathematical correspondence, source identity, and the portable source audit. It does **not** rerun Lean or claim a separately formalized proof of any source-to-axiom justification. [The documentation receipt](axiom_documentation_revision.json) records the current checks. The earlier full build and endpoint audit remain the evidence for the unchanged Lean source.
 
 Theorem 2.1 and Route 1 of Theorem 3.2, including the infimum over nonnegative physical additive thresholds, are conditional formal proofs relative to the four cited inputs. The companion endpoints add no scientific axioms. Route 2 hiding is not proved: its conditional deduction does not establish its comparison premise. See [PAPER_COMPARISON.md](../docs/PAPER_COMPARISON.md) for the optical model convention, Haar-marginal hypothesis and remaining coverage limits. A successful build is not a claim that every sentence of the manuscript is formally verified.

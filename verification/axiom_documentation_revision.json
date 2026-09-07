@@ -1,6 +1,21 @@
 {
+  "date": "2026-09-07",
   "passed": true,
-  "files": [
+  "baseline_commit": "d3ea171e4c328989507c7188279c363944df642b",
+  "lean_files_checked": 881,
+  "changed_lean_files": [],
+  "companion_files_unchanged": 225,
+  "project_axiom_count": 4,
+  "lean_executed_for_this_documentation_revision": false,
+  "portable_source_audit_passed": true,
+  "appendix_source_sha256": "9665a91723ac671b9010f00ec5270da3cdb48506e2c7a79ffd9665ca3406f1d4",
+  "axiom_exposition_parts": [
+    "exact mathematical translation of Lean axiom",
+    "statement in cited source",
+    "difference from source and mathematical justification",
+    "notation correspondence"
+  ],
+  "markdown_files": [
     {
       "file": "CHANGELOG.md",
       "display_math_count": 0,
@@ -46,5 +61,6 @@
   ],
   "local_link_errors": [],
   "math_expressions_compiled": 452,
-  "note": "Protected GitHub inline math, paired math fences, local file and anchor links, and LaTeX expression syntax checked. Live GitHub rendering is checked separately."
+  "latex_math_syntax_passed": true,
+  "scope": "Documentation and source identity checks; source-to-axiom justifications are mathematical explanations, not separately formalized Lean proofs. Existing dated build receipts remain the evidence for the unchanged Lean code."
 }

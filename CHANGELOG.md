@@ -20,4 +20,11 @@ Compared with the published hiding archive version 1.0.0, which used the title *
 - Adds a complete source-to-contract derivation covering the independent complex-symmetric coordinates, squared singular values, one positive constant, arbitrary measurable invariant tests, and the globally measurable concrete spectrum selector.
 - Aligns the manuscript and GitHub explanation of A2 with the existing Lean contract. No Lean declaration, definition, or proof term changes; no project axiom is added.
 
-This version is prepared for private GitHub review and an unpublished Zenodo draft.
+## Four-axiom documentation alignment — 2026-09-07
+
+- Rewrites the axiom documentation to match Appendix A: exact mathematical translation from Lean, source statement, justification of differences, and notation correspondence for each of A1–A4.
+- States A3's full coordinate map and global measurability, including the convention on singular samples.
+- Separates A4's supplied Wishart-law hypothesis from its two moment conclusions and explains the exact inverse-Gram/zonal Weingarten conversion.
+- Expands the A2 justification with a one-sheeted positive ordered Takagi parametrization, explicit volume and chamber factors, and a dictionary using the integration theorem's original notation.
+- Keeps exactly four literature axioms. No Lean source file, theorem statement, or proof term changes in this documentation alignment.
+- Uses the stable [version 1.1.0 archive DOI](https://doi.org/10.5281/zenodo.22558885) and removes temporary preparation-status wording.

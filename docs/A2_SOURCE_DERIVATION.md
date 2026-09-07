@@ -1,123 +1,165 @@
-# A2: from the published Jacobian to the paper and Lean statement
+# A2: mathematical justification of the imported Lean axiom
 
-This document records the mathematical implication used by manuscript Appendix A and the existing Lean input **A2**. The source is sufficient for the full contract after the deductions below. A2 remains an external input in Lean: these deductions are explained mathematically here, not separately formalized. The historical filename and declaration retain `A2Prime` for compatibility.
+This is the expanded A2 comparison corresponding to manuscript Appendix A.2 and [the four-axiom audit](AXIOMS.md#a2). It explains why the cited results justify every clause accepted by Lean. The source-to-axiom justification is mathematical; it is not a separately formalized Lean proof.
 
-## Exact source locations
+<a id="a2-statement"></a>
 
-1. **W. FitzGerald and J. Warren**, *Point-to-line last passage percolation and the invariant measure of a system of reflecting Brownian motions*, Probability Theory and Related Fields **178** (2020), 121–171. [DOI](https://doi.org/10.1007/s00440-020-00972-z), [published PDF](https://link.springer.com/content/pdf/10.1007/s00440-020-00972-z.pdf). Section 6, printed **p. 165**, gives the unnumbered Jacobian immediately after **Eq. (70)**. It concerns a complex-symmetric matrix, Lebesgue measure on its independent complex entries, and the eigenvalues of its conjugate-transpose product. Its flat radial factor is
+## 1. Exact mathematical translation of the Lean axiom
 
-   ```math
-   dC\ \propto\ \prod_{i\lt j}|\lambda_i-\lambda_j|\,d\lambda\,d\Omega.
-   ```
-
-   The factorization used there is the Takagi factorization, with diagonal entries equal to the square roots of the eigenvalues. The formula is a flat change of variables. The distinct Gaussian parameters appearing nearby concern the subsequent parameter-dependent density, and are not hypotheses of this geometric Jacobian. A2 uses no such parameters.
-
-2. **J. An, Z. Wang and K. Yan**, *A generalization of random matrix ensemble I. General theory*, Pacific Journal of Mathematics **228** (2006), 1–17. [DOI](https://doi.org/10.2140/pjm.2006.228.1), [publisher PDF](https://msp.org/pjm/2006/228-1/pjm-v228-n1-p01-p.pdf). **Theorem 4.2**, Eqs. (4–4)–(4–5), and the immediately following remark on printed **p. 13** give the orbit integration theorem and explicitly permit measurable integrands. The specialization to unitary congruence is verified below.
-
-The first reference supplies the exact complex-symmetric Jacobian. The second supplies a numbered integration theorem permitting measurable functions. Neither is described as a verbatim statement of a Lean structure.
-
-## The shared paper and Lean contract
-
-Let $N\ge1$. Give the complex-symmetric matrix space its Lebesgue measure in the independent entries $C_{ij}\in\mathbb C$, $i\le j$, and embed this measure in the space of all complex square matrices. Call the resulting measure $dC_{\mathrm{sym}}$. Define
+For an integer $`N\ge1`$, use the Borel structures on Euclidean spaces and let
 
 ```math
-\lambda_i^L(C)=1-\mathrm{eig}_i(I-C^*C),
+\begin{aligned}
+\mathcal M_N&=\mathbb{C}^{N\times N},\qquad
+\mathcal S_N=\{C\in\mathcal M_N:C^{\mathsf{T}}=C\},\\
+\,\mathrm{d} C&=\prod_{1\le i\le j\le N}
+\,\mathrm{d}\Re C_{ij}\,\,\mathrm{d}\Im C_{ij}.
+\end{aligned}
+```
+
+We regard $`\,\mathrm{d} C`$ as a measure on $`\mathcal M_N`$ supported on $`\mathcal S_N`$, by embedding these independent upper triangular coordinates as a symmetric matrix.  On all of $`\mathcal M_N`$ define
+
+```math
+\lambda(C)=1-\operatorname{eig}(I-C^*C),
 \qquad
-\rho_N(d\lambda)=\mathbf{1}_{(0,\infty)^N}(\lambda)
-\prod_{i\lt j}|\lambda_i-\lambda_j|\,d\lambda.
+\Delta(\lambda)=\prod_{i\lt j}(\lambda_j-\lambda_i),
 ```
 
-Here $\mathrm{eig}$ uses the fixed ordering and reindexing of Hermitian eigenvalues used by the code. The assertion is:
-
-- $\lambda^L$ is measurable on **all** complex $N\times N$ matrices.
-- There is **one** finite positive number $c_N$, chosen before the target and test, such that for any measurable space $Z$ and every measurable permutation-invariant map $F:\mathbb R^N\to Z$,
+where $`\operatorname{eig}`$ uses a fixed ordering of the Hermitian eigenvalues, with the fixed reindexing used by the formalization. The coordinates of $`\lambda(C)`$ are the squared singular values as a multiset.  Put
 
 ```math
-(F\circ\lambda^L)_{\#}(dC_{\mathrm{sym}})
-=c_N F_{\#}(\rho_N).
+\rho_N(\,\mathrm{d}\lambda)=
+\mathbf{1}_{(0,\infty)^N}(\lambda)\lvert \Delta(\lambda)\rvert\,\,\mathrm{d}\lambda.
 ```
 
-Permutation invariance means $F(\lambda\circ\pi)=F(\lambda)$ for every coordinate permutation $\pi$. It is required on the whole domain of $F$. The measures in this identity may have infinite mass. In Lean, the target is any measurable type at universe level `Type 0`.
-
-## The flat scalar integration formula
-
-Write a regular Takagi decomposition as $C=UDU^T$ with $D=\mathrm{diag}(s_1,\ldots,s_N)$, where the $s_i$ are distinct and positive. If $X^*=-X$ is a unitary tangent and $E$ is a real diagonal variation, then
+Then $`\lambda:\mathcal M_N\to\mathbb R^N`$ is measurable, and there is *one* finite constant $`c_N\gt 0`$, depending only on $`N`$, such that for *every* measurable space $`\mathcal Y`$ and every measurable map $`F:\mathbb R^N\to\mathcal Y`$ satisfying $`F(\lambda\circ\pi)=F(\lambda)`$ for every $`\lambda\in\mathbb R^N`$ and every coordinate permutation $`\pi`$,
 
 ```math
-dC=E+XD+DX^T=E+XD-D\overline X.
+(F\circ\lambda)_\#(\,\mathrm{d} C)=c_N F_\#\rho_N.
+\tag{A.3}
 ```
 
-For $i\lt j$, the real and imaginary parts of $X_{ij}$ have factors $s_j-s_i$ and $s_j+s_i$. Diagonal imaginary directions have factor $2s_i$, and diagonal real directions are the radial coordinates. Thus, up to angular normalization,
+The quantifier for $`c_N`$ precedes those for $`\mathcal Y`$ and $`F`$. No standard Borel assumption on $`\mathcal Y`$ or finite-mass assumption is needed.  These are exactly the data asserted by A2 in the formalization: a positive finite constant, measurability of the selected spectrum on all square matrices, and the displayed equality for arbitrary measurable permutation invariant tests.
+
+<a id="a2-source"></a>
+
+## 2. Statement in the cited source
+
+FitzGerald and Warren display the flat Jacobian
 
 ```math
-\left(\prod_i2s_i\right)
-\prod_{i\lt j}|s_i^2-s_j^2|\,\prod_i ds_i
-=\prod_{i\lt j}|\lambda_i-\lambda_j|\,\prod_i d\lambda_i,
-\qquad \lambda_i=s_i^2.
+\,\mathrm{d} X\ \propto
+\prod_{i\lt j}|\lambda_i-\lambda_j|\,\,\mathrm{d}\lambda\,\,\mathrm{d}\Omega
 ```
 
-This is the squared-coordinate Jacobian in FitzGerald–Warren. It has Vandermonde power one and no extra individual power of $\lambda_i$.
-
-For the measurable integration theorem, take $G=U(N)$ acting on $X=\mathrm{Sym}_N(\mathbb C)$ by $C\mapsto UCU^T$, with $Y$ the real diagonal matrices and common stabilizer the diagonal sign group. Remove zero or repeated squared singular values from $X$, and zero coordinates or repeated squared coordinates from $Y$. The omitted sets have Lebesgue measure zero: they are zero sets of the nonzero determinant and discriminant polynomials, with the repeated-value condition empty for $N=1$. Takagi factorization gives orbit coverage. The displayed differential gives transversality on the regular set. Both stabilizers have dimension zero, and diagonal radial directions are orthogonal to orbit directions in the real Frobenius metric. Its volume differs from independent-entry volume by a positive constant only.
-
-The orbit map on the regular sets is a local diffeomorphism because the displayed Jacobian is nonzero. It is also proper: over a compact set of regular matrices the singular values remain bounded, bounded away from zero, and separated from each other, while $G/K$ is compact. Thus the inverse image is a closed subset of a compact set in the regular domain. A proper local diffeomorphism is a covering map. Each fiber has $2^N N!$ points: the real diagonal entries can have any signs and any ordering, and the remaining ambiguity is precisely the sign stabilizer. This proves the finite-covering hypothesis, rather than inferring it from fiber counting alone.
-
-These facts verify the hypotheses of An–Wang–Yan, Theorem 4.2. Its measurable-integrand remark therefore applies. Restricting to positive diagonal coordinates and then writing $\lambda_i=s_i^2$ gives, for every nonnegative measurable permutation-invariant scalar function $h$,
+in Section 6, printed p. 165, immediately after Eq. (70) [FitzGerald–Warren (2020), Sec. 6, p. 165](https://doi.org/10.1007/s00440-020-00972-z). Their matrix is complex symmetric, their flat coordinates are its independent complex entries, and their $`\lambda_i`$ are the eigenvalues of $`X^*X`$. Thus the matrix space, coordinate volume, squared singular values, and Vandermonde power agree with those above.  We use this geometric Jacobian, not the subsequent density with Gaussian parameters.  The formula is unnumbered; Eq. (70) locates it but is not itself the Jacobian. For the general integration theorem and its measurable-integrand form we also use An, Wang, and Yan, Theorem 4.2 and its following remark, printed p. 13 [An–Wang–Yan (2006), Thm. 4.2 and following remark](https://doi.org/10.2140/pjm.2006.228.1). Their notation is $`G`$ for the group, $`X`$ for the integration manifold, $`Y`$ for its closed section, and $`K`$ for the section's common stabilizer. Write $`K_{\mathrm{AWY}}`$ for this subgroup to distinguish it from our ambient dimension.  Under their ensemble conditions (invariant measures, orbit coverage, transversality, isotropy dimension and orthogonality), and a finite $`d`$-sheeted covering $`G/K_{\mathrm{AWY}}\times Y'\to X'`$, their Eq. (4–4) states
 
 ```math
-\int h(\lambda^L(C))\,dC_{\mathrm{sym}}
-=c_N\int h(\lambda)\,\rho_N(d\lambda).
+\int_X f(x)p(x)\,\,\mathrm{d} x
+=\frac1d\int_Y
+\left[\int_{G/K_{\mathrm{AWY}}}
+f(\sigma_g(y))\,\,\mathrm{d}\mu([g])\right]\,\mathrm{d}\nu(y).
 ```
 
-Infinite integrals are allowed. The unitary angular space is compact and has positive finite volume. Ordering and sign multiplicities change only the constant. These facts give one $c_N\in(0,\infty)$ depending only on $N$, not on $h$.
+Here $`\sigma_g`$ is the action, $`p(x)\,\mathrm{d} x`$ is the invariant measure, and $`\,\mathrm{d}\nu`$ includes the section Jacobian.  The theorem states this for smooth nonnegative or integrable $`f`$; its following remark replaces smoothness by measurability, retaining nonnegativity or integrability. Neither source states the arbitrary-target pushforward identity in Eq. (A.3) verbatim.
 
-## From scalar tests to arbitrary measurable targets
+<a id="a2-justification"></a>
 
-Let $F:\mathbb R^N\to Z$ be measurable and permutation-invariant, and let $B$ be a measurable subset of $Z$. Then
+## 3. Difference from the source and its justification
+
+The imported assertion includes the specific spectrum map's measurability on all square matrices, one constant before all tests, and arbitrary measurable targets.  The source supplies the geometric integration formula. The following deductions connect that formula to every imported clause. They are mathematical explanations of the bundled A2 input, not separate Lean proofs of those clauses.
+
+*The selected spectrum is globally measurable.* For Hermitian matrices $`A,B`$, the min–max formula gives, for consistently ordered eigenvalues,
 
 ```math
-h_B(\lambda)=\mathbf{1}_{F^{-1}(B)}(\lambda)
+\max_i|\operatorname{eig}_i(A)-\operatorname{eig}_i(B)|
+\le \|A-B\|_{\mathrm{op}}.
 ```
 
-is a nonnegative measurable permutation-invariant scalar function. The scalar identity applied to $h_B$ says exactly that
+The same bound holds after any fixed reindexing.  Since $`C^*C-D^*D=C^*(C-D)+(C-D)^*D`$, it follows for all $`C,D\in\mathcal M_N`$ that
 
 ```math
-(F\circ\lambda^L)_{\#}(dC_{\mathrm{sym}})(B)
-=c_N F_{\#}(\rho_N)(B).
+\max_i|\lambda_i(C)-\lambda_i(D)|
+\le (\|C\|_{\mathrm{op}}+\|D\|_{\mathrm{op}})
+\|C-D\|_{\mathrm{op}}.
 ```
 
-Equality on every measurable $B$ proves the full pushforward identity. This step requires no standard-Borel assumption on $Z$, no injectivity of $F$, and no finite-mass assumption. In particular, the positive constant does not depend on the target or test.
+Thus the exact selector used in A2 is continuous on all square matrices, including at spectral multiplicities.  Also, $`(UCU^{\mathsf{T}})^*(UCU^{\mathsf{T}})=\overline U(C^*C)U^{\mathsf{T}}`$ for unitary $`U`$, so its spectrum is unchanged by unitary congruence.  Every nonnegative Borel permutation invariant $`h`$ therefore gives a measurable invariant integrand $`C\mapsto h(\lambda(C))`$.  No choice of Takagi vectors is needed for this assertion.
 
-## The concrete spectrum map and its full domain
+*Regular coordinates and their uniqueness.* Let $`\mathcal S_N^{\mathrm{reg}}`$ consist of the symmetric matrices whose squared singular values are positive and pairwise distinct, and put
 
-For every complex square matrix $C$, the matrix $I-C^*C$ is Hermitian. The map $C\mapsto I-C^*C$ is continuous. Ordered Hermitian eigenvalues are continuous, including at repeated eigenvalues; the subsequent fixed coordinate reindexing does not affect continuity. Hence the concrete map $\lambda^L$ is continuous, and therefore measurable, on the full matrix space required by Lean.
+```math
+\mathcal W=\{s\in\mathbb R^N:0\lt s_1\lt \cdots\lt s_N\},\qquad
+H_N=\{\operatorname{diag}(\varepsilon_1,\ldots,\varepsilon_N):
+\varepsilon_i\in\{-1,1\}\}.
+```
 
-Its entries are the eigenvalues of $C^*C$ as a multiset. On the symmetric subspace these are the squared Takagi singular values. The scalar test and $F$ are permutation-invariant, so their values agree with any ordering used by the source. No measurable choice of Takagi vectors or eigenvectors is needed. The identity does **not** claim that a fixed ordered eigenvalue vector has density $\rho_N$ on the unordered orthant.
+The complement of $`\mathcal S_N^{\mathrm{reg}}`$ is flat null: it is the union of the zero sets of $`|\det C|^2`$ and the discriminant of the characteristic polynomial of $`C^*C`$.  Their restrictions to $`\mathcal S_N`$ are nonzero real polynomials, as a positive diagonal matrix with distinct entries shows.  For $`N=1`$ the collision condition is empty.
 
-## Normalization and the one-dimensional case
+Takagi factorization makes the smooth map
 
-The common constant can also be fixed by the symmetric test $h(\lambda)=e^{-\sum_i\lambda_i}$. Independent-entry integration gives
+```math
+\Phi:(\mathrm U(N)/H_N)\times\mathcal W
+\longrightarrow\mathcal S_N^{\mathrm{reg}},\qquad
+\Phi([U],s)=U\operatorname{diag}(s)U^{\mathsf{T}},
+```
+
+surjective.  It is injective as well.  The ordered positive diagonal is fixed by the singular values.  If a unitary $`V`$ stabilizes $`D=\operatorname{diag}(s)`$, then $`VDV^{\mathsf{T}}=D`$ implies $`VD^2V^*=D^2`$.  Because $`D^2`$ has distinct diagonal entries, $`V`$ is diagonal; the first equality then gives $`V_{ii}^2=1`$.  Hence the stabilizer is exactly $`H_N`$, and the angular coordinate is unique modulo this group.
+
+*The differential and the integration theorem.* At $`([I],s)`$, a real diagonal variation $`E`$ and a unitary tangent $`X^*=-X`$ give
+
+```math
+\,\mathrm{d} C=E+XD+DX^{\mathsf{T}}=E+XD-D\overline X.
+```
+
+For $`i\lt j`$, write $`X_{ij}=x_{ij}+\mathrm i y_{ij}`$.  The corresponding entry of the orbit tangent is $`(s_j-s_i)x_{ij}+\mathrm i(s_j+s_i)y_{ij}`$. Writing $`X_{ii}=\mathrm i t_i`$, the diagonal variation is $`E_{ii}+2\mathrm i s_i t_i`$.  These real coordinate blocks are all invertible on $`\mathcal W`$.  Thus $`\Phi`$ is a local diffeomorphism, and its bijectivity makes it a global diffeomorphism.  This proves the covering condition with one sheet; no further sign or permutation multiplicity is left in these coordinates.
+
+Here is the precise specialization of the cited integration theorem. Take its integration manifold to be $`\mathcal S_N^{\mathrm{reg}}`$, its section to be $`\lbrace \operatorname{diag}(s):s\in\mathcal W\rbrace`$, its group to be $`\mathrm U(N)`$, and $`p=1`$.  The exceptional sets within these manifolds are empty, so $`X'=X`$ and $`Y'=Y`$ in the source's notation. The section is closed relative to $`\mathcal S_N^{\mathrm{reg}}`$: a limit there of positive ordered diagonals still has positive, distinct, ordered entries.  Its real diagonal tangent is orthogonal to the orbit tangent in the real Frobenius metric, and the displayed differential gives their direct sum.  The stabilizers equal the finite group $`H_N`$.  Thus orbit coverage, transversality, the isotropy dimension condition, orthogonality, and the covering condition all hold. The Frobenius volume is $`2^{N(N-1)/2}\,\mathrm{d} C`$, so $`\,\mathrm{d} C`$ itself is also invariant under unitary congruence.  Apply the theorem to Frobenius volume and divide both sides by this fixed factor to obtain the formula for $`\,\mathrm{d} C`$.
+
+Give $`\mathrm U(N)/H_N`$ its invariant probability measure.  The same differential gives, with one constant $`a_N\in(0,\infty)`$ depending only on the fixed coordinate and angular normalizations, the radial Jacobian $`a_N\prod_i(2s_i)\prod_{i\lt j}(s_j^2-s_i^2)`$.  The constant is independent of $`s`$ by the displayed coordinate blocks, and independent of the angular point by unitary invariance.  The measurable form of the integration theorem therefore gives, for every nonnegative Borel permutation invariant $`h`$, including when the integrals are infinite,
+
+```math
+\int_{\mathcal S_N}h(\lambda(C))\,\,\mathrm{d} C
+=a_N\int_{\mathcal W}h(s_1^2,\ldots,s_N^2)
+\prod_i(2s_i)\prod_{i\lt j}(s_j^2-s_i^2)\,\,\mathrm{d} s.
+```
+
+The flat null set removed above does not affect this nonnegative integral.
+
+*Squared coordinates and the common constant.* Set $`x_i=s_i^2`$ and $`\mathcal W_x=\lbrace x\in\mathbb R^N:0\lt x_1\lt \cdots\lt x_N\rbrace`$.  The factors $`2s_i`$ cancel exactly against the coordinate differentials:
+
+```math
+\prod_i(2s_i)\prod_{i\lt j}(s_j^2-s_i^2)\,\,\mathrm{d} s
+=\Delta(x)\,\,\mathrm{d} x.
+```
+
+The positive orthant, except for its collision hyperplanes, is the disjoint union of $`N!`$ coordinate permutations of $`\mathcal W_x`$.  Permutation invariance of $`h`$, $`|\Delta|`$, and Lebesgue measure gives
+
+```math
+\int_{\mathcal S_N}h(\lambda(C))\,\,\mathrm{d} C
+=a_N\int_{\mathcal W_x}h(x)\Delta(x)\,\,\mathrm{d} x
+=\frac{a_N}{N!}\int_{(0,\infty)^N}h(x)|\Delta(x)|\,\,\mathrm{d} x.
+```
+
+Thus $`c_N=a_N/N!`$ is fixed before any choice of test or target. For an independent normalization check, insert $`h(x)=e^{-\sum_i x_i}`$. Since $`\operatorname{tr}(C^*C)=\sum_i|C_{ii}|^2+2\sum_{i\lt j}|C_{ij}|^2`$, this gives
 
 ```math
 c_N=
-\frac{\pi^{N(N+1)/2}\,2^{-N(N-1)/2}}
+\frac{2^{-N(N-1)/2}\pi^{N(N+1)/2}}
 {\displaystyle\int_{(0,\infty)^N}
- e^{-\sum_i\lambda_i}\prod_{i\lt j}|\lambda_i-\lambda_j|\,d\lambda}.
+e^{-\sum_i x_i}|\Delta(x)|\,\,\mathrm{d} x}.
 ```
 
-The denominator is positive because its integrand is positive on an open chamber, and finite by polynomial growth and exponential decay. The numerator follows from $\mathrm{tr}(C^*C)=\sum_i|C_{ii}|^2+2\sum_{i\lt j}|C_{ij}|^2$. For $N=1$, the empty Vandermonde is one and planar polar coordinates give $c_1=\pi$. This also checks the boundary case of the contract.
+The denominator is positive on an open chamber and finite by polynomial growth and exponential decay.  For $`N=1`$ this reduces to $`c_1=\pi`$, as also follows directly from planar polar coordinates.
 
-## Field-by-field correspondence and formal boundary
+*Arbitrary measurable targets.* Finally, for any measurable $`B\subseteq\mathcal Y`$ take $`h(\lambda)=\mathbf{1}_{\lbrace F(\lambda)\in B\rbrace }`$ in the scalar integration formula. Measurability and permutation invariance of $`F`$ give the corresponding properties of $`h`$.  The resulting identity is equality of the two measures in Eq. (A.3) on every measurable $`B`$, which proves that equation for an arbitrary measurable target.  This completes the implication from the cited formula to every part of the stated A2.
 
-| Mathematical statement | Lean field or definition | Justification above |
-| --- | --- | --- |
-| Independent complex-symmetric entry volume | `complexSymmetricMatrixVolume` | Independent-entry measure embedded in all matrices |
-| Concrete squared-spectrum vector | `canonicalGapSquaredSpectrum` | Ordered eigenvalues of the Hermitian gap, then subtraction from one |
-| Flat positive-orthant Vandermonde measure | `takagiFlatEigenvalueRadialMeasure` | Published squared-coordinate Jacobian |
-| One finite positive constant | `orbitConstant`, `orbitConstant_pos` | Compact angular volume; normalization check |
-| Global spectral measurability | `measurable_spectrum` | Continuity on the entire square-matrix domain |
-| All measurable invariant pushforwards | `symmetric_flat_radial_law` | Scalar measurable formula tested on inverse-image indicators |
+<a id="a2-notation"></a>
 
-The relevant contract and axiom are in [H6_A2Prime_TakagiWeylSymmetricIntegration.lean](../LogdetLean/GramHafnian/UltimateHiding/DenseScore/Literature/H6_A2Prime_TakagiWeylSymmetricIntegration.lean). The concrete selector is in [H6_CanonicalGapWeylReduction.lean](../LogdetLean/GramHafnian/UltimateHiding/DenseScore/H6_CanonicalGapWeylReduction.lean), and the measure definitions are in [H6_TakagiWeylAdapters.lean](../LogdetLean/GramHafnian/UltimateHiding/DenseScore/H6_TakagiWeylAdapters.lean).
+## 4. Notation correspondence
 
-The 2026-09-07 revision changes the citation and explains its implication. It changes no Lean declaration, definition, proof term, or project axiom count. The mathematical bridge is included in the external A2 assumption; a separate Lean proof of that bridge is not claimed.
+FitzGerald and Warren's matrix $`X`$ is our $`C\in\mathcal S_N`$, their size $`n`$ is $`N`$, and their $`\lambda_i`$ are the eigenvalues of $`C^*C`$. Our vector $`\lambda(C)=1-\operatorname{eig}(I-C^*C)`$ contains this same multiset in a fixed order.  Their angular variables $`\Omega`$ become $`[U]\in\mathrm U(N)/H_N`$ with invariant probability measure in the calculation above.  Their proportionality constant becomes the single $`c_N=a_N/N!`$ when the ordered squared chamber is replaced by the full positive orthant.  In the An–Wang–Yan specialization, $`G=\mathrm U(N)`$, their $`K`$ is our $`H_N`$, $`X=\mathcal S_N^{\mathrm{reg}}`$, and $`Y`$ is the positive ordered diagonal section.  Their action is $`\sigma_g(C)=gCg^{\mathsf{T}}`$.  Their $`K`$ is a subgroup, whereas our $`K`$ elsewhere is an ambient dimension; their $`d`$ counts covering sheets, here one.
+
+In the formalization, A2 is applied with A1 to permutation invariant tests of the determinant weighted COE law.  Its constant $`c_N`$ cancels under probability normalization.  The odds and trace power maps are subsequent constructions, not clauses imported in A2.  Permutation invariance is essential to the axiom: an unrestricted equality between one canonically ordered eigenvalue vector and a measure on the full unordered orthant would be false.
+
+The unchanged declaration and structure are linked in [the declaration list](AXIOMS.md#declaration-locations). The remaining three literature axioms and the separate Route 2 comparison are documented in [AXIOMS.md](AXIOMS.md).
