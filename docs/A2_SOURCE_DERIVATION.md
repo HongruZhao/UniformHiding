@@ -20,12 +20,12 @@ For an integer $`N\ge1`$, use the Borel structures on Euclidean spaces and let
 We regard $`\,\mathrm{d} C`$ as a measure on $`\mathcal M_N`$ supported on $`\mathcal S_N`$, by embedding these independent upper triangular coordinates as a symmetric matrix.  On all of $`\mathcal M_N`$ define
 
 ```math
-\lambda(C)=1-\operatorname{eig}(I-C^*C),
+\lambda(C)=1-\mathrm{eig}(I-C^*C),
 \qquad
 \Delta(\lambda)=\prod_{i\lt j}(\lambda_j-\lambda_i),
 ```
 
-where $`\operatorname{eig}`$ uses a fixed ordering of the Hermitian eigenvalues, with the fixed reindexing used by the formalization. The coordinates of $`\lambda(C)`$ are the squared singular values as a multiset.  Put
+where $`\mathrm{eig}`$ uses a fixed ordering of the Hermitian eigenvalues, with the fixed reindexing used by the formalization. The coordinates of $`\lambda(C)`$ are the squared singular values as a multiset.  Put
 
 ```math
 \rho_N(\,\mathrm{d}\lambda)=
@@ -72,7 +72,7 @@ The imported assertion includes the specific spectrum map's measurability on all
 *The selected spectrum is globally measurable.* For Hermitian matrices $`A,B`$, the min–max formula gives, for consistently ordered eigenvalues,
 
 ```math
-\max_i|\operatorname{eig}_i(A)-\operatorname{eig}_i(B)|
+\max_i|\mathrm{eig}_i(A)-\mathrm{eig}_i(B)|
 \le \|A-B\|_{\mathrm{op}}.
 ```
 
@@ -90,7 +90,7 @@ Thus the exact selector used in A2 is continuous on all square matrices, includi
 
 ```math
 \mathcal W=\{s\in\mathbb R^N:0\lt s_1\lt \cdots\lt s_N\},\qquad
-H_N=\{\operatorname{diag}(\varepsilon_1,\ldots,\varepsilon_N):
+H_N=\{\mathrm{diag}(\varepsilon_1,\ldots,\varepsilon_N):
 \varepsilon_i\in\{-1,1\}\}.
 ```
 
@@ -101,10 +101,10 @@ Takagi factorization makes the smooth map
 ```math
 \Phi:(\mathrm U(N)/H_N)\times\mathcal W
 \longrightarrow\mathcal S_N^{\mathrm{reg}},\qquad
-\Phi([U],s)=U\operatorname{diag}(s)U^{\mathsf{T}},
+\Phi([U],s)=U\mathrm{diag}(s)U^{\mathsf{T}},
 ```
 
-surjective.  It is injective as well.  The ordered positive diagonal is fixed by the singular values.  If a unitary $`V`$ stabilizes $`D=\operatorname{diag}(s)`$, then $`VDV^{\mathsf{T}}=D`$ implies $`VD^2V^*=D^2`$.  Because $`D^2`$ has distinct diagonal entries, $`V`$ is diagonal; the first equality then gives $`V_{ii}^2=1`$.  Hence the stabilizer is exactly $`H_N`$, and the angular coordinate is unique modulo this group.
+surjective.  It is injective as well.  The ordered positive diagonal is fixed by the singular values.  If a unitary $`V`$ stabilizes $`D=\mathrm{diag}(s)`$, then $`VDV^{\mathsf{T}}=D`$ implies $`VD^2V^*=D^2`$.  Because $`D^2`$ has distinct diagonal entries, $`V`$ is diagonal; the first equality then gives $`V_{ii}^2=1`$.  Hence the stabilizer is exactly $`H_N`$, and the angular coordinate is unique modulo this group.
 
 *The differential and the integration theorem.* At $`([I],s)`$, a real diagonal variation $`E`$ and a unitary tangent $`X^*=-X`$ give
 
@@ -114,7 +114,7 @@ surjective.  It is injective as well.  The ordered positive diagonal is fixed by
 
 For $`i\lt j`$, write $`X_{ij}=x_{ij}+\mathrm i y_{ij}`$.  The corresponding entry of the orbit tangent is $`(s_j-s_i)x_{ij}+\mathrm i(s_j+s_i)y_{ij}`$. Writing $`X_{ii}=\mathrm i t_i`$, the diagonal variation is $`E_{ii}+2\mathrm i s_i t_i`$.  These real coordinate blocks are all invertible on $`\mathcal W`$.  Thus $`\Phi`$ is a local diffeomorphism, and its bijectivity makes it a global diffeomorphism.  This proves the covering condition with one sheet; no further sign or permutation multiplicity is left in these coordinates.
 
-Here is the precise specialization of the cited integration theorem. Take its integration manifold to be $`\mathcal S_N^{\mathrm{reg}}`$, its section to be $`\lbrace \operatorname{diag}(s):s\in\mathcal W\rbrace`$, its group to be $`\mathrm U(N)`$, and $`p=1`$.  The exceptional sets within these manifolds are empty, so $`X'=X`$ and $`Y'=Y`$ in the source's notation. The section is closed relative to $`\mathcal S_N^{\mathrm{reg}}`$: a limit there of positive ordered diagonals still has positive, distinct, ordered entries.  Its real diagonal tangent is orthogonal to the orbit tangent in the real Frobenius metric, and the displayed differential gives their direct sum.  The stabilizers equal the finite group $`H_N`$.  Thus orbit coverage, transversality, the isotropy dimension condition, orthogonality, and the covering condition all hold. The Frobenius volume is $`2^{N(N-1)/2}\,\mathrm{d} C`$, so $`\,\mathrm{d} C`$ itself is also invariant under unitary congruence.  Apply the theorem to Frobenius volume and divide both sides by this fixed factor to obtain the formula for $`\,\mathrm{d} C`$.
+Here is the precise specialization of the cited integration theorem. Take its integration manifold to be $`\mathcal S_N^{\mathrm{reg}}`$, its section to be $`\lbrace \mathrm{diag}(s):s\in\mathcal W\rbrace`$, its group to be $`\mathrm U(N)`$, and $`p=1`$.  The exceptional sets within these manifolds are empty, so $`X'=X`$ and $`Y'=Y`$ in the source's notation. The section is closed relative to $`\mathcal S_N^{\mathrm{reg}}`$: a limit there of positive ordered diagonals still has positive, distinct, ordered entries.  Its real diagonal tangent is orthogonal to the orbit tangent in the real Frobenius metric, and the displayed differential gives their direct sum.  The stabilizers equal the finite group $`H_N`$.  Thus orbit coverage, transversality, the isotropy dimension condition, orthogonality, and the covering condition all hold. The Frobenius volume is $`2^{N(N-1)/2}\,\mathrm{d} C`$, so $`\,\mathrm{d} C`$ itself is also invariant under unitary congruence.  Apply the theorem to Frobenius volume and divide both sides by this fixed factor to obtain the formula for $`\,\mathrm{d} C`$.
 
 Give $`\mathrm U(N)/H_N`$ its invariant probability measure.  The same differential gives, with one constant $`a_N\in(0,\infty)`$ depending only on the fixed coordinate and angular normalizations, the radial Jacobian $`a_N\prod_i(2s_i)\prod_{i\lt j}(s_j^2-s_i^2)`$.  The constant is independent of $`s`$ by the displayed coordinate blocks, and independent of the angular point by unitary invariance.  The measurable form of the integration theorem therefore gives, for every nonnegative Borel permutation invariant $`h`$, including when the integrals are infinite,
 
@@ -141,7 +141,7 @@ The positive orthant, except for its collision hyperplanes, is the disjoint unio
 =\frac{a_N}{N!}\int_{(0,\infty)^N}h(x)|\Delta(x)|\,\,\mathrm{d} x.
 ```
 
-Thus $`c_N=a_N/N!`$ is fixed before any choice of test or target. For an independent normalization check, insert $`h(x)=e^{-\sum_i x_i}`$. Since $`\operatorname{tr}(C^*C)=\sum_i|C_{ii}|^2+2\sum_{i\lt j}|C_{ij}|^2`$, this gives
+Thus $`c_N=a_N/N!`$ is fixed before any choice of test or target. For an independent normalization check, insert $`h(x)=e^{-\sum_i x_i}`$. Since $`\mathrm{tr}(C^*C)=\sum_i|C_{ii}|^2+2\sum_{i\lt j}|C_{ij}|^2`$, this gives
 
 ```math
 c_N=
@@ -158,7 +158,7 @@ The denominator is positive on an open chamber and finite by polynomial growth a
 
 ## 4. Notation correspondence
 
-FitzGerald and Warren's matrix $`X`$ is our $`C\in\mathcal S_N`$, their size $`n`$ is $`N`$, and their $`\lambda_i`$ are the eigenvalues of $`C^*C`$. Our vector $`\lambda(C)=1-\operatorname{eig}(I-C^*C)`$ contains this same multiset in a fixed order.  Their angular variables $`\Omega`$ become $`[U]\in\mathrm U(N)/H_N`$ with invariant probability measure in the calculation above.  Their proportionality constant becomes the single $`c_N=a_N/N!`$ when the ordered squared chamber is replaced by the full positive orthant.  In the An–Wang–Yan specialization, $`G=\mathrm U(N)`$, their $`K`$ is our $`H_N`$, $`X=\mathcal S_N^{\mathrm{reg}}`$, and $`Y`$ is the positive ordered diagonal section.  Their action is $`\sigma_g(C)=gCg^{\mathsf{T}}`$.  Their $`K`$ is a subgroup, whereas our $`K`$ elsewhere is an ambient dimension; their $`d`$ counts covering sheets, here one.
+FitzGerald and Warren's matrix $`X`$ is our $`C\in\mathcal S_N`$, their size $`n`$ is $`N`$, and their $`\lambda_i`$ are the eigenvalues of $`C^*C`$. Our vector $`\lambda(C)=1-\mathrm{eig}(I-C^*C)`$ contains this same multiset in a fixed order.  Their angular variables $`\Omega`$ become $`[U]\in\mathrm U(N)/H_N`$ with invariant probability measure in the calculation above.  Their proportionality constant becomes the single $`c_N=a_N/N!`$ when the ordered squared chamber is replaced by the full positive orthant.  In the An–Wang–Yan specialization, $`G=\mathrm U(N)`$, their $`K`$ is our $`H_N`$, $`X=\mathcal S_N^{\mathrm{reg}}`$, and $`Y`$ is the positive ordered diagonal section.  Their action is $`\sigma_g(C)=gCg^{\mathsf{T}}`$.  Their $`K`$ is a subgroup, whereas our $`K`$ elsewhere is an ambient dimension; their $`d`$ counts covering sheets, here one.
 
 In the formalization, A2 is applied with A1 to permutation invariant tests of the determinant weighted COE law.  Its constant $`c_N`$ cancels under probability normalization.  The odds and trace power maps are subsequent constructions, not clauses imported in A2.  Permutation invariance is essential to the axiom: an unrestricted equality between one canonically ordered eigenvalue vector and a measure on the full unordered orthant would be false.
 

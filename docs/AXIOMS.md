@@ -103,12 +103,12 @@ For an integer $`N\ge1`$, use the Borel structures on Euclidean spaces and let
 We regard $`\,\mathrm{d} C`$ as a measure on $`\mathcal M_N`$ supported on $`\mathcal S_N`$, by embedding these independent upper triangular coordinates as a symmetric matrix.  On all of $`\mathcal M_N`$ define
 
 ```math
-\lambda(C)=1-\operatorname{eig}(I-C^*C),
+\lambda(C)=1-\mathrm{eig}(I-C^*C),
 \qquad
 \Delta(\lambda)=\prod_{i\lt j}(\lambda_j-\lambda_i),
 ```
 
-where $`\operatorname{eig}`$ uses a fixed ordering of the Hermitian eigenvalues, with the fixed reindexing used by the formalization. The coordinates of $`\lambda(C)`$ are the squared singular values as a multiset.  Put
+where $`\mathrm{eig}`$ uses a fixed ordering of the Hermitian eigenvalues, with the fixed reindexing used by the formalization. The coordinates of $`\lambda(C)`$ are the squared singular values as a multiset.  Put
 
 ```math
 \rho_N(\,\mathrm{d}\lambda)=
@@ -166,7 +166,7 @@ These are mathematical justifications of the assumption imported into Lean. They
 
 ### 4. Notation correspondence
 
-FitzGerald and Warren's matrix $`X`$ is our $`C\in\mathcal S_N`$, their size $`n`$ is $`N`$, and their $`\lambda_i`$ are the eigenvalues of $`C^*C`$. Our vector $`\lambda(C)=1-\operatorname{eig}(I-C^*C)`$ contains this same multiset in a fixed order.  Their angular variables $`\Omega`$ become $`[U]\in\mathrm U(N)/H_N`$ with invariant probability measure in the calculation above.  Their proportionality constant becomes the single $`c_N=a_N/N!`$ when the ordered squared chamber is replaced by the full positive orthant.  In the An–Wang–Yan specialization, $`G=\mathrm U(N)`$, their $`K`$ is our $`H_N`$, $`X=\mathcal S_N^{\mathrm{reg}}`$, and $`Y`$ is the positive ordered diagonal section.  Their action is $`\sigma_g(C)=gCg^{\mathsf{T}}`$.  Their $`K`$ is a subgroup, whereas our $`K`$ elsewhere is an ambient dimension; their $`d`$ counts covering sheets, here one.
+FitzGerald and Warren's matrix $`X`$ is our $`C\in\mathcal S_N`$, their size $`n`$ is $`N`$, and their $`\lambda_i`$ are the eigenvalues of $`C^*C`$. Our vector $`\lambda(C)=1-\mathrm{eig}(I-C^*C)`$ contains this same multiset in a fixed order.  Their angular variables $`\Omega`$ become $`[U]\in\mathrm U(N)/H_N`$ with invariant probability measure in the calculation above.  Their proportionality constant becomes the single $`c_N=a_N/N!`$ when the ordered squared chamber is replaced by the full positive orthant.  In the An–Wang–Yan specialization, $`G=\mathrm U(N)`$, their $`K`$ is our $`H_N`$, $`X=\mathcal S_N^{\mathrm{reg}}`$, and $`Y`$ is the positive ordered diagonal section.  Their action is $`\sigma_g(C)=gCg^{\mathsf{T}}`$.  Their $`K`$ is a subgroup, whereas our $`K`$ elsewhere is an ambient dimension; their $`d`$ counts covering sheets, here one.
 
 In the formalization, A2 is applied with A1 to permutation invariant tests of the determinant weighted COE law.  Its constant $`c_N`$ cancels under probability normalization.  The odds and trace power maps are subsequent constructions, not clauses imported in A2.  Permutation invariance is essential to the axiom: an unrestricted equality between one canonically ordered eigenvalue vector and a measure on the full unordered orthant would be false.
 
@@ -190,10 +190,10 @@ let $`\mu_{N,a,b,\beta}`$ be the law of an independent pair $`(X_1,X_2)`$. For $
 ```math
 A=X_1^*X_1,\quad B=X_2^*X_2,\quad R=(A+B)^{1/2},\quad
 J=R^{-1}A(R^{-1})^*,\quad
-x_i(X_1,X_2)=\bigl(\sqrt{\operatorname{eig}_i(J)}\bigr)^2.
+x_i(X_1,X_2)=\bigl(\sqrt{\mathrm{eig}_i(J)}\bigr)^2.
 ```
 
-Here the matrix square root is the positive semidefinite one, the inverse is the usual inverse on invertible matrices and the zero matrix on singular matrices, and the eigenvalues use the fixed ordering and reindexing of the formalization.  This inverse convention is not the Moore–Penrose inverse. The matrix $`J`$ is positive semidefinite, so $`x_i=\operatorname{eig}_i(J)`$.
+Here the matrix square root is the positive semidefinite one, the inverse is the usual inverse on invertible matrices and the zero matrix on singular matrices, and the eigenvalues use the fixed ordering and reindexing of the formalization.  This inverse convention is not the Moore–Penrose inverse. The matrix $`J`$ is positive semidefinite, so $`x_i=\mathrm{eig}_i(J)`$.
 
 Let $`\mathsf J_{N,a,b,\beta}`$ be the measure obtained by normalizing the following kernel by its own integral $`Z_{N,a,b,\beta}`$:
 
@@ -238,7 +238,7 @@ RJR^{-1}=A(A+B)^{-1},\qquad 0\lt J\lt I_N.
 
 Thus the Hermitian matrix used in the axiom is similar to the source's matrix without any commutation assumption on $`A,B`$.  Its eigenvalues are the same squared GSVD coordinates.  The chosen values on the null singular set do not affect the probability law.
 
-For measurability on all of $`\Omega_{N,a,b}`$, the Gram maps and the positive matrix square root are continuous.  Inversion extended by zero is Borel: it is the continuous rational map $`\operatorname{adj}(R)/\det R`$ on the open invertible set and is constant on its closed complement.  Hence $`J`$ is measurable.  Continuity of ordered Hermitian eigenvalues, fixed reindexing, and the real square root proves measurability of $`x`$.  Since $`J\ge0`$ on every sample, squaring its real square-root eigenvalues does not change them.
+For measurability on all of $`\Omega_{N,a,b}`$, the Gram maps and the positive matrix square root are continuous.  Inversion extended by zero is Borel: it is the continuous rational map $`\mathrm{adj}(R)/\det R`$ on the open invertible set and is constant on its closed complement.  Hence $`J`$ is measurable.  Continuity of ordered Hermitian eigenvalues, fixed reindexing, and the real square root proves measurability of $`x`$.  Since $`J\ge0`$ on every sample, squaring its real square-root eigenvalues does not change them.
 
 Finally, a permutation invariant $`F`$ has the same value on every ordering of the squared GSVD coordinates.  Apply the source's unordered law to the indicator of $`F^{-1}(D)`$ for each measurable $`D\subseteq\mathcal Y`$ to obtain Eq. (A.5).  This also covers arbitrary measurable targets.  These coordinate and measurability deductions explain the extension from Proposition 1.2; they are bundled into A3, not separately proved by that imported Lean declaration.  Collision nullity is then derived by the symmetric collision indicator and the null hyperplanes of the Jacobi density.
 
@@ -264,17 +264,17 @@ The two matrix sizes become $`(N+1)\times N`$ and $`(K-N)\times N`$; the two ind
 
 ### 1. Exact mathematical translation of the Lean axiom
 
-Let $`N,q\ge1`$, $`\beta,\gamma\in\mathbb R`$, and $`\sigma\in\operatorname{Sym}_N^+(\mathbb R)`$, with
+Let $`N,q\ge1`$, $`\beta,\gamma\in\mathbb R`$, and $`\sigma\in\mathrm{Sym}_N^+(\mathbb R)`$, with
 
 ```math
 \gamma=\beta-\frac{N+1}{2},\qquad \gamma\gt q-1.
 \tag{A.7}
 ```
 
-Here $`q`$ is the moment order, and $`\beta`$ is the Wishart shape parameter, not the real or complex index in A3.  Let $`\mu`$ be a probability measure on $`\operatorname{Sym}_N^+(\mathbb R)`$ satisfying, for every real symmetric $`\theta`$ such that $`\sigma^{-1}-\theta\gt 0`$,
+Here $`q`$ is the moment order, and $`\beta`$ is the Wishart shape parameter, not the real or complex index in A3.  Let $`\mu`$ be a probability measure on $`\mathrm{Sym}_N^+(\mathbb R)`$ satisfying, for every real symmetric $`\theta`$ such that $`\sigma^{-1}-\theta\gt 0`$,
 
 ```math
-\int e^{\operatorname{tr}(\theta w)}\,\mu(\,\mathrm{d} w)
+\int e^{\mathrm{tr}(\theta w)}\,\mu(\,\mathrm{d} w)
 =\det(I_N-\theta\sigma)^{-\beta}.
 ```
 
@@ -401,7 +401,7 @@ d=N,\qquad n=q=4,\qquad k=K-N,\qquad
 \tag{A.11}
 ```
 
-The condition $`K\ge2N+8`$ gives $`\gamma\ge7/2\gt 3=q-1`$. Variance-$`1/2`$ Gaussian entries give source scale $`\sigma=I_N`$; variance-one entries give $`\sigma=2I_N`$.  The deterministic factor of two relates these Gram matrices.  Choosing the permutation and insertion matrices so that $`T_g(W^{-1};m)=\operatorname{tr}(W^{-4})`$ is a later specialization, followed by the matching sum, integrability closure, centering, and score estimates.  None of these specialized estimates is built into A4.
+The condition $`K\ge2N+8`$ gives $`\gamma\ge7/2\gt 3=q-1`$. Variance-$`1/2`$ Gaussian entries give source scale $`\sigma=I_N`$; variance-one entries give $`\sigma=2I_N`$.  The deterministic factor of two relates these Gram matrices.  Choosing the permutation and insertion matrices so that $`T_g(W^{-1};m)=\mathrm{tr}(W^{-4})`$ is a later specialization, followed by the matching sum, integrability closure, centering, and score estimates.  None of these specialized estimates is built into A4.
 
 ## Declaration locations
 
