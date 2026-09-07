@@ -21,13 +21,13 @@ The first reference supplies the exact complex-symmetric Jacobian. The second su
 Let $N\ge1$. Give the complex-symmetric matrix space its Lebesgue measure in the independent entries $C_{ij}\in\mathbb C$, $i\le j$, and embed this measure in the space of all complex square matrices. Call the resulting measure $dC_{\mathrm{sym}}$. Define
 
 ```math
-\lambda_i^L(C)=1-\operatorname{eig}_i(I-C^*C),
+\lambda_i^L(C)=1-\mathrm{eig}_i(I-C^*C),
 \qquad
 \rho_N(d\lambda)=\mathbf{1}_{(0,\infty)^N}(\lambda)
 \prod_{i\lt j}|\lambda_i-\lambda_j|\,d\lambda.
 ```
 
-Here $\operatorname{eig}$ uses the fixed ordering and reindexing of Hermitian eigenvalues used by the code. The assertion is:
+Here $\mathrm{eig}$ uses the fixed ordering and reindexing of Hermitian eigenvalues used by the code. The assertion is:
 
 - $\lambda^L$ is measurable on **all** complex $N\times N$ matrices.
 - There is **one** finite positive number $c_N$, chosen before the target and test, such that for any measurable space $Z$ and every measurable permutation-invariant map $F:\mathbb R^N\to Z$,
@@ -41,7 +41,7 @@ Permutation invariance means $F(\lambda\circ\pi)=F(\lambda)$ for every coordinat
 
 ## The flat scalar integration formula
 
-Write a regular Takagi decomposition as $C=UDU^T$ with $D=\operatorname{diag}(s_1,\ldots,s_N)$, where the $s_i$ are distinct and positive. If $X^*=-X$ is a unitary tangent and $E$ is a real diagonal variation, then
+Write a regular Takagi decomposition as $C=UDU^T$ with $D=\mathrm{diag}(s_1,\ldots,s_N)$, where the $s_i$ are distinct and positive. If $X^*=-X$ is a unitary tangent and $E$ is a real diagonal variation, then
 
 ```math
 dC=E+XD+DX^T=E+XD-D\overline X.
@@ -58,7 +58,7 @@ For $i\lt j$, the real and imaginary parts of $X_{ij}$ have factors $s_j-s_i$ an
 
 This is the squared-coordinate Jacobian in FitzGerald–Warren. It has Vandermonde power one and no extra individual power of $\lambda_i$.
 
-For the measurable integration theorem, take $G=U(N)$ acting on $X=\operatorname{Sym}_N(\mathbb C)$ by $C\mapsto UCU^T$, with $Y$ the real diagonal matrices and common stabilizer the diagonal sign group. Remove zero or repeated squared singular values from $X$, and zero coordinates or repeated squared coordinates from $Y$. The omitted sets have Lebesgue measure zero: they are zero sets of the nonzero determinant and discriminant polynomials, with the repeated-value condition empty for $N=1$. Takagi factorization gives orbit coverage. The displayed differential gives transversality on the regular set. Both stabilizers have dimension zero, and diagonal radial directions are orthogonal to orbit directions in the real Frobenius metric. Its volume differs from independent-entry volume by a positive constant only.
+For the measurable integration theorem, take $G=U(N)$ acting on $X=\mathrm{Sym}_N(\mathbb C)$ by $C\mapsto UCU^T$, with $Y$ the real diagonal matrices and common stabilizer the diagonal sign group. Remove zero or repeated squared singular values from $X$, and zero coordinates or repeated squared coordinates from $Y$. The omitted sets have Lebesgue measure zero: they are zero sets of the nonzero determinant and discriminant polynomials, with the repeated-value condition empty for $N=1$. Takagi factorization gives orbit coverage. The displayed differential gives transversality on the regular set. Both stabilizers have dimension zero, and diagonal radial directions are orthogonal to orbit directions in the real Frobenius metric. Its volume differs from independent-entry volume by a positive constant only.
 
 The orbit map on the regular sets is a local diffeomorphism because the displayed Jacobian is nonzero. It is also proper: over a compact set of regular matrices the singular values remain bounded, bounded away from zero, and separated from each other, while $G/K$ is compact. Thus the inverse image is a closed subset of a compact set in the regular domain. A proper local diffeomorphism is a covering map. Each fiber has $2^N N!$ points: the real diagonal entries can have any signs and any ordering, and the remaining ambiguity is precisely the sign stabilizer. This proves the finite-covering hypothesis, rather than inferring it from fiber counting alone.
 
@@ -105,7 +105,7 @@ c_N=
  e^{-\sum_i\lambda_i}\prod_{i\lt j}|\lambda_i-\lambda_j|\,d\lambda}.
 ```
 
-The denominator is positive because its integrand is positive on an open chamber, and finite by polynomial growth and exponential decay. The numerator follows from $\operatorname{tr}(C^*C)=\sum_i|C_{ii}|^2+2\sum_{i\lt j}|C_{ij}|^2$. For $N=1$, the empty Vandermonde is one and planar polar coordinates give $c_1=\pi$. This also checks the boundary case of the contract.
+The denominator is positive because its integrand is positive on an open chamber, and finite by polynomial growth and exponential decay. The numerator follows from $\mathrm{tr}(C^*C)=\sum_i|C_{ii}|^2+2\sum_{i\lt j}|C_{ij}|^2$. For $N=1$, the empty Vandermonde is one and planar polar coordinates give $c_1=\pi$. This also checks the boundary case of the contract.
 
 ## Field-by-field correspondence and formal boundary
 

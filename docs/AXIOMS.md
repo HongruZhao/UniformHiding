@@ -26,7 +26,7 @@ The documentation labels this second input **A2**. The existing Lean declaration
 
 **Measurable integration theorem:** J. An, Z. Wang and K. Yan, *A generalization of random matrix ensemble I. General theory*, Pacific Journal of Mathematics **228** (2006), 1–17, Theorem 4.2 and the following remark, printed p. 13. [DOI](https://doi.org/10.2140/pjm.2006.228.1), [publisher PDF](https://msp.org/pjm/2006/228-1/pjm-v228-n1-p01-p.pdf). Its application to unitary congruence is detailed in [A2_SOURCE_DERIVATION.md](A2_SOURCE_DERIVATION.md).
 
-For each $N\ge1$, define $\lambda^L(C)=1-\operatorname{eig}(I-C^*C)$ using the code's fixed ordering of Hermitian eigenvalues. This map is measurable on **all** complex $N\times N$ matrices. On the complex-symmetric subspace its coordinates are the squared Takagi singular values. There is **one** constant $c_N\in(0,\infty)$, independent of the target and test, such that every measurable permutation-invariant map $F:\mathbb R^N\to Z$ into any measurable space satisfies
+For each $N\ge1$, define $\lambda^L(C)=1-\mathrm{eig}(I-C^*C)$ using the code's fixed ordering of Hermitian eigenvalues. This map is measurable on **all** complex $N\times N$ matrices. On the complex-symmetric subspace its coordinates are the squared Takagi singular values. There is **one** constant $c_N\in(0,\infty)$, independent of the target and test, such that every measurable permutation-invariant map $F:\mathbb R^N\to Z$ into any measurable space satisfies
 
 ```math
  (F\circ\lambda^L)_{\#}(dC_{\mathrm{sym}})=c_N F_{\#}(\rho_N),
