@@ -21,7 +21,7 @@ namespace LogdetLean.GramHafnian.SymmetricGaussianLimit
 
 noncomputable section
 
-open CurrentPRL
+open LocalAnticoncentration
 
 /-- The standard deviation of `k^{-n/2} H_{k,n}`, written without fractional
 powers. -/

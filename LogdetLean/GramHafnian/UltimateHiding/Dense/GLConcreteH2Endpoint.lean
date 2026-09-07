@@ -20,7 +20,7 @@ namespace LogdetLean.GramHafnian.UltimateHiding.Dense
 
 noncomputable section
 
-open CurrentPRL
+open LocalAnticoncentration
 
 theorem glComplex_unitary_oneColumn_orbital_commutation_from_gelfand
     (N K m : ℕ) (s : ℝ)

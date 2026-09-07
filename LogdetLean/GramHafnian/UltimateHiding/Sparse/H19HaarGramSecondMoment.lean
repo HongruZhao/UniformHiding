@@ -20,7 +20,7 @@ namespace LogdetLean.GramHafnian.UltimateHiding.Sparse
 
 noncomputable section
 
-open CurrentPRL
+open LocalAnticoncentration
 open LogdetLean.GramHafnian.UltimateHiding.Dense
 open LogdetLean.GramHafnian.UltimateHiding.DenseScore
 

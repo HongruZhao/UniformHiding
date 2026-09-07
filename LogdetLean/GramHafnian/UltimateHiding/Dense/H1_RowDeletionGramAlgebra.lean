@@ -14,7 +14,7 @@ namespace LogdetLean.GramHafnian.UltimateHiding.Dense
 
 noncomputable section
 
-open LogdetLean.GramHafnian.CurrentPRL
+open LogdetLean.GramHafnian.LocalAnticoncentration
 open LogdetLean.GramHafnian.UltimateHiding.Sparse
 
 /-- Hermitian row Gram matrix of a rectangular complex matrix. -/

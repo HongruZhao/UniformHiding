@@ -15,7 +15,7 @@ namespace LogdetLean.GramHafnian.UltimateHiding
 
 noncomputable section
 
-open CurrentPRL
+open LocalAnticoncentration
 
 def VeryLargeDenseSquaredBranchAt (C : ℝ) (C0 kappa : ℕ) : Prop :=
   ∀ (H : UnitaryHaarProbabilityFamily) (M N K : ℕ),

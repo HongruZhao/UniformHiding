@@ -1,0 +1,55 @@
+{
+  "passed": true,
+  "lean_modules": 881,
+  "all_source_changes_exactly_match_naming_rules": true,
+  "journal_names_in_current_lean_paths_or_sources": 0,
+  "markdown_files": [
+    {
+      "file": "CHANGELOG.md",
+      "display_math_count": 0,
+      "inline_math_count": 0,
+      "sha256": "be9a14d316cf1510ea734848981151b7d3984280165c175abcfdc83eebcb8819"
+    },
+    {
+      "file": "README.md",
+      "display_math_count": 9,
+      "inline_math_count": 41,
+      "sha256": "0a37dacc5209edae84bcacfd9c79331b2426a0e5a3a5dbee4ef7506924ffbd90"
+    },
+    {
+      "file": "docs/A2_SOURCE_DERIVATION.md",
+      "display_math_count": 15,
+      "inline_math_count": 116,
+      "sha256": "53d46077141b2bc2bfad53e3968d92c1ce819ba8f44b486c666bfcb4bc854153"
+    },
+    {
+      "file": "docs/AXIOMS.md",
+      "display_math_count": 31,
+      "inline_math_count": 223,
+      "sha256": "7bdb9a3cb3159819abeed064425a5cba210aea9ea1a7f34024ad28f3ffc6c219"
+    },
+    {
+      "file": "docs/PAPER_COMPARISON.md",
+      "display_math_count": 0,
+      "inline_math_count": 17,
+      "sha256": "9f5d02da76113f3eebb034a731ce0459a5c22b4c18da0ed5281414ef1292a578"
+    },
+    {
+      "file": "docs/PROVENANCE.md",
+      "display_math_count": 0,
+      "inline_math_count": 0,
+      "sha256": "453d3e68d8989926cb24ec9dc86b8e99c4dd55f7659484ac6352b9f93d08e5d9"
+    },
+    {
+      "file": "verification/STATUS.md",
+      "display_math_count": 0,
+      "inline_math_count": 0,
+      "sha256": "6096f3804f1e8b2ba0eb66ab030f35edd884709ca976cda04cf86eab4e5b8417"
+    }
+  ],
+  "math_expressions_unchanged": 452,
+  "local_links": "passed",
+  "portable_audit_positive_control": "passed",
+  "proof_tampering_rejected": true,
+  "bad_reverse_edit_rejected": true
+}

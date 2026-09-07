@@ -22,7 +22,7 @@ namespace LogdetLean.GramHafnian.UltimateHiding.Sparse
 
 noncomputable section
 
-open CurrentPRL
+open LocalAnticoncentration
 
 /-- The squared Gram energy in Jiang's native tall orientation. -/
 def jiangScaledTallGramSecondEnergy {K N : Nat}

@@ -194,7 +194,7 @@ ambient Haar law.  The orbital equality is the fixed-radius invariant-law
 Gelfand theorem; the central equality is the global kernel commutation proved
 above. -/
 theorem concreteSharedBetaPathAction_radialPropagation
-    (H : CurrentPRL.UnitaryHaarProbabilityFamily)
+    (H : LocalAnticoncentration.UnitaryHaarProbabilityFamily)
     {N K ambient step : ℕ} (q s : ℝ)
     (hN : 1 ≤ N) (hNK : N ≤ K) (hKambient : K ≤ ambient) :
     concreteSharedBetaPathAction step N
@@ -358,7 +358,7 @@ theorem concreteSharedBetaSplitKernel_comp_beta_eq_fullLaw
 /-- The conditional same-beta kernel at the ambient Haar law is the radial
 chain composed with its square-COE conditional kernel. -/
 theorem concreteSharedBetaSplitKernel_radialPropagation
-    (H : CurrentPRL.UnitaryHaarProbabilityFamily)
+    (H : LocalAnticoncentration.UnitaryHaarProbabilityFamily)
     {N K ambient step : ℕ}
     (hN : 1 ≤ N) (hNK : N ≤ K) (hKambient : K ≤ ambient) :
     concreteSharedBetaSplitKernel step N
@@ -391,7 +391,7 @@ theorem concreteSharedBetaSplitKernel_radialPropagation
 chain at the square scaled-COE base.  The beta sample remains shared between
 the central and orbital factors throughout the proof. -/
 theorem concreteSharedBetaFullLaw_radialPropagation
-    (H : CurrentPRL.UnitaryHaarProbabilityFamily)
+    (H : LocalAnticoncentration.UnitaryHaarProbabilityFamily)
     {N K ambient step : ℕ}
     (hN : 1 ≤ N) (hNK : N ≤ K) (hKambient : K ≤ ambient)
     (hNstep : N ≤ step) :
@@ -439,7 +439,7 @@ theorem concreteSharedBetaFullLaw_radialPropagation
 one-column kernel to the actual ambient Haar law is the preceding radial chain
 applied to the same next-column update at the square scaled-COE base. -/
 theorem concreteOneColumn_radial_commutation_at_scaledCOE
-    (H : CurrentPRL.UnitaryHaarProbabilityFamily)
+    (H : LocalAnticoncentration.UnitaryHaarProbabilityFamily)
     {N K ambient step : ℕ}
     (hN : 1 ≤ N) (hNK : N ≤ K) (hKambient : K ≤ ambient)
     (hNstep : N ≤ step) :
@@ -470,7 +470,7 @@ theorem concreteOneColumn_radial_commutation_at_scaledCOE
 /-- A one-column TV estimate proved only at the square scaled-COE base
 propagates, with the same constant, to the actual ambient Haar law. -/
 theorem probabilityTVLE_concreteHaarAmbient_oneColumn_of_scaledCOE
-    (H : CurrentPRL.UnitaryHaarProbabilityFamily)
+    (H : LocalAnticoncentration.UnitaryHaarProbabilityFamily)
     {N K ambient step : ℕ}
     (hN : 1 ≤ N) (hNK : N ≤ K) (hKambient : K ≤ ambient)
     (hNstep : N ≤ step) {delta : ℝ}

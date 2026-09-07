@@ -1,8 +1,8 @@
-import LogdetLean.GramHafnian.ThreePaper.PRXQUniformHiding
+import LogdetLean.GramHafnian.ThreePaper.UniformMatrixHiding
 import LogdetLean.GramHafnian.ThreePaper.FairAbsoluteThresholdComparison
 
 open MeasureTheory
-open LogdetLean.GramHafnian LogdetLean.GramHafnian.CurrentPRL
+open LogdetLean.GramHafnian LogdetLean.GramHafnian.LocalAnticoncentration
 open LogdetLean.GramHafnian.UltimateHiding
 open LogdetLean.GramHafnian.ThreePaper.FairAbsoluteThresholdComparison
 

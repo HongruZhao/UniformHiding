@@ -32,7 +32,7 @@ The diagonal entries do not occur. For $`\xi>0`$, squeeze the first $`K`$ input 
               |\mathrm{haf}(A_S)|^2.
 ```
 
-This is the probability of the full occupation pattern, without conditioning on the total photon number. The optical formula is the adopted model; this repository does not derive it from quantum optical dynamics. The Lean definition is `gbsCollisionFreePatternProbability` in [PRLCommonDefinitions.lean](LogdetLean/GramHafnian/ThreePaper/PRLCommonDefinitions.lean). With scaled amplitude $`W=M^n\mathrm{haf}(A_S)`$, `gbsProbabilityFromScaledAmplitude` is the same formula with the additional factor $`M^{-2n}`$. Haar row symmetry identifies any fixed pattern with the leading-block law; the public randomized statement specifies that amplitude marginal explicitly.
+This is the probability of the full occupation pattern, without conditioning on the total photon number. The optical formula is the adopted model; this repository does not derive it from quantum optical dynamics. The Lean definition is `gbsCollisionFreePatternProbability` in [GBSDefinitions.lean](LogdetLean/GramHafnian/ThreePaper/GBSDefinitions.lean). With scaled amplitude $`W=M^n\mathrm{haf}(A_S)`$, `gbsProbabilityFromScaledAmplitude` is the same formula with the additional factor $`M^{-2n}`$. Haar row symmetry identifies any fixed pattern with the leading-block law; the public randomized statement specifies that amplitude marginal explicitly.
 
 ## Theorem 3.2: Route 1 is assembled
 
@@ -59,7 +59,7 @@ For one randomized estimate $`\widetilde p`$, put $`\Delta p=\widetilde p-p_S`$,
 
 The public declarations are `UniformHiding.theorem3_2_route1` and `UniformHiding.theorem3_2_route1_optimized`. Their joint probability space can include estimator randomness, and they require the amplitude to have its specified Haar marginal. They do not assume that the estimator is independent of the interferometer. The normalization $`p_1`$ is a Gaussian reference, not the finite-Haar expectation.
 
-The bridge `UniformHiding.routeOneSmallBall` explicitly invokes `ComplexGramHafnians.theorem2_1`. We include an unchanged source snapshot of that companion theorem and its dependencies, pinned to commit [95ab10d](https://github.com/HongruZhao/ComplexGramHafnians/tree/95ab10dc594ac92207054413220ae9fd2adab08c). This is a **vendored source dependency**, so the build uses the included companion sources directly. [Provenance](docs/PROVENANCE.md) records the exact source hashes.
+The bridge `UniformHiding.routeOneSmallBall` explicitly invokes `ComplexGramHafnians.theorem2_1`. We include that companion theorem and its dependencies from commit [95ab10d](https://github.com/HongruZhao/ComplexGramHafnians/tree/95ab10dc594ac92207054413220ae9fd2adab08c), with module and identifier names made independent of journal titles. The proofs are preserved under this recorded renaming. This is a **vendored source dependency**, so the build uses the included companion sources directly. [Provenance](docs/PROVENANCE.md) explains how the source audit restores the original names and checks all 225 files against the upstream hashes.
 
 ## Route 2: the hiding input is not formalized
 
@@ -102,7 +102,7 @@ The axiom documentation explains **what Lean assumes and why the cited sources j
 
 [AXIOMS.md](docs/AXIOMS.md) gives the full mathematical statements, source comparisons, and declaration links. [The expanded A2 justification](docs/A2_SOURCE_DERIVATION.md) checks the Takagi integration map, normalization, global selector measurability, and arbitrary measurable targets. A3 explicitly includes the coordinate definition on singular samples. A4 distinguishes its supplied-law hypothesis from its moment conclusions and explains the inverse-Gram/zonal Weingarten equivalence.
 
-There are exactly four literature axioms. In addition, Lean uses `propext`, `Classical.choice`, and `Quot.sound`. The theorem axiom check must match that set; the imported anticoncentration endpoints must match only the three foundations. The 7 September documentation update changes no Lean declaration and adds no axiom.
+There are exactly four literature axioms. In addition, Lean uses `propext`, `Classical.choice`, and `Quot.sound`. The theorem axiom check must match that set; the imported anticoncentration endpoints must match only the three foundations. The naming revision preserves these mathematical contracts and adds no axiom.
 
 ## Files and verification
 

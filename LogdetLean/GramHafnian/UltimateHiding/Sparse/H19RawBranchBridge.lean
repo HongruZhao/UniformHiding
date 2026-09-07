@@ -22,7 +22,7 @@ namespace LogdetLean.GramHafnian.UltimateHiding
 
 noncomputable section
 
-open CurrentPRL
+open LocalAnticoncentration
 
 namespace Sparse
 

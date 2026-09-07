@@ -25,7 +25,7 @@ namespace LogdetLean.GramHafnian.UltimateHiding.DenseScore
 noncomputable section
 
 open LogdetLean.GramHafnian.UltimateHiding.Dense
-open LogdetLean.GramHafnian.CurrentPRL
+open LogdetLean.GramHafnian.LocalAnticoncentration
 
 /-- The concrete four-trace vector under the scaled square COE law has the
 literal beta-prime trace law. -/

@@ -30,22 +30,22 @@ theorem coeCorner_centeredDensityScore_fubini_of_memLp
       (fun Av : ConcreteMatrixState N × ComplexUnitSphere N ↦
         concreteCenteredDensityScore r N K Av.2 Av.1) 1
       ((concreteScaledCOECornerLaw
-          LogdetLean.GramHafnian.CurrentPRL.canonicalUnitaryHaarProbabilityFamily
+          LogdetLean.GramHafnian.LocalAnticoncentration.canonicalUnitaryHaarProbabilityFamily
             N K).prod (complexUnitSphereProbabilityMeasure N))) :
     (∫ v : ComplexUnitSphere N,
       ∫ A, event.indicator (concreteCenteredDensityScore r N K v) A
         ∂(concreteScaledCOECornerLaw
-          LogdetLean.GramHafnian.CurrentPRL.canonicalUnitaryHaarProbabilityFamily
+          LogdetLean.GramHafnian.LocalAnticoncentration.canonicalUnitaryHaarProbabilityFamily
             N K)
       ∂(complexUnitSphereProbabilityMeasure N)) =
     ∫ A, event.indicator (fun A ↦
       ∫ v : ComplexUnitSphere N, concreteCenteredDensityScore r N K v A
         ∂(complexUnitSphereProbabilityMeasure N)) A
       ∂(concreteScaledCOECornerLaw
-        LogdetLean.GramHafnian.CurrentPRL.canonicalUnitaryHaarProbabilityFamily
+        LogdetLean.GramHafnian.LocalAnticoncentration.canonicalUnitaryHaarProbabilityFamily
           N K) := by
   let mu := concreteScaledCOECornerLaw
-    LogdetLean.GramHafnian.CurrentPRL.canonicalUnitaryHaarProbabilityFamily N K
+    LogdetLean.GramHafnian.LocalAnticoncentration.canonicalUnitaryHaarProbabilityFamily N K
   let sphere := complexUnitSphereProbabilityMeasure N
   let score : ConcreteMatrixState N × ComplexUnitSphere N → ℝ :=
     fun Av ↦ concreteCenteredDensityScore r N K Av.2 Av.1
@@ -112,10 +112,10 @@ theorem concreteCenteredDensityScoreZeroProduct_memLp_one
       (fun Av : ConcreteMatrixState N × ComplexUnitSphere N ↦
         concreteCenteredDensityScore 0 N K Av.2 Av.1) 1
       ((concreteScaledCOECornerLaw
-          LogdetLean.GramHafnian.CurrentPRL.canonicalUnitaryHaarProbabilityFamily
+          LogdetLean.GramHafnian.LocalAnticoncentration.canonicalUnitaryHaarProbabilityFamily
             N K).prod (complexUnitSphereProbabilityMeasure N)) := by
   let mu := concreteScaledCOECornerLaw
-    LogdetLean.GramHafnian.CurrentPRL.canonicalUnitaryHaarProbabilityFamily N K
+    LogdetLean.GramHafnian.LocalAnticoncentration.canonicalUnitaryHaarProbabilityFamily N K
   let sphere := complexUnitSphereProbabilityMeasure N
   letI : IsProbabilityMeasure mu :=
     canonicalScaledCOECornerLaw_isProbability hNK
@@ -136,14 +136,14 @@ theorem coeCorner_centeredDensityScore_zero_fubini
     (∫ v : ComplexUnitSphere N,
       ∫ A, event.indicator (concreteCenteredDensityScore 0 N K v) A
         ∂(concreteScaledCOECornerLaw
-          LogdetLean.GramHafnian.CurrentPRL.canonicalUnitaryHaarProbabilityFamily
+          LogdetLean.GramHafnian.LocalAnticoncentration.canonicalUnitaryHaarProbabilityFamily
             N K)
       ∂(complexUnitSphereProbabilityMeasure N)) =
     ∫ A, event.indicator (fun A ↦
       ∫ v : ComplexUnitSphere N, concreteCenteredDensityScore 0 N K v A
         ∂(complexUnitSphereProbabilityMeasure N)) A
       ∂(concreteScaledCOECornerLaw
-        LogdetLean.GramHafnian.CurrentPRL.canonicalUnitaryHaarProbabilityFamily
+        LogdetLean.GramHafnian.LocalAnticoncentration.canonicalUnitaryHaarProbabilityFamily
           N K) := by
   exact coeCorner_centeredDensityScore_fubini_of_memLp hN hNK event hevent
     (concreteCenteredDensityScoreZeroProduct_memLp_one hN hNK)

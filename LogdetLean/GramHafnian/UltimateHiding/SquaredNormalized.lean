@@ -10,7 +10,7 @@ namespace LogdetLean.GramHafnian.UltimateHiding
 
 noncomputable section
 
-open CurrentPRL
+open LocalAnticoncentration
 
 theorem normalizedProductMatrixHidingSquared_of_unnormalized
     {C : ℝ} (hhide : UniformProductMatrixHidingSquaredAt C)

@@ -1,4 +1,4 @@
-import LogdetLean.GramHafnian.CurrentPRL.MixtureDensity
+import LogdetLean.GramHafnian.LocalAnticoncentration.MixtureDensity
 
 /-!
 # Centered disks maximize circular Gaussian mass
@@ -56,8 +56,8 @@ theorem complexMidpointReflection_preimage_centeredDiff
 theorem circularGaussianDensity_le_reflection
     (z : ℂ) (rho : ℝ) (x : ℂ)
     (hx : x ∈ closedBall z rho \ closedBall 0 rho) :
-    LogdetLean.GramHafnian.currentPRLCircularGaussianDensity x ≤
-      LogdetLean.GramHafnian.currentPRLCircularGaussianDensity
+    LogdetLean.GramHafnian.localAnticoncentrationCircularGaussianDensity x ≤
+      LogdetLean.GramHafnian.localAnticoncentrationCircularGaussianDensity
         (complexMidpointReflection z x) := by
   have hz : ‖z - x‖ ≤ rho := by
     simpa [mem_closedBall, dist_eq_norm, norm_sub_rev] using hx.1
@@ -66,7 +66,7 @@ theorem circularGaussianDensity_le_reflection
   have hnorm : ‖complexMidpointReflection z x‖ ≤ ‖x‖ := by
     dsimp [complexMidpointReflection]
     exact hz.trans hxrho.le
-  unfold LogdetLean.GramHafnian.currentPRLCircularGaussianDensity
+  unfold LogdetLean.GramHafnian.localAnticoncentrationCircularGaussianDensity
   apply ENNReal.ofReal_le_ofReal
   have hsquares : ‖complexMidpointReflection z x‖ ^ 2 ≤ ‖x‖ ^ 2 := by
     exact (sq_le_sq₀ (norm_nonneg _) (norm_nonneg _)).2 hnorm
@@ -81,7 +81,7 @@ theorem circularGaussian_closedBall_le_centered
     (z : ℂ) (rho : ℝ) :
     LogdetLean.GramHafnian.circularGaussian (closedBall z rho) ≤
       LogdetLean.GramHafnian.circularGaussian (closedBall 0 rho) := by
-  let dens := LogdetLean.GramHafnian.currentPRLCircularGaussianDensity
+  let dens := LogdetLean.GramHafnian.localAnticoncentrationCircularGaussianDensity
   let shifted := closedBall z rho
   let centered := closedBall (0 : ℂ) rho
   let outerShifted := shifted \ centered
@@ -91,7 +91,7 @@ theorem circularGaussian_closedBall_le_centered
   have houterShifted : MeasurableSet outerShifted := hshifted.diff hcentered
   have houterCentered : MeasurableSet outerCentered := hcentered.diff hshifted
   have hdens : Measurable dens :=
-    LogdetLean.GramHafnian.measurable_currentPRLCircularGaussianDensity
+    LogdetLean.GramHafnian.measurable_localAnticoncentrationCircularGaussianDensity
   have hreflect : MeasurePreserving (complexMidpointReflection z)
       (volume : Measure ℂ) (volume : Measure ℂ) :=
     measurePreserving_complexMidpointReflection z
@@ -113,7 +113,7 @@ theorem circularGaussian_closedBall_le_centered
       _ = ∫⁻ x in outerCentered, dens x ∂(volume : Measure ℂ) := by
         rw [← hpre]
         exact hreflect.setLIntegral_comp_preimage houterCentered hdens
-  rw [LogdetLean.GramHafnian.circularGaussian_eq_withDensity_currentPRL]
+  rw [LogdetLean.GramHafnian.circularGaussian_eq_withDensity_localAnticoncentration]
   have hshiftDecomp := measure_inter_add_diff
     (μ := (volume : Measure ℂ).withDensity dens) shifted hcentered
   have hcenterDecomp := measure_inter_add_diff

@@ -1,4 +1,4 @@
-import LogdetLean.GramHafnian.ThreePaper.PRXQUniformHiding
+import LogdetLean.GramHafnian.ThreePaper.UniformMatrixHiding
 import LogdetLean.GramHafnian.UltimateHiding.SquaredCompletionRawDensity
 import LogdetLean.GramHafnian.UltimateHiding.Sparse.H19QuantitativeEndpoint
 
@@ -20,13 +20,13 @@ namespace LogdetLean.GramHafnian.ThreePaper.Verification
 noncomputable section
 
 open LogdetLean.GramHafnian
-open CurrentPRL
+open LocalAnticoncentration
 open UltimateHiding
 open UltimateHiding.Dense
 open UltimateHiding.DenseScore
 open UltimateHiding.DenseLocalStep
 open UltimateHiding.Sparse
-open LogdetLean.GramHafnian.ThreePaper.PRXQUniformHiding
+open LogdetLean.GramHafnian.ThreePaper.UniformMatrixHiding
 
 /-! ## Normalized target convergence and one-column step -/
 
@@ -39,7 +39,7 @@ theorem normalizedHaarTransposeGram_targetConvergence_A1A2A3A4
     (hN : 0 < N) (hK : 0 < K) (hNK : N ≤ K) :
     ∀ epsilon : Real, 0 < epsilon →
       ∃ n : Nat,
-        CurrentPRL.probabilityTotalVariationLE
+        LocalAnticoncentration.probabilityTotalVariationLE
           (normalizedHaarTransposeGramLaw H (start + n) N K)
           (normalizedGaussianTransposeGramLaw N K) epsilon := by
   intro epsilon hepsilon
@@ -68,7 +68,7 @@ theorem normalizedHaarTransposeGram_oneColumnTVLE_615138_A1A2A3A4
     (H : UnitaryHaarProbabilityFamily) {N K m : Nat}
     (hN : 1 ≤ N) (hNK : N ≤ K) (hKm : K ≤ m)
     (hlarge : 24 * N ^ 2 ≤ m) (hdense : 16 * N ≤ K) :
-    CurrentPRL.probabilityTotalVariationLE
+    LocalAnticoncentration.probabilityTotalVariationLE
       (normalizedHaarTransposeGramLaw H m N K)
       (normalizedHaarTransposeGramLaw H (m + 1) N K)
       (615138 * (N : Real) ^ 2 /
@@ -86,7 +86,7 @@ theorem normalizedHaarTransposeGram_oneColumnTVLE_615172_A1A2A3A4
     (H : UnitaryHaarProbabilityFamily) {N K m : Nat}
     (hN : 1 ≤ N) (hNK : N ≤ K) (hKm : K ≤ m)
     (hlarge : 24 * N ^ 2 ≤ m) (hdense : 16 * N ≤ K) :
-    CurrentPRL.probabilityTotalVariationLE
+    LocalAnticoncentration.probabilityTotalVariationLE
       (normalizedHaarTransposeGramLaw H m N K)
       (normalizedHaarTransposeGramLaw H (m + 1) N K)
       (615172 * (N : Real) ^ 2 /
@@ -108,8 +108,8 @@ theorem normalizedHaarTransposeGram_oneColumnTVLE_615172_A1A2A3A4
 /-- The symbolic dense coefficient used by the article is exactly the printed
 `615138`. -/
 theorem concreteCanonicalDenseHidingSquaredConstant_eq_615138 :
-    PRXArticle.concreteCanonicalDenseHidingSquaredConstant = 615138 := by
-  unfold PRXArticle.concreteCanonicalDenseHidingSquaredConstant
+    MatrixLawEndpoints.concreteCanonicalDenseHidingSquaredConstant = 615138 := by
+  unfold MatrixLawEndpoints.concreteCanonicalDenseHidingSquaredConstant
   rw [combinedSharperCanonicalOrbitalThirdConstant_eq]
   norm_num [exactVarianceCentralScoreOneConstant,
     exactVarianceCentralScoreTwoConstant,
@@ -121,11 +121,11 @@ theorem normalizedDenseProductHidingTVLE_615138_A1A2A3A4
     (H : UnitaryHaarProbabilityFamily) {M N K : Nat}
     (hN : 1 ≤ N) (hNK : N ≤ K) (hKM : K ≤ M)
     (hlarge : 24 * N ^ 2 ≤ M) (hdense : 16 * N ≤ K) :
-    CurrentPRL.probabilityTotalVariationLE
+    LocalAnticoncentration.probabilityTotalVariationLE
       (normalizedHaarTransposeGramLaw H M N K)
       (normalizedGaussianTransposeGramLaw N K)
       (615138 * (N : Real) ^ 2 / M) := by
-  have h := PRXArticle.eq_dense_product_hiding_normalized
+  have h := MatrixLawEndpoints.eq_dense_product_hiding_normalized
     H hN hNK hKM hlarge hdense
   rw [concreteCanonicalDenseHidingSquaredConstant_eq_615138] at h
   simpa only [ultimateSquaredHidingRate, mul_div_assoc] using h
@@ -136,7 +136,7 @@ theorem normalizedDenseProductHidingTVLE_615172_A1A2A3A4
     (H : UnitaryHaarProbabilityFamily) {M N K : Nat}
     (hN : 1 ≤ N) (hNK : N ≤ K) (hKM : K ≤ M)
     (hlarge : 24 * N ^ 2 ≤ M) (hdense : 16 * N ≤ K) :
-    CurrentPRL.probabilityTotalVariationLE
+    LocalAnticoncentration.probabilityTotalVariationLE
       (normalizedHaarTransposeGramLaw H M N K)
       (normalizedGaussianTransposeGramLaw N K)
       (615172 * (N : Real) ^ 2 / M) := by
@@ -381,7 +381,7 @@ rectangular estimate. -/
 theorem normalizedTransposeGram_probabilityTotalVariationLE_sparse_A1A2A3A4
     (H : UnitaryHaarProbabilityFamily) {M N K : Nat}
     (hN : 0 < N) (hK : 0 < K) (hNK : N ≤ K) (hs : K + N < M) :
-    CurrentPRL.probabilityTotalVariationLE
+    LocalAnticoncentration.probabilityTotalVariationLE
       (normalizedHaarTransposeGramLaw H M N K)
       (normalizedGaussianTransposeGramLaw N K)
       (((K : Real) + N) * Real.sqrt ((K : Real) * N) / M) := by
@@ -396,7 +396,7 @@ theorem normalizedSparseStitchTVLE_68_A1A2A3A4
     (H : UnitaryHaarProbabilityFamily) {M N K : Nat}
     (hN : 1 ≤ N) (hNK : N ≤ K) (hKM : K ≤ M)
     (hlarge : 24 * N ^ 2 ≤ M) (hsparse : K < 16 * N) :
-    CurrentPRL.probabilityTotalVariationLE
+    LocalAnticoncentration.probabilityTotalVariationLE
       (normalizedHaarTransposeGramLaw H M N K)
       (normalizedGaussianTransposeGramLaw N K)
       (68 * (N : Real) ^ 2 / M) := by
@@ -435,7 +435,7 @@ theorem orderedFixedPatternPanelLaw_A1A2A3A4
     (H : UnitaryHaarProbabilityFamily)
     {q N L K M : Nat} (hL : 1 ≤ L) (hLK : L ≤ K) (hKM : K ≤ M)
     (rows : Fin q → (Fin N ↪ Fin L)) :
-    CurrentPRL.probabilityTotalVariationLE
+    LocalAnticoncentration.probabilityTotalVariationLE
       (Measure.map (orderedPatternPanel rows)
         (Measure.map
           (preselectedPrincipalSubmatrixTuple q L (orderedPatternSets rows))

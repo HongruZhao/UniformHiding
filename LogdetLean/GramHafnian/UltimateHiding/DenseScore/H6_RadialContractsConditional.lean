@@ -32,7 +32,7 @@ noncomputable section
 open LogdetLean.GramHafnian.UltimateHiding.Dense
 open LogdetLean.GramHafnian
 open LogdetLean.GramHafnian.Wishart
-open LogdetLean.GramHafnian.CurrentPRL
+open LogdetLean.GramHafnian.LocalAnticoncentration
 open H6CoordinateAlgebra H6VectorChangeOfVariables
 
 /-- **CONDITIONAL Takagi--Weyl contract.**  The squared Takagi values of the

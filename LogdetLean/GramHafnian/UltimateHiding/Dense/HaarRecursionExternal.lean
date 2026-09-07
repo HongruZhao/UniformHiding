@@ -55,7 +55,7 @@ namespace LogdetLean.GramHafnian.UltimateHiding.Dense
 
 noncomputable section
 
-open CurrentPRL
+open LocalAnticoncentration
 
 /-- The normalized transpose-Gram law is independent of the chosen
 presentation of normalized Haar probability. -/

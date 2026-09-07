@@ -242,7 +242,7 @@ theorem abs_iteratedDeriv_four_concreteSharedBetaOrbitalEventPath_le_of_H11H13
     |iteratedDeriv 4
         (concreteSharedBetaOrbitalEventPath m N
             (concreteScaledCOECornerLaw
-              LogdetLean.GramHafnian.CurrentPRL.canonicalUnitaryHaarProbabilityFamily
+              LogdetLean.GramHafnian.LocalAnticoncentration.canonicalUnitaryHaarProbabilityFamily
                 N K)
             q event) y| ≤
       concreteCenteredScoreFourConstant * (N : ℝ) ^ 2 := by
@@ -253,7 +253,7 @@ theorem abs_iteratedDeriv_four_concreteSharedBetaOrbitalEventPath_le_of_H11H13
   have hfun :
       concreteSharedBetaOrbitalEventPath m N
           (concreteScaledCOECornerLaw
-            LogdetLean.GramHafnian.CurrentPRL.canonicalUnitaryHaarProbabilityFamily
+            LogdetLean.GramHafnian.LocalAnticoncentration.canonicalUnitaryHaarProbabilityFamily
               N K)
           q event =
         concreteProjectiveAveragedCenteredCOEEventPath N K preevent := by

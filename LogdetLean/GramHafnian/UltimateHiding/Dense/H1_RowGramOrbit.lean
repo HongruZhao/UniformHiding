@@ -22,7 +22,7 @@ namespace LogdetLean.GramHafnian.UltimateHiding.Dense
 
 noncomputable section
 
-open LogdetLean.GramHafnian.CurrentPRL
+open LogdetLean.GramHafnian.LocalAnticoncentration
 
 local instance h1MatrixBorelSpace (N m : ℕ) :
     BorelSpace (Matrix (Fin N) (Fin m) ℂ) := by

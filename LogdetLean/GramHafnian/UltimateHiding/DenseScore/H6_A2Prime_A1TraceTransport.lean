@@ -19,7 +19,7 @@ namespace LogdetLean.GramHafnian.UltimateHiding.DenseScore
 
 noncomputable section
 
-open LogdetLean.GramHafnian.CurrentPRL
+open LogdetLean.GramHafnian.LocalAnticoncentration
 open LogdetLean.GramHafnian.UltimateHiding.Dense
 open H6CoordinateAlgebra H6DensityTransform H6VectorChangeOfVariables
 open H6RadialMeasureAdapters

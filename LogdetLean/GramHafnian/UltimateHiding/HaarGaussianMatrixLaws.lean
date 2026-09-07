@@ -11,17 +11,17 @@ import Mathlib.Topology.Algebra.Star.Unitary
 This module contains only the common finite-dimensional definitions used by
 the hiding theorem: normalized Haar probability, rectangular Haar and
 Gaussian matrices, and their transpose-Gram pushforwards.  It deliberately
-does not import the historical PRL consequence module or its Shou--Miller--
+does not import the historical manuscript consequence module or its Shou--Miller--
 Galitski asymptotic axiom.
 
-The declarations stay in `CurrentPRL` so the existing hiding proof can reuse
+The declarations stay in `LocalAnticoncentration` so the existing hiding proof can reuse
 its established notation without any statement conversion.
 -/
 
 open scoped BigOperators
 open MeasureTheory Set TopologicalSpace
 
-namespace LogdetLean.GramHafnian.CurrentPRL
+namespace LogdetLean.GramHafnian.LocalAnticoncentration
 
 noncomputable section
 
@@ -208,4 +208,4 @@ theorem scaledHaarTransposeGramLaw_isProbability
 
 end
 
-end LogdetLean.GramHafnian.CurrentPRL
+end LogdetLean.GramHafnian.LocalAnticoncentration

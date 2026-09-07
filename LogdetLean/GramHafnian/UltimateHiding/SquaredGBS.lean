@@ -1,5 +1,5 @@
 import LogdetLean.GramHafnian.UltimateHiding.Basic
-import LogdetLean.GramHafnian.ThreePaper.PRLCommonDefinitions
+import LogdetLean.GramHafnian.ThreePaper.GBSDefinitions
 
 /-!
 # GBS consequences of squared-rate product matrix hiding
@@ -15,7 +15,7 @@ namespace LogdetLean.GramHafnian.UltimateHiding
 
 noncomputable section
 
-open CurrentPRL
+open LocalAnticoncentration
 
 theorem shiftedGramHafnianSmallBall_of_uniformProductMatrixHidingSquared
     {C : ℝ} (hhide : UniformProductMatrixHidingSquaredAt C)

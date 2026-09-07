@@ -51,7 +51,7 @@ namespace LogdetLean.GramHafnian.UltimateHiding.Dense
 
 noncomputable section
 
-open CurrentPRL
+open LocalAnticoncentration
 
 /-- Measure-action commutation at one specified input law.  Unlike
 `KernelsCommute`, this does not claim equality on every matrix state. -/

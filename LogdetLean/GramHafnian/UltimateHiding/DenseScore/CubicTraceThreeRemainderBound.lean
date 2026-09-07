@@ -21,7 +21,7 @@ namespace LogdetLean.GramHafnian.UltimateHiding.DenseScore
 noncomputable section
 
 open LogdetLean.GramHafnian.UltimateHiding.Dense
-open LogdetLean.GramHafnian.CurrentPRL
+open LogdetLean.GramHafnian.LocalAnticoncentration
 
 def cubicTraceThreeRemainderDenominator (n c : ℝ) : ℝ :=
   n ^ 3 * (n + 1) * (n + 2) * c ^ 2

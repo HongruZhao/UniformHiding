@@ -26,7 +26,7 @@ noncomputable section
 
 open LogdetLean.GramHafnian.UltimateHiding.Dense
 open LogdetLean.GramHafnian.UltimateHiding.DenseLocalStep
-open LogdetLean.GramHafnian.CurrentPRL
+open LogdetLean.GramHafnian.LocalAnticoncentration
 
 def exactSharpLowerBellFourthConstant : ℝ :=
   4 * h12SharpProjectiveFourthMomentConstant +

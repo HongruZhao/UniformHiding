@@ -3,7 +3,7 @@ import Mathlib.MeasureTheory.Measure.Map
 import Mathlib.Analysis.Asymptotics.Defs
 
 /-!
-# Probability total variation for the current PRL
+# Probability total variation for the current manuscript
 
 The hiding source uses the probability convention
 
@@ -15,7 +15,7 @@ normalization of the total variation norm of a signed measure.
 
 open Filter MeasureTheory Set
 
-namespace LogdetLean.GramHafnian.CurrentPRL
+namespace LogdetLean.GramHafnian.LocalAnticoncentration
 
 noncomputable section
 
@@ -97,4 +97,4 @@ theorem ProbabilityTotalVariationIsBigO.exists_eventual_bound
 
 end
 
-end LogdetLean.GramHafnian.CurrentPRL
+end LogdetLean.GramHafnian.LocalAnticoncentration

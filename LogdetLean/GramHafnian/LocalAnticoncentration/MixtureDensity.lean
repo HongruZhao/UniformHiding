@@ -1,10 +1,10 @@
-import LogdetLean.GramHafnian.CurrentPRL.CoreEquations
+import LogdetLean.GramHafnian.LocalAnticoncentration.CoreEquations
 import LogdetLean.GramHafnian.ShiftedAnticoncentration.Wishart.LiteralRegularizedLimit
 import Mathlib.Probability.Density
 import Mathlib.MeasureTheory.Integral.Lebesgue.DominatedConvergence
 
 /-!
-# Density and local sharpness for the current PRL
+# Density and local sharpness for the current manuscript
 
 This module formalizes the exact circular Gaussian density used after the
 last column decomposition.  It then records the literal conditional law of
@@ -20,7 +20,7 @@ noncomputable section
 
 /-! ## Transporting a density through a measurable equivalence -/
 
-theorem map_measurableEquiv_withDensity_currentPRL
+theorem map_measurableEquiv_withDensity_localAnticoncentration
     {α β : Type*} [MeasurableSpace α] [MeasurableSpace β]
     (e : α ≃ᵐ β) (μ : Measure α) (f : α → ENNReal)
     (hf : Measurable f) :
@@ -43,78 +43,78 @@ theorem map_measurableEquiv_withDensity_currentPRL
 
 /-! ## Exact density of the paper normalized circular Gaussian -/
 
-def currentPRLCircularGaussianMeasurableEquiv : (ℝ × ℝ) ≃ᵐ ℂ :=
+def localAnticoncentrationCircularGaussianMeasurableEquiv : (ℝ × ℝ) ≃ᵐ ℂ :=
   Complex.measurableEquivRealProd.symm.trans
     (show ℂ ≃ᵐ ℂ from
       (Homeomorph.smulOfNeZero ((Real.sqrt 2)⁻¹ : ℝ)
         (inv_ne_zero (ne_of_gt (Real.sqrt_pos.2 (by norm_num)))) :
           ℂ ≃ₜ ℂ).toMeasurableEquiv)
 
-@[simp] theorem currentPRLCircularGaussianMeasurableEquiv_apply
+@[simp] theorem localAnticoncentrationCircularGaussianMeasurableEquiv_apply
     (q : ℝ × ℝ) :
-    currentPRLCircularGaussianMeasurableEquiv q =
+    localAnticoncentrationCircularGaussianMeasurableEquiv q =
       circularGaussianCoordinate q := by
   have hsqrt : Real.sqrt 2 ≠ 0 :=
     ne_of_gt (Real.sqrt_pos.2 (by norm_num))
   apply Complex.ext <;>
-    simp [currentPRLCircularGaussianMeasurableEquiv,
+    simp [localAnticoncentrationCircularGaussianMeasurableEquiv,
       circularGaussianCoordinate, div_eq_mul_inv] <;>
     field_simp [hsqrt]
 
-@[simp] theorem currentPRLCircularGaussianMeasurableEquiv_symm_apply_re
+@[simp] theorem localAnticoncentrationCircularGaussianMeasurableEquiv_symm_apply_re
     (z : ℂ) :
-    (currentPRLCircularGaussianMeasurableEquiv.symm z).1 =
+    (localAnticoncentrationCircularGaussianMeasurableEquiv.symm z).1 =
       Real.sqrt 2 * z.re := by
   have hsqrt : Real.sqrt 2 ≠ 0 :=
     ne_of_gt (Real.sqrt_pos.2 (by norm_num))
   have h := congrArg Complex.re
-    (currentPRLCircularGaussianMeasurableEquiv.apply_symm_apply z)
-  rw [currentPRLCircularGaussianMeasurableEquiv_apply] at h
+    (localAnticoncentrationCircularGaussianMeasurableEquiv.apply_symm_apply z)
+  rw [localAnticoncentrationCircularGaussianMeasurableEquiv_apply] at h
   have h' :
-      (currentPRLCircularGaussianMeasurableEquiv.symm z).1 /
+      (localAnticoncentrationCircularGaussianMeasurableEquiv.symm z).1 /
           Real.sqrt 2 = z.re := by
     simpa [circularGaussianCoordinate] using h
   calc
-    (currentPRLCircularGaussianMeasurableEquiv.symm z).1 =
+    (localAnticoncentrationCircularGaussianMeasurableEquiv.symm z).1 =
         Real.sqrt 2 *
-          ((currentPRLCircularGaussianMeasurableEquiv.symm z).1 /
+          ((localAnticoncentrationCircularGaussianMeasurableEquiv.symm z).1 /
             Real.sqrt 2) := by field_simp [hsqrt]
     _ = Real.sqrt 2 * z.re := by rw [h']
 
-@[simp] theorem currentPRLCircularGaussianMeasurableEquiv_symm_apply_im
+@[simp] theorem localAnticoncentrationCircularGaussianMeasurableEquiv_symm_apply_im
     (z : ℂ) :
-    (currentPRLCircularGaussianMeasurableEquiv.symm z).2 =
+    (localAnticoncentrationCircularGaussianMeasurableEquiv.symm z).2 =
       Real.sqrt 2 * z.im := by
   have hsqrt : Real.sqrt 2 ≠ 0 :=
     ne_of_gt (Real.sqrt_pos.2 (by norm_num))
   have h := congrArg Complex.im
-    (currentPRLCircularGaussianMeasurableEquiv.apply_symm_apply z)
-  rw [currentPRLCircularGaussianMeasurableEquiv_apply] at h
+    (localAnticoncentrationCircularGaussianMeasurableEquiv.apply_symm_apply z)
+  rw [localAnticoncentrationCircularGaussianMeasurableEquiv_apply] at h
   have h' :
-      (currentPRLCircularGaussianMeasurableEquiv.symm z).2 /
+      (localAnticoncentrationCircularGaussianMeasurableEquiv.symm z).2 /
           Real.sqrt 2 = z.im := by
     simpa [circularGaussianCoordinate] using h
   calc
-    (currentPRLCircularGaussianMeasurableEquiv.symm z).2 =
+    (localAnticoncentrationCircularGaussianMeasurableEquiv.symm z).2 =
         Real.sqrt 2 *
-          ((currentPRLCircularGaussianMeasurableEquiv.symm z).2 /
+          ((localAnticoncentrationCircularGaussianMeasurableEquiv.symm z).2 /
             Real.sqrt 2) := by field_simp [hsqrt]
     _ = Real.sqrt 2 * z.im := by rw [h']
 
 /-- The exact `ENNReal` density `π⁻¹ exp (-|z|²)` of `CN(0,1)`. -/
-def currentPRLCircularGaussianDensity (z : ℂ) : ENNReal :=
+def localAnticoncentrationCircularGaussianDensity (z : ℂ) : ENNReal :=
   ENNReal.ofReal (Real.pi⁻¹ * Real.exp (-‖z‖ ^ 2))
 
-theorem measurable_currentPRLCircularGaussianDensity :
-    Measurable currentPRLCircularGaussianDensity := by
-  unfold currentPRLCircularGaussianDensity
+theorem measurable_localAnticoncentrationCircularGaussianDensity :
+    Measurable localAnticoncentrationCircularGaussianDensity := by
+  unfold localAnticoncentrationCircularGaussianDensity
   fun_prop
 
 /-- The literal circular Gaussian used by the Gram hafnian development has
 exact density `π⁻¹ exp (-|z|²)` with respect to complex Lebesgue measure. -/
-theorem circularGaussian_eq_withDensity_currentPRL :
+theorem circularGaussian_eq_withDensity_localAnticoncentration :
     circularGaussian =
-      (volume : Measure ℂ).withDensity currentPRLCircularGaussianDensity := by
+      (volume : Measure ℂ).withDensity localAnticoncentrationCircularGaussianDensity := by
   let g : ℝ × ℝ → ENNReal :=
     fun q ↦ gaussianPDF 0 1 q.1 * gaussianPDF 0 1 q.2
   have hg : Measurable g := by
@@ -128,40 +128,40 @@ theorem circularGaussian_eq_withDensity_currentPRL :
       (measurable_gaussianPDF 0 1)
   rw [circularGaussian]
   have hefun :
-      (currentPRLCircularGaussianMeasurableEquiv : ℝ × ℝ → ℂ) =
+      (localAnticoncentrationCircularGaussianMeasurableEquiv : ℝ × ℝ → ℂ) =
         circularGaussianCoordinate := by
     funext q
-    exact currentPRLCircularGaussianMeasurableEquiv_apply q
+    exact localAnticoncentrationCircularGaussianMeasurableEquiv_apply q
   rw [← hefun]
-  change Measure.map currentPRLCircularGaussianMeasurableEquiv
+  change Measure.map localAnticoncentrationCircularGaussianMeasurableEquiv
       ((gaussianReal 0 1).prod (gaussianReal 0 1)) = _
-  rw [hsource, map_measurableEquiv_withDensity_currentPRL]
+  rw [hsource, map_measurableEquiv_withDensity_localAnticoncentration]
   · have hmap :
-        Measure.map currentPRLCircularGaussianMeasurableEquiv
+        Measure.map localAnticoncentrationCircularGaussianMeasurableEquiv
             ((volume : Measure ℝ).prod (volume : Measure ℝ)) =
           (2 : ENNReal) • (volume : Measure ℂ) := by
       rw [hefun]
       exact map_circularGaussianCoordinate_volume
     rw [hmap, withDensity_smul_measure,
       ← withDensity_smul (2 : ENNReal)
-        (hg.comp currentPRLCircularGaussianMeasurableEquiv.symm.measurable)]
+        (hg.comp localAnticoncentrationCircularGaussianMeasurableEquiv.symm.measurable)]
     · congr 1
       funext z
       change (2 : ENNReal) *
-          g (currentPRLCircularGaussianMeasurableEquiv.symm z) =
-        currentPRLCircularGaussianDensity z
-      unfold g gaussianPDF currentPRLCircularGaussianDensity gaussianPDFReal
+          g (localAnticoncentrationCircularGaussianMeasurableEquiv.symm z) =
+        localAnticoncentrationCircularGaussianDensity z
+      unfold g gaussianPDF localAnticoncentrationCircularGaussianDensity gaussianPDFReal
       rw [show (2 : ENNReal) = ENNReal.ofReal (2 : ℝ) by norm_num,
         ← mul_assoc,
         ← ENNReal.ofReal_mul (by norm_num : (0 : ℝ) ≤ 2),
         ← ENNReal.ofReal_mul (by positivity : 0 ≤
           (2 : ℝ) * ((Real.sqrt (2 * Real.pi * (1 : NNReal)))⁻¹ *
             Real.exp
-              (-((currentPRLCircularGaussianMeasurableEquiv.symm z).1 - 0) ^ 2 /
+              (-((localAnticoncentrationCircularGaussianMeasurableEquiv.symm z).1 - 0) ^ 2 /
                 (2 * (1 : NNReal)))))]
       apply congrArg ENNReal.ofReal
-      rw [currentPRLCircularGaussianMeasurableEquiv_symm_apply_re,
-        currentPRLCircularGaussianMeasurableEquiv_symm_apply_im]
+      rw [localAnticoncentrationCircularGaussianMeasurableEquiv_symm_apply_re,
+        localAnticoncentrationCircularGaussianMeasurableEquiv_symm_apply_im]
       norm_num
       have hsqrt2 : (Real.sqrt 2) ^ 2 = 2 :=
         Real.sq_sqrt (by norm_num)
@@ -203,30 +203,30 @@ theorem circularGaussian_eq_withDensity_currentPRL :
 
 /-- Density of `sqrt V • Z`, where `Z ~ CN(0,1)`.  This transport form is
 totalized at nonpositive `V`; all probabilistic uses assume `0 < V`. -/
-def currentPRLScaledCircularGaussianDensity (V : ℝ) (z : ℂ) : ENNReal :=
+def localAnticoncentrationScaledCircularGaussianDensity (V : ℝ) (z : ℂ) : ENNReal :=
   ENNReal.ofReal V⁻¹ *
-    currentPRLCircularGaussianDensity ((Real.sqrt V)⁻¹ • z)
+    localAnticoncentrationCircularGaussianDensity ((Real.sqrt V)⁻¹ • z)
 
-theorem measurable_currentPRLScaledCircularGaussianDensity (V : ℝ) :
-    Measurable (currentPRLScaledCircularGaussianDensity V) := by
-  unfold currentPRLScaledCircularGaussianDensity
+theorem measurable_localAnticoncentrationScaledCircularGaussianDensity (V : ℝ) :
+    Measurable (localAnticoncentrationScaledCircularGaussianDensity V) := by
+  unfold localAnticoncentrationScaledCircularGaussianDensity
   exact measurable_const.mul
-    (measurable_currentPRLCircularGaussianDensity.comp
+    (measurable_localAnticoncentrationCircularGaussianDensity.comp
       (measurable_const_smul (Real.sqrt V)⁻¹))
 
 /-- Paper formula for the scaled circular Gaussian density. -/
-theorem currentPRLScaledCircularGaussianDensity_eq
+theorem localAnticoncentrationScaledCircularGaussianDensity_eq
     {V : ℝ} (hV : 0 < V) (z : ℂ) :
-    currentPRLScaledCircularGaussianDensity V z =
+    localAnticoncentrationScaledCircularGaussianDensity V z =
       ENNReal.ofReal
         (Real.pi⁻¹ * V⁻¹ * Real.exp (-‖z‖ ^ 2 / V)) := by
-  unfold currentPRLScaledCircularGaussianDensity
+  unfold localAnticoncentrationScaledCircularGaussianDensity
   rw [show ENNReal.ofReal V⁻¹ *
-      currentPRLCircularGaussianDensity ((Real.sqrt V)⁻¹ • z) =
+      localAnticoncentrationCircularGaussianDensity ((Real.sqrt V)⁻¹ • z) =
       ENNReal.ofReal
         (V⁻¹ * (Real.pi⁻¹ *
           Real.exp (-‖(Real.sqrt V)⁻¹ • z‖ ^ 2))) by
-    rw [currentPRLCircularGaussianDensity,
+    rw [localAnticoncentrationCircularGaussianDensity,
       ← ENNReal.ofReal_mul (inv_nonneg.mpr hV.le)]]
   apply congrArg ENNReal.ofReal
   rw [norm_smul, Real.norm_eq_abs,
@@ -239,7 +239,7 @@ theorem map_sqrt_smul_circularGaussian_eq_withDensity
     {V : ℝ} (hV : 0 < V) :
     circularGaussian.map (fun z : ℂ ↦ Real.sqrt V • z) =
       (volume : Measure ℂ).withDensity
-        (currentPRLScaledCircularGaussianDensity V) := by
+        (localAnticoncentrationScaledCircularGaussianDensity V) := by
   let s : ℝ := Real.sqrt V
   have hs : s ≠ 0 := ne_of_gt (Real.sqrt_pos.2 hV)
   let e : ℂ ≃ᵐ ℂ :=
@@ -248,12 +248,12 @@ theorem map_sqrt_smul_circularGaussian_eq_withDensity
     rfl
   have hesymm : (e.symm : ℂ → ℂ) = fun z : ℂ ↦ s⁻¹ • z := by
     rfl
-  rw [circularGaussian_eq_withDensity_currentPRL]
+  rw [circularGaussian_eq_withDensity_localAnticoncentration]
   change Measure.map e
-      ((volume : Measure ℂ).withDensity currentPRLCircularGaussianDensity) = _
-  rw [map_measurableEquiv_withDensity_currentPRL e
-    (volume : Measure ℂ) currentPRLCircularGaussianDensity
-    measurable_currentPRLCircularGaussianDensity]
+      ((volume : Measure ℂ).withDensity localAnticoncentrationCircularGaussianDensity) = _
+  rw [map_measurableEquiv_withDensity_localAnticoncentration e
+    (volume : Measure ℂ) localAnticoncentrationCircularGaussianDensity
+    measurable_localAnticoncentrationCircularGaussianDensity]
   have hmap : Measure.map e (volume : Measure ℂ) =
       ENNReal.ofReal V⁻¹ • (volume : Measure ℂ) := by
     rw [he, Measure.map_addHaar_smul (volume : Measure ℂ) hs]
@@ -266,7 +266,7 @@ theorem map_sqrt_smul_circularGaussian_eq_withDensity
       exact Real.sq_sqrt hV.le]
   rw [hmap, withDensity_smul_measure,
     ← withDensity_smul (ENNReal.ofReal V⁻¹)
-      (measurable_currentPRLCircularGaussianDensity.comp e.symm.measurable)]
+      (measurable_localAnticoncentrationCircularGaussianDensity.comp e.symm.measurable)]
   congr 1
 
 /-! ## Conditional law on the literal past column fibre -/
@@ -318,7 +318,7 @@ theorem gramHafnian_lastColumn_conditionalDensity
         (fun x ↦ gramHafnianObservable r k
           (lastColumnProductEquiv r k hr (A, x))) =
       (volume : Measure ℂ).withDensity
-        (currentPRLScaledCircularGaussianDensity (pastCofactorV hr A)) := by
+        (localAnticoncentrationScaledCircularGaussianDensity (pastCofactorV hr A)) := by
   rw [gramHafnian_lastColumn_conditionalLaw hr A,
     map_sqrt_smul_circularGaussian_eq_withDensity hV]
 
@@ -326,28 +326,28 @@ theorem gramHafnian_lastColumn_conditionalDensity
 
 /-- The `ENNReal` form of the density in Equation (13), on the literal iid
 past column probability space. -/
-def currentPRLGramHafnianMixtureDensity
+def localAnticoncentrationGramHafnianMixtureDensity
     {r k : ℕ} (hr : 1 ≤ r) (w : ℂ) : ENNReal :=
   ∫⁻ A : OddCofactorIndex r hr → (Fin k → ℂ),
-    currentPRLScaledCircularGaussianDensity (pastCofactorV hr A) w
+    localAnticoncentrationScaledCircularGaussianDensity (pastCofactorV hr A) w
       ∂(Measure.pi fun _ : OddCofactorIndex r hr ↦ circularGaussianVector k)
 
-theorem measurable_currentPRLScaledCircularGaussianDensity_uncurry
+theorem measurable_localAnticoncentrationScaledCircularGaussianDensity_uncurry
     {Ω : Type*} [MeasurableSpace Ω]
     {V : Ω → ℝ} (hV : Measurable V) :
     Measurable (fun p : Ω × ℂ ↦
-      currentPRLScaledCircularGaussianDensity (V p.1) p.2) := by
-  unfold currentPRLScaledCircularGaussianDensity
+      localAnticoncentrationScaledCircularGaussianDensity (V p.1) p.2) := by
+  unfold localAnticoncentrationScaledCircularGaussianDensity
   exact ((hV.comp measurable_fst).inv.ennreal_ofReal).mul
-    (measurable_currentPRLCircularGaussianDensity.comp
+    (measurable_localAnticoncentrationCircularGaussianDensity.comp
       ((Real.continuous_sqrt.measurable.comp
         (hV.comp measurable_fst)).inv.smul measurable_snd))
 
-theorem measurable_currentPRLGramHafnianMixtureDensity
+theorem measurable_localAnticoncentrationGramHafnianMixtureDensity
     {r k : ℕ} (hr : 1 ≤ r) :
-    Measurable (currentPRLGramHafnianMixtureDensity (k := k) hr) := by
-  unfold currentPRLGramHafnianMixtureDensity
-  exact (measurable_currentPRLScaledCircularGaussianDensity_uncurry
+    Measurable (localAnticoncentrationGramHafnianMixtureDensity (k := k) hr) := by
+  unfold localAnticoncentrationGramHafnianMixtureDensity
+  exact (measurable_localAnticoncentrationScaledCircularGaussianDensity_uncurry
     (measurable_pastCofactorV hr)).lintegral_prod_left'
 
 /-- Equation (13) as an equality of measures: the law of the literal Gaussian
@@ -358,7 +358,7 @@ theorem map_gramHafnianObservable_eq_withDensity_mixture
     (circularGaussianColumnMatrixMeasure r k).map
         (gramHafnianObservable r k) =
       (volume : Measure ℂ).withDensity
-        (currentPRLGramHafnianMixtureDensity (k := k) hr) := by
+        (localAnticoncentrationGramHafnianMixtureDensity (k := k) hr) := by
   let ν : Measure (OddCofactorIndex r hr → (Fin k → ℂ)) :=
     Measure.pi fun _ : OddCofactorIndex r hr ↦ circularGaussianVector k
   let μ : Measure (Fin k → ℂ) := circularGaussianVector k
@@ -385,16 +385,16 @@ theorem map_gramHafnianObservable_eq_withDensity_mixture
     simpa [ν] using Wishart.ae_pastCofactorV_pos_paperRange hr hk
   have hjoint : Measurable (fun p :
       (OddCofactorIndex r hr → (Fin k → ℂ)) × ℂ ↦
-      currentPRLScaledCircularGaussianDensity
+      localAnticoncentrationScaledCircularGaussianDensity
         (pastCofactorV hr p.1) p.2) :=
-    measurable_currentPRLScaledCircularGaussianDensity_uncurry
+    measurable_localAnticoncentrationScaledCircularGaussianDensity_uncurry
       (measurable_pastCofactorV hr)
   calc
     (∫⁻ A, μ (Prod.mk A ⁻¹'
         (conditionalCircularLinearForm
           (pastCofactorCombination (k := k) hr) ⁻¹' s)) ∂ν) =
         ∫⁻ A, ∫⁻ w in s,
-          currentPRLScaledCircularGaussianDensity
+          localAnticoncentrationScaledCircularGaussianDensity
             (pastCofactorV hr A) w ∂volume ∂ν := by
       apply lintegral_congr_ae
       filter_upwards [hVpos] with A hA
@@ -422,55 +422,55 @@ theorem map_gramHafnianObservable_eq_withDensity_mixture
         μ (F ⁻¹' s) = (μ.map F) s :=
           (Measure.map_apply hF hs).symm
         _ = ((volume : Measure ℂ).withDensity
-              (currentPRLScaledCircularGaussianDensity
+              (localAnticoncentrationScaledCircularGaussianDensity
                 (pastCofactorV hr A))) s := by
           simpa [μ, F] using congrArg (fun m : Measure ℂ ↦ m s)
             (gramHafnian_lastColumn_conditionalDensity hr A hA)
         _ = ∫⁻ w in s,
-              currentPRLScaledCircularGaussianDensity
+              localAnticoncentrationScaledCircularGaussianDensity
                 (pastCofactorV hr A) w ∂volume := by
           rw [withDensity_apply _ hs]
     _ = ∫⁻ w in s, ∫⁻ A,
-          currentPRLScaledCircularGaussianDensity
+          localAnticoncentrationScaledCircularGaussianDensity
             (pastCofactorV hr A) w ∂ν ∂volume := by
       rw [lintegral_lintegral_swap hjoint.aemeasurable]
     _ = ∫⁻ w in s,
-          currentPRLGramHafnianMixtureDensity (k := k) hr w ∂volume := by
+          localAnticoncentrationGramHafnianMixtureDensity (k := k) hr w ∂volume := by
       rfl
 
 /-! ## The real density in the notation of Equation (13) -/
 
-def currentPRLGramHafnianDensityIntegrand
+def localAnticoncentrationGramHafnianDensityIntegrand
     {r k : ℕ} (hr : 1 ≤ r)
     (A : OddCofactorIndex r hr → (Fin k → ℂ)) (w : ℂ) : ℝ :=
   Real.pi⁻¹ * (pastCofactorV hr A)⁻¹ *
     Real.exp (-‖w‖ ^ 2 / pastCofactorV hr A)
 
 /-- The real valued density from Equation (13). -/
-def currentPRLGramHafnianDensity
+def localAnticoncentrationGramHafnianDensity
     {r k : ℕ} (hr : 1 ≤ r) (w : ℂ) : ℝ :=
   ∫ A : OddCofactorIndex r hr → (Fin k → ℂ),
-    currentPRLGramHafnianDensityIntegrand hr A w
+    localAnticoncentrationGramHafnianDensityIntegrand hr A w
       ∂(Measure.pi fun _ : OddCofactorIndex r hr ↦ circularGaussianVector k)
 
-theorem measurable_currentPRLGramHafnianDensityIntegrand_uncurry
+theorem measurable_localAnticoncentrationGramHafnianDensityIntegrand_uncurry
     {r k : ℕ} (hr : 1 ≤ r) :
     Measurable (fun p :
       (OddCofactorIndex r hr → (Fin k → ℂ)) × ℂ ↦
-      currentPRLGramHafnianDensityIntegrand hr p.1 p.2) := by
-  unfold currentPRLGramHafnianDensityIntegrand
+      localAnticoncentrationGramHafnianDensityIntegrand hr p.1 p.2) := by
+  unfold localAnticoncentrationGramHafnianDensityIntegrand
   fun_prop
 
-theorem currentPRLGramHafnianDensityIntegrand_nonneg
+theorem localAnticoncentrationGramHafnianDensityIntegrand_nonneg
     {r k : ℕ} (hr : 1 ≤ r)
     (A : OddCofactorIndex r hr → (Fin k → ℂ)) (w : ℂ) :
-    0 ≤ currentPRLGramHafnianDensityIntegrand hr A w := by
-  unfold currentPRLGramHafnianDensityIntegrand
+    0 ≤ localAnticoncentrationGramHafnianDensityIntegrand hr A w := by
+  unfold localAnticoncentrationGramHafnianDensityIntegrand
   positivity [pastCofactorV_nonneg hr A]
 
 /-- The paper range gives integrability of the reciprocal conditional
 variance, as a real random variable. -/
-theorem integrable_pastCofactorV_inv_currentPRL
+theorem integrable_pastCofactorV_inv_localAnticoncentration
     {r k : ℕ} (hr : 1 ≤ r) (hk : 4 * r ≤ k) :
     Integrable (fun A : OddCofactorIndex r hr → (Fin k → ℂ) ↦
       (pastCofactorV hr A)⁻¹)
@@ -481,7 +481,7 @@ theorem integrable_pastCofactorV_inv_currentPRL
     simpa [ν] using Wishart.ae_pastCofactorV_pos_paperRange hr hk
   have hnonneg : ∀ᵐ A ∂ν, 0 ≤ (pastCofactorV hr A)⁻¹ :=
     hVpos.mono fun _ hA ↦ (inv_pos.mpr hA).le
-  have hbound := CurrentPRL.eq11_inverse_variance k r hr hk
+  have hbound := LocalAnticoncentration.eq11_inverse_variance k r hr hk
   rw [pastCofactorVInverseMoment_eq hr] at hbound
   unfold ennInverseMoment at hbound
   have hfinite :
@@ -492,10 +492,10 @@ theorem integrable_pastCofactorV_inv_currentPRL
     ((measurable_pastCofactorV hr).inv.aestronglyMeasurable)
     hnonneg).mp hfinite
 
-theorem integrable_currentPRLGramHafnianDensityIntegrand
+theorem integrable_localAnticoncentrationGramHafnianDensityIntegrand
     {r k : ℕ} (hr : 1 ≤ r) (hk : 4 * r ≤ k) (w : ℂ) :
     Integrable (fun A : OddCofactorIndex r hr → (Fin k → ℂ) ↦
-      currentPRLGramHafnianDensityIntegrand hr A w)
+      localAnticoncentrationGramHafnianDensityIntegrand hr A w)
       (Measure.pi fun _ : OddCofactorIndex r hr ↦ circularGaussianVector k) := by
   let ν : Measure (OddCofactorIndex r hr → (Fin k → ℂ)) :=
     Measure.pi fun _ : OddCofactorIndex r hr ↦ circularGaussianVector k
@@ -503,20 +503,20 @@ theorem integrable_currentPRLGramHafnianDensityIntegrand
     simpa [ν] using Wishart.ae_pastCofactorV_pos_paperRange hr hk
   have hdom : Integrable (fun A : OddCofactorIndex r hr → (Fin k → ℂ) ↦
       Real.pi⁻¹ * (pastCofactorV hr A)⁻¹) ν := by
-    exact (integrable_pastCofactorV_inv_currentPRL hr hk).const_mul Real.pi⁻¹
+    exact (integrable_pastCofactorV_inv_localAnticoncentration hr hk).const_mul Real.pi⁻¹
   apply hdom.mono
-  · exact ((measurable_currentPRLGramHafnianDensityIntegrand_uncurry hr).comp
+  · exact ((measurable_localAnticoncentrationGramHafnianDensityIntegrand_uncurry hr).comp
       (measurable_id.prodMk measurable_const)).aestronglyMeasurable
   · filter_upwards [hVpos] with A hA
     have hcoef : 0 < Real.pi⁻¹ * (pastCofactorV hr A)⁻¹ :=
       mul_pos (inv_pos.mpr Real.pi_pos) (inv_pos.mpr hA)
     calc
-      ‖currentPRLGramHafnianDensityIntegrand hr A w‖ =
-          currentPRLGramHafnianDensityIntegrand hr A w :=
+      ‖localAnticoncentrationGramHafnianDensityIntegrand hr A w‖ =
+          localAnticoncentrationGramHafnianDensityIntegrand hr A w :=
         Real.norm_of_nonneg
-          (currentPRLGramHafnianDensityIntegrand_nonneg hr A w)
+          (localAnticoncentrationGramHafnianDensityIntegrand_nonneg hr A w)
       _ ≤ Real.pi⁻¹ * (pastCofactorV hr A)⁻¹ := by
-        unfold currentPRLGramHafnianDensityIntegrand
+        unfold localAnticoncentrationGramHafnianDensityIntegrand
         apply mul_le_of_le_one_right hcoef.le
         exact Real.exp_le_one_iff.mpr
           (div_nonpos_of_nonpos_of_nonneg
@@ -526,64 +526,64 @@ theorem integrable_currentPRLGramHafnianDensityIntegrand
 
 /-- Equation (13): the measure density above is exactly the real expectation
 `π⁻¹ E[V⁻¹ exp (-|w|²/V)]`. -/
-theorem currentPRLGramHafnianMixtureDensity_eq_ofReal
+theorem localAnticoncentrationGramHafnianMixtureDensity_eq_ofReal
     {r k : ℕ} (hr : 1 ≤ r) (hk : 4 * r ≤ k) (w : ℂ) :
-    currentPRLGramHafnianMixtureDensity (k := k) hr w =
-      ENNReal.ofReal (currentPRLGramHafnianDensity (k := k) hr w) := by
+    localAnticoncentrationGramHafnianMixtureDensity (k := k) hr w =
+      ENNReal.ofReal (localAnticoncentrationGramHafnianDensity (k := k) hr w) := by
   let ν : Measure (OddCofactorIndex r hr → (Fin k → ℂ)) :=
     Measure.pi fun _ : OddCofactorIndex r hr ↦ circularGaussianVector k
   have hVpos : ∀ᵐ A ∂ν, 0 < pastCofactorV hr A := by
     simpa [ν] using Wishart.ae_pastCofactorV_pos_paperRange hr hk
-  have hint := integrable_currentPRLGramHafnianDensityIntegrand hr hk w
+  have hint := integrable_localAnticoncentrationGramHafnianDensityIntegrand hr hk w
   have hnonneg : ∀ᵐ A ∂ν,
-      0 ≤ currentPRLGramHafnianDensityIntegrand hr A w :=
-    ae_of_all _ fun A ↦ currentPRLGramHafnianDensityIntegrand_nonneg hr A w
-  rw [currentPRLGramHafnianMixtureDensity, currentPRLGramHafnianDensity,
+      0 ≤ localAnticoncentrationGramHafnianDensityIntegrand hr A w :=
+    ae_of_all _ fun A ↦ localAnticoncentrationGramHafnianDensityIntegrand_nonneg hr A w
+  rw [localAnticoncentrationGramHafnianMixtureDensity, localAnticoncentrationGramHafnianDensity,
     ofReal_integral_eq_lintegral_ofReal (by simpa [ν] using hint) hnonneg]
   apply lintegral_congr_ae
   filter_upwards [hVpos] with A hA
-  rw [currentPRLScaledCircularGaussianDensity_eq hA]
+  rw [localAnticoncentrationScaledCircularGaussianDensity_eq hA]
   rfl
 
-theorem currentPRLGramHafnianDensity_nonneg
+theorem localAnticoncentrationGramHafnianDensity_nonneg
     {r k : ℕ} (hr : 1 ≤ r) (w : ℂ) :
-    0 ≤ currentPRLGramHafnianDensity (k := k) hr w := by
-  unfold currentPRLGramHafnianDensity
+    0 ≤ localAnticoncentrationGramHafnianDensity (k := k) hr w := by
+  unfold localAnticoncentrationGramHafnianDensity
   exact integral_nonneg fun A ↦
-    currentPRLGramHafnianDensityIntegrand_nonneg hr A w
+    localAnticoncentrationGramHafnianDensityIntegrand_nonneg hr A w
 
 /-- The density in Equation (13) is continuous.  The dominating function is
 `π⁻¹ V⁻¹`, whose integrability follows from Equation (11). -/
-theorem continuous_currentPRLGramHafnianDensity
+theorem continuous_localAnticoncentrationGramHafnianDensity
     {r k : ℕ} (hr : 1 ≤ r) (hk : 4 * r ≤ k) :
-    Continuous (currentPRLGramHafnianDensity (k := k) hr) := by
+    Continuous (localAnticoncentrationGramHafnianDensity (k := k) hr) := by
   let ν : Measure (OddCofactorIndex r hr → (Fin k → ℂ)) :=
     Measure.pi fun _ : OddCofactorIndex r hr ↦ circularGaussianVector k
   have hVpos : ∀ᵐ A ∂ν, 0 < pastCofactorV hr A := by
     simpa [ν] using Wishart.ae_pastCofactorV_pos_paperRange hr hk
   have hdom : Integrable (fun A : OddCofactorIndex r hr → (Fin k → ℂ) ↦
       Real.pi⁻¹ * (pastCofactorV hr A)⁻¹) ν := by
-    exact (integrable_pastCofactorV_inv_currentPRL hr hk).const_mul Real.pi⁻¹
+    exact (integrable_pastCofactorV_inv_localAnticoncentration hr hk).const_mul Real.pi⁻¹
   rw [continuous_iff_continuousAt]
   intro w
-  unfold currentPRLGramHafnianDensity
+  unfold localAnticoncentrationGramHafnianDensity
   apply tendsto_integral_filter_of_dominated_convergence
     (fun A : OddCofactorIndex r hr → (Fin k → ℂ) ↦
       Real.pi⁻¹ * (pastCofactorV hr A)⁻¹)
   · filter_upwards [] with u
-    exact ((measurable_currentPRLGramHafnianDensityIntegrand_uncurry hr).comp
+    exact ((measurable_localAnticoncentrationGramHafnianDensityIntegrand_uncurry hr).comp
       (measurable_id.prodMk measurable_const)).aestronglyMeasurable
   · filter_upwards [] with u
     filter_upwards [hVpos] with A hA
     have hcoef : 0 < Real.pi⁻¹ * (pastCofactorV hr A)⁻¹ :=
       mul_pos (inv_pos.mpr Real.pi_pos) (inv_pos.mpr hA)
     calc
-      ‖currentPRLGramHafnianDensityIntegrand hr A u‖ =
-          currentPRLGramHafnianDensityIntegrand hr A u :=
+      ‖localAnticoncentrationGramHafnianDensityIntegrand hr A u‖ =
+          localAnticoncentrationGramHafnianDensityIntegrand hr A u :=
         Real.norm_of_nonneg
-          (currentPRLGramHafnianDensityIntegrand_nonneg hr A u)
+          (localAnticoncentrationGramHafnianDensityIntegrand_nonneg hr A u)
       _ ≤ Real.pi⁻¹ * (pastCofactorV hr A)⁻¹ := by
-        unfold currentPRLGramHafnianDensityIntegrand
+        unfold localAnticoncentrationGramHafnianDensityIntegrand
         apply mul_le_of_le_one_right hcoef.le
         exact Real.exp_le_one_iff.mpr
           (div_nonpos_of_nonpos_of_nonneg
@@ -591,26 +591,26 @@ theorem continuous_currentPRLGramHafnianDensity
   · exact hdom
   · filter_upwards [hVpos] with A hA
     have hcont : Continuous (fun u : ℂ ↦
-        currentPRLGramHafnianDensityIntegrand hr A u) := by
-      unfold currentPRLGramHafnianDensityIntegrand
+        localAnticoncentrationGramHafnianDensityIntegrand hr A u) := by
+      unfold localAnticoncentrationGramHafnianDensityIntegrand
       fun_prop
     exact hcont.continuousAt
 
 /-- The density is strictly positive at every fixed complex center. -/
-theorem currentPRLGramHafnianDensity_pos
+theorem localAnticoncentrationGramHafnianDensity_pos
     {r k : ℕ} (hr : 1 ≤ r) (hk : 4 * r ≤ k) (w : ℂ) :
-    0 < currentPRLGramHafnianDensity (k := k) hr w := by
+    0 < localAnticoncentrationGramHafnianDensity (k := k) hr w := by
   let ν : Measure (OddCofactorIndex r hr → (Fin k → ℂ)) :=
     Measure.pi fun _ : OddCofactorIndex r hr ↦ circularGaussianVector k
   let g : (OddCofactorIndex r hr → (Fin k → ℂ)) → ℝ :=
-    fun A ↦ currentPRLGramHafnianDensityIntegrand hr A w
+    fun A ↦ localAnticoncentrationGramHafnianDensityIntegrand hr A w
   have hint : Integrable g ν := by
     simpa [ν, g] using
-      integrable_currentPRLGramHafnianDensityIntegrand hr hk w
+      integrable_localAnticoncentrationGramHafnianDensityIntegrand hr hk w
   have hnonneg : 0 ≤ᵐ[ν] g :=
     ae_of_all _ fun A ↦
-      currentPRLGramHafnianDensityIntegrand_nonneg hr A w
-  rw [currentPRLGramHafnianDensity,
+      localAnticoncentrationGramHafnianDensityIntegrand_nonneg hr A w
+  rw [localAnticoncentrationGramHafnianDensity,
     integral_pos_iff_support_of_nonneg_ae hnonneg hint]
   have hVpos : ∀ᵐ A ∂ν, 0 < pastCofactorV hr A := by
     simpa [ν] using Wishart.ae_pastCofactorV_pos_paperRange hr hk
@@ -618,7 +618,7 @@ theorem currentPRLGramHafnianDensity_pos
     filter_upwards [hVpos] with A hA
     change g A ≠ 0
     apply ne_of_gt
-    dsimp [g, currentPRLGramHafnianDensityIntegrand]
+    dsimp [g, localAnticoncentrationGramHafnianDensityIntegrand]
     positivity
   have hfull : ν (Function.support g) = 1 := by
     apply le_antisymm
@@ -637,34 +637,34 @@ theorem currentPRLGramHafnianDensity_pos
   norm_num
 
 /-- The density is radial. -/
-theorem currentPRLGramHafnianDensity_eq_of_norm_eq
+theorem localAnticoncentrationGramHafnianDensity_eq_of_norm_eq
     {r k : ℕ} (hr : 1 ≤ r) {z w : ℂ} (hzw : ‖z‖ = ‖w‖) :
-    currentPRLGramHafnianDensity (k := k) hr z =
-      currentPRLGramHafnianDensity (k := k) hr w := by
-  unfold currentPRLGramHafnianDensity
+    localAnticoncentrationGramHafnianDensity (k := k) hr z =
+      localAnticoncentrationGramHafnianDensity (k := k) hr w := by
+  unfold localAnticoncentrationGramHafnianDensity
   apply integral_congr_ae
   filter_upwards [] with A
-  unfold currentPRLGramHafnianDensityIntegrand
+  unfold localAnticoncentrationGramHafnianDensityIntegrand
   rw [hzw]
 
 /-- The radial density decreases with the radius. -/
-theorem currentPRLGramHafnianDensity_antitone_norm
+theorem localAnticoncentrationGramHafnianDensity_antitone_norm
     {r k : ℕ} (hr : 1 ≤ r) (hk : 4 * r ≤ k)
     {z w : ℂ} (hzw : ‖z‖ ≤ ‖w‖) :
-    currentPRLGramHafnianDensity (k := k) hr w ≤
-      currentPRLGramHafnianDensity (k := k) hr z := by
+    localAnticoncentrationGramHafnianDensity (k := k) hr w ≤
+      localAnticoncentrationGramHafnianDensity (k := k) hr z := by
   let ν : Measure (OddCofactorIndex r hr → (Fin k → ℂ)) :=
     Measure.pi fun _ : OddCofactorIndex r hr ↦ circularGaussianVector k
   have hVpos : ∀ᵐ A ∂ν, 0 < pastCofactorV hr A := by
     simpa [ν] using Wishart.ae_pastCofactorV_pos_paperRange hr hk
-  unfold currentPRLGramHafnianDensity
+  unfold localAnticoncentrationGramHafnianDensity
   apply integral_mono_ae
     (by simpa [ν] using
-      integrable_currentPRLGramHafnianDensityIntegrand hr hk w)
+      integrable_localAnticoncentrationGramHafnianDensityIntegrand hr hk w)
     (by simpa [ν] using
-      integrable_currentPRLGramHafnianDensityIntegrand hr hk z)
+      integrable_localAnticoncentrationGramHafnianDensityIntegrand hr hk z)
   filter_upwards [hVpos] with A hA
-  unfold currentPRLGramHafnianDensityIntegrand
+  unfold localAnticoncentrationGramHafnianDensityIntegrand
   apply mul_le_mul_of_nonneg_left
   · apply Real.exp_le_exp.mpr
     have hsq : ‖z‖ ^ 2 ≤ ‖w‖ ^ 2 := by
@@ -674,16 +674,16 @@ theorem currentPRLGramHafnianDensity_antitone_norm
   · exact mul_nonneg (inv_nonneg.mpr Real.pi_pos.le)
       (inv_nonneg.mpr hA.le)
 
-theorem currentPRLGramHafnianDensity_le_at_zero
+theorem localAnticoncentrationGramHafnianDensity_le_at_zero
     {r k : ℕ} (hr : 1 ≤ r) (hk : 4 * r ≤ k) (w : ℂ) :
-    currentPRLGramHafnianDensity (k := k) hr w ≤
-      currentPRLGramHafnianDensity (k := k) hr 0 := by
-  exact currentPRLGramHafnianDensity_antitone_norm hr hk
+    localAnticoncentrationGramHafnianDensity (k := k) hr w ≤
+      localAnticoncentrationGramHafnianDensity (k := k) hr 0 := by
+  exact localAnticoncentrationGramHafnianDensity_antitone_norm hr hk
     (by simp : ‖(0 : ℂ)‖ ≤ ‖w‖)
 
 /-- Real form of Equation (11): `E[V⁻¹]` is at most the explicit inverse
 variance product. -/
-theorem integral_pastCofactorV_inv_le_inverseVarianceBound_currentPRL
+theorem integral_pastCofactorV_inv_le_inverseVarianceBound_localAnticoncentration
     {r k : ℕ} (hr : 1 ≤ r) (hk : 4 * r ≤ k) :
     (∫ A : OddCofactorIndex r hr → (Fin k → ℂ),
         (pastCofactorV hr A)⁻¹
@@ -691,12 +691,12 @@ theorem integral_pastCofactorV_inv_le_inverseVarianceBound_currentPRL
       inverseVarianceBound k r := by
   let ν : Measure (OddCofactorIndex r hr → (Fin k → ℂ)) :=
     Measure.pi fun _ : OddCofactorIndex r hr ↦ circularGaussianVector k
-  have hint := integrable_pastCofactorV_inv_currentPRL hr hk
+  have hint := integrable_pastCofactorV_inv_localAnticoncentration hr hk
   have hVpos : ∀ᵐ A ∂ν, 0 < pastCofactorV hr A := by
     simpa [ν] using Wishart.ae_pastCofactorV_pos_paperRange hr hk
   have hnonneg : ∀ᵐ A ∂ν, 0 ≤ (pastCofactorV hr A)⁻¹ :=
     hVpos.mono fun _ hA ↦ (inv_pos.mpr hA).le
-  have hbound := CurrentPRL.eq11_inverse_variance k r hr hk
+  have hbound := LocalAnticoncentration.eq11_inverse_variance k r hr hk
   rw [pastCofactorVInverseMoment_eq hr] at hbound
   unfold ennInverseMoment at hbound
   have hENN :
@@ -709,27 +709,27 @@ theorem integral_pastCofactorV_inv_le_inverseVarianceBound_currentPRL
     (inverseVarianceBound_nonneg_of_le hk hr le_rfl)).mp hENN
 
 /-- Pointwise bound behind `‖f‖∞` in Equation (13). -/
-theorem currentPRLGramHafnianDensity_le_inverseVarianceBound
+theorem localAnticoncentrationGramHafnianDensity_le_inverseVarianceBound
     {r k : ℕ} (hr : 1 ≤ r) (hk : 4 * r ≤ k) (w : ℂ) :
-    currentPRLGramHafnianDensity (k := k) hr w ≤
+    localAnticoncentrationGramHafnianDensity (k := k) hr w ≤
       Real.pi⁻¹ * inverseVarianceBound k r := by
   let ν : Measure (OddCofactorIndex r hr → (Fin k → ℂ)) :=
     Measure.pi fun _ : OddCofactorIndex r hr ↦ circularGaussianVector k
   have hVpos : ∀ᵐ A ∂ν, 0 < pastCofactorV hr A := by
     simpa [ν] using Wishart.ae_pastCofactorV_pos_paperRange hr hk
   calc
-    currentPRLGramHafnianDensity (k := k) hr w =
-        ∫ A, currentPRLGramHafnianDensityIntegrand hr A w ∂ν := by
+    localAnticoncentrationGramHafnianDensity (k := k) hr w =
+        ∫ A, localAnticoncentrationGramHafnianDensityIntegrand hr A w ∂ν := by
       rfl
     _ ≤ ∫ A, Real.pi⁻¹ * (pastCofactorV hr A)⁻¹ ∂ν := by
       apply integral_mono_ae
         (by simpa [ν] using
-          integrable_currentPRLGramHafnianDensityIntegrand hr hk w)
+          integrable_localAnticoncentrationGramHafnianDensityIntegrand hr hk w)
         ((by simpa [ν] using
-          (integrable_pastCofactorV_inv_currentPRL hr hk).const_mul Real.pi⁻¹) :
+          (integrable_pastCofactorV_inv_localAnticoncentration hr hk).const_mul Real.pi⁻¹) :
           Integrable (fun A ↦ Real.pi⁻¹ * (pastCofactorV hr A)⁻¹) ν)
       filter_upwards [hVpos] with A hA
-      unfold currentPRLGramHafnianDensityIntegrand
+      unfold localAnticoncentrationGramHafnianDensityIntegrand
       apply mul_le_of_le_one_right
       · exact mul_nonneg (inv_nonneg.mpr Real.pi_pos.le)
           (inv_nonneg.mpr hA.le)
@@ -741,30 +741,30 @@ theorem currentPRLGramHafnianDensity_le_inverseVarianceBound
     _ ≤ Real.pi⁻¹ * inverseVarianceBound k r := by
       exact mul_le_mul_of_nonneg_left
         (by simpa [ν] using
-          integral_pastCofactorV_inv_le_inverseVarianceBound_currentPRL hr hk)
+          integral_pastCofactorV_inv_le_inverseVarianceBound_localAnticoncentration hr hk)
         (inv_nonneg.mpr Real.pi_pos.le)
 
 /-- The paper's normalized density bound, pointwise in the center.  Taking
 the supremum gives `π σ² ‖f‖∞ ≤ B`. -/
-theorem pi_sigma_sq_mul_currentPRLGramHafnianDensity_le
+theorem pi_sigma_sq_mul_localAnticoncentrationGramHafnianDensity_le
     {r k : ℕ} (hr : 1 ≤ r) (hk : 4 * r ≤ k) (w : ℂ) :
     Real.pi * gramHafnianSigma k r ^ 2 *
-        currentPRLGramHafnianDensity (k := k) hr w ≤
+        localAnticoncentrationGramHafnianDensity (k := k) hr w ≤
       shiftedAnticoncentrationConstant k r := by
   have hkpos : 0 < k := by omega
   calc
     Real.pi * gramHafnianSigma k r ^ 2 *
-        currentPRLGramHafnianDensity (k := k) hr w ≤
+        localAnticoncentrationGramHafnianDensity (k := k) hr w ≤
       Real.pi * gramHafnianSigma k r ^ 2 *
         (Real.pi⁻¹ * inverseVarianceBound k r) := by
       exact mul_le_mul_of_nonneg_left
-        (currentPRLGramHafnianDensity_le_inverseVarianceBound hr hk w)
+        (localAnticoncentrationGramHafnianDensity_le_inverseVarianceBound hr hk w)
         (mul_nonneg Real.pi_pos.le (sq_nonneg _))
     _ = closedFirstMoment k r * inverseVarianceBound k r := by
       rw [gramHafnianSigma_sq k r hkpos]
       field_simp [Real.pi_ne_zero]
     _ = shiftedAnticoncentrationConstant k r :=
-      CurrentPRL.eq3_mul_eq11_is_eq5 k r hr
+      LocalAnticoncentration.eq3_mul_eq11_is_eq5 k r hr
 
 end
 

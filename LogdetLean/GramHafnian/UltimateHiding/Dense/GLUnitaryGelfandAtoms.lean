@@ -59,7 +59,7 @@ instance (priority := 1100) complexMatrixGLMeasurableSpace (N : ℕ) :
   MeasurableSpace.comap
     (fun g : ComplexMatrixGL N ↦
       (g : Matrix (Fin N) (Fin N) ℂ))
-    (LogdetLean.GramHafnian.CurrentPRL.hidingReleaseComplexMatrixMeasurableSpace
+    (LogdetLean.GramHafnian.LocalAnticoncentration.hidingReleaseComplexMatrixMeasurableSpace
       (Fin N) (Fin N))
 
 /-- The canonical inclusion `U(N) -> GL_N(C)`.  Mathlib constructs the unit

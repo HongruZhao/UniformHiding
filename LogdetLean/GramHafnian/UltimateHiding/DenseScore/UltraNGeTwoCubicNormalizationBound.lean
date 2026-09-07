@@ -20,7 +20,7 @@ namespace LogdetLean.GramHafnian.UltimateHiding.DenseScore
 noncomputable section
 
 open LogdetLean.GramHafnian.UltimateHiding.Dense
-open LogdetLean.GramHafnian.CurrentPRL
+open LogdetLean.GramHafnian.LocalAnticoncentration
 
 def ultraNGeTwoRawTraceThreeRemainderConstant : ℝ :=
   36 * ultraNGeTwoRawTraceOneCubeConstant +
@@ -361,7 +361,7 @@ noncomputable section
 
 open LogdetLean.GramHafnian.UltimateHiding.Dense
 open LogdetLean.GramHafnian.UltimateHiding.DenseScore
-open LogdetLean.GramHafnian.CurrentPRL
+open LogdetLean.GramHafnian.LocalAnticoncentration
 
 /-- Event-path third derivative at the origin with the all-dimensional
 dimension-split constant `3934`. -/

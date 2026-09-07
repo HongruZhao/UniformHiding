@@ -22,7 +22,7 @@ noncomputable section
 
 open LogdetLean.GramHafnian.UltimateHiding.Dense
 open LogdetLean.GramHafnian.UltimateHiding.DenseScore
-open LogdetLean.GramHafnian.CurrentPRL
+open LogdetLean.GramHafnian.LocalAnticoncentration
 
 /-- The third derivative at the origin of the actual same-beta orbital event
 path is `O(N)`.  This is derived eventwise from the supported-state R25

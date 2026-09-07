@@ -18,7 +18,7 @@ namespace LogdetLean.GramHafnian.UltimateHiding.DenseScore
 noncomputable section
 
 open LogdetLean.GramHafnian.UltimateHiding.Dense
-open LogdetLean.GramHafnian.CurrentPRL
+open LogdetLean.GramHafnian.LocalAnticoncentration
 
 def sharp34RawTraceTwoL2Constant : ℝ := 54
 
@@ -314,7 +314,7 @@ noncomputable section
 
 open LogdetLean.GramHafnian.UltimateHiding.Dense
 open LogdetLean.GramHafnian.UltimateHiding.DenseScore
-open LogdetLean.GramHafnian.CurrentPRL
+open LogdetLean.GramHafnian.LocalAnticoncentration
 
 /-- Eventwise second-order orbital score with the sharp H8/H10 constant. -/
 theorem abs_iteratedDeriv_two_concreteSharedBetaOrbitalEventPath_le_sharp34

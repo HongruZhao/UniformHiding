@@ -37,7 +37,7 @@ theorem measurable_circularGaussianEuclideanDensity (k : ℕ) :
 private theorem rawVectorDensity_eq_radial (k : ℕ) (x : Fin k → ℂ) :
     circularGaussianRawVectorDensity k x =
       circularGaussianEuclideanDensity k (WithLp.toLp 2 x) := by
-  unfold circularGaussianRawVectorDensity currentPRLCircularGaussianDensity
+  unfold circularGaussianRawVectorDensity localAnticoncentrationCircularGaussianDensity
     circularGaussianEuclideanDensity
   rw [← ENNReal.ofReal_prod_of_nonneg]
   · congr 1
@@ -59,7 +59,7 @@ theorem circularGaussianEuclidean_eq_withDensity (k : ℕ) :
   let e : (Fin k → ℂ) ≃ᵐ CircularEuclideanSpace k :=
     MeasurableEquiv.toLp 2 (Fin k → ℂ)
   rw [show (WithLp.toLp 2 : (Fin k → ℂ) → CircularEuclideanSpace k) = e by rfl]
-  rw [map_measurableEquiv_withDensity_currentPRL e
+  rw [map_measurableEquiv_withDensity_localAnticoncentration e
     (volume : Measure (Fin k → ℂ))
     (circularGaussianRawVectorDensity k)
     (measurable_circularGaussianRawVectorDensity k)]

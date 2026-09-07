@@ -18,7 +18,7 @@ namespace LogdetLean.GramHafnian.UltimateHiding.DenseScore
 
 noncomputable section
 
-open LogdetLean.GramHafnian.UltimateHiding.Dense CurrentPRL
+open LogdetLean.GramHafnian.UltimateHiding.Dense LocalAnticoncentration
 
 /-- Recover the unscaled COE corner `C` from the paper-normalized state
 `A = sqrt K * C`. -/

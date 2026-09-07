@@ -20,7 +20,7 @@ namespace LogdetLean.GramHafnian.UltimateHiding.Sparse
 
 noncomputable section
 
-open CurrentPRL
+open LocalAnticoncentration
 
 local instance h19HaarCornerSuccessorMatrixBorelSpace (K N : ℕ) :
     BorelSpace (Matrix (Fin K) (Fin N) ℂ) := by
@@ -264,7 +264,7 @@ theorem map_haarCornerAppendColumn_conditionalDensity_of_strict
           Measure.map e ((lambdaA.prod lambdaX).withDensity fp) := by
             rw [hprod]
       _ = (Measure.map e (lambdaA.prod lambdaX)).withDensity fback := by
-        exact LogdetLean.GramHafnian.map_measurableEquiv_withDensity_currentPRL
+        exact LogdetLean.GramHafnian.map_measurableEquiv_withDensity_localAnticoncentration
           e (lambdaA.prod lambdaX) fp hfp
       _ = lambdaY.withDensity fback := by
         rw [show Measure.map e (lambdaA.prod lambdaX) = lambdaY by
@@ -275,7 +275,7 @@ theorem map_haarCornerAppendColumn_conditionalDensity_of_strict
     Measure.map e (((lambdaA.withDensity f).prod lambdaX).withDensity q) =
         (Measure.map e ((lambdaA.withDensity f).prod lambdaX)).withDensity
           qback := by
-      exact LogdetLean.GramHafnian.map_measurableEquiv_withDensity_currentPRL
+      exact LogdetLean.GramHafnian.map_measurableEquiv_withDensity_localAnticoncentration
         e ((lambdaA.withDensity f).prod lambdaX) q hq
     _ = (lambdaY.withDensity fback).withDensity qback := by rw [hmapBase]
     _ = lambdaY.withDensity (fback * qback) :=

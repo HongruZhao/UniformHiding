@@ -166,12 +166,12 @@ assumption. -/
 theorem friedmanMello1985_scaledCOECorner_ae_support_from_density
     {N K : ℕ} (hN : 1 ≤ N) (h2NK : 2 * N ≤ K) :
     ∀ᵐ A ∂(concreteScaledCOECornerLaw
-        LogdetLean.GramHafnian.CurrentPRL.canonicalUnitaryHaarProbabilityFamily N K),
+        LogdetLean.GramHafnian.LocalAnticoncentration.canonicalUnitaryHaarProbabilityFamily N K),
       (unscaleCOECorner K A).IsSymm ∧
         coeCornerSupport (unscaleCOECorner K A) := by
   have hunscaled :
       ∀ᵐ C ∂(concreteUnscaledCOECornerLaw
-          LogdetLean.GramHafnian.CurrentPRL.canonicalUnitaryHaarProbabilityFamily N K),
+          LogdetLean.GramHafnian.LocalAnticoncentration.canonicalUnitaryHaarProbabilityFamily N K),
         C.IsSymm ∧ coeCornerSupport C := by
     have heq :=
       friedmanMello1985_unscaledCOECornerLaw_eq_determinantDensity_of_A1

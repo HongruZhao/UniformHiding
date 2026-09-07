@@ -416,7 +416,7 @@ The condition $`K\ge2N+8`$ gives $`\gamma\ge7/2\gt 3=q-1`$. Variance-$`1/2`$ Gau
 
 ## Source and verification status
 
-The 7 September 2026 documentation update aligns this file and the expanded A2 justification with the rewritten Appendix A. The declarations and all 881 Lean files are unchanged relative to commit `d3ea171e4c328989507c7188279c363944df642b`. No additional project axiom or separate formal proof of the source-to-axiom arguments is introduced. [The verification status](../verification/STATUS.md) distinguishes this documentation and source-identity check from the earlier Lean build and endpoint audit.
+The 7 September 2026 documentation update aligns this file and the expanded A2 justification with the rewritten Appendix A. The subsequent module-naming revision preserves the mathematical statements and proofs under the reversible substitutions documented in [PROVENANCE.md](PROVENANCE.md). No additional project axiom or separate formal proof of the source-to-axiom arguments is introduced. [The verification status](../verification/STATUS.md) records the execution evidence for each stage.
 
 ## Bibliographic details for A1–A4
 

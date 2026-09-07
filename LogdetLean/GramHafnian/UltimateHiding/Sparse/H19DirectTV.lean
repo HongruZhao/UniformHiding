@@ -19,7 +19,7 @@ namespace LogdetLean.GramHafnian.UltimateHiding.Sparse
 
 noncomputable section
 
-open CurrentPRL
+open LocalAnticoncentration
 
 /-- A nonnegative measurable real density of a probability measure is
 integrable with total integral one. -/

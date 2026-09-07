@@ -28,7 +28,7 @@ set_option maxHeartbeats 2000000
 
 open LogdetLean.GramHafnian.UltimateHiding.Dense
 open LogdetLean.GramHafnian.UltimateHiding.DenseScore
-open LogdetLean.GramHafnian.CurrentPRL
+open LogdetLean.GramHafnian.LocalAnticoncentration
 
 section MatrixCalculus
 

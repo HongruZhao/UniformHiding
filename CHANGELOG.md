@@ -7,7 +7,7 @@ Compared with the published hiding archive version 1.0.0, which used the title *
 - Adds a focused GitHub layout separating the main statement, public proofs, exact axiom check, and manuscript correspondence.
 - Exposes Theorem 2.1 as `UniformHiding.theorem2_1`.
 - Assembles the Route 1 physical-threshold bound in Theorem 3.2, its infimum, and the capped disk transfer using the companion repository's public Theorem 2.1.
-- Pins an unchanged source dependency on ComplexGramHafnians commit `95ab10dc594ac92207054413220ae9fd2adab08c`.
+- Pins a source dependency on ComplexGramHafnians commit `95ab10dc594ac92207054413220ae9fd2adab08c`, with the reversible naming substitutions documented below.
 - Documents all four literature axioms, their references and parameter translations. No new project axiom is introduced.
 - Retains Route 2 as a conditional deduction, with Shou et al. (2026), Theorem 1.1 as an explicit unformalized input, not an added axiom.
 - Defines the hafnian, the physical GBS probability, the two reference probabilities, and their ratio in GitHub-rendered mathematics.
@@ -28,3 +28,10 @@ Compared with the published hiding archive version 1.0.0, which used the title *
 - Expands the A2 justification with a one-sheeted positive ordered Takagi parametrization, explicit volume and chamber factors, and a dictionary using the integration theorem's original notation.
 - Keeps exactly four literature axioms. No Lean source file, theorem statement, or proof term changes in this documentation alignment.
 - Uses the stable [version 1.1.0 archive DOI](https://doi.org/10.5281/zenodo.22558885) and removes temporary preparation-status wording.
+
+## Journal-independent module names — 2026-09-07
+
+- Gives 20 Lean paths descriptive names, including `GBSDefinitions.lean`, `RelativeAccuracy.lean`, `UniformMatrixHiding.lean`, and the `LocalAnticoncentration` directory.
+- Updates imports, namespaces, identifiers, and documentation links consistently across 206 Lean sources. Public theorem entry points and the four-axiom boundary are preserved.
+- Records reversible naming edits and source hashes for all 881 Lean modules. The portable audit restores all 225 companion sources and checks their exact original upstream hashes.
+- Keeps historical receipts as evidence for their original snapshots; current verification is recorded separately in [verification/STATUS.md](verification/STATUS.md).

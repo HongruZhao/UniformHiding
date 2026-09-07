@@ -27,7 +27,7 @@ namespace LogdetLean.GramHafnian.UltimateHiding.DenseScore
 noncomputable section
 
 open LogdetLean.GramHafnian.UltimateHiding.Dense
-open LogdetLean.GramHafnian.CurrentPRL
+open LogdetLean.GramHafnian.LocalAnticoncentration
 
 /-- The normalized coordinate density after inverse centered pullback. -/
 def h16CenteredCoordinateProbabilityWeight

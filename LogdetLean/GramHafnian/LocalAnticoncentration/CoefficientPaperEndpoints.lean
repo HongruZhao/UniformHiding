@@ -1,9 +1,9 @@
-import LogdetLean.GramHafnian.CurrentPRL.CoefficientEndpoints
+import LogdetLean.GramHafnian.LocalAnticoncentration.CoefficientEndpoints
 import Mathlib.Analysis.SpecialFunctions.Stirling
 import Mathlib.Analysis.Complex.ExponentialBounds
 
 /-!
-# Paper facing coefficient endpoints for the current PRL
+# Paper facing coefficient endpoints for the current manuscript
 
 This file records the exact product and Gamma representations and the two
 finite exponential estimates displayed in the current Letter.  It contains
@@ -13,14 +13,14 @@ no probabilistic assumptions.
 open Filter
 open scoped BigOperators Nat
 
-namespace LogdetLean.GramHafnian.CurrentPRL
+namespace LogdetLean.GramHafnian.LocalAnticoncentration
 
 noncomputable section
 
-/-- The coefficient called `b_n` in the current PRL. -/
+/-- The coefficient called `b_n` in the current manuscript. -/
 abbrev paperBn (n : ℕ) : ℝ := limitingAnticoncentrationConstant n
 
-/-- The coefficient called `B_{k,n}` in the current PRL. -/
+/-- The coefficient called `B_{k,n}` in the current manuscript. -/
 abbrev paperBkn (k n : ℕ) : ℝ := shiftedAnticoncentrationConstant k n
 
 /-- The displayed Gamma definition of `b_n`. -/
@@ -534,7 +534,7 @@ theorem factorialRatio_le_exp_four_mul
     exact (Real.exp_one_gt_two.le.trans
       (Real.exp_le_exp.mpr (by norm_num : (1 : ℝ) ≤ 4)))
 
-/-- PRL Eq. (20) as one literal endpoint.  The manuscript invokes this in
+/-- manuscript Eq. (20) as one literal endpoint.  The manuscript invokes this in
 the branch `4n ≤ k < 8n` and states `n ≥ 4`; the inequality itself is valid
 on the stronger range `n ≥ 1`, `4n ≤ k`. -/
 theorem eq20_endpoint_product
@@ -737,4 +737,4 @@ theorem paperBkn_polynomial_regime
 
 end
 
-end LogdetLean.GramHafnian.CurrentPRL
+end LogdetLean.GramHafnian.LocalAnticoncentration

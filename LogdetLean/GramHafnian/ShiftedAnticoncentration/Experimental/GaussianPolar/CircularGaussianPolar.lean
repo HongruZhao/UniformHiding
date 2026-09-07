@@ -83,7 +83,7 @@ theorem map_polar_comap_circularGaussianEuclidean
     (measurable_circularGaussianEuclideanDensity k)]
   change Measure.map e ((μ.comap Subtype.val).withDensity
       (d ∘ Subtype.val)) = _
-  rw [map_measurableEquiv_withDensity_currentPRL e
+  rw [map_measurableEquiv_withDensity_localAnticoncentration e
     (μ.comap Subtype.val) (d ∘ Subtype.val)]
   · have hmap : Measure.map e (μ.comap Subtype.val) =
         μ.toSphere.prod

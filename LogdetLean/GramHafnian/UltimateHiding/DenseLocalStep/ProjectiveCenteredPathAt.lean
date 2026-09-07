@@ -56,7 +56,7 @@ theorem coeCorner_centeredProjective_eventPath_derivative_at_eq_shifted
             (concreteCenteredOrbitalDirection N v) y ⁻¹' event).indicator
               (concreteCenteredDensityScore r N K v) A
           ∂(concreteScaledCOECornerLaw
-            LogdetLean.GramHafnian.CurrentPRL.canonicalUnitaryHaarProbabilityFamily
+            LogdetLean.GramHafnian.LocalAnticoncentration.canonicalUnitaryHaarProbabilityFamily
               N K)
         ∂(complexUnitSphereProbabilityMeasure N) := by
   rw [coeCorner_centeredProjective_eventPath_derivative_interchange_at_H18_proved_from_A1
@@ -83,24 +83,24 @@ theorem shifted_centeredScore_integral_eq_prod
       (fun Av : ConcreteMatrixState N × ComplexUnitSphere N ↦
         concreteCenteredDensityScore r N K Av.2 Av.1) 1
       ((concreteScaledCOECornerLaw
-          LogdetLean.GramHafnian.CurrentPRL.canonicalUnitaryHaarProbabilityFamily
+          LogdetLean.GramHafnian.LocalAnticoncentration.canonicalUnitaryHaarProbabilityFamily
             N K).prod (complexUnitSphereProbabilityMeasure N))) :
     (∫ v : ComplexUnitSphere N,
         ∫ A, (transposeCongruenceFlow
             (concreteCenteredOrbitalDirection N v) y ⁻¹' event).indicator
               (concreteCenteredDensityScore r N K v) A
           ∂(concreteScaledCOECornerLaw
-            LogdetLean.GramHafnian.CurrentPRL.canonicalUnitaryHaarProbabilityFamily
+            LogdetLean.GramHafnian.LocalAnticoncentration.canonicalUnitaryHaarProbabilityFamily
               N K)
         ∂(complexUnitSphereProbabilityMeasure N)) =
       ∫ Av, (concreteCenteredShiftedProjectiveEvent N y event).indicator
           (fun Av : ConcreteMatrixState N × ComplexUnitSphere N ↦
             concreteCenteredDensityScore r N K Av.2 Av.1) Av
         ∂((concreteScaledCOECornerLaw
-          LogdetLean.GramHafnian.CurrentPRL.canonicalUnitaryHaarProbabilityFamily
+          LogdetLean.GramHafnian.LocalAnticoncentration.canonicalUnitaryHaarProbabilityFamily
             N K).prod (complexUnitSphereProbabilityMeasure N)) := by
   let mu := concreteScaledCOECornerLaw
-    LogdetLean.GramHafnian.CurrentPRL.canonicalUnitaryHaarProbabilityFamily N K
+    LogdetLean.GramHafnian.LocalAnticoncentration.canonicalUnitaryHaarProbabilityFamily N K
   let sphere := complexUnitSphereProbabilityMeasure N
   let score : ConcreteMatrixState N × ComplexUnitSphere N → ℝ :=
     fun Av ↦ concreteCenteredDensityScore r N K Av.2 Av.1
@@ -145,7 +145,7 @@ theorem abs_coeCorner_centeredProjective_eventPath_derivative_at_le_lpNorm_one
       (fun Av : ConcreteMatrixState N × ComplexUnitSphere N ↦
         concreteCenteredDensityScore r N K Av.2 Av.1) 1
       ((concreteScaledCOECornerLaw
-          LogdetLean.GramHafnian.CurrentPRL.canonicalUnitaryHaarProbabilityFamily
+          LogdetLean.GramHafnian.LocalAnticoncentration.canonicalUnitaryHaarProbabilityFamily
             N K).prod (complexUnitSphereProbabilityMeasure N))) :
     |iteratedDeriv r
         (concreteProjectiveAveragedCenteredCOEEventPath N K event) y| ≤
@@ -153,7 +153,7 @@ theorem abs_coeCorner_centeredProjective_eventPath_derivative_at_le_lpNorm_one
         (fun Av : ConcreteMatrixState N × ComplexUnitSphere N ↦
           concreteCenteredDensityScore r N K Av.2 Av.1) 1
         ((concreteScaledCOECornerLaw
-          LogdetLean.GramHafnian.CurrentPRL.canonicalUnitaryHaarProbabilityFamily
+          LogdetLean.GramHafnian.LocalAnticoncentration.canonicalUnitaryHaarProbabilityFamily
             N K).prod (complexUnitSphereProbabilityMeasure N)) := by
   rw [coeCorner_centeredProjective_eventPath_derivative_at_eq_shifted
     hN hboundary hr event hevent y]
@@ -250,7 +250,7 @@ theorem abs_iteratedDeriv_four_concreteSharedBetaOrbitalEventPath_le
     |iteratedDeriv 4
         (concreteSharedBetaOrbitalEventPath m N
             (concreteScaledCOECornerLaw
-              LogdetLean.GramHafnian.CurrentPRL.canonicalUnitaryHaarProbabilityFamily
+              LogdetLean.GramHafnian.LocalAnticoncentration.canonicalUnitaryHaarProbabilityFamily
                 N K)
             q event) y| ≤
       concreteCenteredScoreFourConstant * (N : ℝ) ^ 2 := by
@@ -261,7 +261,7 @@ theorem abs_iteratedDeriv_four_concreteSharedBetaOrbitalEventPath_le
   have hfun :
       concreteSharedBetaOrbitalEventPath m N
           (concreteScaledCOECornerLaw
-            LogdetLean.GramHafnian.CurrentPRL.canonicalUnitaryHaarProbabilityFamily
+            LogdetLean.GramHafnian.LocalAnticoncentration.canonicalUnitaryHaarProbabilityFamily
               N K)
           q event =
         concreteProjectiveAveragedCenteredCOEEventPath N K preevent := by
@@ -281,7 +281,7 @@ theorem concreteSharedBetaOrbitalEventPath_contDiff_four
     ContDiff ℝ 4
       (concreteSharedBetaOrbitalEventPath m N
           (concreteScaledCOECornerLaw
-            LogdetLean.GramHafnian.CurrentPRL.canonicalUnitaryHaarProbabilityFamily
+            LogdetLean.GramHafnian.LocalAnticoncentration.canonicalUnitaryHaarProbabilityFamily
               N K)
           q event) := by
   let preevent := concreteCentralMatrixUpdate N
@@ -291,7 +291,7 @@ theorem concreteSharedBetaOrbitalEventPath_contDiff_four
   have hfun :
       concreteSharedBetaOrbitalEventPath m N
           (concreteScaledCOECornerLaw
-            LogdetLean.GramHafnian.CurrentPRL.canonicalUnitaryHaarProbabilityFamily
+            LogdetLean.GramHafnian.LocalAnticoncentration.canonicalUnitaryHaarProbabilityFamily
               N K)
           q event =
         concreteProjectiveAveragedCenteredCOEEventPath N K preevent := by

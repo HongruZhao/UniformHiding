@@ -1,4 +1,4 @@
-import LogdetLean.GramHafnian.CurrentPRL.MixtureDensity
+import LogdetLean.GramHafnian.LocalAnticoncentration.MixtureDensity
 import Mathlib.MeasureTheory.Constructions.HaarToSphere
 
 /-!
@@ -19,7 +19,7 @@ noncomputable section
 
 /-- Product density of `k` iid paper-normalized circular coordinates. -/
 def circularGaussianRawVectorDensity (k : ℕ) (x : Fin k → ℂ) : ℝ≥0∞ :=
-  ∏ i, currentPRLCircularGaussianDensity (x i)
+  ∏ i, localAnticoncentrationCircularGaussianDensity (x i)
 
 @[fun_prop]
 theorem measurable_circularGaussianRawVectorDensity (k : ℕ) :
@@ -27,7 +27,7 @@ theorem measurable_circularGaussianRawVectorDensity (k : ℕ) :
   unfold circularGaussianRawVectorDensity
   apply Finset.measurable_prod
   intro i hi
-  exact measurable_currentPRLCircularGaussianDensity.comp
+  exact measurable_localAnticoncentrationCircularGaussianDensity.comp
     (measurable_pi_apply i)
 
 /-- Mapping measures by a measurable equivalence is injective. -/
@@ -66,17 +66,17 @@ theorem pi_circularGaussian_eq_withDensity_rawVector (k : ℕ) :
       rw [hpi]
       change circularGaussian.prod
           (Measure.pi fun _ : Fin k ↦ circularGaussian) = _
-      rw [ih, circularGaussian_eq_withDensity_currentPRL,
-        prod_withDensity measurable_currentPRLCircularGaussianDensity
+      rw [ih, circularGaussian_eq_withDensity_localAnticoncentration,
+        prod_withDensity measurable_localAnticoncentrationCircularGaussianDensity
           (measurable_circularGaussianRawVectorDensity k)]
-      rw [map_measurableEquiv_withDensity_currentPRL e
+      rw [map_measurableEquiv_withDensity_localAnticoncentration e
           (volume : Measure (Fin (k + 1) → ℂ))
           (circularGaussianRawVectorDensity (k + 1))
           (measurable_circularGaussianRawVectorDensity (k + 1)),
         hvol]
       congr 1
       funext z
-      change currentPRLCircularGaussianDensity z.1 *
+      change localAnticoncentrationCircularGaussianDensity z.1 *
           circularGaussianRawVectorDensity k z.2 =
         circularGaussianRawVectorDensity (k + 1) (e.symm z)
       unfold circularGaussianRawVectorDensity

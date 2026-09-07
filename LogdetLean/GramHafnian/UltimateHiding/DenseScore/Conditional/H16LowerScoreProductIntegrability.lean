@@ -28,7 +28,7 @@ namespace LogdetLean.GramHafnian.UltimateHiding.DenseScore
 noncomputable section
 
 open LogdetLean.GramHafnian.UltimateHiding.Dense
-open LogdetLean.GramHafnian.CurrentPRL
+open LogdetLean.GramHafnian.LocalAnticoncentration
 
 /-- The matrix-coordinate jet proxy is measurable at every lower order,
 directly from joint continuity; no weak-generator package is involved. -/

@@ -15,7 +15,7 @@ namespace LogdetLean.GramHafnian.UltimateHiding
 noncomputable section
 
 open MeasureTheory
-open CurrentPRL
+open LocalAnticoncentration
 
 /-- The universal finite raw-density estimate tends to zero along every fixed
 rectangular block.  This is the target-convergence input for the generic

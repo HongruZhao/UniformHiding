@@ -17,7 +17,7 @@ namespace LogdetLean.GramHafnian.UltimateHiding.Sparse
 
 noncomputable section
 
-open CurrentPRL
+open LocalAnticoncentration
 
 /-- Transport any proof of the unscaled Jiang density through entrywise
 multiplication by `sqrt M`. -/
@@ -40,7 +40,7 @@ theorem jiangSqrtScaledTallHaarCornerLaw_eq_withDensity_of_unscaled
       fun Z ↦ (Real.sqrt (M : ℝ))⁻¹ • Z := by
     rfl
   rw [jiangSqrtScaledTallHaarCornerLaw, hunscaled, ← he]
-  rw [map_measurableEquiv_withDensity_currentPRL e
+  rw [map_measurableEquiv_withDensity_localAnticoncentration e
     (complexRectangularLebesgueVolume K N)
     (jiangUnscaledTallHaarCornerPDF M K N)
     (measurable_jiangUnscaledTallHaarCornerPDF M K N)]

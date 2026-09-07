@@ -14,7 +14,7 @@ polynomial small ball corollary.
 open Filter
 open scoped BigOperators Nat
 
-namespace LogdetLean.GramHafnian.CurrentPRL
+namespace LogdetLean.GramHafnian.LocalAnticoncentration
 
 noncomputable section
 
@@ -1153,4 +1153,4 @@ theorem tendsto_shiftedAnticoncentrationConstant_fixed_degree
 
 end
 
-end LogdetLean.GramHafnian.CurrentPRL
+end LogdetLean.GramHafnian.LocalAnticoncentration

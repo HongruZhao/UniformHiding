@@ -1,6 +1,6 @@
 import LogdetLean.GramHafnian.ShiftedAnticoncentration.Definitions
 import LogdetLean.GramHafnian.SymmetricGaussianHafnian.FullMatrix
-import LogdetLean.GramHafnian.CurrentPRL.CoefficientPaperEndpoints
+import LogdetLean.GramHafnian.LocalAnticoncentration.CoefficientPaperEndpoints
 
 /-!
 # Public specifications for the two headline results
@@ -13,7 +13,7 @@ placeholder. The observables and measures below are actual Gaussian models.
 open MeasureTheory Filter
 open scoped BigOperators Nat ENNReal Topology
 open LogdetLean.GramHafnian
-open LogdetLean.GramHafnian.CurrentPRL
+open LogdetLean.GramHafnian.LocalAnticoncentration
 open LogdetLean.GramHafnian.SymmetricGaussianHafnian
 
 namespace ComplexGramHafnians

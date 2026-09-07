@@ -25,7 +25,7 @@ namespace LogdetLean.GramHafnian.UltimateHiding.DenseScore
 noncomputable section
 
 open LogdetLean.GramHafnian.UltimateHiding.Dense
-open LogdetLean.GramHafnian.CurrentPRL
+open LogdetLean.GramHafnian.LocalAnticoncentration
 
 theorem continuous_h16ScaledSymmetricCoordinateEmbedding (N K : ℕ) :
     Continuous (h16ScaledSymmetricCoordinateEmbedding N K) := by

@@ -5,7 +5,7 @@ import LogdetLean.GramHafnian.UltimateHiding.SquaredRateAlgebra
 import LogdetLean.GramHafnian.UltimateHiding.InverseGradientEndpoint
 
 /-!
-# Paper-facing endpoints for the successor PRX Quantum article
+# Paper-facing endpoints for the successor matrix-law article
 
 This module publishes literal wrappers for displays whose mathematical content
 was already checked by the hiding development but which previously had no
@@ -14,11 +14,11 @@ one-declaration paper-facing surface.  It introduces no new scientific input.
 
 open MeasureTheory
 
-namespace LogdetLean.GramHafnian.PRXArticle
+namespace LogdetLean.GramHafnian.MatrixLawEndpoints
 
 noncomputable section
 
-open CurrentPRL
+open LocalAnticoncentration
 open UltimateHiding
 open UltimateHiding.DenseScore
 open UltimateHiding.DenseLocalStep
@@ -141,4 +141,4 @@ theorem eq_hide_rate_comparison {M N K : ℕ}
 
 end
 
-end LogdetLean.GramHafnian.PRXArticle
+end LogdetLean.GramHafnian.MatrixLawEndpoints

@@ -27,7 +27,7 @@ namespace LogdetLean.GramHafnian.UltimateHiding.DenseScore
 noncomputable section
 
 open H6CoordinateAlgebra
-open LogdetLean.GramHafnian.CurrentPRL
+open LogdetLean.GramHafnian.LocalAnticoncentration
 
 local instance edelmanSuttonRealMatrixMeasurableSpace
     (rows n : Type*) : MeasurableSpace (Matrix rows n ℝ) := by

@@ -15,7 +15,7 @@ namespace LogdetLean.GramHafnian.UltimateHiding
 
 noncomputable section
 
-open CurrentPRL
+open LocalAnticoncentration
 
 /-- Common deterministic normalization used in the matrix theorem. -/
 def normalizeTransposeGram (N K : ℕ) :

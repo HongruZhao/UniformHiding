@@ -25,7 +25,7 @@ namespace LogdetLean.GramHafnian.UltimateHiding.DenseScore
 noncomputable section
 
 open LogdetLean.GramHafnian.UltimateHiding.Dense
-open LogdetLean.GramHafnian.CurrentPRL
+open LogdetLean.GramHafnian.LocalAnticoncentration
 
 /-- Generic fixed-fibre normalization bootstrap.  The important feature is
 that `density` is required to be integrable only in each `μ`-fibre; no

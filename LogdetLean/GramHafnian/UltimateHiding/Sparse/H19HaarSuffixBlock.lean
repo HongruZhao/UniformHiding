@@ -20,7 +20,7 @@ namespace LogdetLean.GramHafnian.UltimateHiding.Sparse
 noncomputable section
 
 open LogdetLean.GramHafnian.UltimateHiding.Dense
-open LogdetLean.GramHafnian.CurrentPRL
+open LogdetLean.GramHafnian.LocalAnticoncentration
 
 /-- The ambient matrix `I_L ⊕ V`, reindexed to `Fin M`. -/
 def h19HaarAmbientSuffixMatrix {L M : ℕ} (hLM : L ≤ M)

@@ -9,7 +9,7 @@ import LogdetLean.GramHafnian.RankTwoCentralBinomial
 open MeasureTheory Filter
 open scoped BigOperators Nat ENNReal Topology
 open LogdetLean.GramHafnian
-open LogdetLean.GramHafnian.CurrentPRL
+open LogdetLean.GramHafnian.LocalAnticoncentration
 open LogdetLean.GramHafnian.SymmetricGaussianHafnian
 
 namespace ComplexGramHafnians

@@ -1,4 +1,4 @@
-import LogdetLean.GramHafnian.CurrentPRL.MixtureDensity
+import LogdetLean.GramHafnian.LocalAnticoncentration.MixtureDensity
 import Mathlib.Probability.HasCondDistrib
 
 /-!
@@ -17,34 +17,34 @@ namespace LogdetLean.GramHafnian
 noncomputable section
 
 /-- The Markov kernel `v ↦ Law(sqrt(v) Z)` used in Equation (12). -/
-def currentPRLVarianceGaussianKernel : Kernel ℝ ℂ :=
+def localAnticoncentrationVarianceGaussianKernel : Kernel ℝ ℂ :=
   ((Kernel.id : Kernel ℝ ℝ) ×ₖ
       Kernel.const ℝ circularGaussian).map
     (fun p : ℝ × ℂ ↦ Real.sqrt p.1 • p.2)
 
-theorem measurable_currentPRLVarianceGaussianScale :
+theorem measurable_localAnticoncentrationVarianceGaussianScale :
     Measurable (fun p : ℝ × ℂ ↦ Real.sqrt p.1 • p.2) := by
   fun_prop
 
-instance : IsMarkovKernel currentPRLVarianceGaussianKernel :=
+instance : IsMarkovKernel localAnticoncentrationVarianceGaussianKernel :=
   Kernel.IsMarkovKernel.map
     ((Kernel.id : Kernel ℝ ℝ) ×ₖ
       Kernel.const ℝ circularGaussian)
-    measurable_currentPRLVarianceGaussianScale
+    measurable_localAnticoncentrationVarianceGaussianScale
 
 /-- Evaluation of the variance kernel is exactly the scaled circular
 Gaussian measure, including at `v = 0`. -/
-theorem currentPRLVarianceGaussianKernel_apply (v : ℝ) :
-    currentPRLVarianceGaussianKernel v =
+theorem localAnticoncentrationVarianceGaussianKernel_apply (v : ℝ) :
+    localAnticoncentrationVarianceGaussianKernel v =
       circularGaussian.map (fun z : ℂ ↦ Real.sqrt v • z) := by
   have hscalev : Measurable (fun z : ℂ ↦ Real.sqrt v • z) := by
     fun_prop
-  rw [currentPRLVarianceGaussianKernel,
-    Kernel.map_apply _ measurable_currentPRLVarianceGaussianScale]
+  rw [localAnticoncentrationVarianceGaussianKernel,
+    Kernel.map_apply _ measurable_localAnticoncentrationVarianceGaussianScale]
   ext s hs
-  rw [Measure.map_apply measurable_currentPRLVarianceGaussianScale hs,
+  rw [Measure.map_apply measurable_localAnticoncentrationVarianceGaussianScale hs,
     Kernel.id_prod_apply' _ v
-      (hs.preimage measurable_currentPRLVarianceGaussianScale),
+      (hs.preimage measurable_localAnticoncentrationVarianceGaussianScale),
     Kernel.const_apply,
     Measure.map_apply hscalev hs]
   rfl
@@ -53,7 +53,7 @@ theorem currentPRLVarianceGaussianKernel_apply (v : ℝ) :
 
 /-- The probability space consisting of the past columns and the independent
 last Gaussian column. -/
-def currentPRLPastLastColumnMeasure
+def localAnticoncentrationPastLastColumnMeasure
     {r k : ℕ} (hr : 1 ≤ r) :
     Measure
       ((OddCofactorIndex r hr → (Fin k → ℂ)) × (Fin k → ℂ)) :=
@@ -62,26 +62,26 @@ def currentPRLPastLastColumnMeasure
 
 /-- The cofactor variance, regarded as a random variable on the literal
 past and last column product space. -/
-def currentPRLConditionalVariance
+def localAnticoncentrationConditionalVariance
     {r k : ℕ} (hr : 1 ≤ r)
     (p : (OddCofactorIndex r hr → (Fin k → ℂ)) × (Fin k → ℂ)) : ℝ :=
   pastCofactorV hr p.1
 
 /-- The Gram hafnian, regarded as a random variable on the literal past and
 last column product space. -/
-def currentPRLConditionalHafnian
+def localAnticoncentrationConditionalHafnian
     {r k : ℕ} (hr : 1 ≤ r)
     (p : (OddCofactorIndex r hr → (Fin k → ℂ)) × (Fin k → ℂ)) : ℂ :=
   gramHafnianObservable r k (lastColumnProductEquiv r k hr p)
 
-theorem measurable_currentPRLConditionalVariance
+theorem measurable_localAnticoncentrationConditionalVariance
     {r k : ℕ} (hr : 1 ≤ r) :
-    Measurable (currentPRLConditionalVariance (k := k) hr) := by
+    Measurable (localAnticoncentrationConditionalVariance (k := k) hr) := by
   exact (measurable_pastCofactorV hr).comp measurable_fst
 
-theorem measurable_currentPRLConditionalHafnian
+theorem measurable_localAnticoncentrationConditionalHafnian
     {r k : ℕ} (hr : 1 ≤ r) :
-    Measurable (currentPRLConditionalHafnian (k := k) hr) := by
+    Measurable (localAnticoncentrationConditionalHafnian (k := k) hr) := by
   exact (measurable_gramHafnianObservable r k).comp
     (lastColumnProductEquiv r k hr).measurable
 
@@ -95,23 +95,23 @@ measure theoretic content of `H_{k,n} | V_n ~ CN(0,V_n)`.
 theorem gramHafnian_hasCondDistrib_given_pastCofactorV
     {r k : ℕ} (hr : 1 ≤ r) :
     HasCondDistrib
-      (currentPRLConditionalHafnian (k := k) hr)
-      (currentPRLConditionalVariance (k := k) hr)
-      currentPRLVarianceGaussianKernel
-      (currentPRLPastLastColumnMeasure (k := k) hr) := by
+      (localAnticoncentrationConditionalHafnian (k := k) hr)
+      (localAnticoncentrationConditionalVariance (k := k) hr)
+      localAnticoncentrationVarianceGaussianKernel
+      (localAnticoncentrationPastLastColumnMeasure (k := k) hr) := by
   let ν : Measure (OddCofactorIndex r hr → (Fin k → ℂ)) :=
     Measure.pi fun _ : OddCofactorIndex r hr ↦ circularGaussianVector k
   let μ : Measure (Fin k → ℂ) := circularGaussianVector k
   let V :
       ((OddCofactorIndex r hr → (Fin k → ℂ)) × (Fin k → ℂ)) → ℝ :=
-    currentPRLConditionalVariance (k := k) hr
+    localAnticoncentrationConditionalVariance (k := k) hr
   let H :
       ((OddCofactorIndex r hr → (Fin k → ℂ)) × (Fin k → ℂ)) → ℂ :=
-    currentPRLConditionalHafnian (k := k) hr
+    localAnticoncentrationConditionalHafnian (k := k) hr
   have hV : Measurable V :=
-    measurable_currentPRLConditionalVariance hr
+    measurable_localAnticoncentrationConditionalVariance hr
   have hH : Measurable H :=
-    measurable_currentPRLConditionalHafnian hr
+    measurable_localAnticoncentrationConditionalHafnian hr
   have hVH : Measurable (fun p ↦ (V p, H p)) := hV.prodMk hH
   have hmapV :
       (ν.prod μ).map V = ν.map (pastCofactorV hr) := by
@@ -122,7 +122,7 @@ theorem gramHafnian_hasCondDistrib_given_pastCofactorV
     simp [μ]
   refine ⟨hVH.aemeasurable, ?_⟩
   change (ν.prod μ).map (fun p ↦ (V p, H p)) =
-    ((ν.prod μ).map V) ⊗ₘ currentPRLVarianceGaussianKernel
+    ((ν.prod μ).map V) ⊗ₘ localAnticoncentrationVarianceGaussianKernel
   rw [hmapV]
   ext s hs
   rw [Measure.map_apply hVH hs,
@@ -143,9 +143,9 @@ theorem gramHafnian_hasCondDistrib_given_pastCofactorV
   have ht : MeasurableSet (Prod.mk (pastCofactorV hr A) ⁻¹' s) :=
     hs.preimage (measurable_const.prodMk measurable_id)
   change μ (F ⁻¹' (Prod.mk (pastCofactorV hr A) ⁻¹' s)) =
-    currentPRLVarianceGaussianKernel (pastCofactorV hr A)
+    localAnticoncentrationVarianceGaussianKernel (pastCofactorV hr A)
       (Prod.mk (pastCofactorV hr A) ⁻¹' s)
-  rw [currentPRLVarianceGaussianKernel_apply,
+  rw [localAnticoncentrationVarianceGaussianKernel_apply,
     ← gramHafnian_lastColumn_conditionalLaw hr A,
     Measure.map_apply hF ht]
 

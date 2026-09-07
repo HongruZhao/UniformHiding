@@ -108,8 +108,30 @@ def audit(root):
     actual_axioms = sorted((item['file'], item['name']) for item in axioms)
     expected_axioms = sorted((item['file'], item['name']) for item in cfg['axioms'])
     inherited = json.loads((root / 'docs/ANTICONCENTRATION_SNAPSHOT.json').read_text())['files']
-    changed_inherited = [rel for rel, digest in inherited.items() if hashes.get(rel) != digest]
-    passed = not (missing or forbidden or cycles or unreachable or changed_inherited) and actual_axioms == expected_axioms
+    renaming = json.loads((root / 'docs/MODULE_RENAMING.json').read_text())['files']
+    restoration_errors = []
+    restored_hashes = {}
+    for original_path, entry in renaming.items():
+        current_path = entry['current_path']
+        if hashes.get(current_path) != entry['current_sha256']:
+            restoration_errors.append(current_path + ': current source hash mismatch')
+            continue
+        restored = (root / current_path).read_text()
+        for edit in reversed(entry['edits']):
+            start = edit['start']
+            if restored[start:start + len(edit['new'])] != edit['new']:
+                restoration_errors.append(current_path + ': reverse edit mismatch')
+                break
+            restored = restored[:start] + edit['old'] + restored[start + len(edit['new']):]
+        digest = hashlib.sha256(restored.encode()).hexdigest()
+        restored_hashes[original_path] = digest
+        if digest != entry['original_sha256']:
+            restoration_errors.append(current_path + ': restored source hash mismatch')
+    mapped_paths = [entry['current_path'] for entry in renaming.values()]
+    renaming_coverage_matches = len(mapped_paths) == len(set(mapped_paths)) and set(mapped_paths) == set(hashes)
+    changed_inherited = [rel for rel, digest in inherited.items() if restored_hashes.get(rel) != digest]
+    journal_named_paths = [rel for rel in hashes if re.search(r'prl|prx|physicalreview', rel, re.I)]
+    passed = not (missing or forbidden or cycles or unreachable or changed_inherited or restoration_errors or journal_named_paths) and actual_axioms == expected_axioms and renaming_coverage_matches
     result = {'audit_type': 'source-only', 'lean_executed_by_this_script': False,
               'passed': passed, 'module_count': len(paths),
               'inherited_module_count': len(inherited), 'missing_imports': missing,
@@ -117,6 +139,10 @@ def audit(root):
               'axiom_declarations_match_expected': actual_axioms == expected_axioms,
               'import_cycles': cycles, 'unreachable_modules': unreachable,
               'changed_inherited_sources': changed_inherited, 'source_sha256': hashes,
+              'inherited_comparison': 'Exact original bytes restored using the recorded naming-only edits, then compared with the pinned upstream hashes.',
+              'renaming_restoration_errors': restoration_errors,
+              'renaming_coverage_matches': renaming_coverage_matches,
+              'journal_named_lean_paths': journal_named_paths,
               'scope': 'Checks every shipped Lean source including the companion Challenge and HidingVerification; excludes dependency/build caches.'}
     target = root / 'verification/source_audit.json'
     target.parent.mkdir(exist_ok=True)

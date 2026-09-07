@@ -17,7 +17,7 @@ namespace LogdetLean.GramHafnian.UltimateHiding.Sparse
 
 noncomputable section
 
-open CurrentPRL
+open LocalAnticoncentration
 
 /-- The log determinant of the positive matrix-beta complement associated to
 a scaled rectangular block.  It is a total real-valued function; positivity

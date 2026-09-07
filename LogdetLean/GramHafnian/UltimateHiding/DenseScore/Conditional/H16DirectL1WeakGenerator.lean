@@ -558,7 +558,7 @@ theorem coeCorner_centeredFixedDirection_eventPath_derivative_from_directL1_exac
       ∫ A, event.indicator
         (concreteCenteredDensityScore r N K v) A
         ∂(concreteScaledCOECornerLaw
-          LogdetLean.GramHafnian.CurrentPRL.canonicalUnitaryHaarProbabilityFamily
+          LogdetLean.GramHafnian.LocalAnticoncentration.canonicalUnitaryHaarProbabilityFamily
             N K) :=
   coeCorner_centeredFixedDirection_eventPath_derivative_from_weakFacts_exactH5
     hH5 hN hboundary hr v

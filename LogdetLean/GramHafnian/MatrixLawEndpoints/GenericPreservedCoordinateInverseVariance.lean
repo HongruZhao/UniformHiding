@@ -8,7 +8,7 @@ import LogdetLean.GramHafnian.ShiftedAnticoncentration.Wishart.RegularizedInvers
 /-!
 # A generic preserved-coordinate inverse-variance endpoint
 
-This file formalizes the reusable theorem in the successor PRX article before
+This file formalizes the reusable theorem in the successor matrix-law article before
 the hafnian cofactor specialization.  A measurable vector `c(S)` may be any
 function of the preserved complex transpose-Gram coordinate.  The probability
 space is the literal split-real realization of a standard circular complex
@@ -23,7 +23,7 @@ introduces no new probabilistic or aggregate theorem axiom.
 open MeasureTheory
 open scoped BigOperators ComplexConjugate ComplexOrder MatrixOrder ENNReal
 
-namespace LogdetLean.GramHafnian.PRXArticle
+namespace LogdetLean.GramHafnian.MatrixLawEndpoints
 
 noncomputable section
 
@@ -1000,4 +1000,4 @@ theorem eq_general_wishart_overview_symmetricDomain
 
 end
 
-end LogdetLean.GramHafnian.PRXArticle
+end LogdetLean.GramHafnian.MatrixLawEndpoints

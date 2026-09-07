@@ -1,7 +1,7 @@
 import GBSHiding.AllInputs
-import LogdetLean.GramHafnian.ThreePaper.PRLConsequences
-import LogdetLean.GramHafnian.ThreePaper.PRXQUniformHidingPaperEndpointsAudit
-import LogdetLean.GramHafnian.ThreePaper.PRLConsequencesPaperEndpointsAudit
+import LogdetLean.GramHafnian.ThreePaper.RelativeAccuracy
+import LogdetLean.GramHafnian.ThreePaper.UniformMatrixHidingEndpointsAudit
+import LogdetLean.GramHafnian.ThreePaper.RelativeAccuracyEndpointsAudit
 import GBSHiding.OptimizedCertificates
 
 /-!
@@ -15,7 +15,7 @@ See README.md and docs/ASSUMPTIONS.md before interpreting these declarations.
 
 open MeasureTheory
 open LogdetLean.GramHafnian
-open LogdetLean.GramHafnian.CurrentPRL
+open LogdetLean.GramHafnian.LocalAnticoncentration
 open LogdetLean.GramHafnian.UltimateHiding
 
 namespace GBSHiding
@@ -24,7 +24,7 @@ noncomputable section
 
 /-- Original finite product-law theorem, conditional on the four recorded literature inputs. -/
 theorem uniformHiding : UniformProductMatrixHidingSquaredAt 615172 :=
-  LogdetLean.GramHafnian.ThreePaper.PRXQUniformHiding.matrixLaw
+  LogdetLean.GramHafnian.ThreePaper.UniformMatrixHiding.matrixLaw
 
 /-- The normalized statement for `1 ≤ N ≤ K ≤ M`. -/
 theorem normalizedHiding
@@ -34,7 +34,7 @@ theorem normalizedHiding
       (normalizedHaarTransposeGramLaw H M N K)
       (normalizedGaussianTransposeGramLaw N K)
       (min 1 (615172 * ultimateSquaredHidingRate M N)) :=
-  LogdetLean.GramHafnian.ThreePaper.PRXQUniformHiding.normalizedMatrixLaw
+  LogdetLean.GramHafnian.ThreePaper.UniformMatrixHiding.normalizedMatrixLaw
     H M N K hN hNK hKM
 
 /-- Finite-Haar local bound obtained by combining the hiding and Gaussian proofs. -/
@@ -47,7 +47,7 @@ theorem finiteHaarSmallBall
       min 1
         (shiftedAnticoncentrationConstant K n * eps ^ 2 +
           615172 * ultimateSquaredHidingRate M (2 * n)) :=
-  LogdetLean.GramHafnian.ThreePaper.PRLConsequences.finiteHaarShiftedSmallBall
+  LogdetLean.GramHafnian.ThreePaper.RelativeAccuracy.finiteHaarShiftedSmallBall
     H hn hK hKM z eps heps
 
 end

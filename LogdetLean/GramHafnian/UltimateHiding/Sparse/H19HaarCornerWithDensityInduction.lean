@@ -29,7 +29,7 @@ namespace LogdetLean.GramHafnian.UltimateHiding.Sparse
 
 noncomputable section
 
-open CurrentPRL
+open LocalAnticoncentration
 
 local instance h19HaarCornerInductionMatrixBorelSpace (K N : ℕ) :
     BorelSpace (Matrix (Fin K) (Fin N) ℂ) := by
@@ -454,7 +454,7 @@ theorem map_prod_withDensity_of_measurableEquiv
   have hfg : Measurable (fun z : alpha × beta ↦ f z.1 * g z.2) :=
     hf'.mul hg'
   rw [prod_withDensity hf hg]
-  rw [LogdetLean.GramHafnian.map_measurableEquiv_withDensity_currentPRL
+  rw [LogdetLean.GramHafnian.map_measurableEquiv_withDensity_localAnticoncentration
     e (mu.prod nu) (fun z : alpha × beta ↦ f z.1 * g z.2) hfg]
   rw [hbase]
   let q : gamma → ℝ≥0∞ :=

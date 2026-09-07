@@ -1,6 +1,6 @@
 import LogdetLean.GramHafnian.ShiftedAnticoncentration.IndependentShiftResearchEndpoints
-import LogdetLean.GramHafnian.CurrentPRL.CoreEquations
-import LogdetLean.GramHafnian.CurrentPRL.CoefficientPaperEndpoints
+import LogdetLean.GramHafnian.LocalAnticoncentration.CoreEquations
+import LogdetLean.GramHafnian.LocalAnticoncentration.CoefficientPaperEndpoints
 
 /-!
 # Paper-facing independent shifts of the Gaussian factor
@@ -186,7 +186,7 @@ theorem independentFactorShift_rawSmallBall_le_inverseVarianceBound
   have hshift :=
     independentShift_gramHafnian_smallBall_le_exp_one_mul_sq_mul_ennInverseMoment
       hn (by omega : 2 * n - 1 ≤ k) nu w rho hrho
-  have h11 := CurrentPRL.eq11_inverse_variance k n hn hk
+  have h11 := LocalAnticoncentration.eq11_inverse_variance k n hn hk
   rw [pastCofactorVInverseMoment_eq hn] at h11
   have hENN : mu event ≤
       ENNReal.ofReal (Real.exp 1 * rho ^ 2) *
@@ -227,7 +227,7 @@ theorem independentFactorShift_normalizedSmallBall
         {p | ‖gramHafnianObservable n k
           (fun i => p.1 i + p.2 i) - w‖ ≤
             eps * gramHafnianSigma k n} ≤
-      min 1 (Real.exp 1 * CurrentPRL.paperBkn k n * eps ^ 2) := by
+      min 1 (Real.exp 1 * LocalAnticoncentration.paperBkn k n * eps ^ 2) := by
   apply le_min
   · exact measureReal_le_one
   · have hkpos : 0 < k := by omega
@@ -242,17 +242,17 @@ theorem independentFactorShift_normalizedSmallBall
               eps * gramHafnianSigma k n} ≤
         Real.exp 1 * (eps * gramHafnianSigma k n) ^ 2 *
           inverseVarianceBound k n := hraw
-      _ = Real.exp 1 * CurrentPRL.paperBkn k n * eps ^ 2 := by
+      _ = Real.exp 1 * LocalAnticoncentration.paperBkn k n * eps ^ 2 := by
         have hsigmaSq : gramHafnianSigma k n ^ 2 =
             closedFirstMoment k n := gramHafnianSigma_sq k n hkpos
-        have hcoefficient := CurrentPRL.eq3_mul_eq11_is_eq5 k n hn
+        have hcoefficient := LocalAnticoncentration.eq3_mul_eq11_is_eq5 k n hn
         calc
           Real.exp 1 * (eps * gramHafnianSigma k n) ^ 2 *
               inverseVarianceBound k n =
             Real.exp 1 *
               (gramHafnianSigma k n ^ 2 * inverseVarianceBound k n) *
               eps ^ 2 := by ring
-          _ = Real.exp 1 * CurrentPRL.paperBkn k n * eps ^ 2 := by
+          _ = Real.exp 1 * LocalAnticoncentration.paperBkn k n * eps ^ 2 := by
             rw [hsigmaSq, hcoefficient]
 
 end

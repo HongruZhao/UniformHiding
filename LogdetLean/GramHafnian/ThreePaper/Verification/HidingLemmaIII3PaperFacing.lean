@@ -26,7 +26,7 @@ namespace LogdetLean.GramHafnian.ThreePaper.Verification
 noncomputable section
 
 open LogdetLean.GramHafnian
-open LogdetLean.GramHafnian.CurrentPRL
+open LogdetLean.GramHafnian.LocalAnticoncentration
 open LogdetLean.GramHafnian.UltimateHiding
 open LogdetLean.GramHafnian.UltimateHiding.Dense
 open LogdetLean.GramHafnian.UltimateHiding.DenseScore
@@ -47,7 +47,7 @@ theorem eq_hide_congruence_action
 `step = r`: the actual one-column kernel at the ambient Haar law is the
 preceding radial chain applied to the same update at the square COE base. -/
 theorem eq_hide_radial_one_column_commute
-    (H : CurrentPRL.UnitaryHaarProbabilityFamily)
+    (H : LocalAnticoncentration.UnitaryHaarProbabilityFamily)
     {N K ambient step : ℕ}
     (hN : 1 ≤ N) (hNK : N ≤ K) (hKambient : K ≤ ambient)
     (hNstep : N ≤ step) :
@@ -64,7 +64,7 @@ theorem eq_hide_radial_one_column_commute
 every square-base bound with constant `delta` is transported to the ambient
 law with exactly the same constant. -/
 theorem eq_hide_radial_TV
-    (H : CurrentPRL.UnitaryHaarProbabilityFamily)
+    (H : LocalAnticoncentration.UnitaryHaarProbabilityFamily)
     {N K ambient step : ℕ}
     (hN : 1 ≤ N) (hNK : N ≤ K) (hKambient : K ≤ ambient)
     (hNstep : N ≤ step) {delta : ℝ}

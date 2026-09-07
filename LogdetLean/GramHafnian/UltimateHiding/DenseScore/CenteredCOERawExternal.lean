@@ -69,7 +69,7 @@ theorem coeCorner_centeredProjective_eventPath_derivative_literal
         ∫ v : ComplexUnitSphere N, concreteCenteredDensityScore r N K v A
           ∂(complexUnitSphereProbabilityMeasure N)) A
         ∂(concreteScaledCOECornerLaw
-          LogdetLean.GramHafnian.CurrentPRL.canonicalUnitaryHaarProbabilityFamily
+          LogdetLean.GramHafnian.LocalAnticoncentration.canonicalUnitaryHaarProbabilityFamily
             N K) := by
   rw [coeCorner_centeredProjective_eventPath_derivative_interchange_external_derived
     hN hboundary hr event hevent]
@@ -90,7 +90,7 @@ theorem coeCorner_centeredProjective_eventPath_derivative_literal_one_internal
         ∫ v : ComplexUnitSphere N, concreteCenteredDensityScore 1 N K v A
           ∂(complexUnitSphereProbabilityMeasure N)) A
         ∂(concreteScaledCOECornerLaw
-          LogdetLean.GramHafnian.CurrentPRL.canonicalUnitaryHaarProbabilityFamily
+          LogdetLean.GramHafnian.LocalAnticoncentration.canonicalUnitaryHaarProbabilityFamily
             N K) := by
   rw [coeCorner_centeredProjective_eventPath_derivative_interchange_external_derived
     (r := 1) hN hboundary (by omega) event hevent]
@@ -110,7 +110,7 @@ theorem coeCorner_centeredProjective_eventPath_derivative_literal_two_internal
         ∫ v : ComplexUnitSphere N, concreteCenteredDensityScore 2 N K v A
           ∂(complexUnitSphereProbabilityMeasure N)) A
         ∂(concreteScaledCOECornerLaw
-          LogdetLean.GramHafnian.CurrentPRL.canonicalUnitaryHaarProbabilityFamily
+          LogdetLean.GramHafnian.LocalAnticoncentration.canonicalUnitaryHaarProbabilityFamily
             N K) := by
   rw [coeCorner_centeredProjective_eventPath_derivative_interchange_external_derived
     (r := 2) hN hboundary (by omega) event hevent]
@@ -132,7 +132,7 @@ theorem coeCorner_centeredProjective_secondRaw_external_derived
           concreteCenteredRankOneSecondDensityScore N K v A
             ∂(complexUnitSphereProbabilityMeasure N)) A
         ∂(concreteScaledCOECornerLaw
-          LogdetLean.GramHafnian.CurrentPRL.canonicalUnitaryHaarProbabilityFamily
+          LogdetLean.GramHafnian.LocalAnticoncentration.canonicalUnitaryHaarProbabilityFamily
             N K) := by
   rw [coeCorner_centeredProjective_eventPath_derivative_literal_two_internal
     hN hboundary event hevent]
@@ -162,7 +162,7 @@ theorem friedmanMello_centeredProjective_eventPath_second_raw_external
         concreteCenteredRankOneSecondDensityScore N K v A
           ∂(complexUnitSphereProbabilityMeasure N)
         ∂(concreteScaledCOECornerLaw
-          LogdetLean.GramHafnian.CurrentPRL.canonicalUnitaryHaarProbabilityFamily
+          LogdetLean.GramHafnian.LocalAnticoncentration.canonicalUnitaryHaarProbabilityFamily
             N K) :=
   by
     simpa using
@@ -439,7 +439,7 @@ theorem concrete_projectiveAveraged_centered_second_derivative_eq_density_indica
         (concreteProjectiveAveragedCenteredCOEEventPath N K event) 0 =
       ∫ A, event.indicator (concreteCenteredQuadraticDensity N K) A
         ∂(concreteScaledCOECornerLaw
-          LogdetLean.GramHafnian.CurrentPRL.canonicalUnitaryHaarProbabilityFamily
+          LogdetLean.GramHafnian.LocalAnticoncentration.canonicalUnitaryHaarProbabilityFamily
             N K) := by
   have hboundary : 2 * N + 8 ≤ K := by omega
   have hc : concreteCOEExponent N K ≠ 0 := by
@@ -482,7 +482,7 @@ theorem concrete_projectiveAveraged_centered_second_derivative_eq_density_integr
         (concreteProjectiveAveragedCenteredCOEEventPath N K Set.univ) 0 =
       ∫ A, concreteCenteredQuadraticDensity N K A
         ∂(concreteScaledCOECornerLaw
-          LogdetLean.GramHafnian.CurrentPRL.canonicalUnitaryHaarProbabilityFamily
+          LogdetLean.GramHafnian.LocalAnticoncentration.canonicalUnitaryHaarProbabilityFamily
             N K) := by
   simpa using
     concrete_projectiveAveraged_centered_second_derivative_eq_density_indicator_integral
@@ -494,7 +494,7 @@ theorem integral_concreteCenteredQuadraticTraceBracket_eq_zero_dense
     {N K : ℕ} (hN : 1 ≤ N) (h16 : 16 * N ≤ K) :
     (∫ A, concreteCenteredQuadraticTraceBracket N K A
       ∂(concreteScaledCOECornerLaw
-        LogdetLean.GramHafnian.CurrentPRL.canonicalUnitaryHaarProbabilityFamily
+        LogdetLean.GramHafnian.LocalAnticoncentration.canonicalUnitaryHaarProbabilityFamily
           N K)) = 0 := by
   have hNK : N ≤ K := by omega
   exact integral_concreteCenteredQuadraticTraceBracket_eq_zero_of_eventPath

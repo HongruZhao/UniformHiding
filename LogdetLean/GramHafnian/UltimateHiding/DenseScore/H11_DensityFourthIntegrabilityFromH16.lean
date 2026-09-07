@@ -25,7 +25,7 @@ namespace LogdetLean.GramHafnian.UltimateHiding.DenseScore
 noncomputable section
 
 open LogdetLean.GramHafnian.UltimateHiding.Dense
-open LogdetLean.GramHafnian.CurrentPRL
+open LogdetLean.GramHafnian.LocalAnticoncentration
 
 private theorem h11_h16_jet_at_zero_score_global
     {N K : ℕ} (hN : 1 ≤ N) (hK : 0 < K)

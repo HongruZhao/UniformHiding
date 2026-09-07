@@ -209,7 +209,7 @@ dimension `m`, with row dimension `N` and retained-column count `K`.
 
 This is the paper's `mu_{m,K}`. -/
 def concreteHaarAmbientLaw
-    (H : CurrentPRL.UnitaryHaarProbabilityFamily)
+    (H : LocalAnticoncentration.UnitaryHaarProbabilityFamily)
     (N K m : ℕ) : Measure (Matrix (Fin N) (Fin N) ℂ) :=
   normalizedHaarTransposeGramLaw H m N K
 
@@ -218,7 +218,7 @@ beta/sphere kernel with Haar deletion.  It is deliberately a proposition,
 not an axiom: at every `m >= K`, applying the concrete congruence kernel to
 `mu_{m,K}` must give `mu_{m+1,K}`. -/
 def ConcreteHaarOneColumnRecursion
-    (H : CurrentPRL.UnitaryHaarProbabilityFamily)
+    (H : LocalAnticoncentration.UnitaryHaarProbabilityFamily)
     (N K : ℕ) : Prop :=
   AmbientOneColumnRecursion
     (concreteHaarAmbientLaw H N K)
@@ -228,7 +228,7 @@ def ConcreteHaarOneColumnRecursion
 /-- The concrete Haar recursion is exactly an instance of the generic ambient
 recursion interface, with no arbitrary direction law or update remaining. -/
 theorem ConcreteHaarOneColumnRecursion.toAmbient
-    {H : CurrentPRL.UnitaryHaarProbabilityFamily} {N K : ℕ}
+    {H : LocalAnticoncentration.UnitaryHaarProbabilityFamily} {N K : ℕ}
     (hrec : ConcreteHaarOneColumnRecursion H N K) :
     AmbientOneColumnRecursion
       (concreteHaarAmbientLaw H N K)
@@ -238,7 +238,7 @@ theorem ConcreteHaarOneColumnRecursion.toAmbient
 
 /-- One explicit step of the concrete Haar deletion recursion. -/
 theorem ConcreteHaarOneColumnRecursion.step_eq
-    {H : CurrentPRL.UnitaryHaarProbabilityFamily} {N K m : ℕ}
+    {H : LocalAnticoncentration.UnitaryHaarProbabilityFamily} {N K m : ℕ}
     (hrec : ConcreteHaarOneColumnRecursion H N K) (hm : K ≤ m) :
     concreteHaarAmbientLaw H N K (m + 1) =
       concreteOneColumnMatrixKernel m N ∘ₘ
@@ -247,7 +247,7 @@ theorem ConcreteHaarOneColumnRecursion.step_eq
 
 /-- Two explicit steps of the concrete Haar deletion recursion. -/
 theorem ConcreteHaarOneColumnRecursion.two_steps
-    {H : CurrentPRL.UnitaryHaarProbabilityFamily} {N K m : ℕ}
+    {H : LocalAnticoncentration.UnitaryHaarProbabilityFamily} {N K m : ℕ}
     (hrec : ConcreteHaarOneColumnRecursion H N K) (hm : K ≤ m) :
     concreteHaarAmbientLaw H N K (m + 2) =
       (concreteOneColumnMatrixKernel (m + 1) N ∘ₖ

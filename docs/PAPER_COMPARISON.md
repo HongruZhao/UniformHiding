@@ -16,7 +16,7 @@ The theorem numbers refer to the revised manuscript, *Uniform Hiding and Two Rou
 
 ## Route 1 model correspondence
 
-Lean uses `r` for the squeezing parameter $`\xi`$. Its `n` is the pair count, so the photon count is $`N=2n`$. The companion describes a $`K\times2n`$ column matrix $`X`$; the hiding paper writes $`G=X^T`$, giving $`X^TX=GG^T`$. The literal Gaussian pushforward identification is proved in `PRLCommonDefinitions.lean`.
+Lean uses `r` for the squeezing parameter $`\xi`$. Its `n` is the pair count, so the photon count is $`N=2n`$. The companion describes a $`K\times2n`$ column matrix $`X`$; the hiding paper writes $`G=X^T`$, giving $`X^TX=GG^T`$. The literal Gaussian pushforward identification is proved in `GBSDefinitions.lean`.
 
 Lean uses the hafnian of $`M U_{2n,K}U_{2n,K}^T`$, hence the amplitude equals $`M^n`$ times the unscaled hafnian. Its physical probability multiplies the squared norm by the optical factor divided by $`M^{2n}`$. The Gaussian reference probability is the same factor times $`\sigma_{K,n}^2`$. The exact coefficient `paperBkn K n` comes from the companion's public specification.
 
@@ -39,7 +39,7 @@ The revised Appendix A (7 September 2026, pages 12–18) documents what the form
 
 [The expanded A2 justification](A2_SOURCE_DERIVATION.md) retains the full argument from FitzGerald–Warren's unnumbered Jacobian after Eq. (70) and An–Wang–Yan's Theorem 4.2 and following remark. It checks the positive ordered chamber, diagonal sign stabilizer, one-sheeted covering, differential, exceptional null set, coordinate-volume factor, chamber factor, and arbitrary measurable tests. In the notation dictionary, the integration theorem's subgroup K is explicitly distinguished from the paper's ambient dimension.
 
-These source-to-axiom arguments explain why the imported mathematical statements are justified. They are not presented as separate proofs checked in Lean. The four declarations and the theorem endpoints are unchanged by this documentation revision.
+These source-to-axiom arguments explain why the imported mathematical statements are justified. They are not presented as separate proofs checked in Lean. The naming revision preserves the mathematical contracts of the four axioms and the public theorem endpoints under the recorded identifier substitutions.
 
 ## Scope beyond the selected endpoints
 

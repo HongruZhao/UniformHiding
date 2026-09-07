@@ -17,7 +17,7 @@ namespace LogdetLean.GramHafnian.UltimateHiding.Sparse
 
 noncomputable section
 
-open CurrentPRL
+open LocalAnticoncentration
 
 /-- For a fixed Hermitian matrix, `I - A/M` is positive semidefinite for all
 sufficiently large natural `M`. -/

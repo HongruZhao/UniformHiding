@@ -15,7 +15,7 @@ namespace LogdetLean.GramHafnian.UltimateHiding.Dense
 
 noncomputable section
 
-open CurrentPRL
+open LocalAnticoncentration
 
 theorem concreteHaarAmbientLaw_isProbability_internal
     (H : UnitaryHaarProbabilityFamily) {N K m : ℕ}

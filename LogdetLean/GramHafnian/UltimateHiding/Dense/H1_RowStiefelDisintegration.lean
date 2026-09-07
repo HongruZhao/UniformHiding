@@ -9,7 +9,7 @@ namespace LogdetLean.GramHafnian.UltimateHiding.Dense
 
 noncomputable section
 
-open LogdetLean.GramHafnian.CurrentPRL
+open LogdetLean.GramHafnian.LocalAnticoncentration
 
 theorem complexRowStiefel_scaledLastColumnDisintegration_external
     (N m : ℕ) (hN : 1 ≤ N) (hNm : N ≤ m) :

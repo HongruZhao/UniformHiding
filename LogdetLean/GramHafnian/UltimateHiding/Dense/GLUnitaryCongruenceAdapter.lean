@@ -269,7 +269,7 @@ theorem measurable_unitaryTransposeCongruenceMap (N : ℕ) :
 inclusion into `GL_N(C)`. -/
 def unitaryHaarGLMeasure (N : ℕ) : Measure (ComplexMatrixGL N) :=
   Measure.map (unitaryToComplexMatrixGL N)
-    (CurrentPRL.unitaryHaarProbabilityMeasure N)
+    (LocalAnticoncentration.unitaryHaarProbabilityMeasure N)
 
 instance unitaryHaarGLMeasure_isProbability (N : ℕ) :
     IsProbabilityMeasure (unitaryHaarGLMeasure N) := by
@@ -280,19 +280,19 @@ instance unitaryHaarGLMeasure_isProbability (N : ℕ) :
 theorem map_unitaryHaarProbabilityMeasure_mul_right_internal
     (N : ℕ) (V : Matrix.unitaryGroup (Fin N) ℂ) :
     Measure.map (fun U : Matrix.unitaryGroup (Fin N) ℂ ↦ U * V)
-        (CurrentPRL.unitaryHaarProbabilityMeasure N) =
-      CurrentPRL.unitaryHaarProbabilityMeasure N := by
+        (LocalAnticoncentration.unitaryHaarProbabilityMeasure N) =
+      LocalAnticoncentration.unitaryHaarProbabilityMeasure N := by
   let mu : Measure (Matrix.unitaryGroup (Fin N) ℂ) :=
-    CurrentPRL.unitaryHaarProbabilityMeasure N
+    LocalAnticoncentration.unitaryHaarProbabilityMeasure N
   let nu : Measure (Matrix.unitaryGroup (Fin N) ℂ) :=
     Measure.map (fun U ↦ U * V) mu
   letI : CompactSpace (Matrix.unitaryGroup (Fin N) ℂ) :=
     isCompact_iff_compactSpace.mp
-      (CurrentPRL.unitaryGroup_carrier_isCompact N)
+      (LocalAnticoncentration.unitaryGroup_carrier_isCompact N)
   letI : IsProbabilityMeasure mu :=
-    CurrentPRL.unitaryHaarProbabilityMeasure_isProbability N
+    LocalAnticoncentration.unitaryHaarProbabilityMeasure_isProbability N
   letI : Measure.IsHaarMeasure mu :=
-    CurrentPRL.canonicalUnitaryHaarProbabilityFamily.isHaar N
+    LocalAnticoncentration.canonicalUnitaryHaarProbabilityFamily.isHaar N
   haveI : IsProbabilityMeasure nu :=
     Measure.isProbabilityMeasure_map
       (measurable_mul_const V).aemeasurable
@@ -307,19 +307,19 @@ theorem map_unitaryHaarProbabilityMeasure_mul_right_internal
 is derived from right invariance and uniqueness of normalized Haar measure. -/
 theorem map_unitaryHaarProbabilityMeasure_inv_internal (N : ℕ) :
     Measure.map (fun U : Matrix.unitaryGroup (Fin N) ℂ ↦ U⁻¹)
-        (CurrentPRL.unitaryHaarProbabilityMeasure N) =
-      CurrentPRL.unitaryHaarProbabilityMeasure N := by
+        (LocalAnticoncentration.unitaryHaarProbabilityMeasure N) =
+      LocalAnticoncentration.unitaryHaarProbabilityMeasure N := by
   let mu : Measure (Matrix.unitaryGroup (Fin N) ℂ) :=
-    CurrentPRL.unitaryHaarProbabilityMeasure N
+    LocalAnticoncentration.unitaryHaarProbabilityMeasure N
   let nu : Measure (Matrix.unitaryGroup (Fin N) ℂ) :=
     Measure.map Inv.inv mu
   letI : CompactSpace (Matrix.unitaryGroup (Fin N) ℂ) :=
     isCompact_iff_compactSpace.mp
-      (CurrentPRL.unitaryGroup_carrier_isCompact N)
+      (LocalAnticoncentration.unitaryGroup_carrier_isCompact N)
   letI : IsProbabilityMeasure mu :=
-    CurrentPRL.unitaryHaarProbabilityMeasure_isProbability N
+    LocalAnticoncentration.unitaryHaarProbabilityMeasure_isProbability N
   letI : Measure.IsHaarMeasure mu :=
-    CurrentPRL.canonicalUnitaryHaarProbabilityFamily.isHaar N
+    LocalAnticoncentration.canonicalUnitaryHaarProbabilityFamily.isHaar N
   letI : Measure.IsMulRightInvariant mu :=
     ⟨map_unitaryHaarProbabilityMeasure_mul_right_internal N⟩
   haveI : IsProbabilityMeasure nu :=
@@ -342,7 +342,7 @@ theorem map_star_unitaryHaarGLMeasure (N : ℕ) :
         (unitaryHaarGLMeasure N) =
       unitaryHaarGLMeasure N := by
   let emb := unitaryToComplexMatrixGL N
-  let haar := CurrentPRL.unitaryHaarProbabilityMeasure N
+  let haar := LocalAnticoncentration.unitaryHaarProbabilityMeasure N
   have hemb : Measurable emb := measurable_unitaryToComplexMatrixGL N
   have hstar : Measurable (fun g : ComplexMatrixGL N ↦ star g) :=
     measurable_complexMatrixGL_star N
@@ -371,13 +371,13 @@ theorem map_unitaryHaarGLMeasure_mul_left
         (unitaryHaarGLMeasure N) =
       unitaryHaarGLMeasure N := by
   let emb := unitaryToComplexMatrixGL N
-  let haar := CurrentPRL.unitaryHaarProbabilityMeasure N
+  let haar := LocalAnticoncentration.unitaryHaarProbabilityMeasure N
   have hemb : Measurable emb := measurable_unitaryToComplexMatrixGL N
   have hleft :
       Measure.map (fun V : Matrix.unitaryGroup (Fin N) ℂ ↦ U * V) haar =
         haar := by
     letI : Measure.IsHaarMeasure haar :=
-      CurrentPRL.canonicalUnitaryHaarProbabilityFamily.isHaar N
+      LocalAnticoncentration.canonicalUnitaryHaarProbabilityFamily.isHaar N
     exact map_mul_left_eq_self haar U
   calc
     Measure.map (fun g : ComplexMatrixGL N ↦ emb U * g)
@@ -405,7 +405,7 @@ theorem map_unitaryHaarGLMeasure_mul_right
         (unitaryHaarGLMeasure N) =
       unitaryHaarGLMeasure N := by
   let emb := unitaryToComplexMatrixGL N
-  let haar := CurrentPRL.unitaryHaarProbabilityMeasure N
+  let haar := LocalAnticoncentration.unitaryHaarProbabilityMeasure N
   have hemb : Measurable emb := measurable_unitaryToComplexMatrixGL N
   have hright := map_unitaryHaarProbabilityMeasure_mul_right_internal N V
   calc
@@ -689,7 +689,7 @@ theorem IsPointwiseUnitaryCongruenceInvariant.toAveraged
     [IsProbabilityMeasure mu]
     (hmu : IsPointwiseUnitaryCongruenceInvariant N mu) :
     IsUnitaryCongruenceInvariant N mu := by
-  let haar := CurrentPRL.unitaryHaarProbabilityMeasure N
+  let haar := LocalAnticoncentration.unitaryHaarProbabilityMeasure N
   let emb := unitaryToComplexMatrixGL N
   let act : ConcreteMatrixState N × ComplexMatrixGL N →
       ConcreteMatrixState N :=
@@ -734,7 +734,7 @@ theorem IsPointwiseUnitaryCongruenceInvariant.toAveraged
     exact hU
   simp_rw [hsection]
   letI : IsProbabilityMeasure haar :=
-    CurrentPRL.unitaryHaarProbabilityMeasure_isProbability N
+    LocalAnticoncentration.unitaryHaarProbabilityMeasure_isProbability N
   simp
 
 /-- A factor law preserves unitary-congruence-invariant probability laws. -/

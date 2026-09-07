@@ -11,17 +11,17 @@ import LogdetLean.GramHafnian.ShiftedAnticoncentration.Experimental.WickAngularL
 import LogdetLean.GramHafnian.ShiftedAnticoncentration.IndependentFactorShiftPaperEndpoint
 import LogdetLean.GramHafnian.SymmetricGaussianHafnian.FullMatrix
 import LogdetLean.GramHafnian.SymmetricGaussianLimit.PaperEndpoints
-import LogdetLean.GramHafnian.CurrentPRL.CoefficientPaperEndpoints
-import LogdetLean.GramHafnian.CurrentPRL.ConditionalOnVariance
-import LogdetLean.GramHafnian.CurrentPRL.RegularizedWishart
-import LogdetLean.GramHafnian.CurrentPRL.DensitySupNorm
-import LogdetLean.GramHafnian.CurrentPRL.LocalSharpness
-import LogdetLean.GramHafnian.PRXArticle.GenericPreservedCoordinateInverseVariance
+import LogdetLean.GramHafnian.LocalAnticoncentration.CoefficientPaperEndpoints
+import LogdetLean.GramHafnian.LocalAnticoncentration.ConditionalOnVariance
+import LogdetLean.GramHafnian.LocalAnticoncentration.RegularizedWishart
+import LogdetLean.GramHafnian.LocalAnticoncentration.DensitySupNorm
+import LogdetLean.GramHafnian.LocalAnticoncentration.LocalSharpness
+import LogdetLean.GramHafnian.MatrixLawEndpoints.GenericPreservedCoordinateInverseVariance
 import Mathlib.MeasureTheory.VectorMeasure.WithDensity
 import Mathlib.Tactic
 
 /-!
-# Paper-facing endpoints for PRX Quantum anticoncentration
+# Paper-facing endpoints for matrix-law anticoncentration
 
 This module contains only Gaussian Gram-hafnian anticoncentration material.
 In particular, its import closure contains no uniformly-hiding module.  It
@@ -34,13 +34,13 @@ finite-dimensional Gaussian cutoff integration-by-parts engine.
 open MeasureTheory ProbabilityTheory
 open scoped BigOperators ComplexOrder MatrixOrder ENNReal
 
-namespace LogdetLean.GramHafnian.ThreePaper.PRXQAnticoncentration.PaperEndpoints
+namespace LogdetLean.GramHafnian.ThreePaper.GaussianAnticoncentration.PaperEndpoints
 
 noncomputable section
 
 open Wishart
-open CurrentPRL
-open PRXArticle
+open LocalAnticoncentration
+open MatrixLawEndpoints
 open RadialLowerBoundAlt
 open SymmetricGaussianHafnian
 open SymmetricGaussianLimit
@@ -883,13 +883,13 @@ theorem result_cor_raw_small_ball
 density modules. -/
 def result_cor_exact_local_power :=
   And.intro (@map_gramHafnianObservable_eq_withDensity_real)
-    (And.intro (@continuous_currentPRLGramHafnianDensity)
-      (And.intro (@currentPRLGramHafnianDensity_pos)
-        (And.intro (@currentPRLGramHafnianDensity_eq_of_norm_eq)
-          (And.intro (@currentPRLGramHafnianDensity_antitone_norm)
-            (And.intro (@currentPRLGramHafnianDensitySupNorm_eq_at_zero)
+    (And.intro (@continuous_localAnticoncentrationGramHafnianDensity)
+      (And.intro (@localAnticoncentrationGramHafnianDensity_pos)
+        (And.intro (@localAnticoncentrationGramHafnianDensity_eq_of_norm_eq)
+          (And.intro (@localAnticoncentrationGramHafnianDensity_antitone_norm)
+            (And.intro (@localAnticoncentrationGramHafnianDensitySupNorm_eq_at_zero)
               (And.intro
-                (@pi_sigma_sq_mul_currentPRLGramHafnianDensitySupNorm_le)
+                (@pi_sigma_sq_mul_localAnticoncentrationGramHafnianDensitySupNorm_le)
                 (@gramHafnian_normalized_shrinkingDisk_limit_density)))))))
 
 /-! ## Radial contribution to the zero-center coefficient -/
@@ -929,9 +929,9 @@ paper-range bundle, every analytic conclusion is parameterized directly by
 almost-sure positivity and integrability of the inverse conditional variance. -/
 def result_cor_exact_local_power_of_inverse :=
   And.intro (@map_gramHafnianObservable_eq_withDensity_real_of_inverse)
-    (And.intro (@continuous_currentPRLGramHafnianDensity_of_inverse)
-      (And.intro (@currentPRLGramHafnianDensity_pos_of_inverse)
-        (And.intro (@currentPRLGramHafnianDensity_antitone_norm_of_inverse)
+    (And.intro (@continuous_localAnticoncentrationGramHafnianDensity_of_inverse)
+      (And.intro (@localAnticoncentrationGramHafnianDensity_pos_of_inverse)
+        (And.intro (@localAnticoncentrationGramHafnianDensity_antitone_norm_of_inverse)
           (And.intro (@gramHafnian_normalized_shrinkingDisk_limit_density_of_inverse)
             (@gramHafnian_normalized_shrinkingDisk_limit_coefficient_pos_of_inverse)))))
 
@@ -988,11 +988,11 @@ theorem result_thm_wick_normalized_density_at_zero_obstruction
         circularGaussianVector k)) :
     Real.exp ((n : ℝ) / 500) ≤
         Real.pi * gramHafnianSigma k n ^ 2 *
-          currentPRLGramHafnianDensity (k := k)
+          localAnticoncentrationGramHafnianDensity (k := k)
             (one_le_of_thousand_le_for_density hn) 0 ∧
       Real.exp ((n : ℝ) / 500) /
           (Real.pi * gramHafnianSigma k n ^ 2) ≤
-        currentPRLGramHafnianDensity (k := k)
+        localAnticoncentrationGramHafnianDensity (k := k)
           (one_le_of_thousand_le_for_density hn) 0 := by
   let hn1 : 1 ≤ n := by omega
   let ν : Measure (CofactorIdx n hn1 → (Fin k → ℂ)) :=
@@ -1004,9 +1004,9 @@ theorem result_thm_wick_normalized_density_at_zero_obstruction
       WickAngularLowerBound.exp_n_div_500_le_literalLambda_of_inverse
         hn hklo hkhi hVpos hInv
   have hzero :
-      Real.pi * currentPRLGramHafnianDensity (k := k) hn1 0 = I := by
-    rw [pi_mul_currentPRLGramHafnianDensity_eq_localSharpnessCoefficient]
-    dsimp [currentPRLLocalSharpnessCoefficient, I, ν]
+      Real.pi * localAnticoncentrationGramHafnianDensity (k := k) hn1 0 = I := by
+    rw [pi_mul_localAnticoncentrationGramHafnianDensity_eq_localSharpnessCoefficient]
+    dsimp [localAnticoncentrationLocalSharpnessCoefficient, I, ν]
     apply integral_congr_ae
     filter_upwards [] with A
     simp
@@ -1014,21 +1014,21 @@ theorem result_thm_wick_normalized_density_at_zero_obstruction
     gramHafnianSigma_sq k n (by omega)
   have hnormalized : Real.exp ((n : ℝ) / 500) ≤
       Real.pi * gramHafnianSigma k n ^ 2 *
-        currentPRLGramHafnianDensity (k := k) hn1 0 := by
+        localAnticoncentrationGramHafnianDensity (k := k) hn1 0 := by
     calc
       Real.exp ((n : ℝ) / 500) ≤ closedFirstMoment k n * I := hLambda
       _ = gramHafnianSigma k n ^ 2 *
-            (Real.pi * currentPRLGramHafnianDensity (k := k) hn1 0) := by
+            (Real.pi * localAnticoncentrationGramHafnianDensity (k := k) hn1 0) := by
         rw [hsigma, hzero]
       _ = Real.pi * gramHafnianSigma k n ^ 2 *
-            currentPRLGramHafnianDensity (k := k) hn1 0 := by ring
+            localAnticoncentrationGramHafnianDensity (k := k) hn1 0 := by ring
   have hden : 0 < Real.pi * gramHafnianSigma k n ^ 2 :=
     mul_pos Real.pi_pos (sq_pos_of_pos (gramHafnianSigma_pos k n (by omega)))
   refine ⟨hnormalized, (div_le_iff₀ hden).2 ?_⟩
   calc
     Real.exp ((n : ℝ) / 500) ≤ Real.pi * gramHafnianSigma k n ^ 2 *
-        currentPRLGramHafnianDensity (k := k) hn1 0 := hnormalized
-    _ = currentPRLGramHafnianDensity (k := k) hn1 0 *
+        localAnticoncentrationGramHafnianDensity (k := k) hn1 0 := hnormalized
+    _ = localAnticoncentrationGramHafnianDensity (k := k) hn1 0 *
         (Real.pi * gramHafnianSigma k n ^ 2) := by ring
 
 /-- Complete fixed parameter formalization of Theorem V.4.  It contains the
@@ -1062,11 +1062,11 @@ theorem result_thm_wick_angular_obstruction_complete
                 circularGaussianVector k)),
             Real.exp ((n : ℝ) / 500) ≤
                 Real.pi * gramHafnianSigma k n ^ 2 *
-                  currentPRLGramHafnianDensity (k := k)
+                  localAnticoncentrationGramHafnianDensity (k := k)
                     (one_le_of_thousand_le_for_density hn1000) 0 ∧
               Real.exp ((n : ℝ) / 500) /
                   (Real.pi * gramHafnianSigma k n ^ 2) ≤
-                currentPRLGramHafnianDensity (k := k)
+                localAnticoncentrationGramHafnianDensity (k := k)
                   (one_le_of_thousand_le_for_density hn1000) 0 := by
   refine ⟨WickAngularLowerBound.wickScalarRatioQ_cast_eq_wickAngularRatio
       k n hk, ?_, ?_⟩
@@ -1413,4 +1413,4 @@ def eq_cutoff_gaussian_ibp := @integral_halfGaussianPi_divergence
 
 end
 
-end LogdetLean.GramHafnian.ThreePaper.PRXQAnticoncentration.PaperEndpoints
+end LogdetLean.GramHafnian.ThreePaper.GaussianAnticoncentration.PaperEndpoints

@@ -24,7 +24,7 @@ namespace LogdetLean.GramHafnian.UltimateHiding.DenseScore
 noncomputable section
 
 open LogdetLean.GramHafnian.UltimateHiding.Dense
-open LogdetLean.GramHafnian.CurrentPRL
+open LogdetLean.GramHafnian.LocalAnticoncentration
 
 /-- Exact five-monomial remainder budget from the optimized lower traces. -/
 def optimizedRawTraceThreeRemainderConstant : ℝ :=
@@ -435,7 +435,7 @@ noncomputable section
 
 open LogdetLean.GramHafnian.UltimateHiding.Dense
 open LogdetLean.GramHafnian.UltimateHiding.DenseScore
-open LogdetLean.GramHafnian.CurrentPRL
+open LogdetLean.GramHafnian.LocalAnticoncentration
 
 /-- Event-path third derivative at the origin with the optimized cubic
 normalization constant. -/

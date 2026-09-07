@@ -21,7 +21,7 @@ namespace LogdetLean.GramHafnian.UltimateHiding.Sparse
 
 noncomputable section
 
-open CurrentPRL
+open LocalAnticoncentration
 
 /-! ## Appending one block-column -/
 
@@ -296,7 +296,7 @@ theorem map_haarCornerDefectSqrtMeasurableEquiv_withDensity
           ENNReal.ofReal |((haarCornerLeftDefect A).det.re)⁻¹| *
             rho ((haarCornerDefectSqrtMeasurableEquiv A hA).symm x)) := by
   let e := haarCornerDefectSqrtMeasurableEquiv A hA
-  rw [map_measurableEquiv_withDensity_currentPRL e
+  rw [map_measurableEquiv_withDensity_localAnticoncentration e
     (complexColumnLebesgueVolume K) rho hrho]
   rw [map_haarCornerDefectSqrtMeasurableEquiv_volume A hA,
     withDensity_smul_measure,

@@ -30,7 +30,7 @@ private theorem centeredScoreProductLaw_isFinite
     {N K : ℕ} (hN : 1 ≤ N) (hNK : N ≤ K) :
     IsFiniteMeasure (concreteCenteredScoreProductLaw N K) := by
   let mu := concreteScaledCOECornerLaw
-    LogdetLean.GramHafnian.CurrentPRL.canonicalUnitaryHaarProbabilityFamily N K
+    LogdetLean.GramHafnian.LocalAnticoncentration.canonicalUnitaryHaarProbabilityFamily N K
   let sphere := complexUnitSphereProbabilityMeasure N
   letI : IsProbabilityMeasure mu :=
     canonicalScaledCOECornerLaw_isProbability hNK
@@ -235,14 +235,14 @@ theorem coeCorner_centeredDensityScore_one_fubini
     (∫ v : ComplexUnitSphere N,
       ∫ A, event.indicator (concreteCenteredDensityScore 1 N K v) A
         ∂(concreteScaledCOECornerLaw
-          LogdetLean.GramHafnian.CurrentPRL.canonicalUnitaryHaarProbabilityFamily
+          LogdetLean.GramHafnian.LocalAnticoncentration.canonicalUnitaryHaarProbabilityFamily
             N K)
       ∂(complexUnitSphereProbabilityMeasure N)) =
     ∫ A, event.indicator (fun A ↦
       ∫ v : ComplexUnitSphere N, concreteCenteredDensityScore 1 N K v A
         ∂(complexUnitSphereProbabilityMeasure N)) A
       ∂(concreteScaledCOECornerLaw
-        LogdetLean.GramHafnian.CurrentPRL.canonicalUnitaryHaarProbabilityFamily
+        LogdetLean.GramHafnian.LocalAnticoncentration.canonicalUnitaryHaarProbabilityFamily
           N K) := by
   exact coeCorner_centeredDensityScore_fubini_of_memLp hN (by omega)
     event hevent (by
@@ -256,14 +256,14 @@ theorem coeCorner_centeredDensityScore_two_fubini
     (∫ v : ComplexUnitSphere N,
       ∫ A, event.indicator (concreteCenteredDensityScore 2 N K v) A
         ∂(concreteScaledCOECornerLaw
-          LogdetLean.GramHafnian.CurrentPRL.canonicalUnitaryHaarProbabilityFamily
+          LogdetLean.GramHafnian.LocalAnticoncentration.canonicalUnitaryHaarProbabilityFamily
             N K)
       ∂(complexUnitSphereProbabilityMeasure N)) =
     ∫ A, event.indicator (fun A ↦
       ∫ v : ComplexUnitSphere N, concreteCenteredDensityScore 2 N K v A
         ∂(complexUnitSphereProbabilityMeasure N)) A
       ∂(concreteScaledCOECornerLaw
-        LogdetLean.GramHafnian.CurrentPRL.canonicalUnitaryHaarProbabilityFamily
+        LogdetLean.GramHafnian.LocalAnticoncentration.canonicalUnitaryHaarProbabilityFamily
           N K) := by
   exact coeCorner_centeredDensityScore_fubini_of_memLp hN (by omega)
     event hevent (by

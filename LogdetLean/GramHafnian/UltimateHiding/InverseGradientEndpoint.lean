@@ -14,7 +14,7 @@ need any module from the anticoncentration development.
 
 open scoped BigOperators
 
-namespace LogdetLean.GramHafnian.PRXArticle
+namespace LogdetLean.GramHafnian.MatrixLawEndpoints
 
 noncomputable section
 
@@ -127,4 +127,4 @@ theorem eq_hide_inverse_gradient
 
 end
 
-end LogdetLean.GramHafnian.PRXArticle
+end LogdetLean.GramHafnian.MatrixLawEndpoints

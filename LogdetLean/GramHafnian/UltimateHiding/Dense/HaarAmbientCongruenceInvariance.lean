@@ -23,11 +23,11 @@ namespace LogdetLean.GramHafnian.UltimateHiding.Dense
 
 noncomputable section
 
-open CurrentPRL
+open LocalAnticoncentration
 
 /-- Left multiplication on the unitary subtype is measurable for its induced
 matrix measurable structure.  This elementary adapter is local to the hiding
-release, so importing the historical PRL row-symmetry aggregate is unnecessary. -/
+release, so importing the historical manuscript row-symmetry aggregate is unnecessary. -/
 theorem measurable_unitary_mul_left_hiding {M : ℕ}
     (P : Matrix.unitaryGroup (Fin M) ℂ) :
     Measurable (fun U : Matrix.unitaryGroup (Fin M) ℂ => P * U) := by
@@ -178,7 +178,7 @@ theorem measurable_normalizedScaledHaarTransposeGramMatrix
 Haar transpose-Gram corner law.  It is stated for an arbitrary normalized
 Haar family, hence applies in particular to the canonical family. -/
 theorem concreteHaarAmbientLaw_map_unitaryCongruence
-    (H : CurrentPRL.UnitaryHaarProbabilityFamily)
+    (H : LocalAnticoncentration.UnitaryHaarProbabilityFamily)
     {N K m : ℕ} (hNm : N ≤ m) (hKm : K ≤ m)
     (U : Matrix.unitaryGroup (Fin N) ℂ) :
     Measure.map (fun A : ConcreteMatrixState N ↦

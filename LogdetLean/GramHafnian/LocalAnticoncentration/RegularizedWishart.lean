@@ -1,7 +1,7 @@
 import LogdetLean.GramHafnian.ShiftedAnticoncentration.Wishart.LiteralWishartStep
 
 /-!
-# The regularized Wishart inequality in the current PRL
+# The regularized Wishart inequality in the current manuscript
 
 This module exposes the bounded cutoff inequality printed as Eq. (22) in
 the End Matter of ``Quadratic Small Ball Anticoncentration for Gaussian Gram
@@ -16,14 +16,14 @@ comparison.
 
 open MeasureTheory
 
-namespace LogdetLean.GramHafnian.CurrentPRL
+namespace LogdetLean.GramHafnian.LocalAnticoncentration
 
 noncomputable section
 
 open LogdetLean.GramHafnian
 open LogdetLean.GramHafnian.Wishart
 
-/-- The exact regularized score identity behind PRL Eq. (22), stated on the
+/-- The exact regularized score identity behind manuscript Eq. (22), stated on the
 literal past-column probability space.  The two integrability statements are
 included because they are part of the cutoff argument, not implicit
 side conditions. -/
@@ -171,7 +171,7 @@ theorem eq22_regularized_wishart_score_data
   exact literal_regularized_score_data_of_realified hr δ
     (((k : ℝ) - 4 * r + 1)⁻¹) hreal.1 hreal.2.1 hreal.2.2
 
-/-- PRL Eq. (22): for every positive cutoff, the exact circular Gaussian
+/-- manuscript Eq. (22): for every positive cutoff, the exact circular Gaussian
 past-column expectation obeys the regularized Wishart comparison.  The
 right integrand is written with the grouped denominator used in the paper. -/
 theorem eq22_regularized_wishart_inequality
@@ -243,4 +243,4 @@ theorem eq22_regularized_wishart_inequality
 
 end
 
-end LogdetLean.GramHafnian.CurrentPRL
+end LogdetLean.GramHafnian.LocalAnticoncentration

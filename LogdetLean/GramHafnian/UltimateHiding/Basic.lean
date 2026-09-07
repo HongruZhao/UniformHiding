@@ -1,4 +1,4 @@
-import LogdetLean.GramHafnian.CurrentPRL.TotalVariation
+import LogdetLean.GramHafnian.LocalAnticoncentration.TotalVariation
 import LogdetLean.GramHafnian.UltimateHiding.HaarGaussianMatrixLaws
 
 /-!
@@ -6,7 +6,7 @@ import LogdetLean.GramHafnian.UltimateHiding.HaarGaussianMatrixLaws
 
 This file fixes the exact finite theorem that the new proof must establish.
 It deliberately reuses the literal Haar and Gaussian transpose Gram laws from
-`CurrentPRL`.  No scientific claim is assumed here.
+`LocalAnticoncentration`.  No scientific claim is assumed here.
 -/
 
 open MeasureTheory
@@ -15,7 +15,7 @@ namespace LogdetLean.GramHafnian.UltimateHiding
 
 noncomputable section
 
-open CurrentPRL
+open LocalAnticoncentration
 
 /-- The proposed hiding rate, independent of the squeezing rank `K`. -/
 def ultimateHidingRate (M N : ℕ) : ℝ :=

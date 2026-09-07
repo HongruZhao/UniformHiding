@@ -19,7 +19,7 @@ namespace LogdetLean.GramHafnian.UltimateHiding.Sparse
 noncomputable section
 
 open LogdetLean.GramHafnian.UltimateHiding.Dense
-open LogdetLean.GramHafnian.CurrentPRL
+open LogdetLean.GramHafnian.LocalAnticoncentration
 
 /-- Splitting the ambient columns of a unitary after `L` columns identifies
 the row Gram of the remaining top block with `I-AA*`. -/

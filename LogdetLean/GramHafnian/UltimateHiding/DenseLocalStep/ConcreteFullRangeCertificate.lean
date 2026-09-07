@@ -17,7 +17,7 @@ namespace LogdetLean.GramHafnian.UltimateHiding.DenseLocalStep
 
 noncomputable section
 
-open CurrentPRL
+open LocalAnticoncentration
 
 /-- A dense local-step certificate remains valid when its numerical
 coefficient is enlarged. -/

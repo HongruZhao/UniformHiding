@@ -1,6 +1,6 @@
 import Mathlib.MeasureTheory.Integral.DominatedConvergence
 import Mathlib.MeasureTheory.Integral.Bochner.Set
-import LogdetLean.GramHafnian.CurrentPRL.TotalVariation
+import LogdetLean.GramHafnian.LocalAnticoncentration.TotalVariation
 
 /-!
 # Scheffe convergence for real probability densities
@@ -109,7 +109,7 @@ theorem probabilityTotalVariationLE_withDensity_ofReal
     (mu : Measure alpha) (f g : alpha -> Real)
     (hf : Integrable f mu) (hg : Integrable g mu)
     (hf_nonneg : forall x, 0 <= f x) (hg_nonneg : forall x, 0 <= g x) :
-    CurrentPRL.probabilityTotalVariationLE
+    LocalAnticoncentration.probabilityTotalVariationLE
       (mu.withDensity (fun x => ENNReal.ofReal (f x)))
       (mu.withDensity (fun x => ENNReal.ofReal (g x)))
       (∫ x, |f x - g x| ∂mu) := by
@@ -133,7 +133,7 @@ theorem eventually_probabilityTotalVariationLE_withDensity_ofReal
     (hlim : forall x, Tendsto (fun n => f n x) atTop (nhds (g x)))
     {epsilon : Real} (hepsilon : 0 < epsilon) :
     ∀ᶠ n in atTop,
-      CurrentPRL.probabilityTotalVariationLE
+      LocalAnticoncentration.probabilityTotalVariationLE
         (mu.withDensity (fun x => ENNReal.ofReal (f n x)))
         (mu.withDensity (fun x => ENNReal.ofReal (g x))) epsilon := by
   have hL1 := tendsto_integral_abs_sub_zero_of_nonneg_of_integral_eq

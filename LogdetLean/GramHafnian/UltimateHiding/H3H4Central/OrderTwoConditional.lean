@@ -22,7 +22,7 @@ noncomputable section
 open LogdetLean.GramHafnian.UltimateHiding.Dense
 open LogdetLean.GramHafnian.UltimateHiding.DenseLocalStep
 open LogdetLean.GramHafnian.UltimateHiding.DenseScore
-open LogdetLean.GramHafnian.CurrentPRL
+open LogdetLean.GramHafnian.LocalAnticoncentration
 
 /-- Exact H5, retained as a separate upstream premise. -/
 abbrev ExactCanonicalH5OrderTwo (N K : ℕ) : Prop :=

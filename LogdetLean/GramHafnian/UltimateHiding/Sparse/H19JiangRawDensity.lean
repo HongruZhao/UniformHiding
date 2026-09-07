@@ -32,7 +32,7 @@ namespace LogdetLean.GramHafnian.UltimateHiding.Sparse
 
 noncomputable section
 
-open CurrentPRL
+open LocalAnticoncentration
 
 /-! ## General density transport used by the Jiang scaling adapter -/
 
@@ -227,7 +227,7 @@ theorem map_rectangularSqrtScale_complexRectangularLebesgueVolume
     (Matrix (Fin K) (Fin N) ℂ)
     (matrixNormedAddCommGroupH19Jiang K N)
     (matrixNormedSpaceH19Jiang K N)
-    (CurrentPRL.hidingReleaseComplexMatrixMeasurableSpace
+    (LocalAnticoncentration.hidingReleaseComplexMatrixMeasurableSpace
       (Fin K) (Fin N))
     (matrixBorelSpaceH19Jiang K N)
     (by infer_instance)

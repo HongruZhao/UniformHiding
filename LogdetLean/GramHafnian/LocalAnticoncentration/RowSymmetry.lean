@@ -1,9 +1,9 @@
-import LogdetLean.GramHafnian.ThreePaper.PRLCommonDefinitions
+import LogdetLean.GramHafnian.ThreePaper.GBSDefinitions
 import Mathlib.LinearAlgebra.Matrix.Permutation
 import Mathlib.Logic.Equiv.Fintype
 
 /-!
-# Haar row permutation symmetry for the current PRL
+# Haar row permutation symmetry for the current manuscript
 
 This module closes the row symmetry step used for an independently and
 uniformly chosen collision free output pattern.  An arbitrary injective list
@@ -17,7 +17,7 @@ No new external axiom is introduced here.
 
 open MeasureTheory
 
-namespace LogdetLean.GramHafnian.CurrentPRL
+namespace LogdetLean.GramHafnian.LocalAnticoncentration
 
 noncomputable section
 
@@ -238,4 +238,4 @@ theorem uniformSelectedRowsProbability_le_canonicalBound
 
 end
 
-end LogdetLean.GramHafnian.CurrentPRL
+end LogdetLean.GramHafnian.LocalAnticoncentration

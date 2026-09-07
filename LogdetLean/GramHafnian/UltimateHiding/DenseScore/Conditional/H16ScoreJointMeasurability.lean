@@ -20,7 +20,7 @@ namespace LogdetLean.GramHafnian.UltimateHiding.DenseScore
 noncomputable section
 
 open LogdetLean.GramHafnian.UltimateHiding.Dense
-open LogdetLean.GramHafnian.CurrentPRL
+open LogdetLean.GramHafnian.LocalAnticoncentration
 
 theorem h16COECoordinateProbabilityDensity_pos_of_exactH5
     (hH5 : H16ExactH5Family) {N K : ℕ}

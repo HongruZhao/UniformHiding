@@ -27,7 +27,7 @@ namespace LogdetLean.GramHafnian.UltimateHiding.Dense
 
 noncomputable section
 
-open CurrentPRL
+open LocalAnticoncentration
 
 abbrev ConcreteMatrixState (N : ℕ) := Matrix (Fin N) (Fin N) ℂ
 

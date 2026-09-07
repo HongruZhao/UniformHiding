@@ -17,7 +17,7 @@ namespace LogdetLean.GramHafnian.UltimateHiding.DenseScore
 noncomputable section
 
 open LogdetLean.GramHafnian.UltimateHiding.Dense
-open LogdetLean.GramHafnian.CurrentPRL
+open LogdetLean.GramHafnian.LocalAnticoncentration
 
 /-- Optimized dimension-free multiplier for the first central score. -/
 def optimizedCentralScoreOneConstant : ℝ := 18432

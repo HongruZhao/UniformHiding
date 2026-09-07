@@ -18,7 +18,7 @@ noncomputable section
 
 open LogdetLean.GramHafnian.UltimateHiding.Dense
 open LogdetLean.GramHafnian.UltimateHiding.DenseLocalStep
-open LogdetLean.GramHafnian.CurrentPRL
+open LogdetLean.GramHafnian.LocalAnticoncentration
 
 def h13HyperSharpRelaxedProjectiveEnvelopeConstant : ℝ :=
   16 * h14HyperSharpProjectiveEnvelopeConstant

@@ -27,7 +27,7 @@ namespace LogdetLean.GramHafnian.UltimateHiding.DenseScore
 noncomputable section
 
 open LogdetLean.GramHafnian.UltimateHiding.Dense
-open LogdetLean.GramHafnian.CurrentPRL
+open LogdetLean.GramHafnian.LocalAnticoncentration
 
 private abbrev h14ProjectiveCancellationMatrixLaw (N K : ℕ) :
     Measure (ConcreteMatrixState N) :=

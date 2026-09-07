@@ -28,7 +28,7 @@ set_option maxHeartbeats 3600000
 set_option maxRecDepth 100000
 
 open LogdetLean.GramHafnian.UltimateHiding.Dense
-open LogdetLean.GramHafnian.CurrentPRL
+open LogdetLean.GramHafnian.LocalAnticoncentration
 open U08
 
 def exactVarianceCenteredTraceOneL2Constant : ℝ := 29 / 12
@@ -616,7 +616,7 @@ noncomputable section
 
 open LogdetLean.GramHafnian.UltimateHiding.Dense
 open LogdetLean.GramHafnian.UltimateHiding.DenseScore
-open LogdetLean.GramHafnian.CurrentPRL
+open LogdetLean.GramHafnian.LocalAnticoncentration
 
 theorem abs_iteratedDeriv_one_concreteBaseCentralEventPath_le_exactVariance
     {N K : ℕ} (hN : 1 ≤ N) (hdense : 16 * N ≤ K)

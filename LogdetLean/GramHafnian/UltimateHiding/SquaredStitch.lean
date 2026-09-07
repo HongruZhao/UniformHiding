@@ -14,7 +14,7 @@ namespace LogdetLean.GramHafnian.UltimateHiding
 
 noncomputable section
 
-open CurrentPRL
+open LocalAnticoncentration
 
 /-- Nontrivial large-ambient dense branch at the sharpened rate. -/
 def LargeAmbientDenseSquaredBranchAt (C : ℝ) (kappa : ℕ) : Prop :=

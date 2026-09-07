@@ -3,7 +3,7 @@ import LogdetLean.GramHafnian.ThreePaper.TwoMethodComparison
 /-!
 # Fair two-route comparison at one absolute threshold
 
-This module isolates the algebra needed to compare the two PRL routes at the
+This module isolates the algebra needed to compare the two manuscript routes at the
 same physical additive threshold `tau`.  The common Route-1 normalized
 threshold is
 
@@ -30,7 +30,7 @@ namespace LogdetLean.GramHafnian.ThreePaper.FairAbsoluteThresholdComparison
 noncomputable section
 
 open MeasureTheory
-open CurrentPRL PRXQUniformHiding UltimateHiding TwoMethodComparison
+open LocalAnticoncentration UniformMatrixHiding UltimateHiding TwoMethodComparison
 
 /-! ## Absolute-threshold additive-to-relative transfer -/
 

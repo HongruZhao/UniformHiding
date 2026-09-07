@@ -1,6 +1,6 @@
 import LogdetLean.GramHafnian.UltimateHiding.UniformlyHidingA1A4Only
 import LogdetLean.GramHafnian.UltimateHiding.SquaredNormalized
-import LogdetLean.GramHafnian.PRXArticle.EquationEndpoints
+import LogdetLean.GramHafnian.MatrixLawEndpoints.EquationEndpoints
 import LogdetLean.GramHafnian.Hafnian
 import LogdetLean.GramHafnian.ThreePaper.DisjointGaussianRows
 import LogdetLean.GramHafnian.ThreePaper.FiniteMixtureTV
@@ -9,7 +9,7 @@ import LogdetLean.GramHafnian.ThreePaper.OverlapGraphConcentration
 import Mathlib.Probability.Moments.SubGaussian
 
 /-!
-# PRX Quantum endpoint: uniform transpose-Gram hiding
+# matrix-law endpoint: uniform transpose-Gram hiding
 
 This is the public import surface for the hiding Article.  Its scientific
 closure is exactly A1, A2', A3, and A4.  It contains no anticoncentration
@@ -21,11 +21,11 @@ the hiding proof.
 open scoped BigOperators ENNReal ProbabilityTheory unitInterval
 open Filter MeasureTheory ProbabilityTheory Set
 
-namespace LogdetLean.GramHafnian.ThreePaper.PRXQUniformHiding
+namespace LogdetLean.GramHafnian.ThreePaper.UniformMatrixHiding
 
 noncomputable section
 
-open CurrentPRL UltimateHiding
+open LocalAnticoncentration UltimateHiding
 
 /-- The Article's main finite theorem, with the fully evaluated constant. -/
 theorem matrixLaw :
@@ -346,14 +346,14 @@ theorem orderedPatternPanel_preselected_normalizedGram
     (G : Matrix (Fin L) (Fin K) ℂ) :
     orderedPatternPanel rows
         (preselectedPrincipalSubmatrixTuple q L (orderedPatternSets rows)
-          (PRXArticle.normalizedTransposeGramMatrix G)) =
+          (MatrixLawEndpoints.normalizedTransposeGramMatrix G)) =
       fun j ↦ DisjointGaussianRows.orderedNormalizedGram
         (K := K) (rows j) G := by
   ext j i k
   simp [orderedPatternPanel, preselectedPrincipalSubmatrixTuple,
     orderedPatternSets, DisjointGaussianRows.orderedNormalizedGram,
     DisjointGaussianRows.orderedRowBlock,
-    PRXArticle.normalizedTransposeGramMatrix,
+    MatrixLawEndpoints.normalizedTransposeGramMatrix,
     normalizeTransposeGram, rectangularTransposeGram, Matrix.mul_apply]
 
 /-- Joint hiding for several preselected patterns.  Both tuples are obtained
@@ -387,7 +387,7 @@ theorem orderedGaussianPatternPanelLaw
           (K := K) (rows j) G)
         (standardComplexGaussianRectangularMeasure L K) := by
   have hFullMeas : Measurable
-      (PRXArticle.normalizedTransposeGramMatrix :
+      (MatrixLawEndpoints.normalizedTransposeGramMatrix :
         Matrix (Fin L) (Fin K) ℂ → Matrix (Fin L) (Fin L) ℂ) :=
     (measurable_normalizeTransposeGram L K).comp
       (measurable_rectangularTransposeGram L K)
@@ -435,7 +435,7 @@ theorem orderedDisjointGaussianPatternProductLaw
       (K := K) (rows j)).aemeasurable)
     hIndep (normalizedGaussianTransposeGramLaw N K) hLaw
   have hFullMeas : Measurable
-      (PRXArticle.normalizedTransposeGramMatrix :
+      (MatrixLawEndpoints.normalizedTransposeGramMatrix :
         Matrix (Fin L) (Fin K) ℂ → Matrix (Fin L) (Fin L) ℂ) :=
     (measurable_normalizeTransposeGram L K).comp
       (measurable_rectangularTransposeGram L K)
@@ -452,7 +452,7 @@ theorem orderedDisjointGaussianPatternProductLaw
     Measure.map
         ((orderedPatternPanel rows ∘
           preselectedPrincipalSubmatrixTuple q L (orderedPatternSets rows)) ∘
-          PRXArticle.normalizedTransposeGramMatrix)
+          MatrixLawEndpoints.normalizedTransposeGramMatrix)
         muRaw =
         Measure.map (fun G j ↦ gram j G) muRaw := by
       apply Measure.map_congr
@@ -1484,38 +1484,38 @@ theorem ensembleConsistencyRerandomizedScoreConcentration
 
 end
 
-end LogdetLean.GramHafnian.ThreePaper.PRXQUniformHiding
+end LogdetLean.GramHafnian.ThreePaper.UniformMatrixHiding
 
-#print axioms LogdetLean.GramHafnian.ThreePaper.PRXQUniformHiding.matrixLaw
-#print axioms LogdetLean.GramHafnian.ThreePaper.PRXQUniformHiding.normalizedMatrixLaw
-#print axioms LogdetLean.GramHafnian.ThreePaper.PRXQUniformHiding.certifiedHidingError_of_ambient
-#print axioms LogdetLean.GramHafnian.ThreePaper.PRXQUniformHiding.observableLaw
-#print axioms LogdetLean.GramHafnian.ThreePaper.PRXQUniformHiding.eventTransfer
-#print axioms LogdetLean.GramHafnian.ThreePaper.PRXQUniformHiding.observableEventTransfer
-#print axioms LogdetLean.GramHafnian.ThreePaper.PRXQUniformHiding.reverseObservableEventTransfer
-#print axioms LogdetLean.GramHafnian.ThreePaper.PRXQUniformHiding.reverseEventTransfer
-#print axioms LogdetLean.GramHafnian.ThreePaper.PRXQUniformHiding.boundedStatisticExpectationTransfer
-#print axioms LogdetLean.GramHafnian.ThreePaper.PRXQUniformHiding.markovKernelPostprocessingLaw
-#print axioms LogdetLean.GramHafnian.ThreePaper.PRXQUniformHiding.measurable_hafnianObservable
-#print axioms LogdetLean.GramHafnian.ThreePaper.PRXQUniformHiding.hafnianObservableLaw
-#print axioms LogdetLean.GramHafnian.ThreePaper.PRXQUniformHiding.measurable_preselectedPrincipalSubmatrixTuple
-#print axioms LogdetLean.GramHafnian.ThreePaper.PRXQUniformHiding.jointPreselectedPatternLaw
-#print axioms LogdetLean.GramHafnian.ThreePaper.PRXQUniformHiding.orderedGaussianPatternPanelLaw
+#print axioms LogdetLean.GramHafnian.ThreePaper.UniformMatrixHiding.matrixLaw
+#print axioms LogdetLean.GramHafnian.ThreePaper.UniformMatrixHiding.normalizedMatrixLaw
+#print axioms LogdetLean.GramHafnian.ThreePaper.UniformMatrixHiding.certifiedHidingError_of_ambient
+#print axioms LogdetLean.GramHafnian.ThreePaper.UniformMatrixHiding.observableLaw
+#print axioms LogdetLean.GramHafnian.ThreePaper.UniformMatrixHiding.eventTransfer
+#print axioms LogdetLean.GramHafnian.ThreePaper.UniformMatrixHiding.observableEventTransfer
+#print axioms LogdetLean.GramHafnian.ThreePaper.UniformMatrixHiding.reverseObservableEventTransfer
+#print axioms LogdetLean.GramHafnian.ThreePaper.UniformMatrixHiding.reverseEventTransfer
+#print axioms LogdetLean.GramHafnian.ThreePaper.UniformMatrixHiding.boundedStatisticExpectationTransfer
+#print axioms LogdetLean.GramHafnian.ThreePaper.UniformMatrixHiding.markovKernelPostprocessingLaw
+#print axioms LogdetLean.GramHafnian.ThreePaper.UniformMatrixHiding.measurable_hafnianObservable
+#print axioms LogdetLean.GramHafnian.ThreePaper.UniformMatrixHiding.hafnianObservableLaw
+#print axioms LogdetLean.GramHafnian.ThreePaper.UniformMatrixHiding.measurable_preselectedPrincipalSubmatrixTuple
+#print axioms LogdetLean.GramHafnian.ThreePaper.UniformMatrixHiding.jointPreselectedPatternLaw
+#print axioms LogdetLean.GramHafnian.ThreePaper.UniformMatrixHiding.orderedGaussianPatternPanelLaw
 #print axioms LogdetLean.GramHafnian.ThreePaper.DisjointGaussianRows.iIndepFun_orderedRowBlocks
 #print axioms LogdetLean.GramHafnian.ThreePaper.DisjointGaussianRows.iIndepFun_orderedNormalizedGrams
-#print axioms LogdetLean.GramHafnian.ThreePaper.PRXQUniformHiding.orderedDisjointGaussianPatternProductLaw
-#print axioms LogdetLean.GramHafnian.ThreePaper.PRXQUniformHiding.orderedDisjointPatternProductHiding
-#print axioms LogdetLean.GramHafnian.ThreePaper.PRXQUniformHiding.disjointPatternIidPanelHiding
-#print axioms LogdetLean.GramHafnian.ThreePaper.PRXQUniformHiding.maxScoreCdfTransfer_iid
-#print axioms LogdetLean.GramHafnian.ThreePaper.PRXQUniformHiding.heavyCountBinomialTransfer_iid
-#print axioms LogdetLean.GramHafnian.ThreePaper.PRXQUniformHiding.orderedDisjointMaxScoreCdfTransfer
-#print axioms LogdetLean.GramHafnian.ThreePaper.PRXQUniformHiding.orderedDisjointHeavyCountBinomialTransfer
-#print axioms LogdetLean.GramHafnian.ThreePaper.PRXQUniformHiding.overlapGraphConcentrationTransfer_colored
-#print axioms LogdetLean.GramHafnian.ThreePaper.PRXQUniformHiding.orderedOverlapGraphConcentrationTransfer_colored_canonicalMean
-#print axioms LogdetLean.GramHafnian.ThreePaper.PRXQUniformHiding.hardSourceMaskFiniteMixtureHiding
-#print axioms LogdetLean.GramHafnian.ThreePaper.PRXQUniformHiding.canonicalVariableKHardSourceMaskHiding
-#print axioms LogdetLean.GramHafnian.ThreePaper.PRXQUniformHiding.hardSourceMaskFiniteMixtureBadProbability
-#print axioms LogdetLean.GramHafnian.ThreePaper.PRXQUniformHiding.hardSourceMaskFiniteMixtureCommonFailure
-#print axioms LogdetLean.GramHafnian.ThreePaper.PRXQUniformHiding.ensembleConsistencyTriangle
-#print axioms LogdetLean.GramHafnian.ThreePaper.PRXQUniformHiding.iidBoundedScoreHoeffding
-#print axioms LogdetLean.GramHafnian.ThreePaper.PRXQUniformHiding.ensembleConsistencyRerandomizedScoreConcentration
+#print axioms LogdetLean.GramHafnian.ThreePaper.UniformMatrixHiding.orderedDisjointGaussianPatternProductLaw
+#print axioms LogdetLean.GramHafnian.ThreePaper.UniformMatrixHiding.orderedDisjointPatternProductHiding
+#print axioms LogdetLean.GramHafnian.ThreePaper.UniformMatrixHiding.disjointPatternIidPanelHiding
+#print axioms LogdetLean.GramHafnian.ThreePaper.UniformMatrixHiding.maxScoreCdfTransfer_iid
+#print axioms LogdetLean.GramHafnian.ThreePaper.UniformMatrixHiding.heavyCountBinomialTransfer_iid
+#print axioms LogdetLean.GramHafnian.ThreePaper.UniformMatrixHiding.orderedDisjointMaxScoreCdfTransfer
+#print axioms LogdetLean.GramHafnian.ThreePaper.UniformMatrixHiding.orderedDisjointHeavyCountBinomialTransfer
+#print axioms LogdetLean.GramHafnian.ThreePaper.UniformMatrixHiding.overlapGraphConcentrationTransfer_colored
+#print axioms LogdetLean.GramHafnian.ThreePaper.UniformMatrixHiding.orderedOverlapGraphConcentrationTransfer_colored_canonicalMean
+#print axioms LogdetLean.GramHafnian.ThreePaper.UniformMatrixHiding.hardSourceMaskFiniteMixtureHiding
+#print axioms LogdetLean.GramHafnian.ThreePaper.UniformMatrixHiding.canonicalVariableKHardSourceMaskHiding
+#print axioms LogdetLean.GramHafnian.ThreePaper.UniformMatrixHiding.hardSourceMaskFiniteMixtureBadProbability
+#print axioms LogdetLean.GramHafnian.ThreePaper.UniformMatrixHiding.hardSourceMaskFiniteMixtureCommonFailure
+#print axioms LogdetLean.GramHafnian.ThreePaper.UniformMatrixHiding.ensembleConsistencyTriangle
+#print axioms LogdetLean.GramHafnian.ThreePaper.UniformMatrixHiding.iidBoundedScoreHoeffding
+#print axioms LogdetLean.GramHafnian.ThreePaper.UniformMatrixHiding.ensembleConsistencyRerandomizedScoreConcentration

@@ -55,7 +55,7 @@ theorem coeCorner_centeredFixedDirection_eventPath_derivative_H16_of_fourthSecan
       ∫ A, event.indicator
         (concreteCenteredDensityScore r N K v) A
         ∂(concreteScaledCOECornerLaw
-          LogdetLean.GramHafnian.CurrentPRL.canonicalUnitaryHaarProbabilityFamily
+          LogdetLean.GramHafnian.LocalAnticoncentration.canonicalUnitaryHaarProbabilityFamily
             N K) := by
   exact
     coeCorner_centeredFixedDirection_eventPath_derivative_from_directL1_exactH5
@@ -120,7 +120,7 @@ theorem coeCorner_centeredFixedDirection_eventPath_derivative_H16_from_A1_fourth
       ∫ A, event.indicator
         (concreteCenteredDensityScore r N K v) A
         ∂(concreteScaledCOECornerLaw
-          LogdetLean.GramHafnian.CurrentPRL.canonicalUnitaryHaarProbabilityFamily
+          LogdetLean.GramHafnian.LocalAnticoncentration.canonicalUnitaryHaarProbabilityFamily
             N K) :=
   coeCorner_centeredFixedDirection_eventPath_derivative_H16_of_fourthSecantIntegralVanishing_exactH5
     h16ExactH5Family_from_friedmanMello1985_A1 hvanish

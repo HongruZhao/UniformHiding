@@ -19,7 +19,7 @@ namespace LogdetLean.GramHafnian.UltimateHiding.DenseScore
 noncomputable section
 
 open LogdetLean.GramHafnian.UltimateHiding.Dense
-open LogdetLean.GramHafnian.CurrentPRL
+open LogdetLean.GramHafnian.LocalAnticoncentration
 
 /-- Exact H5 also excludes zero raw determinant mass. -/
 theorem h16_coeCornerRawDeterminantDensityMeasure_univ_ne_zero_of_exactH5

@@ -89,14 +89,14 @@ theorem coeCorner_centeredDensityScore_four_fubini
     (∫ v : ComplexUnitSphere N,
       ∫ A, event.indicator (concreteCenteredDensityScore 4 N K v) A
         ∂(concreteScaledCOECornerLaw
-          LogdetLean.GramHafnian.CurrentPRL.canonicalUnitaryHaarProbabilityFamily
+          LogdetLean.GramHafnian.LocalAnticoncentration.canonicalUnitaryHaarProbabilityFamily
             N K)
       ∂(complexUnitSphereProbabilityMeasure N)) =
     ∫ A, event.indicator (fun A ↦
       ∫ v : ComplexUnitSphere N, concreteCenteredDensityScore 4 N K v A
         ∂(complexUnitSphereProbabilityMeasure N)) A
       ∂(concreteScaledCOECornerLaw
-        LogdetLean.GramHafnian.CurrentPRL.canonicalUnitaryHaarProbabilityFamily
+        LogdetLean.GramHafnian.LocalAnticoncentration.canonicalUnitaryHaarProbabilityFamily
           N K) := by
   have hNK : N ≤ K := by omega
   exact coeCorner_centeredDensityScore_fubini_of_memLp hN hNK event hevent

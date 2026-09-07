@@ -15,7 +15,7 @@ namespace LogdetLean.GramHafnian.UltimateHiding.Dense
 
 noncomputable section
 
-open LogdetLean.GramHafnian.CurrentPRL
+open LogdetLean.GramHafnian.LocalAnticoncentration
 open LogdetLean.GramHafnian.UltimateHiding.Sparse
 
 /-- The complete first-`N`-row block of an `m x m` Haar unitary, scaled by

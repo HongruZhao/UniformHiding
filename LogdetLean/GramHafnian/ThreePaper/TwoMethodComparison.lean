@@ -1,8 +1,8 @@
-import LogdetLean.GramHafnian.ThreePaper.PRLApplicationEndpoints
-import LogdetLean.GramHafnian.CurrentPRL.CoefficientPaperEndpoints
+import LogdetLean.GramHafnian.ThreePaper.RelativeAccuracyApplicationEndpoints
+import LogdetLean.GramHafnian.LocalAnticoncentration.CoefficientPaperEndpoints
 
 /-!
-# Exact algebra for the two-reference PRL comparison
+# Exact algebra for the two-reference manuscript comparison
 
 This module compares the two Gaussian reference normalizations discussed in
 the Letter:
@@ -26,7 +26,7 @@ namespace LogdetLean.GramHafnian.ThreePaper.TwoMethodComparison
 
 noncomputable section
 
-open CurrentPRL PRXQUniformHiding UltimateHiding
+open LocalAnticoncentration UniformMatrixHiding UltimateHiding
 
 /-- The exact variance ratio between the normalized finite-`K` Gram hafnian
 and its independent-symmetric limiting variance.  The empty product at
@@ -614,7 +614,7 @@ theorem samplerRouteBudget_sqrt_eq_optimized
         c eps rho D p h N =
       optimizedSamplerRouteBudget c eps rho D p h N := by
   unfold samplerRouteBudget optimizedSamplerRouteBudget
-  rw [PRLConsequences.samplerSqrtChoice_exact hconstant]
+  rw [RelativeAccuracy.samplerSqrtChoice_exact hconstant]
 
 /-- Abstract one-route sampler inference at the optimal square-root
 choice. -/

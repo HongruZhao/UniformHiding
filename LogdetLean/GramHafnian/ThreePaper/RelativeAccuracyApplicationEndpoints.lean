@@ -1,7 +1,7 @@
-import LogdetLean.GramHafnian.ThreePaper.PRXQAnticoncentration
-import LogdetLean.GramHafnian.ThreePaper.PRXQUniformHiding
+import LogdetLean.GramHafnian.ThreePaper.GaussianAnticoncentration
+import LogdetLean.GramHafnian.ThreePaper.UniformMatrixHiding
 import LogdetLean.GramHafnian.ThreePaper.DisjointGaussianRows
-import LogdetLean.GramHafnian.CurrentPRL.RowSymmetry
+import LogdetLean.GramHafnian.LocalAnticoncentration.RowSymmetry
 import LogdetLean.GramHafnian.UltimateHiding.SquaredGBS
 import Mathlib.Data.Fintype.Sets
 import Mathlib.Probability.Distributions.Uniform
@@ -20,11 +20,11 @@ until discharged by the anticoncentration Article endpoint.
 open MeasureTheory
 open scoped ProbabilityTheory
 
-namespace LogdetLean.GramHafnian.ThreePaper.PRLConsequences
+namespace LogdetLean.GramHafnian.ThreePaper.RelativeAccuracy
 
 noncomputable section
 
-open CurrentPRL UltimateHiding ProbabilityTheory
+open LocalAnticoncentration UltimateHiding ProbabilityTheory
 
 /-! ## Collision-free labels and finite uniform fractions -/
 
@@ -152,7 +152,7 @@ theorem expectedDarkLabelFraction_le
 hidden in the definition. -/
 def darkLabelError (M N K n : Nat) (t : Real) : Real :=
   min 1 (shiftedAnticoncentrationConstant K n * t +
-    PRXQUniformHiding.hidingRemainder M N)
+    UniformMatrixHiding.hidingRemainder M N)
 
 /-! ## Markov tradeoffs -/
 
@@ -865,7 +865,7 @@ set_option maxHeartbeats 800000 in
 /-- Paper-form sampler composition.  The explicit dark-fraction premise is
 the one-label small-denominator estimate averaged over labels; the conclusion
 is exactly `zeta + c_samp/zeta + delta`. -/
-theorem samplerTVToRandomLabelRelative_prl
+theorem samplerTVToRandomLabelRelative_relativeAccuracy
     {Omega chi : Type*} [MeasurableSpace Omega] [Fintype chi]
     (mu : Measure Omega) [IsProbabilityMeasure mu]
     (labels : Finset chi) (hlabels : labels.Nonempty)
@@ -895,7 +895,7 @@ theorem samplerTVToRandomLabelRelative_prl
 set_option maxHeartbeats 800000 in
 /-- Paper form of the sampler composition from eventwise TV on an arbitrary
 ambient output type. -/
-theorem samplerTVToRandomLabelRelative_eventwise_prl
+theorem samplerTVToRandomLabelRelative_eventwise_relativeAccuracy
     {Omega chi : Type*} [MeasurableSpace Omega]
     (mu : Measure Omega) [IsProbabilityMeasure mu]
     (labels : Finset chi) (hlabels : labels.Nonempty)
@@ -1102,10 +1102,10 @@ theorem gaussianTruncatedNormalizedIntensityNegativeMoment
       ∂(gaussianGramHafnianLaw n K)) ≤
         shiftedAnticoncentrationConstant K n ^ a / (1 - a) := by
   let q : ComplexColumnMatrix n K → Real :=
-    PRXQAnticoncentration.normalizedShiftedIntensityObservable K n z
+    GaussianAnticoncentration.normalizedShiftedIntensityObservable K n z
   have hC : 0 ≤ shiftedAnticoncentrationConstant K n ^ a / (1 - a) := by
     exact div_nonneg (Real.rpow_nonneg
-      (PRXQAnticoncentration.shiftedAnticoncentrationConstant_pos
+      (GaussianAnticoncentration.shiftedAnticoncentrationConstant_pos
         n K hn hK).le a) (by linarith)
   have hsource :
       (∫ X, truncatedNegativePower q lambda a X
@@ -1113,12 +1113,12 @@ theorem gaussianTruncatedNormalizedIntensityNegativeMoment
           shiftedAnticoncentrationConstant K n ^ a / (1 - a) := by
     apply truncatedNegativeMoment_le_of_lintegral
       (circularGaussianColumnMatrixMeasure n K) q
-      (PRXQAnticoncentration.measurable_normalizedShiftedIntensityObservable
+      (GaussianAnticoncentration.measurable_normalizedShiftedIntensityObservable
         K n z)
       hlambda ha.le
-      (PRXQAnticoncentration.ae_normalizedShiftedIntensity_pos n K hn hK z)
+      (GaussianAnticoncentration.ae_normalizedShiftedIntensity_pos n K hn hK z)
       hC
-    exact PRXQAnticoncentration.normalizedShiftedIntensity_negativeMoment
+    exact GaussianAnticoncentration.normalizedShiftedIntensity_negativeMoment
       n K hn hK z ha ha1
   rw [gaussianGramHafnianLaw_eq_literal]
   have htargetMeas := (truncatedNegativePower_measurable_bounded
@@ -1129,7 +1129,7 @@ theorem gaussianTruncatedNormalizedIntensityNegativeMoment
     (measurable_gramHafnianObservable n K) htargetMeas.stronglyMeasurable]
   convert hsource using 1
   unfold q normalizedShiftedIntensityFromAmplitude
-    PRXQAnticoncentration.normalizedShiftedIntensityObservable
+    GaussianAnticoncentration.normalizedShiftedIntensityObservable
     LogdetLean.GramHafnian.gramHafnianObservable
   rfl
 
@@ -1175,7 +1175,7 @@ theorem finiteHaarTruncatedNormalizedIntensityNegativeMoment
       (normalizedShiftedIntensityFromAmplitude K n z) lambda a w
       ∂(scaledHaarGramHafnianLaw H M n K)) ≤
         shiftedAnticoncentrationConstant K n ^ a / (1 - a) +
-          PRXQUniformHiding.hidingRemainder M (2 * n) * lambda ^ (-a) := by
+          UniformMatrixHiding.hidingRemainder M (2 * n) * lambda ^ (-a) := by
   have hNM : 2 * n ≤ M := by omega
   have hNK : 2 * n ≤ K := by omega
   have hNpos : 1 ≤ 2 * n := by omega
@@ -1185,14 +1185,14 @@ theorem finiteHaarTruncatedNormalizedIntensityNegativeMoment
     rw [gaussianGramHafnianLaw_eq_literal]
     exact Measure.isProbabilityMeasure_map
       (measurable_gramHafnianObservable n K).aemeasurable
-  have htvMatrix := PRXQUniformHiding.matrixLaw.apply H hNpos hNK hKM
+  have htvMatrix := UniformMatrixHiding.matrixLaw.apply H hNpos hNK hKM
   have htvHafnian := htvMatrix.map (measurable_hafnianMatrixObservable n)
   have htv : probabilityTotalVariationLE
       (scaledHaarGramHafnianLaw H M n K)
       (gaussianGramHafnianLaw n K)
-      (PRXQUniformHiding.hidingRemainder M (2 * n)) := by
+      (UniformMatrixHiding.hidingRemainder M (2 * n)) := by
     simpa [scaledHaarGramHafnianLaw, gaussianGramHafnianLaw,
-      PRXQUniformHiding.hidingRemainder] using htvHafnian
+      UniformMatrixHiding.hidingRemainder] using htvHafnian
   exact finiteHaarTruncatedNegativeMoment
     (scaledHaarGramHafnianLaw H M n K) (gaussianGramHafnianLaw n K)
     htv (normalizedShiftedIntensityFromAmplitude K n z)
@@ -1352,7 +1352,7 @@ theorem disjointGaussianPanelSmallBall_le
           shiftedComplexDisk 0 (Real.sqrt t * gramHafnianSigma K n)} ≤
       1 - (1 - min 1 (shiftedAnticoncentrationConstant K n * t)) ^ q := by
   rw [disjointGaussianPanelSmallBall_exact rows hrows]
-  have hp := PRXQAnticoncentration.shiftedSmallBall
+  have hp := GaussianAnticoncentration.shiftedSmallBall
     n K hn hK 0 (Real.sqrt t) (Real.sqrt_nonneg t)
   have hp' : gramHafnianShiftedSmallBallProbability K n 0 (Real.sqrt t) ≤
       min 1 (shiftedAnticoncentrationConstant K n * t) := by
@@ -1417,7 +1417,7 @@ theorem disjointGaussianPanelSmallBall_transfer
 
 /-- Hafnian of a normalized Gram matrix after restoring the raw Gaussian
 scale.  This is the observable needed to connect normalized hiding with the
-PRL amplitude normalization. -/
+manuscript amplitude normalization. -/
 def denormalizedHafnianObservable (n K : Nat)
     (A : Matrix (Fin (2 * n)) (Fin (2 * n)) Complex) : Complex :=
   hafnianMatrixObservable n (denormalizeTransposeGram (2 * n) K A)
@@ -1509,7 +1509,7 @@ theorem gaussianHafnianProductPanelSmallBall_le
     (measurableSet_shiftedComplexDisk 0
       (Real.sqrt t * gramHafnianSigma K n))]
   rw [gaussianGramHafnianLaw_shiftedDisk_eq]
-  have hp := PRXQAnticoncentration.shiftedSmallBall
+  have hp := GaussianAnticoncentration.shiftedSmallBall
     n K hn hK 0 (Real.sqrt t) (Real.sqrt_nonneg t)
   have hp' : gramHafnianShiftedSmallBallProbability K n 0 (Real.sqrt t) ≤
       min 1 (shiftedAnticoncentrationConstant K n * t) := by
@@ -1540,8 +1540,8 @@ def ambientHaarHafnianPanel
     (rows : Fin q → (Fin (2 * n) ↪ Fin L))
     (U : Matrix.unitaryGroup (Fin M) Complex) : Fin q → Complex :=
   fun j ↦ hafnianMatrixObservable n
-    (CurrentPRL.scaledRectangularTransposeGram M (2 * n) K
-      (CurrentPRL.selectedRowsUnitaryBlock hKM
+    (LocalAnticoncentration.scaledRectangularTransposeGram M (2 * n) K
+      (LocalAnticoncentration.selectedRowsUnitaryBlock hKM
         (ambientOrderedRows hLM (rows j)) U))
 
 @[fun_prop]
@@ -1553,8 +1553,8 @@ theorem measurable_ambientHaarHafnianPanel
   apply measurable_pi_lambda
   intro j
   exact (measurable_hafnianMatrixObservable n).comp
-    ((CurrentPRL.measurable_scaledRectangularTransposeGram M (2 * n) K).comp
-      (CurrentPRL.measurable_selectedRowsUnitaryBlock hKM
+    ((LocalAnticoncentration.measurable_scaledRectangularTransposeGram M (2 * n) K).comp
+      (LocalAnticoncentration.measurable_selectedRowsUnitaryBlock hKM
         (ambientOrderedRows hLM (rows j))))
 
 /-- The denormalized ordered-pattern construction used by joint hiding is
@@ -1566,31 +1566,31 @@ theorem orderedHaarHafnianPanelLaw_eq_ambient
     (hKpos : 1 ≤ K)
     (rows : Fin q → (Fin (2 * n) ↪ Fin L)) :
     Measure.map (denormalizedHafnianPanel q n K)
-        (PRXQUniformHiding.orderedPatternPanelHaarLaw
+        (UniformMatrixHiding.orderedPatternPanelHaarLaw
           H M L K q (2 * n) rows) =
       Measure.map (ambientHaarHafnianPanel M K q n L hLM hKM rows)
         (H.law M) := by
-  unfold PRXQUniformHiding.orderedPatternPanelHaarLaw
+  unfold UniformMatrixHiding.orderedPatternPanelHaarLaw
     normalizedHaarTransposeGramLaw scaledHaarTransposeGramLaw
   rw [dif_pos ⟨hLM, hKM⟩]
   rw [Measure.map_map (measurable_denormalizedHafnianPanel q n K)
-    (PRXQUniformHiding.measurable_orderedPatternPanel rows)]
+    (UniformMatrixHiding.measurable_orderedPatternPanel rows)]
   rw [Measure.map_map
     ((measurable_denormalizedHafnianPanel q n K).comp
-      (PRXQUniformHiding.measurable_orderedPatternPanel rows))
-    (PRXQUniformHiding.measurable_preselectedPrincipalSubmatrixTuple
-      q L (PRXQUniformHiding.orderedPatternSets rows))]
+      (UniformMatrixHiding.measurable_orderedPatternPanel rows))
+    (UniformMatrixHiding.measurable_preselectedPrincipalSubmatrixTuple
+      q L (UniformMatrixHiding.orderedPatternSets rows))]
   rw [Measure.map_map
     (((measurable_denormalizedHafnianPanel q n K).comp
-      (PRXQUniformHiding.measurable_orderedPatternPanel rows)).comp
-        (PRXQUniformHiding.measurable_preselectedPrincipalSubmatrixTuple
-          q L (PRXQUniformHiding.orderedPatternSets rows)))
+      (UniformMatrixHiding.measurable_orderedPatternPanel rows)).comp
+        (UniformMatrixHiding.measurable_preselectedPrincipalSubmatrixTuple
+          q L (UniformMatrixHiding.orderedPatternSets rows)))
     (measurable_normalizeTransposeGram L K)]
   rw [Measure.map_map
     ((((measurable_denormalizedHafnianPanel q n K).comp
-      (PRXQUniformHiding.measurable_orderedPatternPanel rows)).comp
-        (PRXQUniformHiding.measurable_preselectedPrincipalSubmatrixTuple
-          q L (PRXQUniformHiding.orderedPatternSets rows))).comp
+      (UniformMatrixHiding.measurable_orderedPatternPanel rows)).comp
+        (UniformMatrixHiding.measurable_preselectedPrincipalSubmatrixTuple
+          q L (UniformMatrixHiding.orderedPatternSets rows))).comp
       (measurable_normalizeTransposeGram L K))
     (measurable_scaledHaarTransposeGramMatrix hLM hKM)]
   apply Measure.map_congr
@@ -1601,16 +1601,16 @@ theorem orderedHaarHafnianPanelLaw_eq_ambient
   ext i k
   have hsqrt : Real.sqrt (K : Real) ≠ 0 := by
     exact ne_of_gt (Real.sqrt_pos.2 (by exact_mod_cast hKpos))
-  simp [PRXQUniformHiding.orderedPatternPanel,
-    PRXQUniformHiding.preselectedPrincipalSubmatrixTuple,
-    PRXQUniformHiding.orderedPatternSets,
+  simp [UniformMatrixHiding.orderedPatternPanel,
+    UniformMatrixHiding.preselectedPrincipalSubmatrixTuple,
+    UniformMatrixHiding.orderedPatternSets,
     ambientOrderedRows,
     denormalizeTransposeGram, normalizeTransposeGram,
     scaledHaarTransposeGramMatrix,
-    CurrentPRL.scaledRectangularTransposeGram,
-    CurrentPRL.selectedRowsUnitaryBlock,
-    CurrentPRL.topLeftUnitaryBlock,
-    CurrentPRL.rectangularTransposeGram, Matrix.mul_apply, hsqrt]
+    LocalAnticoncentration.scaledRectangularTransposeGram,
+    LocalAnticoncentration.selectedRowsUnitaryBlock,
+    LocalAnticoncentration.topLeftUnitaryBlock,
+    LocalAnticoncentration.rectangularTransposeGram, Matrix.mul_apply, hsqrt]
 
 /-- Every coordinate of the ambient ordered Haar panel has the canonical
 scaled Haar Gram-hafnian law.  This is the exact fixed-pattern row-symmetry
@@ -1625,16 +1625,16 @@ theorem map_ambientHaarHafnianPanel_eval
       scaledHaarGramHafnianLaw H M n K := by
   rw [Measure.map_map (measurable_pi_apply j)
     (measurable_ambientHaarHafnianPanel M K q n L hLM hKM rows)]
-  rw [← CurrentPRL.selectedRowsScaledGramHafnianLaw_eq H hNM hKM
+  rw [← LocalAnticoncentration.selectedRowsScaledGramHafnianLaw_eq H hNM hKM
     (ambientOrderedRows hLM (rows j))]
-  unfold CurrentPRL.selectedRowsScaledGramHafnianLaw
-    CurrentPRL.selectedRowsScaledTransposeGramLaw
+  unfold LocalAnticoncentration.selectedRowsScaledGramHafnianLaw
+    LocalAnticoncentration.selectedRowsScaledTransposeGramLaw
   rw [Measure.map_map (measurable_hafnianMatrixObservable n)
-    (CurrentPRL.measurable_scaledRectangularTransposeGram M (2 * n) K)]
+    (LocalAnticoncentration.measurable_scaledRectangularTransposeGram M (2 * n) K)]
   rw [Measure.map_map
     ((measurable_hafnianMatrixObservable n).comp
-      (CurrentPRL.measurable_scaledRectangularTransposeGram M (2 * n) K))
-    (CurrentPRL.measurable_selectedRowsUnitaryBlock hKM
+      (LocalAnticoncentration.measurable_scaledRectangularTransposeGram M (2 * n) K))
+    (LocalAnticoncentration.measurable_selectedRowsUnitaryBlock hKM
       (ambientOrderedRows hLM (rows j)))]
   rfl
 
@@ -1653,7 +1653,7 @@ theorem ambientHaarHafnianPanelSmallBall_union_le
           (Real.sqrt t * gramHafnianSigma K n)} ≤
       (q : Real) *
         (min 1 (shiftedAnticoncentrationConstant K n * t) +
-          PRXQUniformHiding.hidingRemainder M (2 * n)) := by
+          UniformMatrixHiding.hidingRemainder M (2 * n)) := by
   let mu := Measure.map
     (ambientHaarHafnianPanel M K q n L hLM hKM rows) (H.law M)
   let bad := shiftedComplexDisk 0 (Real.sqrt t * gramHafnianSigma K n)
@@ -1663,22 +1663,22 @@ theorem ambientHaarHafnianPanelSmallBall_union_le
   have hcoord (j : Fin q) :
       mu.real ((fun w : Fin q → Complex ↦ w j) ⁻¹' bad) ≤
         min 1 (shiftedAnticoncentrationConstant K n * t) +
-          PRXQUniformHiding.hidingRemainder M (2 * n) := by
-    have htvMatrix := PRXQUniformHiding.matrixLaw.apply
+          UniformMatrixHiding.hidingRemainder M (2 * n) := by
+    have htvMatrix := UniformMatrixHiding.matrixLaw.apply
       H hNpos hNK hKM
     have htvHafnian := htvMatrix.map
       (measurable_hafnianMatrixObservable n)
     have htv : probabilityTotalVariationLE
         (scaledHaarGramHafnianLaw H M n K)
         (gaussianGramHafnianLaw n K)
-        (PRXQUniformHiding.hidingRemainder M (2 * n)) := by
+        (UniformMatrixHiding.hidingRemainder M (2 * n)) := by
       simpa [scaledHaarGramHafnianLaw, gaussianGramHafnianLaw,
-        PRXQUniformHiding.hidingRemainder] using htvHafnian
+        UniformMatrixHiding.hidingRemainder] using htvHafnian
     have htransfer := htv.event_le
       (measurableSet_shiftedComplexDisk 0
         (Real.sqrt t * gramHafnianSigma K n))
     rw [gaussianGramHafnianLaw_shiftedDisk_eq] at htransfer
-    have hgaussian := PRXQAnticoncentration.shiftedSmallBall
+    have hgaussian := GaussianAnticoncentration.shiftedSmallBall
       n K hn hKanti 0 (Real.sqrt t) (Real.sqrt_nonneg t)
     have hgaussian' :
         gramHafnianShiftedSmallBallProbability K n 0 (Real.sqrt t) ≤
@@ -1702,14 +1702,14 @@ theorem ambientHaarHafnianPanelSmallBall_union_le
       measureReal_iUnion_fintype_le _
     _ ≤ ∑ _j : Fin q,
         (min 1 (shiftedAnticoncentrationConstant K n * t) +
-          PRXQUniformHiding.hidingRemainder M (2 * n)) :=
+          UniformMatrixHiding.hidingRemainder M (2 * n)) :=
       Finset.sum_le_sum fun j _ ↦ hcoord j
     _ = (q : Real) *
         (min 1 (shiftedAnticoncentrationConstant K n * t) +
-          PRXQUniformHiding.hidingRemainder M (2 * n)) := by
+          UniformMatrixHiding.hidingRemainder M (2 * n)) := by
       simp [mul_add]
 
-/-- One-shot disjoint-pattern PRL route: ordered joint hiding is pushed
+/-- One-shot disjoint-pattern manuscript route: ordered joint hiding is pushed
 through denormalization and hafnian, then combined with the exact Gaussian
 product-complement bound.  The hiding error is paid once at union size `L`. -/
 theorem orderedDisjointHaarHafnianPanelSmallBall
@@ -1723,16 +1723,16 @@ theorem orderedDisjointHaarHafnianPanelSmallBall
     (hn : 1 ≤ n) (hKanti : 4 * n ≤ K)
     {t : Real} (ht : 0 ≤ t) :
     (Measure.map (denormalizedHafnianPanel q n K)
-      (Measure.map (PRXQUniformHiding.orderedPatternPanel rows)
+      (Measure.map (UniformMatrixHiding.orderedPatternPanel rows)
         (Measure.map
-          (PRXQUniformHiding.preselectedPrincipalSubmatrixTuple q L
-            (PRXQUniformHiding.orderedPatternSets rows))
+          (UniformMatrixHiding.preselectedPrincipalSubmatrixTuple q L
+            (UniformMatrixHiding.orderedPatternSets rows))
           (normalizedHaarTransposeGramLaw H M L K)))).real
         {w | ∃ j, w j ∈ shiftedComplexDisk 0
           (Real.sqrt t * gramHafnianSigma K n)} ≤
       1 - (1 - min 1 (shiftedAnticoncentrationConstant K n * t)) ^ q +
-        PRXQUniformHiding.hidingRemainder M L := by
-  have htv := (PRXQUniformHiding.orderedDisjointPatternProductHiding
+        UniformMatrixHiding.hidingRemainder M L := by
+  have htv := (UniformMatrixHiding.orderedDisjointPatternProductHiding
     H M L K q (2 * n) hL hLK hKM rows hrows).map
       (measurable_denormalizedHafnianPanel q n K)
   have hproductMap :
@@ -1765,7 +1765,7 @@ theorem orderedDisjointHaarHafnianPanelSmallBall
     (gaussianHafnianProductPanelSmallBall_le hn hKanti ht) le_rfl)
 
 /-- Taking the better of a one-shot union transfer and `q` individual
-transfers gives the minimum hiding remainder in PRL5. -/
+transfers gives the minimum hiding remainder in Panel application. -/
 theorem finitePanel_min_hiding_remainder
     {failure gaussianUnion deltaUnion deltaSingle q : Real}
     (hprob : failure <= 1)
@@ -1816,10 +1816,10 @@ theorem orderedDisjointHaarHafnianPanelSmallBall_full
         (min
           (1 - (1 - min 1
             (shiftedAnticoncentrationConstant K n * t)) ^ q +
-              PRXQUniformHiding.hidingRemainder M L)
+              UniformMatrixHiding.hidingRemainder M L)
           ((q : Real) *
             (min 1 (shiftedAnticoncentrationConstant K n * t) +
-              PRXQUniformHiding.hidingRemainder M (2 * n)))) := by
+              UniformMatrixHiding.hidingRemainder M (2 * n)))) := by
   let mu := Measure.map
     (ambientHaarHafnianPanel M K q n L
       (hLK.trans hKM) hKM rows) (H.law M)
@@ -1838,16 +1838,16 @@ theorem orderedDisjointHaarHafnianPanelSmallBall_full
     H M L K q n (hLK.trans hKM) hKM (by omega) rows
   have hjoint : mu.real event ≤
       1 - (1 - min 1 (shiftedAnticoncentrationConstant K n * t)) ^ q +
-        PRXQUniformHiding.hidingRemainder M L := by
+        UniformMatrixHiding.hidingRemainder M L := by
     change (Measure.map (denormalizedHafnianPanel q n K)
-      (PRXQUniformHiding.orderedPatternPanelHaarLaw
+      (UniformMatrixHiding.orderedPatternPanelHaarLaw
         H M L K q (2 * n) rows)).real event ≤ _ at hjointRaw
     rw [hlaw] at hjointRaw
     exact hjointRaw
   have hsingle : mu.real event ≤
       (q : Real) *
         (min 1 (shiftedAnticoncentrationConstant K n * t) +
-          PRXQUniformHiding.hidingRemainder M (2 * n)) := by
+          UniformMatrixHiding.hidingRemainder M (2 * n)) := by
     exact ambientHaarHafnianPanelSmallBall_union_le
       H M L K q n (hLK.trans hKM) hKM rows hn hKanti ht
   exact disjointPanel_min_of_two q measureReal_le_one hjoint hsingle
@@ -1873,10 +1873,10 @@ theorem orderedDisjointHaarHafnianPanelSmallBall_full_qN
         (min
           (1 - (1 - min 1
             (shiftedAnticoncentrationConstant K n * t)) ^ q +
-              PRXQUniformHiding.hidingRemainder M (q * (2 * n)))
+              UniformMatrixHiding.hidingRemainder M (q * (2 * n)))
           ((q : Real) *
             (min 1 (shiftedAnticoncentrationConstant K n * t) +
-              PRXQUniformHiding.hidingRemainder M (2 * n)))) := by
+              UniformMatrixHiding.hidingRemainder M (2 * n)))) := by
   exact orderedDisjointHaarHafnianPanelSmallBall_full
     H M (q * (2 * n)) K q n
       (Nat.mul_pos hq (by omega)) hqN hKM rows hrows hn hKanti ht
@@ -1919,10 +1919,10 @@ theorem orderedDisjointPhysicalPanelSmallDenominator_full_qN
         (min
           (1 - (1 - min 1
             (shiftedAnticoncentrationConstant K n * t)) ^ q +
-              PRXQUniformHiding.hidingRemainder M (q * (2 * n)))
+              UniformMatrixHiding.hidingRemainder M (q * (2 * n)))
           ((q : Real) *
             (min 1 (shiftedAnticoncentrationConstant K n * t) +
-              PRXQUniformHiding.hidingRemainder M (2 * n)))) := by
+              UniformMatrixHiding.hidingRemainder M (2 * n)))) := by
   rw [gbsPanelSmallDenominatorSet_eq_hafnianDiskUnion
     hr (by omega) K q n ht]
   exact orderedDisjointHaarHafnianPanelSmallBall_full_qN
@@ -1936,10 +1936,10 @@ def orderedGaussianHafnianPanelLaw
     (L K q n : Nat) (rows : Fin q → (Fin (2 * n) ↪ Fin L)) :
     Measure (Fin q → Complex) :=
   Measure.map (denormalizedHafnianPanel q n K)
-    (Measure.map (PRXQUniformHiding.orderedPatternPanel rows)
+    (Measure.map (UniformMatrixHiding.orderedPatternPanel rows)
       (Measure.map
-        (PRXQUniformHiding.preselectedPrincipalSubmatrixTuple q L
-          (PRXQUniformHiding.orderedPatternSets rows))
+        (UniformMatrixHiding.preselectedPrincipalSubmatrixTuple q L
+          (UniformMatrixHiding.orderedPatternSets rows))
         (normalizedGaussianTransposeGramLaw L K)))
 
 /-- Every coordinate of the arbitrary Gaussian panel has the canonical
@@ -1953,7 +1953,7 @@ theorem map_orderedGaussianHafnianPanel_eval
   unfold orderedGaussianHafnianPanelLaw
   rw [Measure.map_map (measurable_pi_apply j)
     (measurable_denormalizedHafnianPanel q n K)]
-  rw [PRXQUniformHiding.orderedGaussianPatternPanelLaw rows]
+  rw [UniformMatrixHiding.orderedGaussianPatternPanelLaw rows]
   rw [Measure.map_map
     ((measurable_pi_apply j).comp
       (measurable_denormalizedHafnianPanel q n K))
@@ -1993,7 +1993,7 @@ theorem orderedGaussianHafnianPanelSmallBall_union_le
     rw [map_orderedGaussianHafnianPanel_eval L K q n hKpos rows j]
     rw [gaussianGramHafnianLaw_shiftedDisk_eq]
     simpa [Real.sq_sqrt ht] using
-      (PRXQAnticoncentration.shiftedSmallBall
+      (GaussianAnticoncentration.shiftedSmallBall
         n K hn hKanti 0 (Real.sqrt t) (Real.sqrt_nonneg t)).trans
           (min_le_right _ _)
   rw [show {w : Fin q → Complex | ∃ j, w j ∈ bad} =
@@ -2026,8 +2026,8 @@ theorem orderedHaarHafnianFinitePanelSmallBall
         {w | ∃ j, w j ∈ shiftedComplexDisk 0
           (Real.sqrt t * gramHafnianSigma K n)} ≤
       min 1 ((q : Real) * shiftedAnticoncentrationConstant K n * t +
-        min (PRXQUniformHiding.hidingRemainder M L)
-          ((q : Real) * PRXQUniformHiding.hidingRemainder M (2 * n))) := by
+        min (UniformMatrixHiding.hidingRemainder M L)
+          ((q : Real) * UniformMatrixHiding.hidingRemainder M (2 * n))) := by
   letI : IsProbabilityMeasure (H.law M) := H.isProbability M
   letI : IsProbabilityMeasure
       (Measure.map (ambientHaarHafnianPanel M K q n L
@@ -2050,19 +2050,19 @@ theorem orderedHaarHafnianFinitePanelSmallBall
       (measurable_pi_apply j)
         (measurableSet_shiftedComplexDisk 0
           (Real.sqrt t * gramHafnianSigma K n))
-  have htv0 := PRXQUniformHiding.jointPreselectedPatternLaw
-    H M L K q hL hLK hKM (PRXQUniformHiding.orderedPatternSets rows)
-  have htv1 := htv0.map (PRXQUniformHiding.measurable_orderedPatternPanel rows)
+  have htv0 := UniformMatrixHiding.jointPreselectedPatternLaw
+    H M L K q hL hLK hKM (UniformMatrixHiding.orderedPatternSets rows)
+  have htv1 := htv0.map (UniformMatrixHiding.measurable_orderedPatternPanel rows)
   have htv2 := htv1.map (measurable_denormalizedHafnianPanel q n K)
   have htv : probabilityTotalVariationLE
       (Measure.map (denormalizedHafnianPanel q n K)
-        (PRXQUniformHiding.orderedPatternPanelHaarLaw
+        (UniformMatrixHiding.orderedPatternPanelHaarLaw
           H M L K q (2 * n) rows))
       (orderedGaussianHafnianPanelLaw L K q n rows)
-      (PRXQUniformHiding.hidingRemainder M L) := by
-    simpa [PRXQUniformHiding.orderedPatternPanelHaarLaw,
+      (UniformMatrixHiding.hidingRemainder M L) := by
+    simpa [UniformMatrixHiding.orderedPatternPanelHaarLaw,
       orderedGaussianHafnianPanelLaw,
-      PRXQUniformHiding.hidingRemainder] using htv2
+      UniformMatrixHiding.hidingRemainder] using htv2
   have hlaw := orderedHaarHafnianPanelLaw_eq_ambient
     H M L K q n (hLK.trans hKM) hKM hKpos rows
   have hjointRaw := htv.event_le hbad
@@ -2070,7 +2070,7 @@ theorem orderedHaarHafnianFinitePanelSmallBall
       (Measure.map (ambientHaarHafnianPanel M K q n L
         (hLK.trans hKM) hKM rows) (H.law M)).real bad ≤
         (q : Real) * shiftedAnticoncentrationConstant K n * t +
-          PRXQUniformHiding.hidingRemainder M L := by
+          UniformMatrixHiding.hidingRemainder M L := by
     rw [hlaw] at hjointRaw
     exact hjointRaw.trans (add_le_add
       (orderedGaussianHafnianPanelSmallBall_union_le
@@ -2081,18 +2081,18 @@ theorem orderedHaarHafnianFinitePanelSmallBall
       (Measure.map (ambientHaarHafnianPanel M K q n L
         (hLK.trans hKM) hKM rows) (H.law M)).real bad ≤
         (q : Real) * shiftedAnticoncentrationConstant K n * t +
-          (q : Real) * PRXQUniformHiding.hidingRemainder M (2 * n) := by
+          (q : Real) * UniformMatrixHiding.hidingRemainder M (2 * n) := by
     calc
       _ ≤ (q : Real) *
           (min 1 (shiftedAnticoncentrationConstant K n * t) +
-            PRXQUniformHiding.hidingRemainder M (2 * n)) := hsingleRaw
+            UniformMatrixHiding.hidingRemainder M (2 * n)) := hsingleRaw
       _ ≤ (q : Real) *
           (shiftedAnticoncentrationConstant K n * t +
-            PRXQUniformHiding.hidingRemainder M (2 * n)) :=
+            UniformMatrixHiding.hidingRemainder M (2 * n)) :=
         mul_le_mul_of_nonneg_left
           (add_le_add (min_le_right _ _) le_rfl) (Nat.cast_nonneg q)
       _ = (q : Real) * shiftedAnticoncentrationConstant K n * t +
-          (q : Real) * PRXQUniformHiding.hidingRemainder M (2 * n) := by ring
+          (q : Real) * UniformMatrixHiding.hidingRemainder M (2 * n) := by ring
   change _ ≤ min 1 _
   exact finitePanel_min_hiding_remainder measureReal_le_one hjoint hsingle
 
@@ -2109,8 +2109,8 @@ theorem orderedPhysicalFinitePanelSmallDenominator
       (hLK.trans hKM) hKM rows) (H.law M)).real
         (gbsPanelSmallDenominatorSet r M K q n t) ≤
       min 1 ((q : Real) * shiftedAnticoncentrationConstant K n * t +
-        min (PRXQUniformHiding.hidingRemainder M L)
-          ((q : Real) * PRXQUniformHiding.hidingRemainder M (2 * n))) := by
+        min (UniformMatrixHiding.hidingRemainder M L)
+          ((q : Real) * UniformMatrixHiding.hidingRemainder M (2 * n))) := by
   rw [gbsPanelSmallDenominatorSet_eq_hafnianDiskUnion
     hr (by omega) K q n ht]
   exact orderedHaarHafnianFinitePanelSmallBall
@@ -2131,8 +2131,8 @@ def collisionFreeHafnianAmplitude
     (U : Matrix.unitaryGroup (Fin M) Complex)
     (S : CollisionFreeLabel M (2 * n)) : Complex :=
   hafnianMatrixObservable n
-    (CurrentPRL.scaledRectangularTransposeGram M (2 * n) K
-      (CurrentPRL.selectedRowsUnitaryBlock hKM
+    (LocalAnticoncentration.scaledRectangularTransposeGram M (2 * n) K
+      (LocalAnticoncentration.selectedRowsUnitaryBlock hKM
         (collisionFreeLabelRows S) U))
 
 theorem measurable_collisionFreeHafnianAmplitude
@@ -2140,8 +2140,8 @@ theorem measurable_collisionFreeHafnianAmplitude
     (S : CollisionFreeLabel M (2 * n)) :
     Measurable (fun U ↦ collisionFreeHafnianAmplitude M K n hKM U S) := by
   exact (measurable_hafnianMatrixObservable n).comp
-    ((CurrentPRL.measurable_scaledRectangularTransposeGram M (2 * n) K).comp
-      (CurrentPRL.measurable_selectedRowsUnitaryBlock hKM
+    ((LocalAnticoncentration.measurable_scaledRectangularTransposeGram M (2 * n) K).comp
+      (LocalAnticoncentration.measurable_selectedRowsUnitaryBlock hKM
         (collisionFreeLabelRows S)))
 
 /-- Each literal collision-free label has the canonical scaled Haar
@@ -2153,17 +2153,17 @@ theorem map_collisionFreeHafnianAmplitude_eq_scaledHaar
     Measure.map (fun U ↦ collisionFreeHafnianAmplitude M K n hKM U S)
         (H.law M) =
       scaledHaarGramHafnianLaw H M n K := by
-  rw [← CurrentPRL.selectedRowsScaledGramHafnianLaw_eq
+  rw [← LocalAnticoncentration.selectedRowsScaledGramHafnianLaw_eq
     H hNM hKM (collisionFreeLabelRows S)]
-  unfold CurrentPRL.selectedRowsScaledGramHafnianLaw
-    CurrentPRL.selectedRowsScaledTransposeGramLaw
+  unfold LocalAnticoncentration.selectedRowsScaledGramHafnianLaw
+    LocalAnticoncentration.selectedRowsScaledTransposeGramLaw
     collisionFreeHafnianAmplitude
   rw [Measure.map_map (measurable_hafnianMatrixObservable n)
-    (CurrentPRL.measurable_scaledRectangularTransposeGram M (2 * n) K)]
+    (LocalAnticoncentration.measurable_scaledRectangularTransposeGram M (2 * n) K)]
   rw [Measure.map_map
     ((measurable_hafnianMatrixObservable n).comp
-      (CurrentPRL.measurable_scaledRectangularTransposeGram M (2 * n) K))
-    (CurrentPRL.measurable_selectedRowsUnitaryBlock hKM
+      (LocalAnticoncentration.measurable_scaledRectangularTransposeGram M (2 * n) K))
+    (LocalAnticoncentration.measurable_selectedRowsUnitaryBlock hKM
       (collisionFreeLabelRows S))]
   apply Measure.map_congr
   exact ae_of_all _ fun _ ↦ rfl
@@ -2278,27 +2278,27 @@ theorem scaledHaarPhysicalSmallDenominator_uncapped
     (scaledHaarGramHafnianLaw H M n K).real
         (scaledAmplitudeSmallDenominatorSet r M K n t) ≤
       shiftedAnticoncentrationConstant K n * t +
-        PRXQUniformHiding.hidingRemainder M (2 * n) := by
+        UniformMatrixHiding.hidingRemainder M (2 * n) := by
   have hM : 0 < M := by omega
   rw [scaledAmplitudeSmallDenominatorSet_eq_shiftedComplexDisk
     hr hM K n ht]
   have hNM : 2 * n ≤ M := by omega
   have hNK : 2 * n ≤ K := by omega
   have hNpos : 1 ≤ 2 * n := by omega
-  have htvMatrix := PRXQUniformHiding.matrixLaw.apply
+  have htvMatrix := UniformMatrixHiding.matrixLaw.apply
     H hNpos hNK hKM
   have htvHafnian := htvMatrix.map (measurable_hafnianMatrixObservable n)
   have htv : probabilityTotalVariationLE
       (scaledHaarGramHafnianLaw H M n K)
       (gaussianGramHafnianLaw n K)
-      (PRXQUniformHiding.hidingRemainder M (2 * n)) := by
+      (UniformMatrixHiding.hidingRemainder M (2 * n)) := by
     simpa [scaledHaarGramHafnianLaw, gaussianGramHafnianLaw,
-      PRXQUniformHiding.hidingRemainder] using htvHafnian
+      UniformMatrixHiding.hidingRemainder] using htvHafnian
   have htransfer := htv.event_le
     (measurableSet_shiftedComplexDisk 0
       (Real.sqrt t * gramHafnianSigma K n))
   rw [gaussianGramHafnianLaw_shiftedDisk_eq] at htransfer
-  have hgaussian := PRXQAnticoncentration.shiftedSmallBall
+  have hgaussian := GaussianAnticoncentration.shiftedSmallBall
     n K hn hKanti 0 (Real.sqrt t) (Real.sqrt_nonneg t)
   have hgaussian' :
       gramHafnianShiftedSmallBallProbability K n 0 (Real.sqrt t) ≤
@@ -2432,10 +2432,10 @@ theorem collisionFreeMostLabelsNotDark
     (measurableSet_collisionFreeDarkEvent hr M K n hM hKM ht)
   · unfold darkLabelError
     have hB : 0 ≤ shiftedAnticoncentrationConstant K n :=
-      (PRXQAnticoncentration.shiftedAnticoncentrationConstant_pos
+      (GaussianAnticoncentration.shiftedAnticoncentrationConstant_pos
         n K hn hKanti).le
-    have hdelta : 0 ≤ PRXQUniformHiding.hidingRemainder M (2 * n) := by
-      unfold PRXQUniformHiding.hidingRemainder
+    have hdelta : 0 ≤ UniformMatrixHiding.hidingRemainder M (2 * n) := by
+      unfold UniformMatrixHiding.hidingRemainder
       exact le_min zero_le_one (mul_nonneg (by norm_num)
         (ultimateSquaredHidingRate_nonneg M (2 * n)))
     exact le_min zero_le_one (add_nonneg
@@ -2472,7 +2472,7 @@ theorem collisionFreeRandomLabelAdditiveToRelative
             (haarUniformCollisionFreeAmplitude M K n hKM
               (labelCircuit omega))) rho) ≤
       min 1 (gamma + shiftedAnticoncentrationConstant K n * (eta / rho) +
-        PRXQUniformHiding.hidingRemainder M (2 * n)) := by
+        UniformMatrixHiding.hidingRemainder M (2 * n)) := by
   have hM : 0 < M := by omega
   have hNM : 2 * n ≤ M := by omega
   have hamplitude : Measurable (fun omega ↦
@@ -2544,8 +2544,8 @@ theorem randomLabelFiniteErrorBudget
           (615172 * (((2 * n : Nat) : Real) ^ 2)) / (M : Real) := by ring
       _ ≤ deltaH := (div_le_iff₀ hMreal).2 (by
         simpa [mul_comm] using hambient')
-  have hhide : PRXQUniformHiding.hidingRemainder M (2 * n) ≤ deltaH := by
-    unfold PRXQUniformHiding.hidingRemainder
+  have hhide : UniformMatrixHiding.hidingRemainder M (2 * n) ≤ deltaH := by
+    unfold UniformMatrixHiding.hidingRemainder
     exact (min_le_right _ _).trans hraw
   exact hmain.trans (min_le_min le_rfl (by linarith))
 
@@ -2652,7 +2652,7 @@ theorem collisionFreeSamplerRelative
         (shiftedAnticoncentrationConstant K n) eps rho
         (Nat.choose M (2 * n))
         (gbsGaussianReferenceProbability r M K n) / zeta +
-        PRXQUniformHiding.hidingRemainder M (2 * n)) := by
+        UniformMatrixHiding.hidingRemainder M (2 * n)) := by
   have hM : 0 < M := by omega
   have hK : 0 < K := by omega
   have hNM : 2 * n ≤ M := by omega
@@ -2694,7 +2694,7 @@ theorem collisionFreeSamplerRelative
         (fun U (x : ↑labels) ↦ p U x) etaS rho U ∂H.law M) ≤
         shiftedAnticoncentrationConstant K n *
           (etaS / (rho * gbsGaussianReferenceProbability r M K n)) +
-          PRXQUniformHiding.hidingRemainder M (2 * n) := by
+          UniformMatrixHiding.hidingRemainder M (2 * n) := by
     unfold samplerDarkFraction
     apply expectedDarkLabelFraction_le (H.law M)
       (fun x : ↑labels ↦ {U | p U x ≤ etaS / rho})
@@ -2704,7 +2704,7 @@ theorem collisionFreeSamplerRelative
     exact (collisionFreeDarkEvent_probability_le
       H hr M K n hn hKanti hKM hthreshold (decode x)).trans
         (min_le_right _ _)
-  have hbase := samplerTVToRandomLabelRelative_prl
+  have hbase := samplerTVToRandomLabelRelative_relativeAccuracy
     (H.law M) labels hlabels p q hp hq heps hzeta hrho hpRef htv
     (by simpa [etaS] using hdark)
   simpa [hcardNat] using hbase
@@ -2734,7 +2734,7 @@ theorem collisionFreeSamplerRelative_eventwise
         (shiftedAnticoncentrationConstant K n) eps rho
         (Nat.choose M (2 * n))
         (gbsGaussianReferenceProbability r M K n) / zeta +
-        PRXQUniformHiding.hidingRemainder M (2 * n)) := by
+        UniformMatrixHiding.hidingRemainder M (2 * n)) := by
   have hM : 0 < M := by omega
   have hK : 0 < K := by omega
   have hNM : 2 * n ≤ M := by omega
@@ -2776,7 +2776,7 @@ theorem collisionFreeSamplerRelative_eventwise
         (fun U (x : ↑labels) ↦ p U x) etaS rho U ∂H.law M) ≤
         shiftedAnticoncentrationConstant K n *
           (etaS / (rho * gbsGaussianReferenceProbability r M K n)) +
-          PRXQUniformHiding.hidingRemainder M (2 * n) := by
+          UniformMatrixHiding.hidingRemainder M (2 * n) := by
     unfold samplerDarkFraction
     apply expectedDarkLabelFraction_le (H.law M)
       (fun x : ↑labels ↦ {U | p U x ≤ etaS / rho})
@@ -2786,7 +2786,7 @@ theorem collisionFreeSamplerRelative_eventwise
     exact (collisionFreeDarkEvent_probability_le
       H hr M K n hn hKanti hKM hthreshold (decode x)).trans
         (min_le_right _ _)
-  have hbase := samplerTVToRandomLabelRelative_eventwise_prl
+  have hbase := samplerTVToRandomLabelRelative_eventwise_relativeAccuracy
     (H.law M) labels hlabels p q hp hq heps hzeta hrho hpRef htv
     (by simpa [etaS] using hdark)
   simpa [hcardNat] using hbase
@@ -2863,7 +2863,7 @@ theorem finiteHaarNormalizedPhysicalIntensityTail
     (scaledHaarGramHafnianLaw H M n K).real
         {w | normalizedPhysicalIntensity r M K n w ≤ t} ≤
       min 1 (shiftedAnticoncentrationConstant K n * t +
-        PRXQUniformHiding.hidingRemainder M (2 * n)) := by
+        UniformMatrixHiding.hidingRemainder M (2 * n)) := by
   have hM : 0 < M := by omega
   have hK : 0 < K := by omega
   have hpRef : 0 < gbsGaussianReferenceProbability r M K n :=
@@ -2902,26 +2902,26 @@ theorem sectorReferenceMass
 
 end
 
-end LogdetLean.GramHafnian.ThreePaper.PRLConsequences
+end LogdetLean.GramHafnian.ThreePaper.RelativeAccuracy
 
-#print axioms LogdetLean.GramHafnian.ThreePaper.PRLConsequences.generalMarkovTradeoff
-#print axioms LogdetLean.GramHafnian.ThreePaper.PRLConsequences.balancedMarkovTradeoff
-#print axioms LogdetLean.GramHafnian.ThreePaper.PRLConsequences.samplerRelativeOptimized
-#print axioms LogdetLean.GramHafnian.ThreePaper.PRLConsequences.finiteHaarTruncatedNegativeMoment
-#print axioms LogdetLean.GramHafnian.ThreePaper.PRLConsequences.finitePanel_min_hiding_remainder
-#print axioms LogdetLean.GramHafnian.ThreePaper.PRLConsequences.disjointGaussianPanelSmallBall_exact
-#print axioms LogdetLean.GramHafnian.ThreePaper.PRLConsequences.disjointGaussianPanelSmallBall_transfer
-#print axioms LogdetLean.GramHafnian.ThreePaper.PRLConsequences.disjointPanel_min_of_two
-#print axioms LogdetLean.GramHafnian.ThreePaper.PRLConsequences.orderedHaarHafnianPanelLaw_eq_ambient
-#print axioms LogdetLean.GramHafnian.ThreePaper.PRLConsequences.ambientHaarHafnianPanelSmallBall_union_le
-#print axioms LogdetLean.GramHafnian.ThreePaper.PRLConsequences.orderedDisjointHaarHafnianPanelSmallBall
-#print axioms LogdetLean.GramHafnian.ThreePaper.PRLConsequences.orderedDisjointHaarHafnianPanelSmallBall_full_qN
-#print axioms LogdetLean.GramHafnian.ThreePaper.PRLConsequences.orderedDisjointPhysicalPanelSmallDenominator_full_qN
-#print axioms LogdetLean.GramHafnian.ThreePaper.PRLConsequences.orderedPhysicalFinitePanelSmallDenominator
-#print axioms LogdetLean.GramHafnian.ThreePaper.PRLConsequences.collisionFreeExpectedDarkFraction
-#print axioms LogdetLean.GramHafnian.ThreePaper.PRLConsequences.collisionFreeMostLabelsNotDark
-#print axioms LogdetLean.GramHafnian.ThreePaper.PRLConsequences.collisionFreeRandomLabelAdditiveToRelative
-#print axioms LogdetLean.GramHafnian.ThreePaper.PRLConsequences.randomLabelFiniteErrorBudget
-#print axioms LogdetLean.GramHafnian.ThreePaper.PRLConsequences.collisionFreeSamplerRelative
-#print axioms LogdetLean.GramHafnian.ThreePaper.PRLConsequences.finiteHaarNormalizedPhysicalIntensityTail
-#print axioms LogdetLean.GramHafnian.ThreePaper.PRLConsequences.normalizedSectorProbability
+#print axioms LogdetLean.GramHafnian.ThreePaper.RelativeAccuracy.generalMarkovTradeoff
+#print axioms LogdetLean.GramHafnian.ThreePaper.RelativeAccuracy.balancedMarkovTradeoff
+#print axioms LogdetLean.GramHafnian.ThreePaper.RelativeAccuracy.samplerRelativeOptimized
+#print axioms LogdetLean.GramHafnian.ThreePaper.RelativeAccuracy.finiteHaarTruncatedNegativeMoment
+#print axioms LogdetLean.GramHafnian.ThreePaper.RelativeAccuracy.finitePanel_min_hiding_remainder
+#print axioms LogdetLean.GramHafnian.ThreePaper.RelativeAccuracy.disjointGaussianPanelSmallBall_exact
+#print axioms LogdetLean.GramHafnian.ThreePaper.RelativeAccuracy.disjointGaussianPanelSmallBall_transfer
+#print axioms LogdetLean.GramHafnian.ThreePaper.RelativeAccuracy.disjointPanel_min_of_two
+#print axioms LogdetLean.GramHafnian.ThreePaper.RelativeAccuracy.orderedHaarHafnianPanelLaw_eq_ambient
+#print axioms LogdetLean.GramHafnian.ThreePaper.RelativeAccuracy.ambientHaarHafnianPanelSmallBall_union_le
+#print axioms LogdetLean.GramHafnian.ThreePaper.RelativeAccuracy.orderedDisjointHaarHafnianPanelSmallBall
+#print axioms LogdetLean.GramHafnian.ThreePaper.RelativeAccuracy.orderedDisjointHaarHafnianPanelSmallBall_full_qN
+#print axioms LogdetLean.GramHafnian.ThreePaper.RelativeAccuracy.orderedDisjointPhysicalPanelSmallDenominator_full_qN
+#print axioms LogdetLean.GramHafnian.ThreePaper.RelativeAccuracy.orderedPhysicalFinitePanelSmallDenominator
+#print axioms LogdetLean.GramHafnian.ThreePaper.RelativeAccuracy.collisionFreeExpectedDarkFraction
+#print axioms LogdetLean.GramHafnian.ThreePaper.RelativeAccuracy.collisionFreeMostLabelsNotDark
+#print axioms LogdetLean.GramHafnian.ThreePaper.RelativeAccuracy.collisionFreeRandomLabelAdditiveToRelative
+#print axioms LogdetLean.GramHafnian.ThreePaper.RelativeAccuracy.randomLabelFiniteErrorBudget
+#print axioms LogdetLean.GramHafnian.ThreePaper.RelativeAccuracy.collisionFreeSamplerRelative
+#print axioms LogdetLean.GramHafnian.ThreePaper.RelativeAccuracy.finiteHaarNormalizedPhysicalIntensityTail
+#print axioms LogdetLean.GramHafnian.ThreePaper.RelativeAccuracy.normalizedSectorProbability

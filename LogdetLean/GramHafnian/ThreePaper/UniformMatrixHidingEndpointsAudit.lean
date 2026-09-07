@@ -1,4 +1,4 @@
-import LogdetLean.GramHafnian.ThreePaper.PRXQUniformHiding
+import LogdetLean.GramHafnian.ThreePaper.UniformMatrixHiding
 import LogdetLean.GramHafnian.ThreePaper.Verification.HidingOutsideCDPaperFacing
 import LogdetLean.GramHafnian.ThreePaper.Verification.HidingLemmaIII2SignedMeasure
 import LogdetLean.GramHafnian.ThreePaper.Verification.HidingLemmaIII2ConcreteSignedAction
@@ -9,7 +9,7 @@ import LogdetLean.GramHafnian.ThreePaper.Verification.HidingTraceVarianceCentere
 import LogdetLean.GramHafnian.UltimateHiding.DenseScore.U08.H8H10_ExactTraceRecurrenceAdapter
 
 /-!
-# Exact executable label audit for the PRX Quantum uniform-hiding paper
+# Exact executable label audit for the matrix-law uniform-hiding paper
 
 Every active mathematical label in the manuscript is paired below with the
 declaration whose type is the displayed statement. A multi-line definition
@@ -29,18 +29,18 @@ by `#check` commands.
 
 open MeasureTheory ProbabilityTheory
 
-namespace LogdetLean.GramHafnian.ThreePaper.PRXQUniformHiding.PaperEndpointsAudit
+namespace LogdetLean.GramHafnian.ThreePaper.UniformMatrixHiding.PaperEndpointsAudit
 
 open LogdetLean.GramHafnian
-open LogdetLean.GramHafnian.CurrentPRL
-open LogdetLean.GramHafnian.PRXArticle
+open LogdetLean.GramHafnian.LocalAnticoncentration
+open LogdetLean.GramHafnian.MatrixLawEndpoints
 open LogdetLean.GramHafnian.UltimateHiding
 open LogdetLean.GramHafnian.UltimateHiding.Dense
 open LogdetLean.GramHafnian.UltimateHiding.DenseScore
 open LogdetLean.GramHafnian.UltimateHiding.DenseScore.U08
 open LogdetLean.GramHafnian.UltimateHiding.DenseLocalStep
 open LogdetLean.GramHafnian.UltimateHiding.Sparse
-open LogdetLean.GramHafnian.ThreePaper.PRXQUniformHiding
+open LogdetLean.GramHafnian.ThreePaper.UniformMatrixHiding
 open LogdetLean.GramHafnian.ThreePaper.Verification
 
 /-! ## Headline theorem and transpose-Gram structure -/
@@ -458,4 +458,4 @@ open LogdetLean.GramHafnian.ThreePaper.Verification
 #print axioms eq_external_A3_symmetric_test
 #print axioms eq_external_A4_direct
 
-end LogdetLean.GramHafnian.ThreePaper.PRXQUniformHiding.PaperEndpointsAudit
+end LogdetLean.GramHafnian.ThreePaper.UniformMatrixHiding.PaperEndpointsAudit

@@ -1,4 +1,4 @@
-import LogdetLean.GramHafnian.ThreePaper.PRXQAnticoncentrationPaperEndpoints
+import LogdetLean.GramHafnian.ThreePaper.GaussianAnticoncentrationEndpoints
 import Mathlib.Analysis.SpecialFunctions.Pow.Integral
 import Mathlib.Analysis.SpecialFunctions.ImproperIntegrals
 import Mathlib.Analysis.SpecialFunctions.Log.Base
@@ -7,7 +7,7 @@ open scoped ENNReal
 open Filter MeasureTheory Set
 open LogdetLean.GramHafnian
 
-namespace LogdetLean.GramHafnian.ThreePaper.PRXQAnticoncentration
+namespace LogdetLean.GramHafnian.ThreePaper.GaussianAnticoncentration
 
 noncomputable section
 
@@ -404,7 +404,7 @@ theorem normalizedShiftedIntensity_lowerTail_div_t_tendsto
             {X | normalizedShiftedIntensityObservable k n z X ≤ t} / t)
       (nhdsWithin 0 (Ioi 0))
       (nhds (gramHafnianSigma k n ^ 2 *
-        (Real.pi * currentPRLGramHafnianDensity (k := k) hn z))) := by
+        (Real.pi * localAnticoncentrationGramHafnianDensity (k := k) hn z))) := by
   have hsqrt : Tendsto (fun t : ℝ ↦ Real.sqrt t)
       (nhdsWithin 0 (Ioi 0)) (nhdsWithin 0 (Ioi 0)) := by
     rw [tendsto_nhdsWithin_iff]
@@ -528,10 +528,10 @@ theorem normalizedShiftedIntensity_exists_linearLowerTail
         c * t ≤ (circularGaussianColumnMatrixMeasure n k).real
           {X | normalizedShiftedIntensityObservable k n z X ≤ t} := by
   let L : ℝ := gramHafnianSigma k n ^ 2 *
-    (Real.pi * currentPRLGramHafnianDensity (k := k) hn z)
+    (Real.pi * localAnticoncentrationGramHafnianDensity (k := k) hn z)
   have hL : 0 < L := by
     dsimp [L]
-    rw [pi_mul_currentPRLGramHafnianDensity_eq_localSharpnessCoefficient]
+    rw [pi_mul_localAnticoncentrationGramHafnianDensity_eq_localSharpnessCoefficient]
     exact gramHafnian_normalized_shrinkingDisk_limit_coefficient_pos hn hk z
   have hlim := normalizedShiftedIntensity_lowerTail_div_t_tendsto n k hn hk z
   have hevent : ∀ᶠ t in nhdsWithin (0 : ℝ) (Ioi 0),
@@ -738,4 +738,4 @@ theorem normalizedDenominatorResolutionReal_of_logBudget
     ((min_le_right _ _).trans hscalar)
 
 end
-end LogdetLean.GramHafnian.ThreePaper.PRXQAnticoncentration
+end LogdetLean.GramHafnian.ThreePaper.GaussianAnticoncentration

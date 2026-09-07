@@ -1,8 +1,8 @@
-import LogdetLean.GramHafnian.CurrentPRL.MixtureDensity
+import LogdetLean.GramHafnian.LocalAnticoncentration.MixtureDensity
 import Mathlib.MeasureTheory.Integral.Bochner.Set
 
 /-!
-# Shrinking disk limit for the current PRL
+# Shrinking disk limit for the current manuscript
 
 The proof is an every point continuity argument.  It does not invoke the
 almost everywhere Lebesgue differentiation theorem.
@@ -124,22 +124,22 @@ theorem map_gramHafnianObservable_eq_withDensity_real
         (gramHafnianObservable r k) =
       (volume : Measure ℂ).withDensity
         (fun w ↦ ENNReal.ofReal
-          (currentPRLGramHafnianDensity (k := k) hr w)) := by
+          (localAnticoncentrationGramHafnianDensity (k := k) hr w)) := by
   rw [map_gramHafnianObservable_eq_withDensity_mixture hr hk]
   congr 1
   funext w
-  exact currentPRLGramHafnianMixtureDensity_eq_ofReal hr hk w
+  exact localAnticoncentrationGramHafnianMixtureDensity_eq_ofReal hr hk w
 
 /-- The real density integrates to one, hence is globally integrable. -/
-theorem integrable_currentPRLGramHafnianDensity_volume
+theorem integrable_localAnticoncentrationGramHafnianDensity_volume
     {r k : ℕ} (hr : 1 ≤ r) (hk : 4 * r ≤ k) :
-    Integrable (currentPRLGramHafnianDensity (k := k) hr)
+    Integrable (localAnticoncentrationGramHafnianDensity (k := k) hr)
       (volume : Measure ℂ) := by
-  let f : ℂ → ℝ := currentPRLGramHafnianDensity (k := k) hr
+  let f : ℂ → ℝ := localAnticoncentrationGramHafnianDensity (k := k) hr
   have hfmeas : AEStronglyMeasurable f (volume : Measure ℂ) :=
-    (continuous_currentPRLGramHafnianDensity hr hk).aestronglyMeasurable
+    (continuous_localAnticoncentrationGramHafnianDensity hr hk).aestronglyMeasurable
   have hnonneg : 0 ≤ᵐ[(volume : Measure ℂ)] f :=
-    ae_of_all _ fun w ↦ currentPRLGramHafnianDensity_nonneg hr w
+    ae_of_all _ fun w ↦ localAnticoncentrationGramHafnianDensity_nonneg hr w
   apply (lintegral_ofReal_ne_top_iff_integrable hfmeas hnonneg).mp
   have hlaw := map_gramHafnianObservable_eq_withDensity_real hr hk
   have hmass :
@@ -163,12 +163,12 @@ theorem gramHafnian_raw_shrinkingDisk_limit
         (circularGaussianColumnMatrixMeasure r k).real
             {X | ‖gramHafnianObservable r k X - z‖ ≤ rho} / rho ^ 2)
       (𝓝[>] 0)
-      (𝓝 (Real.pi * currentPRLGramHafnianDensity (k := k) hr z)) := by
-  let f : ℂ → ℝ := currentPRLGramHafnianDensity (k := k) hr
+      (𝓝 (Real.pi * localAnticoncentrationGramHafnianDensity (k := k) hr z)) := by
+  let f : ℂ → ℝ := localAnticoncentrationGramHafnianDensity (k := k) hr
   have hbase := tendsto_withDensity_complex_closedBall_div_sq f
-    (continuous_currentPRLGramHafnianDensity hr hk)
-    (integrable_currentPRLGramHafnianDensity_volume hr hk)
-    (fun w ↦ currentPRLGramHafnianDensity_nonneg hr w) z
+    (continuous_localAnticoncentrationGramHafnianDensity hr hk)
+    (integrable_localAnticoncentrationGramHafnianDensity_volume hr hk)
+    (fun w ↦ localAnticoncentrationGramHafnianDensity_nonneg hr w) z
   rw [← map_gramHafnianObservable_eq_withDensity_real hr hk] at hbase
   apply hbase.congr'
   filter_upwards [] with rho
@@ -189,7 +189,7 @@ theorem gramHafnian_normalized_shrinkingDisk_limit_density
               eps * gramHafnianSigma k r} / eps ^ 2)
       (𝓝[>] 0)
       (𝓝 (gramHafnianSigma k r ^ 2 *
-        (Real.pi * currentPRLGramHafnianDensity (k := k) hr z))) := by
+        (Real.pi * localAnticoncentrationGramHafnianDensity (k := k) hr z))) := by
   have hkpos : 0 < k := by omega
   have hsigma : 0 < gramHafnianSigma k r :=
     gramHafnianSigma_pos k r hkpos
@@ -210,7 +210,7 @@ theorem gramHafnian_normalized_shrinkingDisk_limit_density
           gramHafnianSigma k r ^ 2)
       (𝓝[>] 0)
       (𝓝 (gramHafnianSigma k r ^ 2 *
-        (Real.pi * currentPRLGramHafnianDensity (k := k) hr z))) := by
+        (Real.pi * localAnticoncentrationGramHafnianDensity (k := k) hr z))) := by
     simpa [mul_comm] using hmul
   apply hmul'.congr'
   filter_upwards [self_mem_nhdsWithin] with eps heps
@@ -219,7 +219,7 @@ theorem gramHafnian_normalized_shrinkingDisk_limit_density
 
 /-- The expectation on the right side of Equation (14), without the `π⁻¹`
 appearing in the planar density. -/
-def currentPRLLocalSharpnessCoefficient
+def localAnticoncentrationLocalSharpnessCoefficient
     {r k : ℕ} (hr : 1 ≤ r) (z : ℂ) : ℝ :=
   ∫ A : OddCofactorIndex r hr → (Fin k → ℂ),
     (pastCofactorV hr A)⁻¹ *
@@ -228,18 +228,18 @@ def currentPRLLocalSharpnessCoefficient
 
 /-- Equation (13) identifies `π f(z)` with the expectation used in
 Equation (14). -/
-theorem pi_mul_currentPRLGramHafnianDensity_eq_localSharpnessCoefficient
+theorem pi_mul_localAnticoncentrationGramHafnianDensity_eq_localSharpnessCoefficient
     {r k : ℕ} (hr : 1 ≤ r) (z : ℂ) :
-    Real.pi * currentPRLGramHafnianDensity (k := k) hr z =
-      currentPRLLocalSharpnessCoefficient (k := k) hr z := by
-  rw [currentPRLGramHafnianDensity,
-    currentPRLLocalSharpnessCoefficient, ← integral_const_mul]
+    Real.pi * localAnticoncentrationGramHafnianDensity (k := k) hr z =
+      localAnticoncentrationLocalSharpnessCoefficient (k := k) hr z := by
+  rw [localAnticoncentrationGramHafnianDensity,
+    localAnticoncentrationLocalSharpnessCoefficient, ← integral_const_mul]
   apply integral_congr_ae
   filter_upwards [] with A
-  unfold currentPRLGramHafnianDensityIntegrand
+  unfold localAnticoncentrationGramHafnianDensityIntegrand
   field_simp [Real.pi_ne_zero]
 
-/-- Equation (14) in the exact expectation notation printed in the PRL. -/
+/-- Equation (14) in the exact expectation notation printed in the manuscript. -/
 theorem gramHafnian_normalized_shrinkingDisk_limit
     {r k : ℕ} (hr : 1 ≤ r) (hk : 4 * r ≤ k) (z : ℂ) :
     Tendsto
@@ -249,8 +249,8 @@ theorem gramHafnian_normalized_shrinkingDisk_limit
               eps * gramHafnianSigma k r} / eps ^ 2)
       (𝓝[>] 0)
       (𝓝 (gramHafnianSigma k r ^ 2 *
-        currentPRLLocalSharpnessCoefficient (k := k) hr z)) := by
-  simpa [pi_mul_currentPRLGramHafnianDensity_eq_localSharpnessCoefficient]
+        localAnticoncentrationLocalSharpnessCoefficient (k := k) hr z)) := by
+  simpa [pi_mul_localAnticoncentrationGramHafnianDensity_eq_localSharpnessCoefficient]
     using gramHafnian_normalized_shrinkingDisk_limit_density hr hk z
 
 /-- The limiting coefficient in Equation (14) is strictly positive at every
@@ -258,12 +258,12 @@ fixed center. -/
 theorem gramHafnian_normalized_shrinkingDisk_limit_coefficient_pos
     {r k : ℕ} (hr : 1 ≤ r) (hk : 4 * r ≤ k) (z : ℂ) :
     0 < gramHafnianSigma k r ^ 2 *
-      currentPRLLocalSharpnessCoefficient (k := k) hr z := by
+      localAnticoncentrationLocalSharpnessCoefficient (k := k) hr z := by
   have hkpos : 0 < k := by omega
   have hsigma : 0 < gramHafnianSigma k r :=
     gramHafnianSigma_pos k r hkpos
-  have hfpos := currentPRLGramHafnianDensity_pos hr hk z
-  rw [← pi_mul_currentPRLGramHafnianDensity_eq_localSharpnessCoefficient]
+  have hfpos := localAnticoncentrationGramHafnianDensity_pos hr hk z
+  rw [← pi_mul_localAnticoncentrationGramHafnianDensity_eq_localSharpnessCoefficient]
   exact mul_pos (sq_pos_of_pos hsigma) (mul_pos Real.pi_pos hfpos)
 
 end

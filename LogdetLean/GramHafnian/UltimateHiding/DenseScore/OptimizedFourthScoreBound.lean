@@ -36,7 +36,7 @@ noncomputable section
 
 open LogdetLean.GramHafnian.UltimateHiding.Dense
 open LogdetLean.GramHafnian.UltimateHiding.DenseLocalStep
-open LogdetLean.GramHafnian.CurrentPRL
+open LogdetLean.GramHafnian.LocalAnticoncentration
 
 /-- Exact optimized budget for the four lower Bell monomials. -/
 def optimizedLowerBellFourthConstant : ℝ :=

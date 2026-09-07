@@ -1,6 +1,17 @@
 # Verification status
 
-## Lean build and endpoint audit — 6 September 2026
+## Journal-independent names and fresh Lean verification — 7 September 2026
+
+**Passed.** After the module and identifier renaming, the pinned project build and a separate execution of `HidingVerification.lean` both returned exit code zero. All seven public endpoints matched their exact expected axiom sets: four hiding/Route 1 endpoints use the four literature axioms plus three foundations; the two companion endpoints and the conditional Route 2 deduction use only the three foundations. No project axiom was added.
+
+- [Current build log](module_naming_build.log) and [current endpoint audit](module_naming_axiom_audit.log) record these fresh executions.
+- [Current build receipt](module_naming_build_receipt.json) records the source hashes, commands, toolchain, log hashes, and endpoint counts.
+- [Naming and documentation checks](module_naming_checks.json) verify all 881 Lean sources against the exact naming rules, all local documentation links, and preservation of all 452 mathematical expressions. The audit was also tested against an altered proof and an invalid reverse edit; both were rejected.
+- [Current source audit](source_audit.json) verifies the import graph, four project axiom declarations, absence of proof escape tokens, and exact restoration of all 225 companion files to their original upstream hashes. [Provenance](../docs/PROVENANCE.md) explains the reversible substitutions.
+
+This is a fresh build invocation using the pinned dependency cache and unaffected local modules. Renamed modules and their affected dependents were rebuilt. Existing linter warnings remain; the build completed without errors. It is not a completely uncached build or an independent kernel-checker run. The mathematical statements and proofs are preserved under the recorded naming substitutions. Earlier receipts below retain their original snapshot meaning.
+
+## Earlier Lean build and endpoint audit — 6 September 2026
 
 **Passed.** The pinned project build completed successfully with 9,585 jobs. The new `UniformHiding` proof module and `HidingVerification` module were compiled during that successful build. A separate execution of the axiom audit also returned exit code zero.
 
@@ -21,7 +32,7 @@ The foundations are `propext`, `Classical.choice`, and `Quot.sound`. The four li
 - [Public build log](public_build.log): `LEAN_NUM_THREADS=4 lake build`, exit 0.
 - [Fresh axiom audit](axiom_audit.log): `LEAN_NUM_THREADS=4 lake env lean HidingVerification.lean`, exit 0; includes the exact sets and printed public theorem types.
 - [Build receipt](build_receipt.json): commands, source hashes, log hashes and endpoint results.
-- [Source audit](source_audit.json): all 881 shipped Lean modules checked; exactly four project axiom declarations, no executable `sorry`, `admit`, `unsafe`, or `native_decide`, no missing local imports or import cycles. All 225 vendored companion files match the pinned snapshot.
+- [Current source audit](source_audit.json): all 881 shipped Lean modules checked; exactly four project axiom declarations, no executable `sorry`, `admit`, `unsafe`, or `native_decide`, no missing local imports or import cycles. Following the naming revision, all 225 companion files match the pinned snapshot after reversing the recorded substitutions.
 - [Markdown source check](markdown_source_check.json): local links, math fence pairing and brace escaping checked. This is separate from mathematical proof checking.
 
 The build used pinned dependency caches and reused local modules already compiled during this release's build. The initial unrestricted build was interrupted because of resource pressure; work resumed with four threads. An addition-inequality call in the new Route 1 wrapper was corrected before the successful build. These logs do not claim a completely uncached build, an independent kernel checker run, or a PrimeGaps comparator run. Existing library linter warnings remain; there were no build errors in the successful run.
@@ -38,6 +49,6 @@ The revised A2 module was elaborated successfully with the pinned Lean toolchain
 
 The README, the four-axiom audit, the expanded A2 justification, and the correspondence documents now match the rewritten Appendix A. Each axiom is translated mathematically before presenting the source statement, source-to-axiom justification, and notation dictionary. A3's all-sample measurability and A4's supplied-law premise and coefficient conversion are explicit.
 
-All 881 Lean files are byte-identical to commit `d3ea171e4c328989507c7188279c363944df642b`; all 225 companion files still match the pinned snapshot. This update checks documentation, mathematical correspondence, source identity, and the portable source audit. It does **not** rerun Lean or claim a separately formalized proof of any source-to-axiom justification. [The documentation receipt](axiom_documentation_revision.json) records the current checks. The earlier full build and endpoint audit remain the evidence for the unchanged Lean source.
+At that documentation-only stage, all 881 Lean files were byte-identical to commit `d3ea171e4c328989507c7188279c363944df642b`, and all 225 companion files matched the pinned snapshot. That update checked documentation, mathematical correspondence, source identity, and the portable source audit; it did not rerun Lean or claim a separately formalized proof of any source-to-axiom justification. [The documentation receipt](axiom_documentation_revision.json) records those earlier checks. The later naming revision is separately verified and supersedes byte-for-byte identity claims for the current source tree.
 
 Theorem 2.1 and Route 1 of Theorem 3.2, including the infimum over nonnegative physical additive thresholds, are conditional formal proofs relative to the four cited inputs. The companion endpoints add no scientific axioms. Route 2 hiding is not proved: its conditional deduction does not establish its comparison premise. See [PAPER_COMPARISON.md](../docs/PAPER_COMPARISON.md) for the optical model convention, Haar-marginal hypothesis and remaining coverage limits. A successful build is not a claim that every sentence of the manuscript is formally verified.

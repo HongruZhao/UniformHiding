@@ -20,7 +20,7 @@ namespace LogdetLean.GramHafnian.UltimateHiding.DenseScore.U08
 noncomputable section
 
 open LogdetLean.GramHafnian.UltimateHiding.Dense
-open LogdetLean.GramHafnian.CurrentPRL
+open LogdetLean.GramHafnian.LocalAnticoncentration
 
 /-- **CONDITIONAL H6 contract.**  This is the proposition of
 `coeTakagiMuirhead_traceVector_betaPrime_external`, including all of its

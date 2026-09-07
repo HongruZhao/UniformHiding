@@ -21,7 +21,7 @@ namespace LogdetLean.GramHafnian.UltimateHiding.DenseScore
 noncomputable section
 
 open LogdetLean.GramHafnian.UltimateHiding.Dense
-open LogdetLean.GramHafnian.CurrentPRL
+open LogdetLean.GramHafnian.LocalAnticoncentration
 
 private theorem centeredScoreProductLaw_isFinite_H14Rewire
     {N K : ℕ} (hN : 1 ≤ N) (hNK : N ≤ K) :

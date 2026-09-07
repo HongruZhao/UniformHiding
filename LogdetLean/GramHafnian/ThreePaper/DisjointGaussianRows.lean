@@ -1,6 +1,6 @@
 import LogdetLean.GramHafnian.ThreePaper.FinitePanelLaws
 import LogdetLean.GramHafnian.ThreePaper.GroupedIndependence
-import LogdetLean.GramHafnian.PRXArticle.EquationEndpoints
+import LogdetLean.GramHafnian.MatrixLawEndpoints.EquationEndpoints
 
 /-!
 # Disjoint blocks of iid Gaussian rows
@@ -17,7 +17,7 @@ namespace LogdetLean.GramHafnian.ThreePaper.DisjointGaussianRows
 
 noncomputable section
 
-open CurrentPRL PRXArticle UltimateHiding
+open LocalAnticoncentration MatrixLawEndpoints UltimateHiding
 
 /-- The finite image of an ordered row embedding. -/
 def rowRange {N L : Nat} (rows : Fin N ↪ Fin L) : Finset (Fin L) :=

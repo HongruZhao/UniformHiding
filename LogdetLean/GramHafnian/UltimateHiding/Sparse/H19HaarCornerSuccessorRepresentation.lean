@@ -17,7 +17,7 @@ namespace LogdetLean.GramHafnian.UltimateHiding.Sparse
 noncomputable section
 
 open LogdetLean.GramHafnian.UltimateHiding.Dense
-open LogdetLean.GramHafnian.CurrentPRL
+open LogdetLean.GramHafnian.LocalAnticoncentration
 
 /-- Fiberwise equality of pushforward laws can be integrated over a
 measurable base map. -/

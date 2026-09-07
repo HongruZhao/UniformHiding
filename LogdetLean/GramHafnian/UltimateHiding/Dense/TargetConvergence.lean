@@ -27,7 +27,7 @@ namespace LogdetLean.GramHafnian.UltimateHiding.Dense
 
 noncomputable section
 
-open CurrentPRL
+open LocalAnticoncentration
 
 /-- The concrete dense ambient transpose-Gram law at ambient dimension `M`. -/
 abbrev denseHaarAmbientLaw
@@ -59,17 +59,17 @@ theorem exists_nat_fixed_div_add_le
     nlinarith
   exact ⟨n, hdenominator.trans hc_div_n_lt.le⟩
 
-/-- Current-PRL formulation of target convergence for the concrete dense
+/-- Current-manuscript formulation of target convergence for the concrete dense
 ambient family.  Its only scientific source input is Jiang's literal
 unscaled Haar-corner density; all scaling, density limits, Scheffe, orientation
 transport, and transpose-Gram data processing are proved internally. -/
-theorem jiang_denseHaarAmbient_targetConvergence_currentPRL
+theorem jiang_denseHaarAmbient_targetConvergence_localAnticoncentration
     (H : UnitaryHaarProbabilityFamily) {N K start : ℕ}
     (hN : 0 < N) (hK : 0 < K) (hNK : N ≤ K)
     (hstart : K + N ≤ start) :
     ∀ epsilon : ℝ, 0 < epsilon →
       ∃ n : ℕ,
-        CurrentPRL.probabilityTotalVariationLE
+        LocalAnticoncentration.probabilityTotalVariationLE
           (denseHaarAmbientLaw H N K (start + n))
           (denseGaussianTransposeGramTarget N K) epsilon := by
   intro epsilon hepsilon
@@ -87,7 +87,7 @@ theorem jiang_denseHaarAmbient_targetConvergence
         ProbabilityTVLE
           (denseHaarAmbientLaw H N K (start + n))
           (denseGaussianTransposeGramTarget N K) epsilon :=
-  jiang_denseHaarAmbient_targetConvergence_currentPRL
+  jiang_denseHaarAmbient_targetConvergence_localAnticoncentration
     H hN hK hNK hstart
 
 /-- Target convergence from an arbitrary ambient starting point.  The direct

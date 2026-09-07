@@ -21,7 +21,7 @@ namespace LogdetLean.GramHafnian.UltimateHiding.DenseLocalStep
 noncomputable section
 
 open LogdetLean.GramHafnian.UltimateHiding
-open CurrentPRL
+open LocalAnticoncentration
 
 /-- The exact remaining score obligation, only at the canonical square
 scaled-COE corner.  The one-column index `m` remains explicit because its beta

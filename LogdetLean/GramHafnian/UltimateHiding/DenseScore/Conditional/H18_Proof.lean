@@ -34,7 +34,7 @@ def CoeCornerCenteredFixedDirectionH16Contract : Prop :=
       ∫ A, event.indicator
         (concreteCenteredDensityScore r N K v) A
         ∂(concreteScaledCOECornerLaw
-          LogdetLean.GramHafnian.CurrentPRL.canonicalUnitaryHaarProbabilityFamily
+          LogdetLean.GramHafnian.LocalAnticoncentration.canonicalUnitaryHaarProbabilityFamily
             N K)
 
 /-- Smallest regularity input not carried by the totalized derivatives in
@@ -55,7 +55,7 @@ def CoeCornerCenteredPositiveScoreL1ThroughFourContract : Prop :=
       (fun Av : ConcreteMatrixState N × ComplexUnitSphere N ↦
         concreteCenteredDensityScore r N K Av.2 Av.1) 1
       ((concreteScaledCOECornerLaw
-          LogdetLean.GramHafnian.CurrentPRL.canonicalUnitaryHaarProbabilityFamily
+          LogdetLean.GramHafnian.LocalAnticoncentration.canonicalUnitaryHaarProbabilityFamily
             N K).prod (complexUnitSphereProbabilityMeasure N))
 
 /-- The direction-wise absolute score integral.  It is independent of time
@@ -64,7 +64,7 @@ def concreteCenteredDensityScoreDirectionMajorant
     (r N K : ℕ) (v : ComplexUnitSphere N) : ℝ :=
   ∫ A, |concreteCenteredDensityScore r N K v A|
     ∂(concreteScaledCOECornerLaw
-      LogdetLean.GramHafnian.CurrentPRL.canonicalUnitaryHaarProbabilityFamily
+      LogdetLean.GramHafnian.LocalAnticoncentration.canonicalUnitaryHaarProbabilityFamily
         N K)
 
 /-- Product `L^1` for all orders through four, combining the internal order
@@ -77,7 +77,7 @@ theorem concreteCenteredDensityScoreProduct_memLp_one_conditional
       (fun Av : ConcreteMatrixState N × ComplexUnitSphere N ↦
         concreteCenteredDensityScore r N K Av.2 Av.1) 1
       ((concreteScaledCOECornerLaw
-          LogdetLean.GramHafnian.CurrentPRL.canonicalUnitaryHaarProbabilityFamily
+          LogdetLean.GramHafnian.LocalAnticoncentration.canonicalUnitaryHaarProbabilityFamily
             N K).prod (complexUnitSphereProbabilityMeasure N)) := by
   rcases r with _ | r
   · simpa only using
@@ -92,7 +92,7 @@ theorem integrable_concreteCenteredDensityScoreDirectionMajorant_conditional
     Integrable (concreteCenteredDensityScoreDirectionMajorant r N K)
       (complexUnitSphereProbabilityMeasure N) := by
   let mu := concreteScaledCOECornerLaw
-    LogdetLean.GramHafnian.CurrentPRL.canonicalUnitaryHaarProbabilityFamily N K
+    LogdetLean.GramHafnian.LocalAnticoncentration.canonicalUnitaryHaarProbabilityFamily N K
   let sphere := complexUnitSphereProbabilityMeasure N
   let score : ConcreteMatrixState N × ComplexUnitSphere N → ℝ :=
     fun Av ↦ concreteCenteredDensityScore r N K Av.2 Av.1
@@ -118,10 +118,10 @@ theorem ae_integrable_concreteCenteredDensityScore_section_conditional
     ∀ᵐ v ∂(complexUnitSphereProbabilityMeasure N),
       Integrable (concreteCenteredDensityScore r N K v)
         (concreteScaledCOECornerLaw
-          LogdetLean.GramHafnian.CurrentPRL.canonicalUnitaryHaarProbabilityFamily
+          LogdetLean.GramHafnian.LocalAnticoncentration.canonicalUnitaryHaarProbabilityFamily
             N K) := by
   let mu := concreteScaledCOECornerLaw
-    LogdetLean.GramHafnian.CurrentPRL.canonicalUnitaryHaarProbabilityFamily N K
+    LogdetLean.GramHafnian.LocalAnticoncentration.canonicalUnitaryHaarProbabilityFamily N K
   let sphere := complexUnitSphereProbabilityMeasure N
   let score : ConcreteMatrixState N × ComplexUnitSphere N → ℝ :=
     fun Av ↦ concreteCenteredDensityScore r N K Av.2 Av.1
@@ -163,7 +163,7 @@ theorem coeCorner_centeredFixedDirection_eventPath_derivative_at_conditional
           (concreteCenteredOrbitalDirection N v) y ⁻¹' event).indicator
             (concreteCenteredDensityScore r N K v) A
         ∂(concreteScaledCOECornerLaw
-          LogdetLean.GramHafnian.CurrentPRL.canonicalUnitaryHaarProbabilityFamily
+          LogdetLean.GramHafnian.LocalAnticoncentration.canonicalUnitaryHaarProbabilityFamily
             N K) := by
   rw [iteratedDeriv_concreteCenteredRankOneCOEEventPath_eq_zero_shift
     r K v event hevent y]
@@ -194,11 +194,11 @@ theorem ae_norm_iteratedDeriv_concreteCenteredRankOneCOEEventPath_le_majorant
           (concreteCenteredOrbitalDirection N v) y ⁻¹' event).indicator
             (concreteCenteredDensityScore r N K v) A
         ∂(concreteScaledCOECornerLaw
-          LogdetLean.GramHafnian.CurrentPRL.canonicalUnitaryHaarProbabilityFamily
+          LogdetLean.GramHafnian.LocalAnticoncentration.canonicalUnitaryHaarProbabilityFamily
             N K)‖ ≤
         ∫ A, ‖concreteCenteredDensityScore r N K v A‖
           ∂(concreteScaledCOECornerLaw
-            LogdetLean.GramHafnian.CurrentPRL.canonicalUnitaryHaarProbabilityFamily
+            LogdetLean.GramHafnian.LocalAnticoncentration.canonicalUnitaryHaarProbabilityFamily
               N K) := by
     exact norm_integral_le_of_norm_le hv.norm
       (ae_of_all _ fun A ↦
@@ -222,7 +222,7 @@ theorem integrable_iteratedDeriv_concreteCenteredRankOneCOEEventPath_sphere
           (concreteCenteredRankOneCOEEventPath K v event) y)
       (complexUnitSphereProbabilityMeasure N) := by
   let mu := concreteScaledCOECornerLaw
-    LogdetLean.GramHafnian.CurrentPRL.canonicalUnitaryHaarProbabilityFamily N K
+    LogdetLean.GramHafnian.LocalAnticoncentration.canonicalUnitaryHaarProbabilityFamily N K
   let sphere := complexUnitSphereProbabilityMeasure N
   let score : ConcreteMatrixState N × ComplexUnitSphere N → ℝ :=
     fun Av ↦ concreteCenteredDensityScore r N K Av.2 Av.1

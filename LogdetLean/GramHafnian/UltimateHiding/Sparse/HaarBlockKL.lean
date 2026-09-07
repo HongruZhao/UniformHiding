@@ -35,7 +35,7 @@ namespace LogdetLean.GramHafnian.UltimateHiding.Sparse
 
 noncomputable section
 
-open CurrentPRL
+open LocalAnticoncentration
 
 /-- The exact finite grid printed by the matrix beta likelihood calculation,
 with `p = K` and `q = N`. -/

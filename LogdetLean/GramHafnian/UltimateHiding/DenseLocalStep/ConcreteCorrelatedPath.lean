@@ -922,12 +922,12 @@ theorem probabilityTVLE_concreteOneColumn_of_scoreBounds
 /-! ## Scaled-COE base specialization -/
 
 theorem concreteScaledCOECornerLaw_isProbability
-    (H : CurrentPRL.UnitaryHaarProbabilityFamily)
+    (H : LocalAnticoncentration.UnitaryHaarProbabilityFamily)
     {N K : ℕ} (hNK : N ≤ K) :
     IsProbabilityMeasure (Dense.concreteScaledCOECornerLaw H N K) := by
   let _ : IsProbabilityMeasure
-      (CurrentPRL.scaledHaarTransposeGramLaw H K N K) :=
-    CurrentPRL.scaledHaarTransposeGramLaw_isProbability H hNK le_rfl
+      (LocalAnticoncentration.scaledHaarTransposeGramLaw H K N K) :=
+    LocalAnticoncentration.scaledHaarTransposeGramLaw_isProbability H hNK le_rfl
   unfold Dense.concreteScaledCOECornerLaw Dense.concreteHaarAmbientLaw
     normalizedHaarTransposeGramLaw
   exact Measure.isProbabilityMeasure_map
@@ -937,7 +937,7 @@ theorem concreteScaledCOECornerLaw_isProbability
 the dense proof may later instantiate it under `K ≥ 16N`, while the global
 splice remains free to use the sparse branch below that threshold. -/
 theorem probabilityTVLE_concreteScaledCOECorner_oneColumn_of_scoreBounds
-    (H : CurrentPRL.UnitaryHaarProbabilityFamily)
+    (H : LocalAnticoncentration.UnitaryHaarProbabilityFamily)
     {N K m : ℕ} (hN : 1 ≤ N) (hNK : N ≤ K) (hKm : K ≤ m)
     (hthreshold : 24 * (N : ℝ) ^ 2 ≤ (m : ℝ))
     {Cmean CscalarTwo CbTwo CbThree : ℝ}

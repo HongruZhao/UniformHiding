@@ -21,7 +21,7 @@ namespace LogdetLean.GramHafnian.UltimateHiding.Sparse
 
 noncomputable section
 
-open CurrentPRL
+open LocalAnticoncentration
 open LogdetLean.GramHafnian.UltimateHiding.Dense
 
 local instance h19BaseColumnEuclideanBorel (K : ℕ) :

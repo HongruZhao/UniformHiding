@@ -1,4 +1,4 @@
-import LogdetLean.GramHafnian.CurrentPRL.LocalSharpness
+import LogdetLean.GramHafnian.LocalAnticoncentration.LocalSharpness
 import LogdetLean.GramHafnian.ShiftedAnticoncentration.Experimental.SmallBallLocalFlatness.GramHafnianAdapter
 
 /-!
@@ -40,7 +40,7 @@ theorem map_gramHafnianObservable_eq_withDensity_mixture_of_ae_pos
     (circularGaussianColumnMatrixMeasure r k).map
         (gramHafnianObservable r k) =
       (volume : Measure ℂ).withDensity
-        (currentPRLGramHafnianMixtureDensity (k := k) hr) := by
+        (localAnticoncentrationGramHafnianMixtureDensity (k := k) hr) := by
   let ν : Measure (OddCofactorIndex r hr → (Fin k → ℂ)) :=
     Measure.pi fun _ : OddCofactorIndex r hr ↦ circularGaussianVector k
   let μ : Measure (Fin k → ℂ) := circularGaussianVector k
@@ -67,16 +67,16 @@ theorem map_gramHafnianObservable_eq_withDensity_mixture_of_ae_pos
     simpa [ν] using hVpos
   have hjoint : Measurable (fun p :
       (OddCofactorIndex r hr → (Fin k → ℂ)) × ℂ ↦
-      currentPRLScaledCircularGaussianDensity
+      localAnticoncentrationScaledCircularGaussianDensity
         (pastCofactorV hr p.1) p.2) :=
-    measurable_currentPRLScaledCircularGaussianDensity_uncurry
+    measurable_localAnticoncentrationScaledCircularGaussianDensity_uncurry
       (measurable_pastCofactorV hr)
   calc
     (∫⁻ A, μ (Prod.mk A ⁻¹'
         (conditionalCircularLinearForm
           (pastCofactorCombination (k := k) hr) ⁻¹' s)) ∂ν) =
         ∫⁻ A, ∫⁻ w in s,
-          currentPRLScaledCircularGaussianDensity
+          localAnticoncentrationScaledCircularGaussianDensity
             (pastCofactorV hr A) w ∂volume ∂ν := by
       apply lintegral_congr_ae
       filter_upwards [hVpos'] with A hA
@@ -104,25 +104,25 @@ theorem map_gramHafnianObservable_eq_withDensity_mixture_of_ae_pos
         μ (F ⁻¹' s) = (μ.map F) s :=
           (Measure.map_apply hF hs).symm
         _ = ((volume : Measure ℂ).withDensity
-              (currentPRLScaledCircularGaussianDensity
+              (localAnticoncentrationScaledCircularGaussianDensity
                 (pastCofactorV hr A))) s := by
           simpa [μ, F] using congrArg (fun m : Measure ℂ ↦ m s)
             (gramHafnian_lastColumn_conditionalDensity hr A hA)
         _ = ∫⁻ w in s,
-              currentPRLScaledCircularGaussianDensity
+              localAnticoncentrationScaledCircularGaussianDensity
                 (pastCofactorV hr A) w ∂volume := by
           rw [withDensity_apply _ hs]
     _ = ∫⁻ w in s, ∫⁻ A,
-          currentPRLScaledCircularGaussianDensity
+          localAnticoncentrationScaledCircularGaussianDensity
             (pastCofactorV hr A) w ∂ν ∂volume := by
       rw [lintegral_lintegral_swap hjoint.aemeasurable]
     _ = ∫⁻ w in s,
-          currentPRLGramHafnianMixtureDensity (k := k) hr w ∂volume := by
+          localAnticoncentrationGramHafnianMixtureDensity (k := k) hr w ∂volume := by
       rfl
 
 /-- Integrability of the real density integrand follows from exactly the
 first inverse-moment hypothesis. -/
-theorem integrable_currentPRLGramHafnianDensityIntegrand_of_inverse
+theorem integrable_localAnticoncentrationGramHafnianDensityIntegrand_of_inverse
     {r k : ℕ} (hr : 1 ≤ r)
     (hVpos :
       ∀ᵐ A : OddCofactorIndex r hr → (Fin k → ℂ)
@@ -134,7 +134,7 @@ theorem integrable_currentPRLGramHafnianDensityIntegrand_of_inverse
       (Measure.pi fun _ : OddCofactorIndex r hr ↦ circularGaussianVector k))
     (w : ℂ) :
     Integrable (fun A : OddCofactorIndex r hr → (Fin k → ℂ) ↦
-      currentPRLGramHafnianDensityIntegrand hr A w)
+      localAnticoncentrationGramHafnianDensityIntegrand hr A w)
       (Measure.pi fun _ : OddCofactorIndex r hr ↦ circularGaussianVector k) := by
   let ν : Measure (OddCofactorIndex r hr → (Fin k → ℂ)) :=
     Measure.pi fun _ : OddCofactorIndex r hr ↦ circularGaussianVector k
@@ -144,18 +144,18 @@ theorem integrable_currentPRLGramHafnianDensityIntegrand_of_inverse
       Real.pi⁻¹ * (pastCofactorV hr A)⁻¹) ν := by
     simpa [ν] using hInv.const_mul Real.pi⁻¹
   apply hdom.mono
-  · exact ((measurable_currentPRLGramHafnianDensityIntegrand_uncurry hr).comp
+  · exact ((measurable_localAnticoncentrationGramHafnianDensityIntegrand_uncurry hr).comp
       (measurable_id.prodMk measurable_const)).aestronglyMeasurable
   · filter_upwards [hVpos'] with A hA
     have hcoef : 0 < Real.pi⁻¹ * (pastCofactorV hr A)⁻¹ :=
       mul_pos (inv_pos.mpr Real.pi_pos) (inv_pos.mpr hA)
     calc
-      ‖currentPRLGramHafnianDensityIntegrand hr A w‖ =
-          currentPRLGramHafnianDensityIntegrand hr A w :=
+      ‖localAnticoncentrationGramHafnianDensityIntegrand hr A w‖ =
+          localAnticoncentrationGramHafnianDensityIntegrand hr A w :=
         Real.norm_of_nonneg
-          (currentPRLGramHafnianDensityIntegrand_nonneg hr A w)
+          (localAnticoncentrationGramHafnianDensityIntegrand_nonneg hr A w)
       _ ≤ Real.pi⁻¹ * (pastCofactorV hr A)⁻¹ := by
-        unfold currentPRLGramHafnianDensityIntegrand
+        unfold localAnticoncentrationGramHafnianDensityIntegrand
         apply mul_le_of_le_one_right hcoef.le
         exact Real.exp_le_one_iff.mpr
           (div_nonpos_of_nonpos_of_nonneg
@@ -165,7 +165,7 @@ theorem integrable_currentPRLGramHafnianDensityIntegrand_of_inverse
 
 /-- Under positivity and the first inverse moment, the `ENNReal` mixture
 density is the `ofReal` lift of the paper's real expectation. -/
-theorem currentPRLGramHafnianMixtureDensity_eq_ofReal_of_inverse
+theorem localAnticoncentrationGramHafnianMixtureDensity_eq_ofReal_of_inverse
     {r k : ℕ} (hr : 1 ≤ r)
     (hVpos :
       ∀ᵐ A : OddCofactorIndex r hr → (Fin k → ℂ)
@@ -176,22 +176,22 @@ theorem currentPRLGramHafnianMixtureDensity_eq_ofReal_of_inverse
         (pastCofactorV hr A)⁻¹)
       (Measure.pi fun _ : OddCofactorIndex r hr ↦ circularGaussianVector k))
     (w : ℂ) :
-    currentPRLGramHafnianMixtureDensity (k := k) hr w =
-      ENNReal.ofReal (currentPRLGramHafnianDensity (k := k) hr w) := by
+    localAnticoncentrationGramHafnianMixtureDensity (k := k) hr w =
+      ENNReal.ofReal (localAnticoncentrationGramHafnianDensity (k := k) hr w) := by
   let ν : Measure (OddCofactorIndex r hr → (Fin k → ℂ)) :=
     Measure.pi fun _ : OddCofactorIndex r hr ↦ circularGaussianVector k
   have hVpos' : ∀ᵐ A ∂ν, 0 < pastCofactorV hr A := by
     simpa [ν] using hVpos
-  have hint := integrable_currentPRLGramHafnianDensityIntegrand_of_inverse
+  have hint := integrable_localAnticoncentrationGramHafnianDensityIntegrand_of_inverse
     hr hVpos hInv w
   have hnonneg : ∀ᵐ A ∂ν,
-      0 ≤ currentPRLGramHafnianDensityIntegrand hr A w :=
-    ae_of_all _ fun A ↦ currentPRLGramHafnianDensityIntegrand_nonneg hr A w
-  rw [currentPRLGramHafnianMixtureDensity, currentPRLGramHafnianDensity,
+      0 ≤ localAnticoncentrationGramHafnianDensityIntegrand hr A w :=
+    ae_of_all _ fun A ↦ localAnticoncentrationGramHafnianDensityIntegrand_nonneg hr A w
+  rw [localAnticoncentrationGramHafnianMixtureDensity, localAnticoncentrationGramHafnianDensity,
     ofReal_integral_eq_lintegral_ofReal (by simpa [ν] using hint) hnonneg]
   apply lintegral_congr_ae
   filter_upwards [hVpos'] with A hA
-  rw [currentPRLScaledCircularGaussianDensity_eq hA]
+  rw [localAnticoncentrationScaledCircularGaussianDensity_eq hA]
   rfl
 
 /-- Equation (13) under the exact analytic hypotheses, with no dimension
@@ -210,15 +210,15 @@ theorem map_gramHafnianObservable_eq_withDensity_real_of_inverse
         (gramHafnianObservable r k) =
       (volume : Measure ℂ).withDensity
         (fun w ↦ ENNReal.ofReal
-          (currentPRLGramHafnianDensity (k := k) hr w)) := by
+          (localAnticoncentrationGramHafnianDensity (k := k) hr w)) := by
   rw [map_gramHafnianObservable_eq_withDensity_mixture_of_ae_pos hr hVpos]
   congr 1
   funext w
-  exact currentPRLGramHafnianMixtureDensity_eq_ofReal_of_inverse
+  exact localAnticoncentrationGramHafnianMixtureDensity_eq_ofReal_of_inverse
     hr hVpos hInv w
 
 /-- Continuity of the mixture density follows from the first inverse moment. -/
-theorem continuous_currentPRLGramHafnianDensity_of_inverse
+theorem continuous_localAnticoncentrationGramHafnianDensity_of_inverse
     {r k : ℕ} (hr : 1 ≤ r)
     (hVpos :
       ∀ᵐ A : OddCofactorIndex r hr → (Fin k → ℂ)
@@ -228,7 +228,7 @@ theorem continuous_currentPRLGramHafnianDensity_of_inverse
       (fun A : OddCofactorIndex r hr → (Fin k → ℂ) ↦
         (pastCofactorV hr A)⁻¹)
       (Measure.pi fun _ : OddCofactorIndex r hr ↦ circularGaussianVector k)) :
-    Continuous (currentPRLGramHafnianDensity (k := k) hr) := by
+    Continuous (localAnticoncentrationGramHafnianDensity (k := k) hr) := by
   let ν : Measure (OddCofactorIndex r hr → (Fin k → ℂ)) :=
     Measure.pi fun _ : OddCofactorIndex r hr ↦ circularGaussianVector k
   have hVpos' : ∀ᵐ A ∂ν, 0 < pastCofactorV hr A := by
@@ -238,24 +238,24 @@ theorem continuous_currentPRLGramHafnianDensity_of_inverse
     simpa [ν] using hInv.const_mul Real.pi⁻¹
   rw [continuous_iff_continuousAt]
   intro w
-  unfold currentPRLGramHafnianDensity
+  unfold localAnticoncentrationGramHafnianDensity
   apply tendsto_integral_filter_of_dominated_convergence
     (fun A : OddCofactorIndex r hr → (Fin k → ℂ) ↦
       Real.pi⁻¹ * (pastCofactorV hr A)⁻¹)
   · filter_upwards [] with u
-    exact ((measurable_currentPRLGramHafnianDensityIntegrand_uncurry hr).comp
+    exact ((measurable_localAnticoncentrationGramHafnianDensityIntegrand_uncurry hr).comp
       (measurable_id.prodMk measurable_const)).aestronglyMeasurable
   · filter_upwards [] with u
     filter_upwards [hVpos'] with A hA
     have hcoef : 0 < Real.pi⁻¹ * (pastCofactorV hr A)⁻¹ :=
       mul_pos (inv_pos.mpr Real.pi_pos) (inv_pos.mpr hA)
     calc
-      ‖currentPRLGramHafnianDensityIntegrand hr A u‖ =
-          currentPRLGramHafnianDensityIntegrand hr A u :=
+      ‖localAnticoncentrationGramHafnianDensityIntegrand hr A u‖ =
+          localAnticoncentrationGramHafnianDensityIntegrand hr A u :=
         Real.norm_of_nonneg
-          (currentPRLGramHafnianDensityIntegrand_nonneg hr A u)
+          (localAnticoncentrationGramHafnianDensityIntegrand_nonneg hr A u)
       _ ≤ Real.pi⁻¹ * (pastCofactorV hr A)⁻¹ := by
-        unfold currentPRLGramHafnianDensityIntegrand
+        unfold localAnticoncentrationGramHafnianDensityIntegrand
         apply mul_le_of_le_one_right hcoef.le
         exact Real.exp_le_one_iff.mpr
           (div_nonpos_of_nonpos_of_nonneg
@@ -263,13 +263,13 @@ theorem continuous_currentPRLGramHafnianDensity_of_inverse
   · exact hdom
   · filter_upwards [hVpos'] with A hA
     have hcont : Continuous (fun u : ℂ ↦
-        currentPRLGramHafnianDensityIntegrand hr A u) := by
-      unfold currentPRLGramHafnianDensityIntegrand
+        localAnticoncentrationGramHafnianDensityIntegrand hr A u) := by
+      unfold localAnticoncentrationGramHafnianDensityIntegrand
       fun_prop
     exact hcont.continuousAt
 
 /-- Strict positivity of the density under the exact analytic hypotheses. -/
-theorem currentPRLGramHafnianDensity_pos_of_inverse
+theorem localAnticoncentrationGramHafnianDensity_pos_of_inverse
     {r k : ℕ} (hr : 1 ≤ r)
     (hVpos :
       ∀ᵐ A : OddCofactorIndex r hr → (Fin k → ℂ)
@@ -280,19 +280,19 @@ theorem currentPRLGramHafnianDensity_pos_of_inverse
         (pastCofactorV hr A)⁻¹)
       (Measure.pi fun _ : OddCofactorIndex r hr ↦ circularGaussianVector k))
     (w : ℂ) :
-    0 < currentPRLGramHafnianDensity (k := k) hr w := by
+    0 < localAnticoncentrationGramHafnianDensity (k := k) hr w := by
   let ν : Measure (OddCofactorIndex r hr → (Fin k → ℂ)) :=
     Measure.pi fun _ : OddCofactorIndex r hr ↦ circularGaussianVector k
   let g : (OddCofactorIndex r hr → (Fin k → ℂ)) → ℝ :=
-    fun A ↦ currentPRLGramHafnianDensityIntegrand hr A w
+    fun A ↦ localAnticoncentrationGramHafnianDensityIntegrand hr A w
   have hint : Integrable g ν := by
     simpa [ν, g] using
-      integrable_currentPRLGramHafnianDensityIntegrand_of_inverse
+      integrable_localAnticoncentrationGramHafnianDensityIntegrand_of_inverse
         hr hVpos hInv w
   have hnonneg : 0 ≤ᵐ[ν] g :=
     ae_of_all _ fun A ↦
-      currentPRLGramHafnianDensityIntegrand_nonneg hr A w
-  rw [currentPRLGramHafnianDensity,
+      localAnticoncentrationGramHafnianDensityIntegrand_nonneg hr A w
+  rw [localAnticoncentrationGramHafnianDensity,
     integral_pos_iff_support_of_nonneg_ae hnonneg hint]
   have hVpos' : ∀ᵐ A ∂ν, 0 < pastCofactorV hr A := by
     simpa [ν] using hVpos
@@ -300,7 +300,7 @@ theorem currentPRLGramHafnianDensity_pos_of_inverse
     filter_upwards [hVpos'] with A hA
     change g A ≠ 0
     apply ne_of_gt
-    dsimp [g, currentPRLGramHafnianDensityIntegrand]
+    dsimp [g, localAnticoncentrationGramHafnianDensityIntegrand]
     positivity
   have hfull : ν (Function.support g) = 1 := by
     apply le_antisymm
@@ -319,7 +319,7 @@ theorem currentPRLGramHafnianDensity_pos_of_inverse
   norm_num
 
 /-- Radial monotonicity under the exact analytic hypotheses. -/
-theorem currentPRLGramHafnianDensity_antitone_norm_of_inverse
+theorem localAnticoncentrationGramHafnianDensity_antitone_norm_of_inverse
     {r k : ℕ} (hr : 1 ≤ r)
     (hVpos :
       ∀ᵐ A : OddCofactorIndex r hr → (Fin k → ℂ)
@@ -330,24 +330,24 @@ theorem currentPRLGramHafnianDensity_antitone_norm_of_inverse
         (pastCofactorV hr A)⁻¹)
       (Measure.pi fun _ : OddCofactorIndex r hr ↦ circularGaussianVector k))
     {z w : ℂ} (hzw : ‖z‖ ≤ ‖w‖) :
-    currentPRLGramHafnianDensity (k := k) hr w ≤
-      currentPRLGramHafnianDensity (k := k) hr z := by
+    localAnticoncentrationGramHafnianDensity (k := k) hr w ≤
+      localAnticoncentrationGramHafnianDensity (k := k) hr z := by
   let ν : Measure (OddCofactorIndex r hr → (Fin k → ℂ)) :=
     Measure.pi fun _ : OddCofactorIndex r hr ↦ circularGaussianVector k
   have hVpos' : ∀ᵐ A ∂ν, 0 < pastCofactorV hr A := by
     simpa [ν] using hVpos
-  unfold currentPRLGramHafnianDensity
+  unfold localAnticoncentrationGramHafnianDensity
   apply integral_mono_ae
     (by
       simpa [ν] using
-        (integrable_currentPRLGramHafnianDensityIntegrand_of_inverse
+        (integrable_localAnticoncentrationGramHafnianDensityIntegrand_of_inverse
           hr hVpos hInv w))
     (by
       simpa [ν] using
-        (integrable_currentPRLGramHafnianDensityIntegrand_of_inverse
+        (integrable_localAnticoncentrationGramHafnianDensityIntegrand_of_inverse
           hr hVpos hInv z))
   filter_upwards [hVpos'] with A hA
-  unfold currentPRLGramHafnianDensityIntegrand
+  unfold localAnticoncentrationGramHafnianDensityIntegrand
   apply mul_le_mul_of_nonneg_left
   · apply Real.exp_le_exp.mpr
     have hsq : ‖z‖ ^ 2 ≤ ‖w‖ ^ 2 := by
@@ -359,7 +359,7 @@ theorem currentPRLGramHafnianDensity_antitone_norm_of_inverse
 
 /-- The real density is globally integrable because it represents a
 probability law. -/
-theorem integrable_currentPRLGramHafnianDensity_volume_of_inverse
+theorem integrable_localAnticoncentrationGramHafnianDensity_volume_of_inverse
     {r k : ℕ} (hr : 1 ≤ r)
     (hVpos :
       ∀ᵐ A : OddCofactorIndex r hr → (Fin k → ℂ)
@@ -369,13 +369,13 @@ theorem integrable_currentPRLGramHafnianDensity_volume_of_inverse
       (fun A : OddCofactorIndex r hr → (Fin k → ℂ) ↦
         (pastCofactorV hr A)⁻¹)
       (Measure.pi fun _ : OddCofactorIndex r hr ↦ circularGaussianVector k)) :
-    Integrable (currentPRLGramHafnianDensity (k := k) hr)
+    Integrable (localAnticoncentrationGramHafnianDensity (k := k) hr)
       (volume : Measure ℂ) := by
-  let f : ℂ → ℝ := currentPRLGramHafnianDensity (k := k) hr
+  let f : ℂ → ℝ := localAnticoncentrationGramHafnianDensity (k := k) hr
   have hfmeas : AEStronglyMeasurable f (volume : Measure ℂ) :=
-    (continuous_currentPRLGramHafnianDensity_of_inverse hr hVpos hInv).aestronglyMeasurable
+    (continuous_localAnticoncentrationGramHafnianDensity_of_inverse hr hVpos hInv).aestronglyMeasurable
   have hnonneg : 0 ≤ᵐ[(volume : Measure ℂ)] f :=
-    ae_of_all _ fun w ↦ currentPRLGramHafnianDensity_nonneg hr w
+    ae_of_all _ fun w ↦ localAnticoncentrationGramHafnianDensity_nonneg hr w
   apply (lintegral_ofReal_ne_top_iff_integrable hfmeas hnonneg).mp
   have hlaw := map_gramHafnianObservable_eq_withDensity_real_of_inverse
     hr hVpos hInv
@@ -411,12 +411,12 @@ theorem gramHafnian_raw_shrinkingDisk_limit_of_inverse
         (circularGaussianColumnMatrixMeasure r k).real
             {X | ‖gramHafnianObservable r k X - z‖ ≤ rho} / rho ^ 2)
       (𝓝[>] 0)
-      (𝓝 (Real.pi * currentPRLGramHafnianDensity (k := k) hr z)) := by
-  let f : ℂ → ℝ := currentPRLGramHafnianDensity (k := k) hr
+      (𝓝 (Real.pi * localAnticoncentrationGramHafnianDensity (k := k) hr z)) := by
+  let f : ℂ → ℝ := localAnticoncentrationGramHafnianDensity (k := k) hr
   have hbase := tendsto_withDensity_complex_closedBall_div_sq f
-    (continuous_currentPRLGramHafnianDensity_of_inverse hr hVpos hInv)
-    (integrable_currentPRLGramHafnianDensity_volume_of_inverse hr hVpos hInv)
-    (fun w ↦ currentPRLGramHafnianDensity_nonneg hr w) z
+    (continuous_localAnticoncentrationGramHafnianDensity_of_inverse hr hVpos hInv)
+    (integrable_localAnticoncentrationGramHafnianDensity_volume_of_inverse hr hVpos hInv)
+    (fun w ↦ localAnticoncentrationGramHafnianDensity_nonneg hr w) z
   rw [← map_gramHafnianObservable_eq_withDensity_real_of_inverse
     hr hVpos hInv] at hbase
   apply hbase.congr'
@@ -449,7 +449,7 @@ theorem gramHafnian_normalized_shrinkingDisk_limit_density_of_inverse
               eps * gramHafnianSigma k r} / eps ^ 2)
       (𝓝[>] 0)
       (𝓝 (gramHafnianSigma k r ^ 2 *
-        (Real.pi * currentPRLGramHafnianDensity (k := k) hr z))) := by
+        (Real.pi * localAnticoncentrationGramHafnianDensity (k := k) hr z))) := by
   have hsigma : 0 < gramHafnianSigma k r :=
     gramHafnianSigma_pos k r hkpos
   have hscale : Tendsto
@@ -471,7 +471,7 @@ theorem gramHafnian_normalized_shrinkingDisk_limit_density_of_inverse
           gramHafnianSigma k r ^ 2)
       (𝓝[>] 0)
       (𝓝 (gramHafnianSigma k r ^ 2 *
-        (Real.pi * currentPRLGramHafnianDensity (k := k) hr z))) := by
+        (Real.pi * localAnticoncentrationGramHafnianDensity (k := k) hr z))) := by
     simpa [mul_comm] using hmul
   apply hmul'.congr'
   filter_upwards [self_mem_nhdsWithin] with eps heps
@@ -498,8 +498,8 @@ theorem gramHafnian_normalized_shrinkingDisk_limit_of_inverse
               eps * gramHafnianSigma k r} / eps ^ 2)
       (𝓝[>] 0)
       (𝓝 (gramHafnianSigma k r ^ 2 *
-        currentPRLLocalSharpnessCoefficient (k := k) hr z)) := by
-  simpa [pi_mul_currentPRLGramHafnianDensity_eq_localSharpnessCoefficient]
+        localAnticoncentrationLocalSharpnessCoefficient (k := k) hr z)) := by
+  simpa [pi_mul_localAnticoncentrationGramHafnianDensity_eq_localSharpnessCoefficient]
     using gramHafnian_normalized_shrinkingDisk_limit_density_of_inverse
       hr hkpos hVpos hInv z
 
@@ -517,12 +517,12 @@ theorem gramHafnian_normalized_shrinkingDisk_limit_coefficient_pos_of_inverse
       (Measure.pi fun _ : OddCofactorIndex r hr ↦ circularGaussianVector k))
     (z : ℂ) :
     0 < gramHafnianSigma k r ^ 2 *
-      currentPRLLocalSharpnessCoefficient (k := k) hr z := by
+      localAnticoncentrationLocalSharpnessCoefficient (k := k) hr z := by
   have hsigma : 0 < gramHafnianSigma k r :=
     gramHafnianSigma_pos k r hkpos
-  have hfpos := currentPRLGramHafnianDensity_pos_of_inverse
+  have hfpos := localAnticoncentrationGramHafnianDensity_pos_of_inverse
     hr hVpos hInv z
-  rw [← pi_mul_currentPRLGramHafnianDensity_eq_localSharpnessCoefficient]
+  rw [← pi_mul_localAnticoncentrationGramHafnianDensity_eq_localSharpnessCoefficient]
   exact mul_pos (sq_pos_of_pos hsigma) (mul_pos Real.pi_pos hfpos)
 
 end

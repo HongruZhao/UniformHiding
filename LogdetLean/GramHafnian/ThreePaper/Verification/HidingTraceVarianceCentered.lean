@@ -20,7 +20,7 @@ noncomputable section
 
 open LogdetLean.GramHafnian.UltimateHiding.DenseScore
 open LogdetLean.GramHafnian.UltimateHiding.Dense
-open LogdetLean.GramHafnian.CurrentPRL
+open LogdetLean.GramHafnian.LocalAnticoncentration
 
 private theorem centeredOne_eq_centeredMean
     {N K : ℕ} (hN : 2 ≤ N) (hdense : 16 * N ≤ K) :

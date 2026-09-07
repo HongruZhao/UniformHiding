@@ -17,7 +17,7 @@ noncomputable section
 
 open LogdetLean.GramHafnian.UltimateHiding.Dense
 open LogdetLean.GramHafnian.UltimateHiding.DenseScore
-open LogdetLean.GramHafnian.CurrentPRL
+open LogdetLean.GramHafnian.LocalAnticoncentration
 
 /-- Optimized base central first-event-derivative bound. -/
 theorem abs_iteratedDeriv_one_concreteBaseCentralEventPath_le_optimized

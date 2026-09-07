@@ -1,5 +1,5 @@
 import LogdetLean.GramHafnian.UltimateHiding.Dense.RadialConvolution
-import LogdetLean.GramHafnian.CurrentPRL.TotalVariation
+import LogdetLean.GramHafnian.LocalAnticoncentration.TotalVariation
 import Mathlib.Algebra.BigOperators.Group.Finset.Basic
 import Mathlib.Tactic
 
@@ -22,7 +22,7 @@ noncomputable section
 abbrev ProbabilityTVLE
     {State : Type*} [MeasurableSpace State]
     (mu nu : Measure State) (delta : ℝ) : Prop :=
-  CurrentPRL.probabilityTotalVariationLE mu nu delta
+  LocalAnticoncentration.probabilityTotalVariationLE mu nu delta
 
 theorem probabilityTVLE_refl
     {State : Type*} [MeasurableSpace State] (mu : Measure State) :

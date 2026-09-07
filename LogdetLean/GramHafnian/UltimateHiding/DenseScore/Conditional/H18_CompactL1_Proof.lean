@@ -78,7 +78,7 @@ def CoeCornerCenteredZeroExtScoreAgreementContract : Prop :=
     (v : ComplexUnitSphere N) →
     concreteCenteredDensityScoreZeroExt r N K v =ᵐ[
       concreteScaledCOECornerLaw
-        LogdetLean.GramHafnian.CurrentPRL.canonicalUnitaryHaarProbabilityFamily
+        LogdetLean.GramHafnian.LocalAnticoncentration.canonicalUnitaryHaarProbabilityFamily
           N K]
       concreteCenteredDensityScore r N K v
 
@@ -88,7 +88,7 @@ independent of derivative order and direction. -/
 def CoeCornerCenteredScaledCOESupportContract : Prop :=
   ∀ {N K : ℕ}, (1 ≤ N) → (2 * N + 8 ≤ K) →
     ∀ᵐ A ∂(concreteScaledCOECornerLaw
-      LogdetLean.GramHafnian.CurrentPRL.canonicalUnitaryHaarProbabilityFamily
+      LogdetLean.GramHafnian.LocalAnticoncentration.canonicalUnitaryHaarProbabilityFamily
         N K),
       A ∈ concreteScaledCOECornerSupportSet N K
 
@@ -118,7 +118,7 @@ def CoeCornerCenteredCompactZeroExtL1EnvelopeContract : Prop :=
           (concreteCenteredZeroExtEventDerivativeIntegrand
             r N K event t)
           ((concreteScaledCOECornerLaw
-              LogdetLean.GramHafnian.CurrentPRL.canonicalUnitaryHaarProbabilityFamily
+              LogdetLean.GramHafnian.LocalAnticoncentration.canonicalUnitaryHaarProbabilityFamily
                 N K).prod (complexUnitSphereProbabilityMeasure N))) ∧
       (∀ᵐ v ∂(complexUnitSphereProbabilityMeasure N),
         ∀ t ∈ Set.Icc (-R) R,
@@ -127,13 +127,13 @@ def CoeCornerCenteredCompactZeroExtL1EnvelopeContract : Prop :=
               concreteCenteredZeroExtEventDerivativeIntegrand
                 r N K event t (A, v))
             (concreteScaledCOECornerLaw
-              LogdetLean.GramHafnian.CurrentPRL.canonicalUnitaryHaarProbabilityFamily
+              LogdetLean.GramHafnian.LocalAnticoncentration.canonicalUnitaryHaarProbabilityFamily
                 N K) ∧
           (∫ A : ConcreteMatrixState N,
               ‖concreteCenteredZeroExtEventDerivativeIntegrand
                 r N K event t (A, v)‖
               ∂(concreteScaledCOECornerLaw
-                LogdetLean.GramHafnian.CurrentPRL.canonicalUnitaryHaarProbabilityFamily
+                LogdetLean.GramHafnian.LocalAnticoncentration.canonicalUnitaryHaarProbabilityFamily
                   N K)) ≤ B v)
 
 /-- H16 plus a.e. zero-extension agreement represents every all-time
@@ -150,7 +150,7 @@ theorem coeCorner_centeredFixedDirection_eventPath_derivative_zeroExt
         concreteCenteredZeroExtEventDerivativeIntegrand
           r N K event t (A, v)
         ∂(concreteScaledCOECornerLaw
-          LogdetLean.GramHafnian.CurrentPRL.canonicalUnitaryHaarProbabilityFamily
+          LogdetLean.GramHafnian.LocalAnticoncentration.canonicalUnitaryHaarProbabilityFamily
             N K) := by
   rw [coeCorner_centeredFixedDirection_eventPath_derivative_at_conditional
     hH16 hN hboundary hr v event hevent t]
@@ -187,7 +187,7 @@ theorem exists_compact_directionMajorant_iteratedDeriv_zeroExt
               (concreteCenteredRankOneCOEEventPath K v event) t‖ ≤ B v) := by
   letI : IsProbabilityMeasure
       (concreteScaledCOECornerLaw
-        LogdetLean.GramHafnian.CurrentPRL.canonicalUnitaryHaarProbabilityFamily
+        LogdetLean.GramHafnian.LocalAnticoncentration.canonicalUnitaryHaarProbabilityFamily
           N K) :=
     canonicalScaledCOECornerLaw_isProbability (by omega : N ≤ K)
   letI : IsProbabilityMeasure (complexUnitSphereProbabilityMeasure N) :=
@@ -205,7 +205,7 @@ theorem exists_compact_directionMajorant_iteratedDeriv_zeroExt
               concreteCenteredZeroExtEventDerivativeIntegrand
                 r N K event t (A, v)
               ∂(concreteScaledCOECornerLaw
-                LogdetLean.GramHafnian.CurrentPRL.canonicalUnitaryHaarProbabilityFamily
+                LogdetLean.GramHafnian.LocalAnticoncentration.canonicalUnitaryHaarProbabilityFamily
                   N K) := by
       funext v
       exact coeCorner_centeredFixedDirection_eventPath_derivative_zeroExt

@@ -22,7 +22,7 @@ noncomputable section
 open LogdetLean.GramHafnian.UltimateHiding.Dense
 open LogdetLean.GramHafnian
 open LogdetLean.GramHafnian.Wishart
-open LogdetLean.GramHafnian.CurrentPRL
+open LogdetLean.GramHafnian.LocalAnticoncentration
 
 /-- Trace powers of the unscaled COE matrix.  Taking `K = 1` in the
 already-defined total trace map makes `unscaleCOECorner` the identity. -/

@@ -26,14 +26,14 @@ theorem coeCorner_centeredDensityScore_three_fubini_external_derived
     (∫ v : ComplexUnitSphere N,
       ∫ A, event.indicator (concreteCenteredDensityScore 3 N K v) A
         ∂(concreteScaledCOECornerLaw
-          LogdetLean.GramHafnian.CurrentPRL.canonicalUnitaryHaarProbabilityFamily
+          LogdetLean.GramHafnian.LocalAnticoncentration.canonicalUnitaryHaarProbabilityFamily
             N K)
       ∂(complexUnitSphereProbabilityMeasure N)) =
     ∫ A, event.indicator (fun A ↦
       ∫ v : ComplexUnitSphere N, concreteCenteredDensityScore 3 N K v A
         ∂(complexUnitSphereProbabilityMeasure N)) A
       ∂(concreteScaledCOECornerLaw
-        LogdetLean.GramHafnian.CurrentPRL.canonicalUnitaryHaarProbabilityFamily
+        LogdetLean.GramHafnian.LocalAnticoncentration.canonicalUnitaryHaarProbabilityFamily
           N K) := by
   exact coeCorner_centeredDensityScore_fubini_of_memLp hN (by omega)
     event hevent (by

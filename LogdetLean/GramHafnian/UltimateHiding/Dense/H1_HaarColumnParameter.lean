@@ -69,7 +69,7 @@ theorem map_h1HaarColumnParameter_haarLastColumn {N m : ℕ}
     (hN : 1 ≤ N) (hNm : N ≤ m) :
     Measure.map (h1HaarColumnParameter hN hNm ∘
         haarLastColumnSphere (Nat.succ_le_succ (Nat.zero_le m)))
-        (LogdetLean.GramHafnian.CurrentPRL.unitaryHaarProbabilityMeasure (m + 1)) =
+        (LogdetLean.GramHafnian.LocalAnticoncentration.unitaryHaarProbabilityMeasure (m + 1)) =
       concreteOneColumnParameterLaw m N := by
   rw [← Measure.map_map (measurable_h1HaarColumnParameter hN hNm)
     (measurable_haarLastColumnSphere (Nat.succ_le_succ (Nat.zero_le m))),

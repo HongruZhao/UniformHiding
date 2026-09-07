@@ -2,14 +2,14 @@ import LogdetLean.GramHafnian.ThreePaper.AC2NegativeMoments
 import Mathlib.Analysis.SpecialFunctions.Pow.Integral
 
 /-!
-# PRX Quantum endpoint: Gaussian Gram-hafnian anticoncentration
+# matrix-law endpoint: Gaussian Gram-hafnian anticoncentration
 
 This is the public import surface for the anticoncentration Article.  It has
 no hiding assumption and imports no uniformly-hiding theorem.  The principal
 endpoint is the finite, uniformly shifted, probability-capped disk bound.
 -/
 
-namespace LogdetLean.GramHafnian.ThreePaper.PRXQAnticoncentration
+namespace LogdetLean.GramHafnian.ThreePaper.GaussianAnticoncentration
 
 noncomputable section
 
@@ -40,7 +40,7 @@ theorem independentMatrixShiftSmallBall
       min 1 (Real.exp 1 * shiftedAnticoncentrationConstant k n * eps ^ 2) :=
   independentFactorShift_normalizedSmallBall hn hk nu w eps heps
 
-/-- The exact uncapped form used by the PRL composition theorem. -/
+/-- The exact uncapped form used by the manuscript composition theorem. -/
 theorem shiftedSmallBall_uncapped
     (n k : ℕ) (hn : 1 ≤ n) (hk : 4 * n ≤ k)
     (z : ℂ) (eps : ℝ) (heps : 0 ≤ eps) :
@@ -53,15 +53,15 @@ theorem shiftedSmallBall_uncapped
 theorem exactCoefficient
     (n k : ℕ) (hn : 1 ≤ n) (hk : 4 * n ≤ k) :
     shiftedAnticoncentrationConstant k n =
-      CurrentPRL.paperBn n *
+      LocalAnticoncentration.paperBn n *
         ((k : ℝ) / ((k : ℝ) - 1)) *
         ((2 : ℝ) ^ (n - 1) / (4 : ℝ) ^ (n - 1)) *
         (Real.Gamma ((k : ℝ) / 2 + (n : ℝ)) /
           Real.Gamma ((k : ℝ) / 2 + 1)) *
         (Real.Gamma (((k : ℝ) - 4 * (n : ℝ) + 1) / 4) /
           Real.Gamma (((k : ℝ) - 3) / 4)) := by
-  simpa [CurrentPRL.paperBn, CurrentPRL.gammaAnticoncentrationConstant] using
-    CurrentPRL.shiftedAnticoncentrationConstant_eq_gamma k n hn hk
+  simpa [LocalAnticoncentration.paperBn, LocalAnticoncentration.gammaAnticoncentrationConstant] using
+    LocalAnticoncentration.shiftedAnticoncentrationConstant_eq_gamma k n hn hk
 
 /-! ## Finite-precision consequences -/
 
@@ -107,18 +107,18 @@ theorem normalizedDenominatorResolution_of_budget
 
 end
 
-end LogdetLean.GramHafnian.ThreePaper.PRXQAnticoncentration
+end LogdetLean.GramHafnian.ThreePaper.GaussianAnticoncentration
 
-#print axioms LogdetLean.GramHafnian.ThreePaper.PRXQAnticoncentration.shiftedSmallBall
-#print axioms LogdetLean.GramHafnian.ThreePaper.PRXQAnticoncentration.independentMatrixShiftSmallBall
-#print axioms LogdetLean.GramHafnian.ThreePaper.PRXQAnticoncentration.exactCoefficient
-#print axioms LogdetLean.GramHafnian.ThreePaper.PRXQAnticoncentration.PaperEndpoints.result_thm_main_finite
-#print axioms LogdetLean.GramHafnian.ThreePaper.PRXQAnticoncentration.PaperEndpoints.result_cor_exact_local_power_of_inverse
-#print axioms LogdetLean.GramHafnian.ThreePaper.PRXQAnticoncentration.PaperEndpoints.result_lemma_radial_angular_factorization_of_inverse
-#print axioms LogdetLean.GramHafnian.ThreePaper.PRXQAnticoncentration.negativeRpowMoment_le_of_powerLowerTail
-#print axioms LogdetLean.GramHafnian.ThreePaper.PRXQAnticoncentration.normalizedShiftedIntensity_negativeMoment
-#print axioms LogdetLean.GramHafnian.ThreePaper.PRXQAnticoncentration.normalizedShiftedIntensity_relativeErrorMoment
-#print axioms LogdetLean.GramHafnian.ThreePaper.PRXQAnticoncentration.normalizedShiftedIntensity_negativeMoment_eq_top
-#print axioms LogdetLean.GramHafnian.ThreePaper.PRXQAnticoncentration.gaussianGBSPatternWeight_eq_reference_mul_normalizedIntensity
-#print axioms LogdetLean.GramHafnian.ThreePaper.PRXQAnticoncentration.additiveToRelative_of_lowerTail
-#print axioms LogdetLean.GramHafnian.ThreePaper.PRXQAnticoncentration.normalizedDenominatorResolutionReal_of_logBudget
+#print axioms LogdetLean.GramHafnian.ThreePaper.GaussianAnticoncentration.shiftedSmallBall
+#print axioms LogdetLean.GramHafnian.ThreePaper.GaussianAnticoncentration.independentMatrixShiftSmallBall
+#print axioms LogdetLean.GramHafnian.ThreePaper.GaussianAnticoncentration.exactCoefficient
+#print axioms LogdetLean.GramHafnian.ThreePaper.GaussianAnticoncentration.PaperEndpoints.result_thm_main_finite
+#print axioms LogdetLean.GramHafnian.ThreePaper.GaussianAnticoncentration.PaperEndpoints.result_cor_exact_local_power_of_inverse
+#print axioms LogdetLean.GramHafnian.ThreePaper.GaussianAnticoncentration.PaperEndpoints.result_lemma_radial_angular_factorization_of_inverse
+#print axioms LogdetLean.GramHafnian.ThreePaper.GaussianAnticoncentration.negativeRpowMoment_le_of_powerLowerTail
+#print axioms LogdetLean.GramHafnian.ThreePaper.GaussianAnticoncentration.normalizedShiftedIntensity_negativeMoment
+#print axioms LogdetLean.GramHafnian.ThreePaper.GaussianAnticoncentration.normalizedShiftedIntensity_relativeErrorMoment
+#print axioms LogdetLean.GramHafnian.ThreePaper.GaussianAnticoncentration.normalizedShiftedIntensity_negativeMoment_eq_top
+#print axioms LogdetLean.GramHafnian.ThreePaper.GaussianAnticoncentration.gaussianGBSPatternWeight_eq_reference_mul_normalizedIntensity
+#print axioms LogdetLean.GramHafnian.ThreePaper.GaussianAnticoncentration.additiveToRelative_of_lowerTail
+#print axioms LogdetLean.GramHafnian.ThreePaper.GaussianAnticoncentration.normalizedDenominatorResolutionReal_of_logBudget

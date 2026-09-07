@@ -7,7 +7,7 @@ namespace LogdetLean.GramHafnian.UltimateHiding.Dense
 
 noncomputable section
 
-open CurrentPRL
+open LocalAnticoncentration
 
 /-- Concrete dense telescope with both the correct start-indexed local premise
 and the Gaussian target convergence discharged. -/

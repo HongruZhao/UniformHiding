@@ -21,7 +21,7 @@ noncomputable section
 
 open LogdetLean.GramHafnian.UltimateHiding.Dense
 open LogdetLean.GramHafnian.UltimateHiding.DenseScore
-open LogdetLean.GramHafnian.CurrentPRL
+open LogdetLean.GramHafnian.LocalAnticoncentration
 
 /-- The actual shared-beta orbital event path has zero first derivative at
 the origin.  This is the exact projective cancellation `E_v Q_v = 0`, after

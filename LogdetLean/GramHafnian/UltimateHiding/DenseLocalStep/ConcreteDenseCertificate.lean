@@ -22,7 +22,7 @@ namespace LogdetLean.GramHafnian.UltimateHiding.DenseLocalStep
 
 noncomputable section
 
-open CurrentPRL
+open LocalAnticoncentration
 
 /-- The exact remaining dense score obligation, with no hidden theorem-valued
 fields beyond `ConcreteSharedBetaScoreBoundsAt` itself.  The constants are

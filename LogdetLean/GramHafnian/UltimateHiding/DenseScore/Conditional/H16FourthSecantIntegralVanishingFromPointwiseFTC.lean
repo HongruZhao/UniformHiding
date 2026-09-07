@@ -260,7 +260,7 @@ theorem coeCorner_centeredFixedDirection_eventPath_derivative_H16_proved_exactH5
       ∫ A, event.indicator
         (concreteCenteredDensityScore r N K v) A
         ∂(concreteScaledCOECornerLaw
-          LogdetLean.GramHafnian.CurrentPRL.canonicalUnitaryHaarProbabilityFamily
+          LogdetLean.GramHafnian.LocalAnticoncentration.canonicalUnitaryHaarProbabilityFamily
             N K) :=
   coeCorner_centeredFixedDirection_eventPath_derivative_H16_of_fourthSecantIntegralVanishing_exactH5
     hH5 (h16CenteredFourthLocalSecantIntegralVanishingFamily_proved hH5)
@@ -304,7 +304,7 @@ theorem coeCorner_centeredFixedDirection_eventPath_derivative_H16_proved_from_A1
       ∫ A, event.indicator
         (concreteCenteredDensityScore r N K v) A
         ∂(concreteScaledCOECornerLaw
-          LogdetLean.GramHafnian.CurrentPRL.canonicalUnitaryHaarProbabilityFamily
+          LogdetLean.GramHafnian.LocalAnticoncentration.canonicalUnitaryHaarProbabilityFamily
             N K) :=
   coeCorner_centeredFixedDirection_eventPath_derivative_H16_from_A1_fourthSecantIntegralVanishing
     (h16CenteredFourthLocalSecantIntegralVanishingFamily_proved

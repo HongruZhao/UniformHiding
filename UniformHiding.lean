@@ -3,7 +3,7 @@ import GBSHiding
 import ComplexGramHafnians
 
 open MeasureTheory
-open LogdetLean.GramHafnian LogdetLean.GramHafnian.CurrentPRL
+open LogdetLean.GramHafnian LogdetLean.GramHafnian.LocalAnticoncentration
 open LogdetLean.GramHafnian.UltimateHiding
 open LogdetLean.GramHafnian.ThreePaper
 open LogdetLean.GramHafnian.ThreePaper.FairAbsoluteThresholdComparison
@@ -22,7 +22,7 @@ theorem routeOneSmallBall
     (scaledHaarGramHafnianLaw H M n K).real
       (shiftedComplexDisk z (eps * gramHafnianSigma K n)) ≤
       min 1 (paperBkn K n * eps ^ 2 + deltaOne M n) := by
-  have htv := (PRXQUniformHiding.matrixLaw.apply H
+  have htv := (UniformMatrixHiding.matrixLaw.apply H
     (show 1 ≤ 2 * n by omega) (show 2 * n ≤ K by omega) hKM).map
       (measurable_hafnianMatrixObservable n)
   have htransfer := htv.event_le
@@ -51,7 +51,7 @@ theorem theorem3_2_route1
       (fun ω ↦ gbsProbabilityFromScaledAmplitude r M K n (amplitude ω)) rho) ≤
       routeOneBound μ deltaP r M K n rho tau := by
   have hM : 0 < M := by omega
-  have hp := PRLConsequences.gbsGaussianReferenceProbability_pos
+  have hp := RelativeAccuracy.gbsGaussianReferenceProbability_pos
     hr hM (show 0 < K by omega) n
   let eta := tau / gbsGaussianReferenceProbability r M K n
   have heta : 0 ≤ eta := div_nonneg htau hp.le
@@ -94,7 +94,7 @@ theorem theorem3_2_route1_optimized
 
 /-- Route 2 is a conditional deduction. Its Shou comparison premise
 is not proved or declared as a fifth axiom in this repository. -/
-abbrev routeTwoConditional := @PRLConsequences.routeTwoFairRelativeFailure_of_shou
+abbrev routeTwoConditional := @RelativeAccuracy.routeTwoFairRelativeFailure_of_shou
 
 end
 end UniformHiding

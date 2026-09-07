@@ -30,7 +30,7 @@ namespace LogdetLean.GramHafnian.UltimateHiding.DenseScore
 noncomputable section
 
 open LogdetLean.GramHafnian.UltimateHiding.Dense
-open LogdetLean.GramHafnian.CurrentPRL
+open LogdetLean.GramHafnian.LocalAnticoncentration
 open LogdetLean.GramHafnian.UltimateHiding.DenseScore.U08
 
 abbrev higherScoreMatrixLaw (N K : ℕ) : Measure (ConcreteMatrixState N) :=

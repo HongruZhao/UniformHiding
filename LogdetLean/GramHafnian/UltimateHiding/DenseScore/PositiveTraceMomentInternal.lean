@@ -18,7 +18,7 @@ noncomputable section
 
 open Matrix Unitary
 open LogdetLean.GramHafnian.UltimateHiding.Dense
-open LogdetLean.GramHafnian.CurrentPRL
+open LogdetLean.GramHafnian.LocalAnticoncentration
 open MeasureTheory
 
 private theorem sum_sq_le_sum_sq_of_nonneg

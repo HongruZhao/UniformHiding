@@ -1,8 +1,8 @@
-import LogdetLean.GramHafnian.ThreePaper.PRXQAnticoncentration
-import LogdetLean.GramHafnian.ThreePaper.PRXQUniformHiding
+import LogdetLean.GramHafnian.ThreePaper.GaussianAnticoncentration
+import LogdetLean.GramHafnian.ThreePaper.UniformMatrixHiding
 
 /-!
-# Axiom-free common definitions for the PRL composition
+# Axiom-free common definitions for the manuscript composition
 
 The two Article packages deliberately expose disjoint scientific endpoint
 surfaces.  This module supplies only the elementary definitions and proved
@@ -13,7 +13,7 @@ It contains no external scientific declaration.
 open scoped BigOperators
 open MeasureTheory ProbabilityTheory Set
 
-namespace LogdetLean.GramHafnian.CurrentPRL
+namespace LogdetLean.GramHafnian.LocalAnticoncentration
 
 noncomputable section
 
@@ -279,7 +279,7 @@ theorem randomizedAdditiveToRelativeProbability_le_min
       measureReal_union_le _ _
     _ ≤ gamma + darkBound := add_le_add hadd hdark
 
-theorem randomizedConversion_prl_bound
+theorem randomizedConversion_relativeAccuracy_bound
     {Omega : Type*} [MeasurableSpace Omega]
     (mu : Measure Omega) [IsProbabilityMeasure mu]
     (deltaP p : Omega → ℝ)
@@ -357,7 +357,7 @@ theorem randomizedConversion_from_finiteHaarSmallDenominator
             gbsProbabilityFromScaledAmplitude r M K n (amplitude omega))
           rho) ≤
       min 1 (gamma + B * (eta / rho) + hidingError) := by
-  apply randomizedConversion_prl_bound
+  apply randomizedConversion_relativeAccuracy_bound
     mu deltaP
       (fun omega ↦
         gbsProbabilityFromScaledAmplitude r M K n (amplitude omega))
@@ -407,4 +407,4 @@ theorem uniformFinitePatternProbability_le_of_rowSymmetry
 
 end
 
-end LogdetLean.GramHafnian.CurrentPRL
+end LogdetLean.GramHafnian.LocalAnticoncentration

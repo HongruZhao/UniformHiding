@@ -11,11 +11,11 @@ their theorem signatures and verify only the deductions from it.
 
 open MeasureTheory
 
-namespace LogdetLean.GramHafnian.ThreePaper.PRLConsequences
+namespace LogdetLean.GramHafnian.ThreePaper.RelativeAccuracy
 
 noncomputable section
 
-open CurrentPRL UltimateHiding TwoMethodComparison
+open LocalAnticoncentration UltimateHiding TwoMethodComparison
 
 /-- The exact finite-instance interface for the cited matrix-law estimate
 
@@ -427,11 +427,11 @@ theorem routeTwoSamplerRelative_eventwise_of_shou
       (fun x ↦ measurableSet_le (hp x) measurable_const)
     intro x
     simpa [threshold] using honeLabel x
-  have hbase := samplerTVToRandomLabelRelative_eventwise_prl
+  have hbase := samplerTVToRandomLabelRelative_eventwise_relativeAccuracy
     mu labels hlabels p q hp hq heps hzeta hrho hpRefTwo htv
     (by simpa [etaS] using hdark)
   simpa [symmetricHidingEnvelope] using hbase
 
 end
 
-end LogdetLean.GramHafnian.ThreePaper.PRLConsequences
+end LogdetLean.GramHafnian.ThreePaper.RelativeAccuracy

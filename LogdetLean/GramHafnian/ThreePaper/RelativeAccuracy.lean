@@ -1,6 +1,6 @@
-import LogdetLean.GramHafnian.ThreePaper.PRXQAnticoncentration
-import LogdetLean.GramHafnian.ThreePaper.PRXQUniformHiding
-import LogdetLean.GramHafnian.ThreePaper.PRLApplicationEndpoints
+import LogdetLean.GramHafnian.ThreePaper.GaussianAnticoncentration
+import LogdetLean.GramHafnian.ThreePaper.UniformMatrixHiding
+import LogdetLean.GramHafnian.ThreePaper.RelativeAccuracyApplicationEndpoints
 import LogdetLean.GramHafnian.ThreePaper.TwoMethodComparison
 import LogdetLean.GramHafnian.ThreePaper.CoefficientAsymptoticComparison
 import LogdetLean.GramHafnian.ThreePaper.FairAbsoluteThresholdComparison
@@ -10,7 +10,7 @@ import LogdetLean.GramHafnian.UltimateHiding.SquaredGBS
 /-!
 # Physical Review Letters endpoint: interaction of the two Articles
 
-This module takes the two PRX Quantum endpoint modules as its only scientific
+This module takes the two matrix-law endpoint modules as its only scientific
 inputs and proves the new Letter result from them.  The additional
 `SquaredGBS` import supplies only the common optical-scaling definitions and
 elementary conversion lemmas.  This file neither re-proves the Gaussian
@@ -19,12 +19,12 @@ small-ball theorem nor reopens the hiding argument.
 
 open MeasureTheory
 
-namespace LogdetLean.GramHafnian.ThreePaper.PRLConsequences
+namespace LogdetLean.GramHafnian.ThreePaper.RelativeAccuracy
 
 noncomputable section
 
-open CurrentPRL UltimateHiding
-open PRXQAnticoncentration PRXQUniformHiding
+open LocalAnticoncentration UltimateHiding
+open GaussianAnticoncentration UniformMatrixHiding
 
 /-- Hiding plus anticoncentration gives a finite-Haar shifted hafnian disk
 bound for every `1 <= n`, `4 n <= K <= M`. -/
@@ -81,7 +81,7 @@ theorem gbsSmallDenominator
     0 (Real.sqrt t) (Real.sqrt_nonneg t)
   simpa [Real.sq_sqrt ht] using h
 
-/-- Main PRL computational consequence.  A normalized additive estimator
+/-- Main manuscript computational consequence.  A normalized additive estimator
 becomes a relative estimator except with the sum of its additive-failure
 probability, the Gaussian small-denominator term, and the hiding error. -/
 theorem randomizedAdditiveToRelative
@@ -120,7 +120,7 @@ theorem randomizedAdditiveToRelative
     μ amplitude hamplitude deltaP H hr hM K n
     heta hrho hgamma hmarginal hadd hhaar'
 
-/-- Explicit finite error-budget form of the PRL result.  The first displayed
+/-- Explicit finite error-budget form of the manuscript result.  The first displayed
 budget is exactly the ambient inequality from the paper; the second allocates
 at most deltaA to the Gaussian small-denominator term. -/
 theorem finiteErrorBudget
@@ -287,7 +287,7 @@ theorem samplerTVInterface
       field_simp
   exact hthreshold
 
-/-- PRL5: one common hiding transfer plus a Gaussian union bound gives the
+/-- Panel application: one common hiding transfer plus a Gaussian union bound gives the
 finite-panel estimate.  The Gaussian bound can be `q B t`; the hiding term is
 paid once at the union size `L`. -/
 theorem finitePanelEventTransfer
@@ -300,7 +300,7 @@ theorem finitePanelEventTransfer
   exact (htv.event_le hbad).trans
     (by simpa [add_comm] using (add_le_add_right hgaussian delta))
 
-/-- PRL5, disjoint-panel specialization.  Independence enters only through
+/-- Panel application, disjoint-panel specialization.  Independence enters only through
 the explicit Gaussian sharp-union hypothesis; hiding is still paid once. -/
 theorem disjointPanelEventTransfer
     {α : Type*} [MeasurableSpace α]
@@ -313,35 +313,35 @@ theorem disjointPanelEventTransfer
 
 end
 
-end LogdetLean.GramHafnian.ThreePaper.PRLConsequences
+end LogdetLean.GramHafnian.ThreePaper.RelativeAccuracy
 
-#print axioms LogdetLean.GramHafnian.ThreePaper.PRLConsequences.finiteHaarShiftedSmallBall
-#print axioms LogdetLean.GramHafnian.ThreePaper.PRLConsequences.gbsSmallDenominator
-#print axioms LogdetLean.GramHafnian.ThreePaper.PRLConsequences.randomizedAdditiveToRelative
-#print axioms LogdetLean.GramHafnian.ThreePaper.PRLConsequences.finiteErrorBudget
-#print axioms LogdetLean.GramHafnian.ThreePaper.PRLConsequences.balancedMarkovTradeoff
-#print axioms LogdetLean.GramHafnian.ThreePaper.PRLConsequences.samplerRelativeOptimized
-#print axioms LogdetLean.GramHafnian.ThreePaper.PRLConsequences.finiteHaarTruncatedNegativeMoment
-#print axioms LogdetLean.GramHafnian.ThreePaper.PRLConsequences.finiteHaarTruncatedNormalizedIntensityNegativeMoment
-#print axioms LogdetLean.GramHafnian.ThreePaper.PRLConsequences.collisionFreeLabelSpace_card
-#print axioms LogdetLean.GramHafnian.ThreePaper.PRLConsequences.mostLabelsNotDark
-#print axioms LogdetLean.GramHafnian.ThreePaper.PRLConsequences.circuitwiseConditionalFailure
-#print axioms LogdetLean.GramHafnian.ThreePaper.PRLConsequences.samplerTVToUniformLabelAdditive
-#print axioms LogdetLean.GramHafnian.ThreePaper.PRLConsequences.samplerTVToRandomLabelRelative_prl
-#print axioms LogdetLean.GramHafnian.ThreePaper.PRLConsequences.disjointGaussianPanelSmallBall_exact
-#print axioms LogdetLean.GramHafnian.ThreePaper.PRLConsequences.disjointGaussianPanelSmallBall_transfer
-#print axioms LogdetLean.GramHafnian.ThreePaper.PRLConsequences.disjointPanel_min_of_two
-#print axioms LogdetLean.GramHafnian.ThreePaper.PRLConsequences.orderedHaarHafnianPanelLaw_eq_ambient
-#print axioms LogdetLean.GramHafnian.ThreePaper.PRLConsequences.ambientHaarHafnianPanelSmallBall_union_le
-#print axioms LogdetLean.GramHafnian.ThreePaper.PRLConsequences.orderedDisjointHaarHafnianPanelSmallBall_full_qN
-#print axioms LogdetLean.GramHafnian.ThreePaper.PRLConsequences.orderedDisjointPhysicalPanelSmallDenominator_full_qN
-#print axioms LogdetLean.GramHafnian.ThreePaper.PRLConsequences.orderedPhysicalFinitePanelSmallDenominator
-#print axioms LogdetLean.GramHafnian.ThreePaper.PRLConsequences.collisionFreeExpectedDarkFraction
-#print axioms LogdetLean.GramHafnian.ThreePaper.PRLConsequences.collisionFreeMostLabelsNotDark
-#print axioms LogdetLean.GramHafnian.ThreePaper.PRLConsequences.randomLabelAdditiveToRelative
-#print axioms LogdetLean.GramHafnian.ThreePaper.PRLConsequences.collisionFreeRandomLabelAdditiveToRelative
-#print axioms LogdetLean.GramHafnian.ThreePaper.PRLConsequences.randomLabelFiniteErrorBudget
-#print axioms LogdetLean.GramHafnian.ThreePaper.PRLConsequences.collisionFreeSamplerRelative
-#print axioms LogdetLean.GramHafnian.ThreePaper.PRLConsequences.finiteHaarNormalizedPhysicalIntensityTail
-#print axioms LogdetLean.GramHafnian.ThreePaper.PRLConsequences.sectorReferenceMass
-#print axioms LogdetLean.GramHafnian.ThreePaper.PRLConsequences.normalizedSectorProbability
+#print axioms LogdetLean.GramHafnian.ThreePaper.RelativeAccuracy.finiteHaarShiftedSmallBall
+#print axioms LogdetLean.GramHafnian.ThreePaper.RelativeAccuracy.gbsSmallDenominator
+#print axioms LogdetLean.GramHafnian.ThreePaper.RelativeAccuracy.randomizedAdditiveToRelative
+#print axioms LogdetLean.GramHafnian.ThreePaper.RelativeAccuracy.finiteErrorBudget
+#print axioms LogdetLean.GramHafnian.ThreePaper.RelativeAccuracy.balancedMarkovTradeoff
+#print axioms LogdetLean.GramHafnian.ThreePaper.RelativeAccuracy.samplerRelativeOptimized
+#print axioms LogdetLean.GramHafnian.ThreePaper.RelativeAccuracy.finiteHaarTruncatedNegativeMoment
+#print axioms LogdetLean.GramHafnian.ThreePaper.RelativeAccuracy.finiteHaarTruncatedNormalizedIntensityNegativeMoment
+#print axioms LogdetLean.GramHafnian.ThreePaper.RelativeAccuracy.collisionFreeLabelSpace_card
+#print axioms LogdetLean.GramHafnian.ThreePaper.RelativeAccuracy.mostLabelsNotDark
+#print axioms LogdetLean.GramHafnian.ThreePaper.RelativeAccuracy.circuitwiseConditionalFailure
+#print axioms LogdetLean.GramHafnian.ThreePaper.RelativeAccuracy.samplerTVToUniformLabelAdditive
+#print axioms LogdetLean.GramHafnian.ThreePaper.RelativeAccuracy.samplerTVToRandomLabelRelative_relativeAccuracy
+#print axioms LogdetLean.GramHafnian.ThreePaper.RelativeAccuracy.disjointGaussianPanelSmallBall_exact
+#print axioms LogdetLean.GramHafnian.ThreePaper.RelativeAccuracy.disjointGaussianPanelSmallBall_transfer
+#print axioms LogdetLean.GramHafnian.ThreePaper.RelativeAccuracy.disjointPanel_min_of_two
+#print axioms LogdetLean.GramHafnian.ThreePaper.RelativeAccuracy.orderedHaarHafnianPanelLaw_eq_ambient
+#print axioms LogdetLean.GramHafnian.ThreePaper.RelativeAccuracy.ambientHaarHafnianPanelSmallBall_union_le
+#print axioms LogdetLean.GramHafnian.ThreePaper.RelativeAccuracy.orderedDisjointHaarHafnianPanelSmallBall_full_qN
+#print axioms LogdetLean.GramHafnian.ThreePaper.RelativeAccuracy.orderedDisjointPhysicalPanelSmallDenominator_full_qN
+#print axioms LogdetLean.GramHafnian.ThreePaper.RelativeAccuracy.orderedPhysicalFinitePanelSmallDenominator
+#print axioms LogdetLean.GramHafnian.ThreePaper.RelativeAccuracy.collisionFreeExpectedDarkFraction
+#print axioms LogdetLean.GramHafnian.ThreePaper.RelativeAccuracy.collisionFreeMostLabelsNotDark
+#print axioms LogdetLean.GramHafnian.ThreePaper.RelativeAccuracy.randomLabelAdditiveToRelative
+#print axioms LogdetLean.GramHafnian.ThreePaper.RelativeAccuracy.collisionFreeRandomLabelAdditiveToRelative
+#print axioms LogdetLean.GramHafnian.ThreePaper.RelativeAccuracy.randomLabelFiniteErrorBudget
+#print axioms LogdetLean.GramHafnian.ThreePaper.RelativeAccuracy.collisionFreeSamplerRelative
+#print axioms LogdetLean.GramHafnian.ThreePaper.RelativeAccuracy.finiteHaarNormalizedPhysicalIntensityTail
+#print axioms LogdetLean.GramHafnian.ThreePaper.RelativeAccuracy.sectorReferenceMass
+#print axioms LogdetLean.GramHafnian.ThreePaper.RelativeAccuracy.normalizedSectorProbability

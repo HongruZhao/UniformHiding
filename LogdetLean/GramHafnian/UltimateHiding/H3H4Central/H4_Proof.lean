@@ -17,7 +17,7 @@ noncomputable section
 open LogdetLean.GramHafnian.UltimateHiding.Dense
 open LogdetLean.GramHafnian.UltimateHiding.DenseLocalStep
 open LogdetLean.GramHafnian.UltimateHiding.DenseScore
-open LogdetLean.GramHafnian.CurrentPRL
+open LogdetLean.GramHafnian.LocalAnticoncentration
 
 theorem coeCorner_centralEventPath_derivatives_external_derived_of_A1
     {N K : ℕ} (hN : 1 ≤ N) (hboundary : 2 * N + 8 ≤ K)

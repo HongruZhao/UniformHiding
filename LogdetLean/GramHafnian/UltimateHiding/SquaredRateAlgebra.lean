@@ -11,7 +11,7 @@ that comparison literal and kernel checked.
 
 namespace LogdetLean.GramHafnian.UltimateHiding
 
-open MeasureTheory CurrentPRL
+open MeasureTheory LocalAnticoncentration
 
 theorem ultimateSquaredHidingRate_eq_sq_ultimateHidingRate
     {M N : ℕ} (hM : 1 <= M) :

@@ -1,4 +1,4 @@
-import LogdetLean.GramHafnian.CurrentPRL.CoefficientPaperEndpoints
+import LogdetLean.GramHafnian.LocalAnticoncentration.CoefficientPaperEndpoints
 import LogdetLean.GramHafnian.ShiftedAnticoncentration.Normalization
 import LogdetLean.GramHafnian.RankTwoCentralBinomial
 
@@ -17,7 +17,7 @@ namespace LogdetLean.GramHafnian.SymmetricGaussianLimit
 
 noncomputable section
 
-open CurrentPRL
+open LocalAnticoncentration
 
 /-- The squared reference scale `sigma_{infinity,n}^2 = (2n-1)!!`. -/
 def symmetricGaussianSigmaSq (n : ℕ) : ℝ :=

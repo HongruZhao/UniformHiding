@@ -1,7 +1,7 @@
 import LogdetLean.GramHafnian.ThreePaper.TwoMethodComparison
 
 /-!
-# Sequence-level coefficient asymptotics for the PRL comparison
+# Sequence-level coefficient asymptotics for the manuscript comparison
 
 This module supplies literal sequence-level endpoints for the three
 coefficient estimates used in the Route-1/Route-2 comparison.  The ambient
@@ -15,7 +15,7 @@ namespace LogdetLean.GramHafnian.ThreePaper.TwoMethodComparison
 
 noncomputable section
 
-open CurrentPRL
+open LocalAnticoncentration
 
 /-- Exact arithmetic sum in the exponential envelope for `R_{K,n}`. -/
 theorem sum_Icc_two_two_mul_sub_two
@@ -80,7 +80,7 @@ theorem gramToSymmetricVarianceRatio_le_exp_pairScale
       congr 1
       rw [← Finset.sum_div, sum_Icc_two_two_mul_sub_two n hn]
 
-/-- The two finite logarithmic coefficient bounds displayed in the PRL End
+/-- The two finite logarithmic coefficient bounds displayed in the manuscript End
 Matter.  They are direct consequences of the exact product envelopes and add
 no scientific assumption. -/
 theorem coefficientLogBounds
@@ -99,7 +99,7 @@ theorem coefficientLogBounds
       (gramToSymmetricVarianceRatio_le_exp_pairScale K n hn hKpos)
   · have hbPos := paperBn_pos n hn
     have hBPos : 0 < paperBkn K n :=
-      PRXQAnticoncentration.shiftedAnticoncentrationConstant_pos n K hn hK
+      GaussianAnticoncentration.shiftedAnticoncentrationConstant_pos n K hn hK
     have hquotPos : 0 < paperBkn K n / paperBn n := div_pos hBPos hbPos
     rw [Real.log_le_iff_le_exp hquotPos]
     apply (div_le_iff₀ hbPos).2
@@ -159,7 +159,7 @@ theorem gramToSymmetricVarianceRatio_le_ambientPower
       ring
 
 /-- The limiting small-ball coefficient times the reference-scale ratio has
-the pointwise power envelope used for the third line of the PRL display. -/
+the pointwise power envelope used for the third line of the manuscript display. -/
 theorem paperBn_mul_ratio_le_ambientPower
     (K n : ℕ) (kappa : ℝ) (hn : 1 ≤ n) (hK : 0 < K)
     (hscale :
@@ -340,7 +340,7 @@ theorem paperBkn_le_ambientPower_of_logRemainder
       rw [Real.exp_add, hexpPower, Real.rpow_add hNpos]
       ring
 
-/-- The first line of the PRL coefficient display, with the physical ambient
+/-- The first line of the manuscript coefficient display, with the physical ambient
 dimension `N_n = 2n` and explicit eventual hypotheses. -/
 theorem paperBkn_isBigO_ambientLogScale
     (K : ℕ → ℕ) {kappa : ℝ} (hkappa : 0 < kappa)
@@ -376,7 +376,7 @@ theorem paperBkn_isBigO_ambientLogScale
   simpa only [Real.norm_eq_abs, abs_of_nonneg hBnonneg,
     abs_of_nonneg hpowerNonneg] using hbound
 
-/-- The second line of the PRL coefficient display. -/
+/-- The second line of the manuscript coefficient display. -/
 theorem gramToSymmetricVarianceRatio_isBigO_ambientLogScale
     (K : ℕ → ℕ) {kappa : ℝ}
     (hK4 : ∀ᶠ n : ℕ in atTop, 4 * n ≤ K n)
@@ -399,7 +399,7 @@ theorem gramToSymmetricVarianceRatio_isBigO_ambientLogScale
   simpa only [Real.norm_eq_abs, abs_of_nonneg hratioNonneg,
     abs_of_nonneg hpowerNonneg, one_mul] using hbound
 
-/-- The third line of the PRL coefficient display. -/
+/-- The third line of the manuscript coefficient display. -/
 theorem paperBn_mul_ratio_isBigO_ambientLogScale
     (K : ℕ → ℕ) {kappa : ℝ}
     (hK4 : ∀ᶠ n : ℕ in atTop, 4 * n ≤ K n)
@@ -426,7 +426,7 @@ theorem paperBn_mul_ratio_isBigO_ambientLogScale
   simpa only [Real.norm_eq_abs, abs_of_nonneg hleftNonneg,
     abs_of_nonneg hpowerNonneg] using hbound
 
-/-- Bundled literal endpoint for all three lines of the PRL coefficient
+/-- Bundled literal endpoint for all three lines of the manuscript coefficient
 display. -/
 theorem coefficientTriple_isBigO_ambientLogScale
     (K : ℕ → ℕ) {kappa : ℝ} (hkappa : 0 < kappa)

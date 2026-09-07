@@ -14,7 +14,7 @@ namespace LogdetLean.GramHafnian.ThreePaper.FiniteMixtureTV
 
 noncomputable section
 
-open CurrentPRL UltimateHiding
+open LocalAnticoncentration UltimateHiding
 
 /-- A finite mixture with nonnegative-real weights. -/
 def finiteMixture

@@ -4,7 +4,7 @@ import LogdetLean.GramHafnian.ThreePaper.Verification.HidingOutsideCDPaperFacing
 No new literature assumption is introduced. -/
 open MeasureTheory
 open LogdetLean.GramHafnian
-open LogdetLean.GramHafnian.CurrentPRL
+open LogdetLean.GramHafnian.LocalAnticoncentration
 open LogdetLean.GramHafnian.UltimateHiding
 
 namespace GBSHiding
@@ -31,7 +31,7 @@ theorem normalizedHidingAllInputs
       (normalizedGaussianTransposeGramLaw N K)
       (min 1 (615172 * ultimateSquaredHidingRate M N)) := by
   by_cases hNK : N ≤ K
-  · exact ThreePaper.PRXQUniformHiding.normalizedMatrixLaw H M N K hN hNK hKM
+  · exact ThreePaper.UniformMatrixHiding.normalizedMatrixLaw H M N K hN hNK hKM
   have hKN : K ≤ N := by omega
   have hM : (0 : ℝ) < M := by exact_mod_cast (show 0 < M by omega)
   letI : IsProbabilityMeasure (scaledHaarTransposeGramLaw H M N K) :=
@@ -95,7 +95,7 @@ theorem observableHidingAllInputs
       (min 1 (615172 * ultimateSquaredHidingRate M L)) :=
   (normalizedHidingAllInputs H M L K hL hLM hK hKM).map hf
 
-open LogdetLean.GramHafnian.ThreePaper.PRXQUniformHiding
+open LogdetLean.GramHafnian.ThreePaper.UniformMatrixHiding
 
 /-- Literal common-source ordered panel, with no restriction L ≤ K. -/
 theorem orderedFixedPatternPanelAllInputs

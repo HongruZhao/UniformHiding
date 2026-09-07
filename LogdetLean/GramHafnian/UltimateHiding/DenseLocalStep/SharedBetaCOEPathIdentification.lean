@@ -36,13 +36,13 @@ theorem concreteProjectiveAveragedCenteredCOEEventPath_eq_orbitalAction
     concreteProjectiveAveragedCenteredCOEEventPath N K event t =
       (concreteOrbitalMatrixKernel N t ∘ₘ
         concreteScaledCOECornerLaw
-          CurrentPRL.canonicalUnitaryHaarProbabilityFamily N K).real event := by
+          LocalAnticoncentration.canonicalUnitaryHaarProbabilityFamily N K).real event := by
   let mu := concreteScaledCOECornerLaw
-    CurrentPRL.canonicalUnitaryHaarProbabilityFamily N K
+    LocalAnticoncentration.canonicalUnitaryHaarProbabilityFamily N K
   let sphere := complexUnitSphereProbabilityMeasure N
   let _ : IsProbabilityMeasure mu :=
     concreteScaledCOECornerLaw_isProbability
-      CurrentPRL.canonicalUnitaryHaarProbabilityFamily hNK
+      LocalAnticoncentration.canonicalUnitaryHaarProbabilityFamily hNK
   let _ : IsProbabilityMeasure sphere :=
     complexUnitSphereProbabilityMeasure_isProbability hN
   let F : ComplexUnitSphere N × ConcreteMatrixState N →
@@ -109,16 +109,16 @@ theorem concreteSharedBetaOrbitalEventPath_eq_projectiveCenteredCOE
     (hevent : MeasurableSet event) (t : ℝ) :
     concreteSharedBetaOrbitalEventPath m N
         (concreteScaledCOECornerLaw
-          CurrentPRL.canonicalUnitaryHaarProbabilityFamily N K)
+          LocalAnticoncentration.canonicalUnitaryHaarProbabilityFamily N K)
         q event t =
       concreteProjectiveAveragedCenteredCOEEventPath N K
         (concreteCentralMatrixUpdate N
           (oneColumnCenteredScalarLog m N q) ⁻¹' event) t := by
   let mu := concreteScaledCOECornerLaw
-    CurrentPRL.canonicalUnitaryHaarProbabilityFamily N K
+    LocalAnticoncentration.canonicalUnitaryHaarProbabilityFamily N K
   let _ : IsProbabilityMeasure mu :=
     concreteScaledCOECornerLaw_isProbability
-      CurrentPRL.canonicalUnitaryHaarProbabilityFamily hNK
+      LocalAnticoncentration.canonicalUnitaryHaarProbabilityFamily hNK
   have hcentral : Measurable
       (concreteCentralMatrixUpdate N (oneColumnCenteredScalarLog m N q)) :=
     measurable_concreteCentralMatrixUpdate N _
