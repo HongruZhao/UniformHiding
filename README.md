@@ -59,7 +59,7 @@ For one randomized estimate $`\widetilde p`$, put $`\Delta p=\widetilde p-p_S`$,
 
 The public declarations are `UniformHiding.theorem3_2_route1` and `UniformHiding.theorem3_2_route1_optimized`. Their joint probability space can include estimator randomness, and they require the amplitude to have its specified Haar marginal. They do not assume that the estimator is independent of the interferometer. The normalization $`p_1`$ is a Gaussian reference, not the finite-Haar expectation.
 
-The bridge `UniformHiding.routeOneSmallBall` explicitly invokes `ComplexGramHafnians.theorem2_1`. We include that companion theorem and its dependencies from commit [95ab10d](https://github.com/HongruZhao/ComplexGramHafnians/tree/95ab10dc594ac92207054413220ae9fd2adab08c), with module and identifier names made independent of journal titles. The proofs are preserved under this recorded renaming. This is a **vendored source dependency**, so the build uses the included companion sources directly. [Provenance](docs/PROVENANCE.md) explains how the source audit restores the original names and checks all 225 files against the upstream hashes.
+Route 1 combines the hiding bound with the companion Gaussian anticoncentration theorem from [ComplexGramHafnians (the source version used in this release)](https://github.com/HongruZhao/ComplexGramHafnians/tree/95ab10dc594ac92207054413220ae9fd2adab08c). The connection is made by `UniformHiding.routeOneSmallBall`, which invokes `ComplexGramHafnians.theorem2_1`. The theorem and all required proof files are included in this repository. Their mathematical content is preserved; [source provenance](docs/PROVENANCE.md) explains how the included files are checked against the original sources.
 
 ## Route 2: the hiding input is not formalized
 

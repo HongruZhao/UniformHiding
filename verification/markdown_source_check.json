@@ -11,7 +11,7 @@
       "file": "README.md",
       "display_math": 9,
       "inline_math": 41,
-      "sha256": "0a37dacc5209edae84bcacfd9c79331b2426a0e5a3a5dbee4ef7506924ffbd90"
+      "sha256": "0f80a2ce161e6465475ee48c68fcd747c0e22549740995b91b3819c7e06cdc0f"
     },
     {
       "file": "docs/A2_SOURCE_DERIVATION.md",
@@ -35,7 +35,7 @@
       "file": "docs/PROVENANCE.md",
       "display_math": 0,
       "inline_math": 0,
-      "sha256": "453d3e68d8989926cb24ec9dc86b8e99c4dd55f7659484ac6352b9f93d08e5d9"
+      "sha256": "b1d6d7f763ebd1c179a4a9d63c919f9ccd60c82f75345e146464c4f22bc3297f"
     },
     {
       "file": "verification/STATUS.md",
