@@ -8,6 +8,8 @@
 - Preserves all four literature axioms and every companion proof source. No project axiom is added.
 - Records a fresh public-target build, separate exact axiom audit, and source checks in [verification/STATUS.md](verification/STATUS.md).
 - Uses the same revised Lean sources for GitHub and the Zenodo version 1.2.0 package.
+- Records the version 1.2.0 archive identifier, [10.5281/zenodo.22670050](https://doi.org/10.5281/zenodo.22670050).
+- Keeps manuscript correspondence valid in both column layouts by using the unchanged appendix and equation labels. This documentation update does not change any Lean proof source.
 
 # Changes in version 1.1.0
 

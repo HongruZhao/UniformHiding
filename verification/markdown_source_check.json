@@ -5,13 +5,13 @@
       "file": "CHANGELOG.md",
       "display_math": 0,
       "inline_math": 0,
-      "sha256": "00e354a88758e5d3e6c728b757f1caccbedefa52cd7477e11fb588516b9a2d04"
+      "sha256": "bbc7eab92260a97e9b232b99bb558ab439c85844292e9102b1295cfc2207dd15"
     },
     {
       "file": "README.md",
       "display_math": 11,
       "inline_math": 51,
-      "sha256": "40a1596118fdc8dce9106c9e9244364ef338993c8e220aeeeec5ebae17b94b33"
+      "sha256": "cbc589a84c58a6865d6b374439d64aba434380ccc47f25164f7bf1fa78aae09b"
     },
     {
       "file": "docs/A2_SOURCE_DERIVATION.md",
@@ -23,7 +23,7 @@
       "file": "docs/AXIOMS.md",
       "display_math": 31,
       "inline_math": 223,
-      "sha256": "ddd900453480990fcea7d9dbd6b157a2f828ddabc7c8515f96474e5802dd9984"
+      "sha256": "2374f341aeaceb9907200c1b13aac6b584d26248c68446331eb5ead0d07036a0"
     },
     {
       "file": "docs/COROLLARY_2_2.md",
@@ -35,7 +35,7 @@
       "file": "docs/PAPER_COMPARISON.md",
       "display_math": 0,
       "inline_math": 40,
-      "sha256": "a322db7d093e0ba7c438de7c48f9d4912f1ec475d67643480d2b904c78976bdf"
+      "sha256": "5ca16c3409ed85ce2e4bda5420231dddf0436bc30f07f853b05734f326946441"
     },
     {
       "file": "docs/PROVENANCE.md",

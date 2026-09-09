@@ -2,6 +2,8 @@
 
 The theorem numbers refer to the revised manuscript, *Uniform Hiding and Two Routes to Relative Accuracy in Gaussian Boson Sampling*. `Theorem21` means Theorem **2.1**, not Theorem 21. The names beginning `theorem3_2_route1` mean the Route 1 part of Theorem **3.2**.
 
+This correspondence also applies to the one-column layout prepared on 9 September 2026. The mathematical text and all theorem, equation, section, and figure numbers are unchanged. References below use those labels rather than PDF page numbers.
+
 | Manuscript claim | Public declaration / source | Verification boundary |
 | --- | --- | --- |
 | Theorem 2.1, normalized matrix-law TV bound for all $`1\le N,K\le M`$ | `UniformHiding.theorem2_1` | Includes $`K<N`$; four literature axioms A1–A4 plus the three foundations |

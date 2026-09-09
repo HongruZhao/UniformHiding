@@ -156,7 +156,7 @@ The pinned toolchain is selected automatically. A successful build checks these 
 
 Version **1.2.0** promotes the bound for all positive input counts to Theorem 2.1 and makes Corollary 2.2 its immediate quantitative specialization. The GitHub repository and the accompanying Zenodo source package contain the same Lean statements and proofs. See [the change history](CHANGELOG.md) and [source provenance](docs/PROVENANCE.md) for the relationship to version 1.1.0.
 
-The preceding archives are [version 1.1.0](https://doi.org/10.5281/zenodo.22558885) and [version 1.0.0](https://doi.org/10.5281/zenodo.22122730). Cite the version actually used; see [CITATION.cff](CITATION.cff). No earlier DOI is assigned to this version. The archive contains Lean sources and verification records, with no manuscript PDFs or LaTeX sources.
+The archive identifier for **version 1.2.0** is [10.5281/zenodo.22670050](https://doi.org/10.5281/zenodo.22670050). The preceding archives are [version 1.1.0](https://doi.org/10.5281/zenodo.22558885) and [version 1.0.0](https://doi.org/10.5281/zenodo.22122730). Cite the version actually used; see [CITATION.cff](CITATION.cff). The archive contains Lean sources and verification records, with no manuscript PDFs or LaTeX sources.
 
 Copyright © 2026 Hongru Zhao. Licensed under GPL-3.0-only.
 

@@ -1,6 +1,6 @@
 # The four literature axioms used in the Lean formalization
 
-This document explains **what Lean assumes and why the cited mathematical results justify those assumptions**. The same four-part structure appears in the revised manuscript's Appendix A (7 September 2026, pages 12–18). These results are imported rather than reproved inside Lean.
+This document explains **what Lean assumes and why the cited mathematical results justify those assumptions**. The same four-part structure appears in the revised manuscript's Appendix A, “The four literature axioms used in the Lean formalization.” The appendix and equation labels are the same in the one-column and two-column layouts. These results are imported rather than reproved inside Lean.
 
 **Part 1 of each axiom is its exact mathematical translation into the paper's notation. It is neither Lean code nor a verbatim quotation from a publication.** Parts 2–4 give the source statement, the justification of differences, and the notation dictionary. Mathematical source-to-axiom arguments are distinguished from separately checked Lean deductions. There are four literature axioms; there is no A5 axiom.
 
