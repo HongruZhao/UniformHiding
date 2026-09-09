@@ -1,0 +1,61 @@
+{
+  "version": "1.2.0",
+  "date": "2026-09-09",
+  "toolchain": "leanprover/lean4:v4.33.0-rc2",
+  "lean_version": "Lean (version 4.33.0-rc2, arm64-apple-darwin24.6.0, commit d8b18978322de05a8f3dba51ef03cf5461676c17, Release)",
+  "commands": [
+    {
+      "command": "LEAN_NUM_THREADS=4 lake build UniformHiding HidingVerification",
+      "exit_code": 0,
+      "log": "corollary22_build.log"
+    },
+    {
+      "command": "LEAN_NUM_THREADS=4 lake env lean HidingVerification.lean",
+      "exit_code": 0,
+      "log": "corollary22_axiom_audit.log"
+    }
+  ],
+  "public_endpoint_count": 11,
+  "endpoint_axiom_counts": {
+    "UniformHiding.theorem2_1": 7,
+    "UniformHiding.corollary2_2": 7,
+    "UniformHiding.corollary2_2_unscaled": 7,
+    "UniformHiding.corollary2_2_s62_scaled": 7,
+    "UniformHiding.corollary2_2_s62": 7,
+    "UniformHiding.routeOneSmallBall": 7,
+    "UniformHiding.theorem3_2_route1": 7,
+    "UniformHiding.theorem3_2_route1_optimized": 7,
+    "ComplexGramHafnians.theorem2_1": 3,
+    "ComplexGramHafnians.theorem2_3": 3,
+    "UniformHiding.routeTwoConditional": 3
+  },
+  "new_bound_endpoints": [
+    "UniformHiding.corollary2_2",
+    "UniformHiding.corollary2_2_unscaled",
+    "UniformHiding.corollary2_2_s62_scaled",
+    "UniformHiding.corollary2_2_s62"
+  ],
+  "all_four_new_bounds_use_exactly_four_literature_axioms_plus_three_foundations": true,
+  "source_scale_law_identities_use_only_foundations": true,
+  "changed_lean_files": [
+    "HidingStatement.lean",
+    "HidingVerification.lean",
+    "UniformHiding.lean"
+  ],
+  "other_878_lean_files_unchanged": true,
+  "companion_sources_unchanged": true,
+  "new_project_axioms": 0,
+  "cache_scope": "Fresh build invocation and separate audit with pinned dependencies and a private copy of the prior build cache; the three modified modules were compiled. Not an uncached build or independent kernel-checker run.",
+  "github_modified": false,
+  "zenodo_uploaded": false,
+  "proposition_4_1": "Partial only: optical scale algebra and conditional sector-reference-mass identity; no complete maximizer, uniform Stirling, or final asymptotic endpoint.",
+  "log_sha256": {
+    "corollary22_build.log": "34b41df39087730a5e8aa687d85599496ac91ec4beebd49ed1c5f1eccd45e234",
+    "corollary22_axiom_audit.log": "5bc2fa1808e2e2078c72d6effe8aa8e831010afbd935b87e0109eebe7e9531f2"
+  },
+  "source_hashes": {
+    "HidingStatement.lean": "34eef8743e60264c9e3d1f0017c9871c5a36c3d3ce89dbf45ae212e0d30ab9ce",
+    "HidingVerification.lean": "57e2ef1beb8b480a952567bfa3d02b447fe3791141fd993c88453d29428f92d6",
+    "UniformHiding.lean": "805f0afdb7b75ff33a71472f262ce59edf754add2b0146fbbcdf3292c1645fdc"
+  }
+}

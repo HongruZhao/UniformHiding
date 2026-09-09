@@ -4,15 +4,18 @@ The theorem numbers refer to the revised manuscript, *Uniform Hiding and Two Rou
 
 | Manuscript claim | Public declaration / source | Verification boundary |
 | --- | --- | --- |
-| Theorem 2.1, normalized matrix-law TV bound | `UniformHiding.theorem2_1` | Four literature axioms A1–A4 plus the three foundations |
-| Equivalent unnormalized product bound | `GBSHiding.uniformHiding` | Same four literature axioms |
-| All-input extension, including $`K<N`$ | `GBSHiding.AllInputs` | Existing measure-law proof; the principal public specification retains Theorem 2.1's stated range |
+| Theorem 2.1, normalized matrix-law TV bound for all $`1\le N,K\le M`$ | `UniformHiding.theorem2_1` | Includes $`K<N`$; four literature axioms A1–A4 plus the three foundations |
+| Theorem 2.1, equivalent unnormalized product bound | `UniformHiding.theorem2_1_unscaled` | Same full range and capped constant |
+| Corollary 2.2, direct quantitative consequence | `UniformHiding.corollary2_2` | $`n\ge1`$, $`2n\le M`$, $`1\le K\le M`$, $`\delta>0`$, $`M\ge n^2/\delta`$; bound $`4C_\ast\delta`$ |
+| Corollary 2.2, explicit quantitative (S62) specialization | `UniformHiding.corollary2_2_s62` | $`N=2n`$, $`\delta>0`$, $`m\ge n^2/\delta`$; source-scale product laws and bound $`4C_\ast\delta`$ |
 | Route 1 of Theorem 3.1, shifted Haar-hafnian disk bound | `UniformHiding.routeOneSmallBall` | Hiding plus direct use of companion `ComplexGramHafnians.theorem2_1` |
 | Route 1 of Theorem 3.2, one physical additive threshold | `UniformHiding.theorem3_2_route1` | Actual joint probability measure, measurable amplitude with specified Haar marginal, positive squeezing and tolerance, $`n\ge1`$, $`4n\le K\le M`$ |
 | Route 1 infimum in Theorem 3.2 | `UniformHiding.theorem3_2_route1_optimized` | All nonnegative physical additive thresholds; exact capped hiding term |
 | Route 2 deduction | `UniformHiding.routeTwoConditional` | Explicit Shou matrix-comparison and symmetric small-ball hypotheses; no proof of the Route 2 hiding input |
 | Symmetric Gaussian anticoncentration used mathematically by Route 2 | `ComplexGramHafnians.theorem2_3` | Three foundations only; actual-law assembly with the generic Route 2 interface is not claimed |
 | Hafnian and equal-squeezing probability | `hafnian`, `gbsCollisionFreePatternProbability`, `gbsProbabilityFromScaledAmplitude` | Optical probability formula is an adopted model, not a derivation of quantum dynamics |
+
+See [Corollary 2.2 and the cited conjecture](COROLLARY_2_2.md) for the parameter dictionary, exact source-scale measure identities, and the mathematical translation to [10, Conjecture 1 and Eq. (S62)].
 
 ## Route 1 model correspondence
 
@@ -26,7 +29,7 @@ The event argument uses $`\Delta p=\widetilde p-p_S`$, $`\eta=\tau/p_1`$, and $`
 
 ## Appendix A: justification of the four Lean axioms
 
-The revised Appendix A (7 September 2026, pages 12–18) documents what the formalization assumes and why the cited sources justify those assumptions. It is not a list of missing steps in the mathematical proof. It has four axiom subsections and no A.5 subsection.
+The revised Appendix A documents what the formalization assumes and why the cited sources justify those assumptions. It is not a list of missing steps in the mathematical proof. It has four axiom subsections and no A.5 subsection.
 
 [AXIOMS.md](AXIOMS.md) follows the same four-part structure for every input: **(1) exact mathematical translation of the Lean axiom, (2) source statement, (3) differences and their justification, and (4) notation correspondence**. The translation is checked against the declaration and the definitions it uses, rather than relying on a code comment calling the result verbatim. Equation labels retain the paper's numbering.
 
@@ -40,6 +43,22 @@ The revised Appendix A (7 September 2026, pages 12–18) documents what the form
 [The expanded A2 justification](A2_SOURCE_DERIVATION.md) retains the full argument from FitzGerald–Warren's unnumbered Jacobian after Eq. (70) and An–Wang–Yan's Theorem 4.2 and following remark. It checks the positive ordered chamber, diagonal sign stabilizer, one-sheeted covering, differential, exceptional null set, coordinate-volume factor, chamber factor, and arbitrary measurable tests. In the notation dictionary, the integration theorem's subgroup $`K`$ is explicitly distinguished from the paper's ambient dimension.
 
 These source-to-axiom arguments explain why the imported mathematical statements are justified. They are not presented as separate proofs checked in Lean. The naming revision preserves the mathematical contracts of the four axioms and the public theorem endpoints under the recorded identifier substitutions.
+
+## Proposition 4.1: partial coverage
+
+Proposition 4.1, *Probability scale and the size of the label set*, is **not fully formalized**. Its components have different statuses:
+
+| Part of Proposition 4.1 | Current Lean coverage |
+| --- | --- |
+| Cardinality $`D_{M,N}=\binom MN`$ | `RelativeAccuracy.collisionFreeLabelSpace_card` |
+| Cancellation between the optical probability and its Gaussian reference scale | `RelativeAccuracy.exactSectorScaleIdentity` and `normalizedSectorProbability` |
+| Sector reference-mass algebra | `RelativeAccuracy.sectorReferenceMass` proves $`D_{M,N}p_1=(M)_N M^{-N}P_N`$ **assuming** `hTotalPhoton`, which identifies $`P_N`$ with the optical prefactor times $`\sigma_{K,n}^2/N!`$ |
+| The printed negative-binomial photon-sector law and its full identification with the physical total-photon probability | Not assembled by that theorem; its premise must not be reported as a proof of this formula |
+| The maximizing squeezing $`\tanh^2\xi=N/(K+N)`$ | No complete theorem in this release |
+| Uniform Stirling asymptotic for $`K\ge4n`$ | No complete theorem in this release |
+| The concluding $`\Theta(N^{-1/2})`$ statement with $`N^2/M\to0`$ | No complete theorem in this release |
+
+Here $`(M)_N`$ in the Lean algebra description denotes the descending factorial. The manuscript writes the same factor as $`\prod_{j=0}^{N-1}(1-j/M)`$ after dividing by $`M^N`$. The relevant source is [RelativeAccuracyApplicationEndpoints.lean](../LogdetLean/GramHafnian/ThreePaper/RelativeAccuracyApplicationEndpoints.lean). Version 1.2.0 adds Corollary 2.2; it does not add or claim a complete Proposition 4.1 endpoint. A [fresh Lean inspection of these existing declarations](../verification/proposition41_scope_check.log) confirms the conditional type of `sectorReferenceMass`; that algebraic theorem uses only the three foundations.
 
 ## Scope beyond the selected endpoints
 

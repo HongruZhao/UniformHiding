@@ -1,0 +1,59 @@
+{
+  "date": "2026-09-09",
+  "version": "1.2.0",
+  "toolchain": "leanprover/lean4:v4.33.0-rc2",
+  "commands": [
+    {
+      "command": "LEAN_NUM_THREADS=4 lake build UniformHiding HidingVerification",
+      "exit_code": 0,
+      "log": "theorem21_all_inputs_build.log"
+    },
+    {
+      "command": "LEAN_NUM_THREADS=4 lake env lean HidingVerification.lean",
+      "exit_code": 0,
+      "log": "theorem21_all_inputs_axiom_audit.log"
+    }
+  ],
+  "theorem21_range": "1 <= N <= M and 1 <= K <= M; no N <= K assumption",
+  "corollary22": "N=2*n, n>=1, 2*n<=M, 1<=K<=M, delta>0 and n^2/delta<=M imply TV<=4*615172*delta",
+  "public_endpoint_count": 12,
+  "endpoint_axiom_counts": {
+    "UniformHiding.theorem2_1": 7,
+    "UniformHiding.theorem2_1_unscaled": 7,
+    "UniformHiding.corollary2_2": 7,
+    "UniformHiding.corollary2_2_unscaled": 7,
+    "UniformHiding.corollary2_2_s62_scaled": 7,
+    "UniformHiding.corollary2_2_s62": 7,
+    "UniformHiding.routeOneSmallBall": 7,
+    "UniformHiding.theorem3_2_route1": 7,
+    "UniformHiding.theorem3_2_route1_optimized": 7,
+    "ComplexGramHafnians.theorem2_1": 3,
+    "ComplexGramHafnians.theorem2_3": 3,
+    "UniformHiding.routeTwoConditional": 3
+  },
+  "literature_axiom_count": 4,
+  "new_project_axioms": 0,
+  "source_hashes": {
+    "HidingStatement.lean": "79c3d082499362bb8bd90890f18c38466a0efee0012ed7a70f4c9549a31c5e98",
+    "UniformHiding.lean": "269393e8467a59cb49b18a71f7b259e4d8db2b12623b5cc1398c048782e8294c",
+    "HidingVerification.lean": "ec9ac82afc5498fcd2d0ed8e02b8c82bec16c677fb5ca4cc4c009bc851b2fbd6"
+  },
+  "changed_lean_files_from_v1_1_0": [
+    "HidingStatement.lean",
+    "UniformHiding.lean",
+    "HidingVerification.lean"
+  ],
+  "other_878_lean_sources_unchanged": true,
+  "all_225_companion_sources_unchanged": true,
+  "build_scope": "Fresh build invocation with pinned dependencies and reusable unaffected build artifacts. The three revised public modules compiled. No fully uncached or independent-checker run is claimed.",
+  "log_sha256": {
+    "theorem21_all_inputs_build.log": "9756ef3a583f6fd4c8ddff235b8af88ecfc8ac1157ea820ce48ab572cc90f2e2",
+    "theorem21_all_inputs_axiom_audit.log": "e0223729d5c2911a5e4f82783c33c10304cea8a15de9a5bda7e5893f69501eff",
+    "theorem21_github_clone_build.log": "bd42d2aa2c6ee4484a3a886b1247fbe98f4c95c929c4600fc859e05974067eab"
+  },
+  "matching_github_clone_build": {
+    "command": "LEAN_NUM_THREADS=4 lake build UniformHiding HidingVerification",
+    "exit_code": 0,
+    "log": "theorem21_github_clone_build.log"
+  }
+}

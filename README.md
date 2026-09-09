@@ -6,15 +6,40 @@ Lean verification accompanying Hongru Zhao's manuscript. The main hiding theorem
 
 Let $`U`$ be Haar distributed on the unitary group $`\mathrm{U}(M)`$, and let $`U_{N,K}`$ be its first $`N`$ rows and $`K`$ columns. Let $`G`$ be an $`N\times K`$ matrix of independent circular complex Gaussians with density $`\pi^{-1}e^{-|z|^2}`$; each real and imaginary component has variance $`1/2`$. The superscript $`T`$ denotes ordinary transpose. Total variation is $`d_{\mathrm{TV}}(\mu,\nu)=\sup_E|\mu(E)-\nu(E)|`$, with measurable $`E`$.
 
-**Theorem 2.1 (uniform hiding).** For $`1\le N\le K\le M`$,
+**Theorem 2.1 (uniform hiding).** For every $`1\le N\le M`$ and $`1\le K\le M`$,
 
 ```math
  d_{\mathrm{TV}}\!\left(\mathcal L\!\left(\frac{M}{\sqrt K}U_{N,K}U_{N,K}^{T}\right),
  \mathcal L\!\left(\frac{1}{\sqrt K}GG^{T}\right)\right)
- \le \min\!\left\lbrace 1,615172\frac{N^2}{M}\right\rbrace .
+ \le \min\!\left\lbrace 1,C_\ast\frac{N^2}{M}\right\rbrace,
+ \qquad C_\ast=615172.
 ```
 
-The public declaration is `UniformHiding.theorem2_1`, with specification `UniformHiding.Theorem21`. The inherited `GBSHiding.AllInputs` module also handles $`K<N`$ under its stated dimension conditions.
+The theorem includes $`K<N`$. Multiplying both matrices by $`\sqrt K`$ gives the equivalent product form
+
+```math
+ d_{\mathrm{TV}}\!\left(\mathcal L(MU_{N,K}U_{N,K}^{T}),
+ \mathcal L(GG^{T})\right)
+ \le \min\!\left\lbrace 1,C_\ast\frac{N^2}{M}\right\rbrace.
+```
+
+The public declarations are `UniformHiding.theorem2_1`, with specification `UniformHiding.Theorem21`, and `UniformHiding.theorem2_1_unscaled`. The proof combines the earlier result for $`N\le K`$ with the existing rectangular comparison for $`K<N`$.
+
+## Corollary 2.2: the quantitative hiding conjecture
+
+Let $`n\ge1`$, $`N=2n\le M`$, $`1\le K\le M`$, and $`\delta>0`$. If $`M\ge n^2/\delta`$, Theorem 2.1 immediately gives
+
+```math
+ d_{\mathrm{TV}}\!\left(\mathcal L(MU_{2n,K}U_{2n,K}^{T}),
+ \mathcal L(G_{2n,K}G_{2n,K}^{T})\right)
+ \le 4C_\ast\delta=2460688\delta.
+```
+
+The public declaration is `UniformHiding.corollary2_2`, with specification `UniformHiding.Corollary22`. Its Lean proof is the direct substitution and inequality $`C_\ast(2n)^2/M\le4C_\ast\delta`$. The manuscript therefore needs no separate corollary proof.
+
+This establishes **[10, Conjecture 1 (Formal) and Supplemental Eq. (S62)]**, in Ehrenberg et al., *Transition of Anticoncentration in Gaussian Boson Sampling*, Physical Review Letters **134**, 140601 (2025), [published article](https://doi.org/10.1103/PhysRevLett.134.140601), [full preprint and supplement](https://arxiv.org/html/2312.08433v2#S0.S5). Here [10] is the hiding manuscript's reference number.
+
+`UniformHiding.corollary2_2_s62` gives the same quantitative bound after putting both product laws on the source's scale. The [theorem, corollary, and source correspondence](docs/COROLLARY_2_2.md) explains the block orientation, Gaussian variance, measure identities, and exact proof boundary. These results use the same four literature axioms.
 
 ## Hafnian and the physical output probability
 
@@ -102,14 +127,14 @@ The axiom documentation explains **what Lean assumes and why the cited sources j
 
 [AXIOMS.md](docs/AXIOMS.md) gives the full mathematical statements, source comparisons, and declaration links. [The expanded A2 justification](docs/A2_SOURCE_DERIVATION.md) checks the Takagi integration map, normalization, global selector measurability, and arbitrary measurable targets. A3 explicitly includes the coordinate definition on singular samples. A4 distinguishes its supplied-law hypothesis from its moment conclusions and explains the inverse-Gram/zonal Weingarten equivalence.
 
-There are exactly four literature axioms. In addition, Lean uses `propext`, `Classical.choice`, and `Quot.sound`. The theorem axiom check must match that set; the imported anticoncentration endpoints must match only the three foundations. The naming revision preserves these mathematical contracts and adds no axiom.
+There are exactly four literature axioms. In addition, Lean uses `propext`, `Classical.choice`, and `Quot.sound`. The theorem axiom check must match that set; the imported anticoncentration endpoints must match only the three foundations. The stronger Theorem 2.1 and its quantitative corollary preserve these four mathematical contracts and add no axiom.
 
 ## Files and verification
 
 | File | Purpose |
 | --- | --- |
-| [HidingStatement.lean](HidingStatement.lean) | Hiding specification and exact Route 1 error budget |
-| [UniformHiding.lean](UniformHiding.lean) | Public hiding and Route 1 proofs; conditional Route 2 alias |
+| [HidingStatement.lean](HidingStatement.lean) | Theorem 2.1, Corollary 2.2, source-scale (S62) specification, and Route 1 budget |
+| [UniformHiding.lean](UniformHiding.lean) | Public hiding, Corollary 2.2, source-scale measure identities, and Route 1 proofs |
 | [HidingVerification.lean](HidingVerification.lean) | Exact public proof dependency checks |
 | [docs/PAPER_COMPARISON.md](docs/PAPER_COMPARISON.md) | Paper-to-Lean correspondence and scope limits |
 | [verification/STATUS.md](verification/STATUS.md) | Dated build evidence |
@@ -119,15 +144,19 @@ With [elan](https://github.com/leanprover/elan) installed, run:
 
 ```sh
 lake exe cache get
-LEAN_NUM_THREADS=4 lake build
+LEAN_NUM_THREADS=4 lake build UniformHiding HidingVerification
+LEAN_NUM_THREADS=4 lake env lean HidingVerification.lean
 python3 scripts/source_audit.py
+python3 scripts/markdown_audit.py
 ```
 
 The pinned toolchain is selected automatically. A successful build checks these formal statements relative to the disclosed axioms; it does not certify every sentence in the manuscript. There is no `sorry`, `admit`, or additional project axiom in the released proof sources.
 
 ## Archive and citation
 
-The [version 1.1.0 archive](https://doi.org/10.5281/zenodo.22558885) contains the source release, broader verification material, and the coverage ledger. The [previous archive](https://doi.org/10.5281/zenodo.22122730) is version 1.0.0. The archive contains no manuscript PDFs or LaTeX sources. Cite the version actually used; the version 1.1.0 DOI is **10.5281/zenodo.22558885**. See [CITATION.cff](CITATION.cff).
+Version **1.2.0** promotes the bound for all positive input counts to Theorem 2.1 and makes Corollary 2.2 its immediate quantitative specialization. The GitHub repository and the accompanying Zenodo source package contain the same Lean statements and proofs. See [the change history](CHANGELOG.md) and [source provenance](docs/PROVENANCE.md) for the relationship to version 1.1.0.
+
+The preceding archives are [version 1.1.0](https://doi.org/10.5281/zenodo.22558885) and [version 1.0.0](https://doi.org/10.5281/zenodo.22122730). Cite the version actually used; see [CITATION.cff](CITATION.cff). No earlier DOI is assigned to this version. The archive contains Lean sources and verification records, with no manuscript PDFs or LaTeX sources.
 
 Copyright © 2026 Hongru Zhao. Licensed under GPL-3.0-only.
 

@@ -1,0 +1,618 @@
+PASS UniformHiding.theorem2_1: exactly 7 axioms: [propext,
+ Classical.choice,
+ MatsumotoPaper.A4_matsumoto_theorem_3,
+ Quot.sound,
+ LogdetLean.GramHafnian.UltimateHiding.DenseScore.A2Prime_complexSymmetricTakagiWeyl_symmetricIntegration,
+ LogdetLean.GramHafnian.UltimateHiding.DenseScore.A3_edelmanSutton_proposition_1_2,
+ LogdetLean.GramHafnian.UltimateHiding.DenseScore.FriedmanMelloA1.matrixLaw_external]
+PASS UniformHiding.theorem2_1_unscaled: exactly 7 axioms: [propext,
+ Classical.choice,
+ MatsumotoPaper.A4_matsumoto_theorem_3,
+ Quot.sound,
+ LogdetLean.GramHafnian.UltimateHiding.DenseScore.A2Prime_complexSymmetricTakagiWeyl_symmetricIntegration,
+ LogdetLean.GramHafnian.UltimateHiding.DenseScore.A3_edelmanSutton_proposition_1_2,
+ LogdetLean.GramHafnian.UltimateHiding.DenseScore.FriedmanMelloA1.matrixLaw_external]
+PASS UniformHiding.corollary2_2: exactly 7 axioms: [propext,
+ Classical.choice,
+ MatsumotoPaper.A4_matsumoto_theorem_3,
+ Quot.sound,
+ LogdetLean.GramHafnian.UltimateHiding.DenseScore.A2Prime_complexSymmetricTakagiWeyl_symmetricIntegration,
+ LogdetLean.GramHafnian.UltimateHiding.DenseScore.A3_edelmanSutton_proposition_1_2,
+ LogdetLean.GramHafnian.UltimateHiding.DenseScore.FriedmanMelloA1.matrixLaw_external]
+PASS UniformHiding.corollary2_2_unscaled: exactly 7 axioms: [propext,
+ Classical.choice,
+ MatsumotoPaper.A4_matsumoto_theorem_3,
+ Quot.sound,
+ LogdetLean.GramHafnian.UltimateHiding.DenseScore.A2Prime_complexSymmetricTakagiWeyl_symmetricIntegration,
+ LogdetLean.GramHafnian.UltimateHiding.DenseScore.A3_edelmanSutton_proposition_1_2,
+ LogdetLean.GramHafnian.UltimateHiding.DenseScore.FriedmanMelloA1.matrixLaw_external]
+PASS UniformHiding.corollary2_2_s62_scaled: exactly 7 axioms: [propext,
+ Classical.choice,
+ MatsumotoPaper.A4_matsumoto_theorem_3,
+ Quot.sound,
+ LogdetLean.GramHafnian.UltimateHiding.DenseScore.A2Prime_complexSymmetricTakagiWeyl_symmetricIntegration,
+ LogdetLean.GramHafnian.UltimateHiding.DenseScore.A3_edelmanSutton_proposition_1_2,
+ LogdetLean.GramHafnian.UltimateHiding.DenseScore.FriedmanMelloA1.matrixLaw_external]
+PASS UniformHiding.corollary2_2_s62: exactly 7 axioms: [propext,
+ Classical.choice,
+ MatsumotoPaper.A4_matsumoto_theorem_3,
+ Quot.sound,
+ LogdetLean.GramHafnian.UltimateHiding.DenseScore.A2Prime_complexSymmetricTakagiWeyl_symmetricIntegration,
+ LogdetLean.GramHafnian.UltimateHiding.DenseScore.A3_edelmanSutton_proposition_1_2,
+ LogdetLean.GramHafnian.UltimateHiding.DenseScore.FriedmanMelloA1.matrixLaw_external]
+PASS UniformHiding.routeOneSmallBall: exactly 7 axioms: [propext,
+ Classical.choice,
+ MatsumotoPaper.A4_matsumoto_theorem_3,
+ Quot.sound,
+ LogdetLean.GramHafnian.UltimateHiding.DenseScore.A2Prime_complexSymmetricTakagiWeyl_symmetricIntegration,
+ LogdetLean.GramHafnian.UltimateHiding.DenseScore.A3_edelmanSutton_proposition_1_2,
+ LogdetLean.GramHafnian.UltimateHiding.DenseScore.FriedmanMelloA1.matrixLaw_external]
+PASS UniformHiding.theorem3_2_route1: exactly 7 axioms: [propext,
+ Classical.choice,
+ MatsumotoPaper.A4_matsumoto_theorem_3,
+ Quot.sound,
+ LogdetLean.GramHafnian.UltimateHiding.DenseScore.A2Prime_complexSymmetricTakagiWeyl_symmetricIntegration,
+ LogdetLean.GramHafnian.UltimateHiding.DenseScore.A3_edelmanSutton_proposition_1_2,
+ LogdetLean.GramHafnian.UltimateHiding.DenseScore.FriedmanMelloA1.matrixLaw_external]
+PASS UniformHiding.theorem3_2_route1_optimized: exactly 7 axioms: [propext,
+ Classical.choice,
+ MatsumotoPaper.A4_matsumoto_theorem_3,
+ Quot.sound,
+ LogdetLean.GramHafnian.UltimateHiding.DenseScore.A2Prime_complexSymmetricTakagiWeyl_symmetricIntegration,
+ LogdetLean.GramHafnian.UltimateHiding.DenseScore.A3_edelmanSutton_proposition_1_2,
+ LogdetLean.GramHafnian.UltimateHiding.DenseScore.FriedmanMelloA1.matrixLaw_external]
+PASS ComplexGramHafnians.theorem2_1: exactly 3 axioms: [propext, Classical.choice, Quot.sound]
+PASS ComplexGramHafnians.theorem2_3: exactly 3 axioms: [propext, Classical.choice, Quot.sound]
+PASS UniformHiding.routeTwoConditional: exactly 3 axioms: [propext, Classical.choice, Quot.sound]
+def UniformHiding.Theorem21 : Prop :=
+∀ (H : LogdetLean.GramHafnian.LocalAnticoncentration.UnitaryHaarProbabilityFamily) (M N K : ℕ),
+  1 ≤ N →
+    N ≤ M →
+      1 ≤ K →
+        K ≤ M →
+          LogdetLean.GramHafnian.LocalAnticoncentration.probabilityTotalVariationLE
+            (LogdetLean.GramHafnian.UltimateHiding.normalizedHaarTransposeGramLaw H M N K)
+            (LogdetLean.GramHafnian.UltimateHiding.normalizedGaussianTransposeGramLaw N K)
+            (min 1 (615172 * LogdetLean.GramHafnian.UltimateHiding.ultimateSquaredHidingRate M N))
+def UniformHiding.Corollary22 : Prop :=
+∀ (H : LogdetLean.GramHafnian.LocalAnticoncentration.UnitaryHaarProbabilityFamily) (M n K : ℕ),
+  1 ≤ n →
+    2 * n ≤ M →
+      1 ≤ K →
+        K ≤ M →
+          ∀ (delta : ℝ),
+            0 < delta →
+              ↑n ^ 2 / delta ≤ ↑M →
+                LogdetLean.GramHafnian.LocalAnticoncentration.probabilityTotalVariationLE
+                  (LogdetLean.GramHafnian.LocalAnticoncentration.scaledHaarTransposeGramLaw H M (2 * n) K)
+                  (LogdetLean.GramHafnian.LocalAnticoncentration.gaussianTransposeGramLaw (2 * n) K)
+                  (4 * 615172 * delta)
+theorem UniformHiding.theorem2_1 : UniformHiding.Theorem21 :=
+GBSHiding.normalizedHidingAllInputs
+theorem UniformHiding.theorem2_1_unscaled : ∀
+  (H : LogdetLean.GramHafnian.LocalAnticoncentration.UnitaryHaarProbabilityFamily) (M N K : ℕ),
+  1 ≤ N →
+    N ≤ M →
+      1 ≤ K →
+        K ≤ M →
+          LogdetLean.GramHafnian.LocalAnticoncentration.probabilityTotalVariationLE
+            (LogdetLean.GramHafnian.LocalAnticoncentration.scaledHaarTransposeGramLaw H M N K)
+            (LogdetLean.GramHafnian.LocalAnticoncentration.gaussianTransposeGramLaw N K)
+            (min 1 (615172 * LogdetLean.GramHafnian.UltimateHiding.ultimateSquaredHidingRate M N)) :=
+fun H M N K hN hNM hK hKM =>
+  LogdetLean.GramHafnian.UltimateHiding.unnormalizedProductMatrixHiding_of_normalized H hK
+    (UniformHiding.theorem2_1 H M N K hN hNM hK hKM)
+theorem UniformHiding.corollary2_2 : UniformHiding.Corollary22 :=
+fun H m n k hn hnm hk hkm delta hdelta hsize =>
+  have hm :=
+    cast (Eq.symm (Eq.trans (congrFun' (congrArg LT.lt (Eq.symm Nat.cast_zero)) ↑m) Nat.cast_lt._simp_1))
+      (have this := Decidable.byContradiction fun a => UniformHiding.corollary2_2._proof_1_1 m n k hk hkm a;
+      this);
+  have hnd := (div_le_iff₀ hdelta).mp hsize;
+  have hrate :=
+    id
+      (Eq.mpr (id (congrArg (fun _a => _a) (propext (div_le_iff₀ hm))))
+        (Eq.mpr (id (congrFun' (congrArg LE.le (congrFun' (congrArg HPow.hPow (Nat.cast_mul 2 n)) 2)) (4 * delta * ↑m)))
+          (le_of_not_gt fun a =>
+            Mathlib.Tactic.Linarith.lt_irrefl
+              (Eq.mp
+                (congrArg (fun _a => _a < 0)
+                  (Mathlib.Tactic.Ring.of_eq
+                    (Mathlib.Tactic.Ring.Common.add_congr
+                      (Mathlib.Tactic.Ring.Common.mul_congr
+                        (Mathlib.Tactic.Ring.cast_pos (Mathlib.Meta.NormNum.isNat_ofNat ℝ (Eq.refl 4)))
+                        (Mathlib.Tactic.Ring.Common.sub_congr
+                          (Mathlib.Tactic.Ring.Common.pow_congr
+                            (Mathlib.Tactic.Ring.Common.atom_pf (↑n) rfl
+                              (Eq.mpr
+                                (id
+                                  (congrArg (fun _a => ↑n ^ Nat.rawCast 1 * Nat.rawCast 1 = ↑n ^ Nat.rawCast 1 * _a)
+                                    (Eq.symm rfl)))
+                                (Eq.refl (↑n ^ Nat.rawCast 1 * Nat.rawCast 1))))
+                            (Mathlib.Tactic.Ring.cast_pos (Mathlib.Meta.NormNum.isNat_ofNat ℕ (Eq.refl 2)))
+                            (Mathlib.Tactic.Ring.Common.pow_add
+                              (Mathlib.Tactic.Ring.Common.single_pow
+                                (Mathlib.Tactic.Ring.Common.mul_pow_mul
+                                  (Mathlib.Meta.NormNum.IsNat.to_raw_eq
+                                    (Mathlib.Meta.NormNum.isNat_mul (Eq.refl HMul.hMul)
+                                      (Mathlib.Meta.NormNum.IsNat.of_raw ℕ 1) (Mathlib.Meta.NormNum.IsNat.of_raw ℕ 2)
+                                      (Eq.refl 2)))
+                                  (Mathlib.Tactic.Ring.Common.one_pow (Nat.rawCast 2) { out := rfl })
+                                  (Eq.mpr
+                                    (id
+                                      (congrArg (fun _a => ↑n ^ Nat.rawCast 2 * Nat.rawCast 1 = ↑n ^ Nat.rawCast 2 * _a)
+                                        (Eq.symm rfl)))
+                                    (Eq.refl (↑n ^ Nat.rawCast 2 * Nat.rawCast 1)))
+                                  (Mathlib.Tactic.Ring.Common.mul_pf_left (↑n) (Nat.rawCast 2)
+                                    (Mathlib.Meta.NormNum.IsNat.to_raw_eq
+                                      (Mathlib.Meta.NormNum.isNat_mul (Eq.refl HMul.hMul)
+                                        (Mathlib.Meta.NormNum.IsNat.of_raw ℝ 1) (Mathlib.Meta.NormNum.IsNat.of_raw ℝ 1)
+                                        (Eq.refl 1))))))
+                              (Mathlib.Tactic.Ring.Common.pow_zero (↑n ^ Nat.rawCast 1 * Nat.rawCast 1 + 0) rfl)
+                              (Mathlib.Tactic.Ring.Common.add_mul
+                                (Mathlib.Tactic.Ring.Common.mul_add
+                                  (Mathlib.Tactic.Ring.Common.mul_pf_left (↑n) (Nat.rawCast 2)
+                                    (Mathlib.Meta.NormNum.IsNat.to_raw_eq
+                                      (Mathlib.Meta.NormNum.isNat_mul (Eq.refl HMul.hMul)
+                                        (Mathlib.Meta.NormNum.IsNat.of_raw ℝ 1) (Mathlib.Meta.NormNum.IsNat.of_raw ℝ 1)
+                                        (Eq.refl 1))))
+                                  (Mathlib.Tactic.Ring.Common.mul_zero (↑n ^ Nat.rawCast 2 * Nat.rawCast 1))
+                                  (Mathlib.Tactic.Ring.Common.add_pf_add_zero (↑n ^ Nat.rawCast 2 * Nat.rawCast 1 + 0)))
+                                (Mathlib.Tactic.Ring.Common.zero_mul (Nat.rawCast 1 + 0))
+                                (Mathlib.Tactic.Ring.Common.add_pf_add_zero (↑n ^ Nat.rawCast 2 * Nat.rawCast 1 + 0)))))
+                          (Mathlib.Tactic.Ring.Common.mul_congr
+                            (Mathlib.Tactic.Ring.Common.atom_pf (↑m) rfl
+                              (Eq.mpr
+                                (id
+                                  (congrArg (fun _a => ↑m ^ Nat.rawCast 1 * Nat.rawCast 1 = ↑m ^ Nat.rawCast 1 * _a)
+                                    (Eq.symm rfl)))
+                                (Eq.refl (↑m ^ Nat.rawCast 1 * Nat.rawCast 1))))
+                            (Mathlib.Tactic.Ring.Common.atom_pf delta rfl
+                              (Eq.mpr
+                                (id
+                                  (congrArg
+                                    (fun _a => delta ^ Nat.rawCast 1 * Nat.rawCast 1 = delta ^ Nat.rawCast 1 * _a)
+                                    (Eq.symm rfl)))
+                                (Eq.refl (delta ^ Nat.rawCast 1 * Nat.rawCast 1))))
+                            (Mathlib.Tactic.Ring.Common.add_mul
+                              (Mathlib.Tactic.Ring.Common.mul_add
+                                (Mathlib.Tactic.Ring.Common.mul_pf_left (↑m) (Nat.rawCast 1)
+                                  (Mathlib.Tactic.Ring.Common.mul_pf_right delta (Nat.rawCast 1)
+                                    (Mathlib.Meta.NormNum.IsNat.to_raw_eq
+                                      (Mathlib.Meta.NormNum.isNat_mul (Eq.refl HMul.hMul)
+                                        (Mathlib.Meta.NormNum.IsNat.of_raw ℝ 1) (Mathlib.Meta.NormNum.IsNat.of_raw ℝ 1)
+                                        (Eq.refl 1)))))
+                                (Mathlib.Tactic.Ring.Common.mul_zero (↑m ^ Nat.rawCast 1 * Nat.rawCast 1))
+                                (Mathlib.Tactic.Ring.Common.add_pf_add_zero
+                                  (↑m ^ Nat.rawCast 1 * (delta ^ Nat.rawCast 1 * Nat.rawCast 1) + 0)))
+                              (Mathlib.Tactic.Ring.Common.zero_mul (delta ^ Nat.rawCast 1 * Nat.rawCast 1 + 0))
+                              (Mathlib.Tactic.Ring.Common.add_pf_add_zero
+                                (↑m ^ Nat.rawCast 1 * (delta ^ Nat.rawCast 1 * Nat.rawCast 1) + 0))))
+                          (Mathlib.Tactic.Ring.Common.sub_pf
+                            (Mathlib.Tactic.Ring.Common.neg_add
+                              (Mathlib.Tactic.Ring.Common.neg_mul (↑m) (Nat.rawCast 1)
+                                (Mathlib.Tactic.Ring.Common.neg_mul delta (Nat.rawCast 1)
+                                  (Mathlib.Meta.NormNum.IsInt.to_raw_eq
+                                    (Mathlib.Meta.NormNum.isInt_neg (Eq.refl Neg.neg)
+                                      (Mathlib.Meta.NormNum.IsNat.to_isInt (Mathlib.Meta.NormNum.IsNat.of_raw ℝ 1))
+                                      (Eq.refl (Int.negOfNat 1))))))
+                              Mathlib.Tactic.Ring.Common.neg_zero)
+                            (Mathlib.Tactic.Ring.Common.add_pf_add_lt (↑n ^ Nat.rawCast 2 * Nat.rawCast 1)
+                              (Mathlib.Tactic.Ring.Common.add_pf_zero_add
+                                (↑m ^ Nat.rawCast 1 * (delta ^ Nat.rawCast 1 * (Int.negOfNat 1).rawCast) + 0)))))
+                        (Mathlib.Tactic.Ring.Common.add_mul
+                          (Mathlib.Tactic.Ring.Common.mul_add
+                            (Mathlib.Tactic.Ring.Common.mul_pf_right (↑n) (Nat.rawCast 2)
+                              (Mathlib.Meta.NormNum.IsNat.to_raw_eq
+                                (Mathlib.Meta.NormNum.isNat_mul (Eq.refl HMul.hMul)
+                                  (Mathlib.Meta.NormNum.IsNat.of_raw ℝ 4) (Mathlib.Meta.NormNum.IsNat.of_raw ℝ 1)
+                                  (Eq.refl 4))))
+                            (Mathlib.Tactic.Ring.Common.mul_add
+                              (Mathlib.Tactic.Ring.Common.mul_pf_right (↑m) (Nat.rawCast 1)
+                                (Mathlib.Tactic.Ring.Common.mul_pf_right delta (Nat.rawCast 1)
+                                  (Mathlib.Meta.NormNum.IsInt.to_raw_eq
+                                    (Mathlib.Meta.NormNum.isInt_mul (Eq.refl HMul.hMul)
+                                      (Mathlib.Meta.NormNum.IsNat.to_isInt (Mathlib.Meta.NormNum.IsNat.of_raw ℝ 4))
+                                      (Mathlib.Meta.NormNum.IsInt.of_raw ℝ (Int.negOfNat 1))
+                                      (Eq.refl (Int.negOfNat 4))))))
+                              (Mathlib.Tactic.Ring.Common.mul_zero (Nat.rawCast 4))
+                              (Mathlib.Tactic.Ring.Common.add_pf_add_zero
+                                (↑m ^ Nat.rawCast 1 * (delta ^ Nat.rawCast 1 * (Int.negOfNat 4).rawCast) + 0)))
+                            (Mathlib.Tactic.Ring.Common.add_pf_add_lt (↑n ^ Nat.rawCast 2 * Nat.rawCast 4)
+                              (Mathlib.Tactic.Ring.Common.add_pf_zero_add
+                                (↑m ^ Nat.rawCast 1 * (delta ^ Nat.rawCast 1 * (Int.negOfNat 4).rawCast) + 0))))
+                          (Mathlib.Tactic.Ring.Common.zero_mul
+                            (↑n ^ Nat.rawCast 2 * Nat.rawCast 1 +
+                              (↑m ^ Nat.rawCast 1 * (delta ^ Nat.rawCast 1 * (Int.negOfNat 1).rawCast) + 0)))
+                          (Mathlib.Tactic.Ring.Common.add_pf_add_zero
+                            (↑n ^ Nat.rawCast 2 * Nat.rawCast 4 +
+                              (↑m ^ Nat.rawCast 1 * (delta ^ Nat.rawCast 1 * (Int.negOfNat 4).rawCast) + 0)))))
+                      (Mathlib.Tactic.Ring.Common.sub_congr
+                        (Mathlib.Tactic.Ring.Common.mul_congr
+                          (Mathlib.Tactic.Ring.Common.mul_congr
+                            (Mathlib.Tactic.Ring.cast_pos (Mathlib.Meta.NormNum.isNat_ofNat ℝ (Eq.refl 4)))
+                            (Mathlib.Tactic.Ring.Common.atom_pf delta rfl
+                              (Eq.mpr
+                                (id
+                                  (congrArg
+                                    (fun _a => delta ^ Nat.rawCast 1 * Nat.rawCast 1 = delta ^ Nat.rawCast 1 * _a)
+                                    (Eq.symm rfl)))
+                                (Eq.refl (delta ^ Nat.rawCast 1 * Nat.rawCast 1))))
+                            (Mathlib.Tactic.Ring.Common.add_mul
+                              (Mathlib.Tactic.Ring.Common.mul_add
+                                (Mathlib.Tactic.Ring.Common.mul_pf_right delta (Nat.rawCast 1)
+                                  (Mathlib.Meta.NormNum.IsNat.to_raw_eq
+                                    (Mathlib.Meta.NormNum.isNat_mul (Eq.refl HMul.hMul)
+                                      (Mathlib.Meta.NormNum.IsNat.of_raw ℝ 4) (Mathlib.Meta.NormNum.IsNat.of_raw ℝ 1)
+                                      (Eq.refl 4))))
+                                (Mathlib.Tactic.Ring.Common.mul_zero (Nat.rawCast 4))
+                                (Mathlib.Tactic.Ring.Common.add_pf_add_zero
+                                  (delta ^ Nat.rawCast 1 * Nat.rawCast 4 + 0)))
+                              (Mathlib.Tactic.Ring.Common.zero_mul (delta ^ Nat.rawCast 1 * Nat.rawCast 1 + 0))
+                              (Mathlib.Tactic.Ring.Common.add_pf_add_zero (delta ^ Nat.rawCast 1 * Nat.rawCast 4 + 0))))
+                          (Mathlib.Tactic.Ring.Common.atom_pf (↑m) rfl
+                            (Eq.mpr
+                              (id
+                                (congrArg (fun _a => ↑m ^ Nat.rawCast 1 * Nat.rawCast 1 = ↑m ^ Nat.rawCast 1 * _a)
+                                  (Eq.symm rfl)))
+                              (Eq.refl (↑m ^ Nat.rawCast 1 * Nat.rawCast 1))))
+                          (Mathlib.Tactic.Ring.Common.add_mul
+                            (Mathlib.Tactic.Ring.Common.mul_add
+                              (Mathlib.Tactic.Ring.Common.mul_pf_right (↑m) (Nat.rawCast 1)
+                                (Mathlib.Tactic.Ring.Common.mul_pf_left delta (Nat.rawCast 1)
+                                  (Mathlib.Meta.NormNum.IsNat.to_raw_eq
+                                    (Mathlib.Meta.NormNum.isNat_mul (Eq.refl HMul.hMul)
+                                      (Mathlib.Meta.NormNum.IsNat.of_raw ℝ 4) (Mathlib.Meta.NormNum.IsNat.of_raw ℝ 1)
+                                      (Eq.refl 4)))))
+                              (Mathlib.Tactic.Ring.Common.mul_zero (delta ^ Nat.rawCast 1 * Nat.rawCast 4))
+                              (Mathlib.Tactic.Ring.Common.add_pf_add_zero
+                                (↑m ^ Nat.rawCast 1 * (delta ^ Nat.rawCast 1 * Nat.rawCast 4) + 0)))
+                            (Mathlib.Tactic.Ring.Common.zero_mul (↑m ^ Nat.rawCast 1 * Nat.rawCast 1 + 0))
+                            (Mathlib.Tactic.Ring.Common.add_pf_add_zero
+                              (↑m ^ Nat.rawCast 1 * (delta ^ Nat.rawCast 1 * Nat.rawCast 4) + 0))))
+                        (Mathlib.Tactic.Ring.Common.pow_congr
+                          (Mathlib.Tactic.Ring.Common.mul_congr
+                            (Mathlib.Tactic.Ring.cast_pos (Mathlib.Meta.NormNum.isNat_ofNat ℝ (Eq.refl 2)))
+                            (Mathlib.Tactic.Ring.Common.atom_pf (↑n) rfl
+                              (Eq.mpr
+                                (id
+                                  (congrArg (fun _a => ↑n ^ Nat.rawCast 1 * Nat.rawCast 1 = ↑n ^ Nat.rawCast 1 * _a)
+                                    (Eq.symm rfl)))
+                                (Eq.refl (↑n ^ Nat.rawCast 1 * Nat.rawCast 1))))
+                            (Mathlib.Tactic.Ring.Common.add_mul
+                              (Mathlib.Tactic.Ring.Common.mul_add
+                                (Mathlib.Tactic.Ring.Common.mul_pf_right (↑n) (Nat.rawCast 1)
+                                  (Mathlib.Meta.NormNum.IsNat.to_raw_eq
+                                    (Mathlib.Meta.NormNum.isNat_mul (Eq.refl HMul.hMul)
+                                      (Mathlib.Meta.NormNum.IsNat.of_raw ℝ 2) (Mathlib.Meta.NormNum.IsNat.of_raw ℝ 1)
+                                      (Eq.refl 2))))
+                                (Mathlib.Tactic.Ring.Common.mul_zero (Nat.rawCast 2))
+                                (Mathlib.Tactic.Ring.Common.add_pf_add_zero (↑n ^ Nat.rawCast 1 * Nat.rawCast 2 + 0)))
+                              (Mathlib.Tactic.Ring.Common.zero_mul (↑n ^ Nat.rawCast 1 * Nat.rawCast 1 + 0))
+                              (Mathlib.Tactic.Ring.Common.add_pf_add_zero (↑n ^ Nat.rawCast 1 * Nat.rawCast 2 + 0))))
+                          (Mathlib.Tactic.Ring.cast_pos (Mathlib.Meta.NormNum.isNat_ofNat ℕ (Eq.refl 2)))
+                          (Mathlib.Tactic.Ring.Common.pow_add
+                            (Mathlib.Tactic.Ring.Common.single_pow
+                              (Mathlib.Tactic.Ring.Common.mul_pow_mul
+                                (Mathlib.Meta.NormNum.IsNat.to_raw_eq
+                                  (Mathlib.Meta.NormNum.isNat_mul (Eq.refl HMul.hMul)
+                                    (Mathlib.Meta.NormNum.IsNat.of_raw ℕ 1) (Mathlib.Meta.NormNum.IsNat.of_raw ℕ 2)
+                                    (Eq.refl 2)))
+                                (Mathlib.Meta.NormNum.IsNat.to_raw_eq
+                                  (Mathlib.Meta.NormNum.isNat_pow (Eq.refl HPow.hPow)
+                                    (Mathlib.Meta.NormNum.IsNat.of_raw ℝ 2) (Mathlib.Meta.NormNum.IsNat.raw_refl 2)
+                                    (Mathlib.Meta.NormNum.IsNatPowT.run Mathlib.Meta.NormNum.IsNatPowT.bit0)))
+                                (Eq.mpr
+                                  (id
+                                    (congrArg (fun _a => ↑n ^ Nat.rawCast 2 * Nat.rawCast 1 = ↑n ^ Nat.rawCast 2 * _a)
+                                      (Eq.symm rfl)))
+                                  (Eq.refl (↑n ^ Nat.rawCast 2 * Nat.rawCast 1)))
+                                (Mathlib.Tactic.Ring.Common.mul_pf_left (↑n) (Nat.rawCast 2)
+                                  (Mathlib.Meta.NormNum.IsNat.to_raw_eq
+                                    (Mathlib.Meta.NormNum.isNat_mul (Eq.refl HMul.hMul)
+                                      (Mathlib.Meta.NormNum.IsNat.of_raw ℝ 1) (Mathlib.Meta.NormNum.IsNat.of_raw ℝ 4)
+                                      (Eq.refl 4))))))
+                            (Mathlib.Tactic.Ring.Common.pow_zero (↑n ^ Nat.rawCast 1 * Nat.rawCast 2 + 0) rfl)
+                            (Mathlib.Tactic.Ring.Common.add_mul
+                              (Mathlib.Tactic.Ring.Common.mul_add
+                                (Mathlib.Tactic.Ring.Common.mul_pf_left (↑n) (Nat.rawCast 2)
+                                  (Mathlib.Meta.NormNum.IsNat.to_raw_eq
+                                    (Mathlib.Meta.NormNum.isNat_mul (Eq.refl HMul.hMul)
+                                      (Mathlib.Meta.NormNum.IsNat.of_raw ℝ 4) (Mathlib.Meta.NormNum.IsNat.of_raw ℝ 1)
+                                      (Eq.refl 4))))
+                                (Mathlib.Tactic.Ring.Common.mul_zero (↑n ^ Nat.rawCast 2 * Nat.rawCast 4))
+                                (Mathlib.Tactic.Ring.Common.add_pf_add_zero (↑n ^ Nat.rawCast 2 * Nat.rawCast 4 + 0)))
+                              (Mathlib.Tactic.Ring.Common.zero_mul (Nat.rawCast 1 + 0))
+                              (Mathlib.Tactic.Ring.Common.add_pf_add_zero (↑n ^ Nat.rawCast 2 * Nat.rawCast 4 + 0)))))
+                        (Mathlib.Tactic.Ring.Common.sub_pf
+                          (Mathlib.Tactic.Ring.Common.neg_add
+                            (Mathlib.Tactic.Ring.Common.neg_mul (↑n) (Nat.rawCast 2)
+                              (Mathlib.Meta.NormNum.IsInt.to_raw_eq
+                                (Mathlib.Meta.NormNum.isInt_neg (Eq.refl Neg.neg)
+                                  (Mathlib.Meta.NormNum.IsNat.to_isInt (Mathlib.Meta.NormNum.IsNat.of_raw ℝ 4))
+                                  (Eq.refl (Int.negOfNat 4)))))
+                            Mathlib.Tactic.Ring.Common.neg_zero)
+                          (Mathlib.Tactic.Ring.Common.add_pf_add_gt (↑n ^ Nat.rawCast 2 * (Int.negOfNat 4).rawCast)
+                            (Mathlib.Tactic.Ring.Common.add_pf_add_zero
+                              (↑m ^ Nat.rawCast 1 * (delta ^ Nat.rawCast 1 * Nat.rawCast 4) + 0)))))
+                      (Mathlib.Tactic.Ring.Common.add_pf_add_overlap_zero
+                        (Mathlib.Tactic.Ring.Common.add_overlap_pf_zero (↑n) (Nat.rawCast 2)
+                          (Mathlib.Meta.NormNum.IsInt.to_isNat
+                            (Mathlib.Meta.NormNum.isInt_add (Eq.refl HAdd.hAdd)
+                              (Mathlib.Meta.NormNum.IsNat.to_isInt (Mathlib.Meta.NormNum.IsNat.of_raw ℝ 4))
+                              (Mathlib.Meta.NormNum.IsInt.of_raw ℝ (Int.negOfNat 4)) (Eq.refl (Int.ofNat 0)))))
+                        (Mathlib.Tactic.Ring.Common.add_pf_add_overlap_zero
+                          (Mathlib.Tactic.Ring.Common.add_overlap_pf_zero (↑m) (Nat.rawCast 1)
+                            (Mathlib.Tactic.Ring.Common.add_overlap_pf_zero delta (Nat.rawCast 1)
+                              (Mathlib.Meta.NormNum.IsInt.to_isNat
+                                (Mathlib.Meta.NormNum.isInt_add (Eq.refl HAdd.hAdd)
+                                  (Mathlib.Meta.NormNum.IsInt.of_raw ℝ (Int.negOfNat 4))
+                                  (Mathlib.Meta.NormNum.IsNat.to_isInt (Mathlib.Meta.NormNum.IsNat.of_raw ℝ 4))
+                                  (Eq.refl (Int.ofNat 0))))))
+                          (Mathlib.Tactic.Ring.Common.add_pf_zero_add 0))))
+                    (Mathlib.Tactic.Ring.cast_zero (Mathlib.Meta.NormNum.isNat_ofNat ℝ Nat.cast_zero))))
+                (Mathlib.Tactic.Linarith.add_lt_of_le_of_neg
+                  (Mathlib.Tactic.Linarith.mul_nonpos (Mathlib.Tactic.Linarith.sub_nonpos_of_le hnd)
+                    (Mathlib.Meta.NormNum.isNat_lt_true (Mathlib.Meta.NormNum.isNat_ofNat ℝ Nat.cast_zero)
+                      (Mathlib.Meta.NormNum.isNat_ofNat ℝ (Eq.refl 4)) (Eq.refl false)))
+                  (Mathlib.Tactic.Linarith.sub_neg_of_lt a))))));
+  LogdetLean.GramHafnian.LocalAnticoncentration.probabilityTotalVariationLE.mono
+    (UniformHiding.theorem2_1_unscaled H m (2 * n) k
+      (Decidable.byContradiction fun a => UniformHiding.corollary2_2._proof_1_2 m n k hn a) hnm hk hkm)
+    (Trans.trans
+      (Trans.trans (min_le_right 1 (615172 * LogdetLean.GramHafnian.UltimateHiding.ultimateSquaredHidingRate m (2 * n)))
+        (mul_le_mul_of_nonneg_left hrate
+          (Mathlib.Meta.NormNum.isNat_le_true (Mathlib.Meta.NormNum.isNat_ofNat ℝ Nat.cast_zero)
+            (Mathlib.Meta.NormNum.isNat_ofNat ℝ (Eq.refl 615172)) (Eq.refl true))))
+      (Mathlib.Tactic.Ring.of_eq
+        (Mathlib.Tactic.Ring.Common.mul_congr
+          (Mathlib.Tactic.Ring.cast_pos (Mathlib.Meta.NormNum.isNat_ofNat ℝ (Eq.refl 615172)))
+          (Mathlib.Tactic.Ring.Common.mul_congr
+            (Mathlib.Tactic.Ring.cast_pos (Mathlib.Meta.NormNum.isNat_ofNat ℝ (Eq.refl 4)))
+            (Mathlib.Tactic.Ring.Common.atom_pf delta rfl
+              (Eq.mpr
+                (id
+                  (congrArg (fun _a => delta ^ Nat.rawCast 1 * Nat.rawCast 1 = delta ^ Nat.rawCast 1 * _a)
+                    (Eq.symm rfl)))
+                (Eq.refl (delta ^ Nat.rawCast 1 * Nat.rawCast 1))))
+            (Mathlib.Tactic.Ring.Common.add_mul
+              (Mathlib.Tactic.Ring.Common.mul_add
+                (Mathlib.Tactic.Ring.Common.mul_pf_right delta (Nat.rawCast 1)
+                  (Mathlib.Meta.NormNum.IsNat.to_raw_eq
+                    (Mathlib.Meta.NormNum.isNat_mul (Eq.refl HMul.hMul) (Mathlib.Meta.NormNum.IsNat.of_raw ℝ 4)
+                      (Mathlib.Meta.NormNum.IsNat.of_raw ℝ 1) (Eq.refl 4))))
+                (Mathlib.Tactic.Ring.Common.mul_zero (Nat.rawCast 4))
+                (Mathlib.Tactic.Ring.Common.add_pf_add_zero (delta ^ Nat.rawCast 1 * Nat.rawCast 4 + 0)))
+              (Mathlib.Tactic.Ring.Common.zero_mul (delta ^ Nat.rawCast 1 * Nat.rawCast 1 + 0))
+              (Mathlib.Tactic.Ring.Common.add_pf_add_zero (delta ^ Nat.rawCast 1 * Nat.rawCast 4 + 0))))
+          (Mathlib.Tactic.Ring.Common.add_mul
+            (Mathlib.Tactic.Ring.Common.mul_add
+              (Mathlib.Tactic.Ring.Common.mul_pf_right delta (Nat.rawCast 1)
+                (Mathlib.Meta.NormNum.IsNat.to_raw_eq
+                  (Mathlib.Meta.NormNum.isNat_mul (Eq.refl HMul.hMul) (Mathlib.Meta.NormNum.IsNat.of_raw ℝ 615172)
+                    (Mathlib.Meta.NormNum.IsNat.of_raw ℝ 4) (Eq.refl 2460688))))
+              (Mathlib.Tactic.Ring.Common.mul_zero (Nat.rawCast 615172))
+              (Mathlib.Tactic.Ring.Common.add_pf_add_zero (delta ^ Nat.rawCast 1 * Nat.rawCast 2460688 + 0)))
+            (Mathlib.Tactic.Ring.Common.zero_mul (delta ^ Nat.rawCast 1 * Nat.rawCast 4 + 0))
+            (Mathlib.Tactic.Ring.Common.add_pf_add_zero (delta ^ Nat.rawCast 1 * Nat.rawCast 2460688 + 0))))
+        (Mathlib.Tactic.Ring.Common.mul_congr
+          (Mathlib.Tactic.Ring.Common.mul_congr
+            (Mathlib.Tactic.Ring.cast_pos (Mathlib.Meta.NormNum.isNat_ofNat ℝ (Eq.refl 4)))
+            (Mathlib.Tactic.Ring.cast_pos (Mathlib.Meta.NormNum.isNat_ofNat ℝ (Eq.refl 615172)))
+            (Mathlib.Tactic.Ring.Common.add_mul
+              (Mathlib.Tactic.Ring.Common.mul_add
+                (Mathlib.Meta.NormNum.IsNat.to_raw_eq
+                  (Mathlib.Meta.NormNum.isNat_mul (Eq.refl HMul.hMul) (Mathlib.Meta.NormNum.IsNat.of_raw ℝ 4)
+                    (Mathlib.Meta.NormNum.IsNat.of_raw ℝ 615172) (Eq.refl 2460688)))
+                (Mathlib.Tactic.Ring.Common.mul_zero (Nat.rawCast 4))
+                (Mathlib.Tactic.Ring.Common.add_pf_add_zero (Nat.rawCast 2460688 + 0)))
+              (Mathlib.Tactic.Ring.Common.zero_mul (Nat.rawCast 615172 + 0))
+              (Mathlib.Tactic.Ring.Common.add_pf_add_zero (Nat.rawCast 2460688 + 0))))
+          (Mathlib.Tactic.Ring.Common.atom_pf delta rfl
+            (Eq.mpr
+              (id
+                (congrArg (fun _a => delta ^ Nat.rawCast 1 * Nat.rawCast 1 = delta ^ Nat.rawCast 1 * _a) (Eq.symm rfl)))
+              (Eq.refl (delta ^ Nat.rawCast 1 * Nat.rawCast 1))))
+          (Mathlib.Tactic.Ring.Common.add_mul
+            (Mathlib.Tactic.Ring.Common.mul_add
+              (Mathlib.Tactic.Ring.Common.mul_pf_right delta (Nat.rawCast 1)
+                (Mathlib.Meta.NormNum.IsNat.to_raw_eq
+                  (Mathlib.Meta.NormNum.isNat_mul (Eq.refl HMul.hMul) (Mathlib.Meta.NormNum.IsNat.of_raw ℝ 2460688)
+                    (Mathlib.Meta.NormNum.IsNat.of_raw ℝ 1) (Eq.refl 2460688))))
+              (Mathlib.Tactic.Ring.Common.mul_zero (Nat.rawCast 2460688))
+              (Mathlib.Tactic.Ring.Common.add_pf_add_zero (delta ^ Nat.rawCast 1 * Nat.rawCast 2460688 + 0)))
+            (Mathlib.Tactic.Ring.Common.zero_mul (delta ^ Nat.rawCast 1 * Nat.rawCast 1 + 0))
+            (Mathlib.Tactic.Ring.Common.add_pf_add_zero (delta ^ Nat.rawCast 1 * Nat.rawCast 2460688 + 0))))))
+@[reducible] def UniformHiding.corollary2_2_unscaled : ∀
+  (H : LogdetLean.GramHafnian.LocalAnticoncentration.UnitaryHaarProbabilityFamily) (M N K : ℕ),
+  1 ≤ N →
+    N ≤ M →
+      1 ≤ K →
+        K ≤ M →
+          LogdetLean.GramHafnian.LocalAnticoncentration.probabilityTotalVariationLE
+            (LogdetLean.GramHafnian.LocalAnticoncentration.scaledHaarTransposeGramLaw H M N K)
+            (LogdetLean.GramHafnian.LocalAnticoncentration.gaussianTransposeGramLaw N K)
+            (min 1 (615172 * LogdetLean.GramHafnian.UltimateHiding.ultimateSquaredHidingRate M N)) :=
+UniformHiding.theorem2_1_unscaled
+@[reducible] def UniformHiding.corollary2_2_s62_scaled : UniformHiding.Corollary22 :=
+UniformHiding.corollary2_2
+theorem UniformHiding.corollary2_2_s62 : UniformHiding.Corollary22S62 :=
+fun H m n k hn hnm hk hkm delta hdelta hsize =>
+  LogdetLean.GramHafnian.LocalAnticoncentration.probabilityTotalVariationLE.map
+    (UniformHiding.corollary2_2 H m n k hn hnm hk hkm delta hdelta hsize)
+    (UniformHiding.measurable_s62ScaleDown✝ m (2 * n))
+'UniformHiding.s62HaarProductLaw_eq_matrixLaw' depends on axioms: [propext, Classical.choice, Quot.sound]
+'UniformHiding.s62GaussianProductLaw_eq_matrixLaw' depends on axioms: [propext, Classical.choice, Quot.sound]
+theorem UniformHiding.theorem3_2_route1.{u_1} : ∀ {Ω : Type u_1} [inst : MeasurableSpace Ω]
+  (μ : MeasureTheory.Measure Ω) [MeasureTheory.IsProbabilityMeasure μ] (amplitude : Ω → ℂ),
+  Measurable amplitude →
+    ∀ (deltaP : Ω → ℝ) (H : LogdetLean.GramHafnian.LocalAnticoncentration.UnitaryHaarProbabilityFamily) {r : ℝ},
+      0 < r →
+        ∀ {M n K : ℕ},
+          1 ≤ n →
+            4 * n ≤ K →
+              K ≤ M →
+                ∀ {rho tau : ℝ},
+                  0 < rho →
+                    0 ≤ tau →
+                      MeasureTheory.Measure.map amplitude μ =
+                          LogdetLean.GramHafnian.LocalAnticoncentration.scaledHaarGramHafnianLaw H M n K →
+                        μ.real
+                            (LogdetLean.GramHafnian.LocalAnticoncentration.relativeFailureEvent deltaP
+                              (fun ω =>
+                                LogdetLean.GramHafnian.LocalAnticoncentration.gbsProbabilityFromScaledAmplitude r M K n
+                                  (amplitude ω))
+                              rho) ≤
+                          UniformHiding.routeOneBound μ deltaP r M K n rho tau :=
+fun {Ω} [MeasurableSpace Ω] μ [MeasureTheory.IsProbabilityMeasure μ] amplitude hamplitude deltaP H {r} hr {M n K} hn hK
+    hKM {rho tau} hrho htau hmarginal =>
+  have hM := Decidable.byContradiction fun a => UniformHiding.theorem3_2_route1._proof_1_1 hn hK hKM a;
+  have hp :=
+    LogdetLean.GramHafnian.ThreePaper.RelativeAccuracy.gbsGaussianReferenceProbability_pos hr hM
+      (have this := Decidable.byContradiction fun a => UniformHiding.theorem3_2_route1._proof_1_2 hn hK a;
+      this)
+      n;
+  let eta := tau / LogdetLean.GramHafnian.LocalAnticoncentration.gbsGaussianReferenceProbability r M K n;
+  have heta := div_nonneg htau (LT.lt.le hp);
+  have hscale := div_mul_cancel₀ tau (LT.lt.ne' hp);
+  have ht := div_nonneg heta (LT.lt.le hrho);
+  have hhaar := UniformHiding.routeOneSmallBall H hn hK hKM 0 (√(eta / rho)) (Real.sqrt_nonneg (eta / rho));
+  have hadd :=
+    of_eq_true
+      (Eq.trans
+        (congrFun'
+          (congrArg LE.le
+            (congrArg μ.real
+              (congrArg Set.ofPred (funext fun omega => congrFun' (congrArg LT.lt hscale) |deltaP omega|))))
+          (μ.real {omega | tau < |deltaP omega|}))
+        (UniformHiding.theorem3_2_route1._simp_1_3 (μ.real {omega | tau < |deltaP omega|})));
+  have h :=
+    LogdetLean.GramHafnian.LocalAnticoncentration.randomizedConversion_from_finiteHaarSmallDenominator μ amplitude
+      hamplitude deltaP H hr hM K n heta hrho MeasureTheory.measureReal_nonneg hmarginal hadd
+      (LE.le.trans
+        (Eq.mp
+          (congrArg
+            (fun _a =>
+              (LogdetLean.GramHafnian.LocalAnticoncentration.scaledHaarGramHafnianLaw H M n K).real
+                  (LogdetLean.GramHafnian.LocalAnticoncentration.scaledAmplitudeSmallDenominatorSet r M K n
+                    (eta / rho)) ≤
+                min 1 (LogdetLean.GramHafnian.LocalAnticoncentration.paperBkn K n * _a + UniformHiding.deltaOne M n))
+            (Real.sq_sqrt ht))
+          (Eq.mp
+            (congrArg
+              (fun _a =>
+                (LogdetLean.GramHafnian.LocalAnticoncentration.scaledHaarGramHafnianLaw H M n K).real _a ≤
+                  min 1
+                    (LogdetLean.GramHafnian.LocalAnticoncentration.paperBkn K n * √(eta / rho) ^ 2 +
+                      UniformHiding.deltaOne M n))
+              (Eq.symm
+                (LogdetLean.GramHafnian.LocalAnticoncentration.scaledAmplitudeSmallDenominatorSet_eq_shiftedComplexDisk
+                  hr hM K n ht)))
+            hhaar))
+        (min_le_right 1
+          (LogdetLean.GramHafnian.LocalAnticoncentration.paperBkn K n * (eta / rho) + UniformHiding.deltaOne M n)));
+  have hratio :=
+    id
+      (Eq.mpr
+        (id
+          (congrArg
+            (fun _a =>
+              _a = tau / (rho * LogdetLean.GramHafnian.LocalAnticoncentration.gbsGaussianReferenceProbability r M K n))
+            (div_div tau (LogdetLean.GramHafnian.LocalAnticoncentration.gbsGaussianReferenceProbability r M K n) rho)))
+        (Eq.mpr
+          (id
+            (congrArg
+              (fun _a =>
+                tau / _a =
+                  tau / (rho * LogdetLean.GramHafnian.LocalAnticoncentration.gbsGaussianReferenceProbability r M K n))
+              (mul_comm (LogdetLean.GramHafnian.LocalAnticoncentration.gbsGaussianReferenceProbability r M K n) rho)))
+          (Eq.refl
+            (tau / (rho * LogdetLean.GramHafnian.LocalAnticoncentration.gbsGaussianReferenceProbability r M K n)))));
+  id
+    (Eq.mp
+      (congrArg
+        (LE.le
+          (μ.real
+            (LogdetLean.GramHafnian.LocalAnticoncentration.relativeFailureEvent deltaP
+              (fun omega =>
+                LogdetLean.GramHafnian.LocalAnticoncentration.gbsProbabilityFromScaledAmplitude r M K n
+                  (amplitude omega))
+              rho)))
+        (congrArg (min 1)
+          (congrFun'
+            (congrArg HAdd.hAdd
+              (congrArg
+                (HAdd.hAdd
+                  (μ.real
+                    (LogdetLean.GramHafnian.ThreePaper.FairAbsoluteThresholdComparison.absoluteAdditiveFailureEvent
+                      deltaP tau)))
+                (congrArg (HMul.hMul (LogdetLean.GramHafnian.LocalAnticoncentration.paperBkn K n)) hratio)))
+            (UniformHiding.deltaOne M n))))
+      h)
+theorem UniformHiding.theorem3_2_route1_optimized.{u_1} : ∀ {Ω : Type u_1} [inst : MeasurableSpace Ω]
+  (μ : MeasureTheory.Measure Ω) [MeasureTheory.IsProbabilityMeasure μ] (amplitude : Ω → ℂ),
+  Measurable amplitude →
+    ∀ (deltaP : Ω → ℝ) (H : LogdetLean.GramHafnian.LocalAnticoncentration.UnitaryHaarProbabilityFamily) {r : ℝ},
+      0 < r →
+        ∀ {M n K : ℕ},
+          1 ≤ n →
+            4 * n ≤ K →
+              K ≤ M →
+                ∀ {rho : ℝ},
+                  0 < rho →
+                    MeasureTheory.Measure.map amplitude μ =
+                        LogdetLean.GramHafnian.LocalAnticoncentration.scaledHaarGramHafnianLaw H M n K →
+                      μ.real
+                          (LogdetLean.GramHafnian.LocalAnticoncentration.relativeFailureEvent deltaP
+                            (fun ω =>
+                              LogdetLean.GramHafnian.LocalAnticoncentration.gbsProbabilityFromScaledAmplitude r M K n
+                                (amplitude ω))
+                            rho) ≤
+                        UniformHiding.optimizedRouteOneBound μ deltaP r M K n rho :=
+fun {Ω} [MeasurableSpace Ω] μ [MeasureTheory.IsProbabilityMeasure μ] amplitude hamplitude deltaP H {r} hr {M n K} hn hK
+    hKM {rho} hrho hmarginal =>
+  let this := Nonempty.intro ⟨0, le_refl 0⟩;
+  le_ciInf fun tau =>
+    UniformHiding.theorem3_2_route1 μ amplitude hamplitude deltaP H hr hn hK hKM hrho tau.property hmarginal
+@[reducible] def UniformHiding.routeTwoConditional.{u_1} : ∀ {Omega : Type u_1} [inst : MeasurableSpace Omega]
+  (mu : MeasureTheory.Measure Omega) [MeasureTheory.IsProbabilityMeasure mu] (deltaP : Omega → ℝ)
+  (amplitude : Omega → ℂ),
+  Measurable amplitude →
+    ∀ {H : LogdetLean.GramHafnian.LocalAnticoncentration.UnitaryHaarProbabilityFamily}
+      {Cprime pRefOne pRefTwo tau rho additiveFailureAtTau : ℝ} {M n K : ℕ}
+      {symmetricMatrixLaw : MeasureTheory.Measure (Matrix (Fin (2 * n)) (Fin (2 * n)) ℂ)},
+      1 ≤ n →
+        2 * n ≤ K →
+          K ≤ M →
+            0 < pRefOne →
+              0 < pRefTwo →
+                0 ≤ tau →
+                  0 < rho →
+                    pRefOne =
+                        LogdetLean.GramHafnian.ThreePaper.TwoMethodComparison.gramToSymmetricVarianceRatio K n *
+                          pRefTwo →
+                      LogdetLean.GramHafnian.ThreePaper.RelativeAccuracy.ShouSymmetricMatrixComparisonAt H M (2 * n) K
+                          symmetricMatrixLaw Cprime →
+                        LogdetLean.GramHafnian.ThreePaper.RelativeAccuracy.IndependentSymmetricHafnianSmallBallAt n
+                            symmetricMatrixLaw →
+                          MeasureTheory.Measure.map amplitude mu =
+                              LogdetLean.GramHafnian.ThreePaper.RelativeAccuracy.routeTwoHaarHafnianLaw H M n K →
+                            mu.real
+                                  (LogdetLean.GramHafnian.ThreePaper.FairAbsoluteThresholdComparison.absoluteAdditiveFailureEvent
+                                    deltaP tau) ≤
+                                additiveFailureAtTau →
+                              mu.real
+                                  (LogdetLean.GramHafnian.LocalAnticoncentration.relativeFailureEvent deltaP
+                                    (fun omega =>
+                                      LogdetLean.GramHafnian.ThreePaper.RelativeAccuracy.routeTwoPhysicalProbabilityFromNormalizedHafnian
+                                        pRefTwo n (amplitude omega))
+                                    rho) ≤
+                                min 1
+                                  (additiveFailureAtTau +
+                                      LogdetLean.GramHafnian.LocalAnticoncentration.paperBn n *
+                                          LogdetLean.GramHafnian.ThreePaper.TwoMethodComparison.gramToSymmetricVarianceRatio
+                                            K n *
+                                        LogdetLean.GramHafnian.ThreePaper.FairAbsoluteThresholdComparison.commonAbsoluteThresholdRatio
+                                          tau rho pRefOne +
+                                    Cprime * ↑(2 * n) / √↑K) :=
+@LogdetLean.GramHafnian.ThreePaper.RelativeAccuracy.routeTwoFairRelativeFailure_of_shou

@@ -1,0 +1,9 @@
+{
+  "passed": true,
+  "checks": {
+    "changed_public_proof_rejected": true,
+    "altered_baseline_hash_rejected": true,
+    "changed_companion_source_rejected": true
+  },
+  "scope": "Negative tests of the modified portable provenance audit; no Lean source was changed in the release tree."
+}

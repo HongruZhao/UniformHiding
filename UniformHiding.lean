@@ -11,8 +11,96 @@ open LogdetLean.GramHafnian.ThreePaper.FairAbsoluteThresholdComparison
 namespace UniformHiding
 noncomputable section
 
-/-- Theorem 2.1, conditional on exactly the four cited literature axioms. -/
-theorem theorem2_1 : Theorem21 := GBSHiding.normalizedHiding
+/-- Theorem 2.1 for all `1 ≤ N,K ≤ M`, including `K < N`, conditional on
+exactly the four cited literature axioms. -/
+theorem theorem2_1 : Theorem21 := GBSHiding.normalizedHidingAllInputs
+
+/-- The equivalent unnormalized product bound in Theorem 2.1. -/
+theorem theorem2_1_unscaled
+    (H : UnitaryHaarProbabilityFamily) (M N K : ℕ)
+    (hN : 1 ≤ N) (hNM : N ≤ M) (hK : 1 ≤ K) (hKM : K ≤ M) :
+    probabilityTotalVariationLE
+      (scaledHaarTransposeGramLaw H M N K)
+      (gaussianTransposeGramLaw N K)
+      (min 1 (615172 * ultimateSquaredHidingRate M N)) :=
+  unnormalizedProductMatrixHiding_of_normalized H hK
+    (theorem2_1 H M N K hN hNM hK hKM)
+
+/-- Corollary 2.2 follows directly from Theorem 2.1 by taking `N = 2*n`
+and using `m ≥ n² / delta`. No assumption `2*n ≤ k` is used. -/
+theorem corollary2_2 : Corollary22 := by
+  intro H m n k hn hnm hk hkm delta hdelta hsize
+  have hm : (0 : ℝ) < m := by exact_mod_cast (show 0 < m by omega)
+  have hnd : (n : ℝ)^2 ≤ (m : ℝ) * delta :=
+    (div_le_iff₀ hdelta).mp hsize
+  have hrate : ultimateSquaredHidingRate m (2 * n) ≤ 4 * delta := by
+    unfold ultimateSquaredHidingRate
+    rw [div_le_iff₀ hm]
+    push_cast
+    nlinarith
+  apply (theorem2_1_unscaled H m (2 * n) k (by omega) hnm hk hkm).mono
+  calc
+    min 1 (615172 * ultimateSquaredHidingRate m (2 * n)) ≤
+        615172 * ultimateSquaredHidingRate m (2 * n) := min_le_right _ _
+    _ ≤ 615172 * (4 * delta) := mul_le_mul_of_nonneg_left hrate (by norm_num)
+    _ = 4 * 615172 * delta := by ring
+
+/-- Compatibility name from the earlier version 1.2.0 preparation. The
+all-input product bound is now part of Theorem 2.1 itself. -/
+abbrev corollary2_2_unscaled := theorem2_1_unscaled
+
+/-- Compatibility name for the unnormalized quantitative corollary. -/
+abbrev corollary2_2_s62_scaled := corollary2_2
+
+private theorem measurable_s62ScaleDown (m N : ℕ) :
+    Measurable (s62ScaleDown m N) := by
+  apply measurable_pi_lambda
+  intro i
+  apply measurable_pi_lambda
+  intro j
+  change Measurable fun A : Matrix (Fin N) (Fin N) ℂ ↦ (m : ℂ)⁻¹ * A i j
+  have hi : Measurable
+      (fun A : Matrix (Fin N) (Fin N) ℂ ↦ A i) := measurable_pi_apply i
+  have hij : Measurable
+      (fun A : Matrix (Fin N) (Fin N) ℂ ↦ A i j) :=
+    (measurable_pi_apply j).comp hi
+  exact hij.const_mul _
+
+/-- Source-scale version of [10, Conjecture 1 and Supplemental Eq. (S62)].
+The constant `4 * 615172` is independent of `m`, `n`, `k`, and `delta`. -/
+theorem corollary2_2_s62 : Corollary22S62 := by
+  intro H m n k hn hnm hk hkm delta hdelta hsize
+  exact (corollary2_2 H m n k hn hnm hk hkm delta hdelta hsize).map
+    (measurable_s62ScaleDown m (2 * n))
+
+/-- The source-scale Haar law is literally the product of the selected
+Haar block, rather than an abstract comparison measure. -/
+theorem s62HaarProductLaw_eq_matrixLaw
+    (H : UnitaryHaarProbabilityFamily) {m n k : ℕ}
+    (hm : 0 < m) (hnm : 2 * n ≤ m) (hkm : k ≤ m) :
+    s62HaarProductLaw H m n k =
+      (H.law m).map (fun U ↦ rectangularTransposeGram
+        (topLeftUnitaryBlock hnm hkm U)) := by
+  have hmC : (m : ℂ) ≠ 0 := by exact_mod_cast (Nat.ne_of_gt hm)
+  unfold s62HaarProductLaw
+  rw [scaledHaarTransposeGramLaw, dif_pos ⟨hnm, hkm⟩]
+  rw [Measure.map_map (measurable_s62ScaleDown m (2 * n))
+    (measurable_scaledHaarTransposeGramMatrix hnm hkm)]
+  congr 1
+  funext U
+  ext i j
+  simp [s62ScaleDown, scaledHaarTransposeGramMatrix, hmC]
+
+/-- The source-scale Gaussian law is literally the pushforward of the
+standard rectangular Gaussian factor by `G ↦ (1/m) G Gᵀ`. -/
+theorem s62GaussianProductLaw_eq_matrixLaw (m n k : ℕ) :
+    s62GaussianProductLaw m n k =
+      (standardComplexGaussianRectangularMeasure (2 * n) k).map
+        (fun G ↦ (m : ℂ)⁻¹ • rectangularTransposeGram G) := by
+  unfold s62GaussianProductLaw gaussianTransposeGramLaw
+  rw [Measure.map_map (measurable_s62ScaleDown m (2 * n))
+    (measurable_rectangularTransposeGram (2 * n) k)]
+  rfl
 
 /-- Route 1 disk transfer uses the public companion theorem directly. -/
 theorem routeOneSmallBall

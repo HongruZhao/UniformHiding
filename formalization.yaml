@@ -11,7 +11,7 @@ sources:
   authors:
   - Hongru Zhao
   type: article
-  location: Theorem 2.1 and Route 1 of Theorem 3.2
+  location: Theorem 2.1, Corollary 2.2, and Route 1 of Theorem 3.2
   relationship: formalizes
   note: Revised local manuscript; literature assumptions are documented in docs/AXIOMS.md.
 classification:
@@ -19,7 +19,7 @@ classification:
   - quant-ph
   - math.PR
 status:
-  scope: Uniform matrix hiding and the assembled Route 1 relative bound, conditional
+  scope: All-input Theorem 2.1, its immediate quantitative Corollary 2.2 and S62 specialization, and the assembled Route 1 relative bound, conditional
     on four literature axioms. Route 2 hiding is not formalized.
   main_results:
   - declaration: UniformHiding.theorem2_1
@@ -33,6 +33,26 @@ status:
     - LogdetLean.GramHafnian.UltimateHiding.DenseScore.A2Prime_complexSymmetricTakagiWeyl_symmetricIntegration
     - LogdetLean.GramHafnian.UltimateHiding.DenseScore.A3_edelmanSutton_proposition_1_2
     - MatsumotoPaper.A4_matsumoto_theorem_3
+  - declaration: UniformHiding.theorem2_1_unscaled
+    file: UniformHiding.lean
+    sorry_count: 0
+    axioms: *id001
+  - declaration: UniformHiding.corollary2_2
+    file: UniformHiding.lean
+    sorry_count: 0
+    axioms: *id001
+  - declaration: UniformHiding.corollary2_2_unscaled
+    file: UniformHiding.lean
+    sorry_count: 0
+    axioms: *id001
+  - declaration: UniformHiding.corollary2_2_s62_scaled
+    file: UniformHiding.lean
+    sorry_count: 0
+    axioms: *id001
+  - declaration: UniformHiding.corollary2_2_s62
+    file: UniformHiding.lean
+    sorry_count: 0
+    axioms: *id001
   - declaration: UniformHiding.routeOneSmallBall
     file: UniformHiding.lean
     sorry_count: 0
@@ -67,6 +87,18 @@ alignment:
     lean: UniformHiding.theorem2_1
     module: UniformHiding
     status: conditional on four literature axioms
+  - source: Theorem 2.1, unnormalized form
+    lean: UniformHiding.theorem2_1_unscaled
+    module: UniformHiding
+    status: conditional on four literature axioms; all positive input counts
+  - source: Corollary 2.2
+    lean: UniformHiding.corollary2_2
+    module: UniformHiding
+    status: conditional on four literature axioms
+  - source: Corollary 2.2, quantitative S62 specialization
+    lean: UniformHiding.corollary2_2_s62
+    module: UniformHiding
+    status: conditional on four literature axioms; source-scale product laws
   - source: Theorem 3.1, Route 1
     lean: UniformHiding.routeOneSmallBall
     module: UniformHiding

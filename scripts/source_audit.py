@@ -109,14 +109,35 @@ def audit(root):
     expected_axioms = sorted((item['file'], item['name']) for item in cfg['axioms'])
     inherited = json.loads((root / 'docs/ANTICONCENTRATION_SNAPSHOT.json').read_text())['files']
     renaming = json.loads((root / 'docs/MODULE_RENAMING.json').read_text())['files']
+    extension = json.loads((root / 'docs/COROLLARY22_RELEASE.json').read_text())['files']
+    expected_extensions = {'HidingStatement.lean', 'UniformHiding.lean', 'HidingVerification.lean'}
+    extension_errors = []
+    if set(extension) != expected_extensions:
+        extension_errors.append('Extension must cover exactly the three declared public Lean files')
+    for rel, item in extension.items():
+        if hashes.get(rel) != item['current_sha256']:
+            extension_errors.append(rel + ': new source hash mismatch')
+        digest = hashlib.sha256(item['baseline_text'].encode()).hexdigest()
+        if digest != item['baseline_sha256']:
+            extension_errors.append(rel + ': saved baseline hash mismatch')
     restoration_errors = []
     restored_hashes = {}
     for original_path, entry in renaming.items():
         current_path = entry['current_path']
-        if hashes.get(current_path) != entry['current_sha256']:
-            restoration_errors.append(current_path + ': current source hash mismatch')
-            continue
-        restored = (root / current_path).read_text()
+        if current_path in extension:
+            item = extension[current_path]
+            if item['baseline_sha256'] != entry['current_sha256']:
+                extension_errors.append(current_path + ': baseline differs from historical manifest')
+                continue
+            if original_path in inherited:
+                extension_errors.append(current_path + ': companion changes are not allowed')
+                continue
+            restored = item['baseline_text']
+        else:
+            if hashes.get(current_path) != entry['current_sha256']:
+                restoration_errors.append(current_path + ': unchanged source hash mismatch')
+                continue
+            restored = (root / current_path).read_text()
         for edit in reversed(entry['edits']):
             start = edit['start']
             if restored[start:start + len(edit['new'])] != edit['new']:
@@ -131,7 +152,7 @@ def audit(root):
     renaming_coverage_matches = len(mapped_paths) == len(set(mapped_paths)) and set(mapped_paths) == set(hashes)
     changed_inherited = [rel for rel, digest in inherited.items() if restored_hashes.get(rel) != digest]
     journal_named_paths = [rel for rel in hashes if re.search(r'prl|prx|physicalreview', rel, re.I)]
-    passed = not (missing or forbidden or cycles or unreachable or changed_inherited or restoration_errors or journal_named_paths) and actual_axioms == expected_axioms and renaming_coverage_matches
+    passed = not (missing or forbidden or cycles or unreachable or changed_inherited or restoration_errors or extension_errors or journal_named_paths) and actual_axioms == expected_axioms and renaming_coverage_matches
     result = {'audit_type': 'source-only', 'lean_executed_by_this_script': False,
               'passed': passed, 'module_count': len(paths),
               'inherited_module_count': len(inherited), 'missing_imports': missing,
@@ -140,6 +161,9 @@ def audit(root):
               'import_cycles': cycles, 'unreachable_modules': unreachable,
               'changed_inherited_sources': changed_inherited, 'source_sha256': hashes,
               'inherited_comparison': 'Exact original bytes restored using the recorded naming-only edits, then compared with the pinned upstream hashes.',
+              'semantic_extension_files': sorted(extension),
+              'semantic_extension_errors': extension_errors,
+              'historical_restoration_scope': 'For three explicitly changed public files, restore the verified v1.1.0 baseline text. For all other files, restore the actual current text. Current proof correctness is checked separately by Lean.',
               'renaming_restoration_errors': restoration_errors,
               'renaming_coverage_matches': renaming_coverage_matches,
               'journal_named_lean_paths': journal_named_paths,

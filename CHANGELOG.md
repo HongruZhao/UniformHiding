@@ -1,3 +1,14 @@
+# Changes in version 1.2.0 — 9 September 2026
+
+- Strengthens Theorem 2.1 to all positive row and input counts fitting in the ambient matrix, using the existing all-input proof. The previous row-count-versus-input-count restriction is removed.
+- Exposes both normalized and unnormalized versions of Theorem 2.1.
+- Makes Corollary 2.2 the immediate quantitative specialization with constant four times 615172, corresponding to Ehrenberg et al., Conjecture 1 (Formal), Supplemental Eq. (S62), manuscript reference [10].
+- Proves the common scaling and literal matrix-law identities for the source-scale corollary.
+- Updates the notation dictionary, endpoint map, and partial-coverage entry for Proposition 4.1.
+- Preserves all four literature axioms and every companion proof source. No project axiom is added.
+- Records a fresh public-target build, separate exact axiom audit, and source checks in [verification/STATUS.md](verification/STATUS.md).
+- Uses the same revised Lean sources for GitHub and the Zenodo version 1.2.0 package.
+
 # Changes in version 1.1.0
 
 Compared with the published hiding archive version 1.0.0, which used the title *Uniform Hiding of Haar Block Transpose Gram Matrices*:

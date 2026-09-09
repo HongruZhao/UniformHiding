@@ -3,6 +3,7 @@
   "axiom_declarations_match_expected": true,
   "changed_inherited_sources": [],
   "forbidden_tokens": [],
+  "historical_restoration_scope": "For three explicitly changed public files, restore the verified v1.1.0 baseline text. For all other files, restore the actual current text. Current proof correctness is checked separately by Lean.",
   "import_cycles": [],
   "inherited_comparison": "Exact original bytes restored using the recorded naming-only edits, then compared with the pinned upstream hashes.",
   "inherited_module_count": 225,
@@ -36,14 +37,20 @@
   "renaming_coverage_matches": true,
   "renaming_restoration_errors": [],
   "scope": "Checks every shipped Lean source including the companion Challenge and HidingVerification; excludes dependency/build caches.",
+  "semantic_extension_errors": [],
+  "semantic_extension_files": [
+    "HidingStatement.lean",
+    "HidingVerification.lean",
+    "UniformHiding.lean"
+  ],
   "source_sha256": {
     "Challenge.lean": "3486324d874e1126aec5c05360d20beb472d4247d33ee124ef51ae13cb113a2a",
     "ComplexGramHafnians.lean": "3ab3b6daadd54f1b8b6adf354b6c95613432cbdb18e5a339dca9eca4b9dd7e68",
     "GBSHiding.lean": "cf6bcfb1e6bb5ff160c4283fad9be355cde13308879789e67450a046aabc17d6",
     "GBSHiding/AllInputs.lean": "dd43d8e03105c99a478c32be1ce6e2f0183df49fab165b332a731b54da9a800c",
     "GBSHiding/OptimizedCertificates.lean": "f6fa2abbb602de2c7eae93121581545d8f88a8e3ea17ff397a3faf7ed744620c",
-    "HidingStatement.lean": "fe63a489f8145428da2f12d29d8fc11ca1eec67323e83d6172285421b37541a6",
-    "HidingVerification.lean": "beb9008faae743439d738d3f70ec23d83bddcf06a0615b19d2d0b5bb1636e685",
+    "HidingStatement.lean": "79c3d082499362bb8bd90890f18c38466a0efee0012ed7a70f4c9549a31c5e98",
+    "HidingVerification.lean": "ec9ac82afc5498fcd2d0ed8e02b8c82bec16c677fb5ca4cc4c009bc851b2fbd6",
     "LogdetLean/AbstractSmoothingKernel.lean": "80a0c84f3c79761c883877f2c121fcb5c389f0aeb0b1a042feada2ddbbe19a0e",
     "LogdetLean/AllOrderCumulantBridge.lean": "4e1ac86af5b943306929d6c4b0b4ca641ab44327142003487db0d9fd7e538b5c",
     "LogdetLean/AllOrderPolygamma.lean": "79f654d291d63f768d462dad53ac4b0d64ad844687f05a26ddf956a27315d57e",
@@ -917,7 +924,7 @@
     "LogdetLean/WishartScalarThird.lean": "381ecca4ffcb3f7d4842a4e27ea9f5ec22c4ca20a9badb1db058a5718f45b5f9",
     "LogdetLean/WishartSequentialKernel.lean": "852405969330906b01edda42100c85448c5889699fb66abb3d0bae5a8fd618d3",
     "LogdetLean/WishartSpectralRotation.lean": "186ab45cabe2ba79cb528cda9331b750d9bd88cd06c9fc72f06d8a02ef73b83f",
-    "UniformHiding.lean": "686a8015c780da1c3d88801b144662748d33d42bc9bd7dff938cc9966d282006"
+    "UniformHiding.lean": "269393e8467a59cb49b18a71f7b259e4d8db2b12623b5cc1398c048782e8294c"
   },
   "unreachable_modules": []
 }

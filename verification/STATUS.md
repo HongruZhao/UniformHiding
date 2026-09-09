@@ -1,5 +1,28 @@
 # Verification status
 
+## Version 1.2.0: all-input Theorem 2.1 — 9 September 2026
+
+**Passed.** A fresh public-target build and a separate execution of `HidingVerification.lean` both returned exit code zero. The three revised public modules compiled successfully. Theorem 2.1 now assumes only positive row and input counts within the ambient matrix; Corollary 2.2 is its direct quantitative specialization.
+
+The exact dependency check passed for **12 selected public declarations**. Nine hiding and Route 1 declarations, including two compatibility aliases, use exactly the same four literature axioms plus `propext`, `Classical.choice`, and `Quot.sound`. The two companion main theorems and the conditional Route 2 deduction use only those three foundations. The two source-scale matrix-law identity lemmas also compiled with foundations only. No project axiom was added.
+
+- The same public targets also compiled successfully in the actual GitHub Desktop clone: [clone build log](theorem21_github_clone_build.log).
+- [Current build log](theorem21_all_inputs_build.log), [separate exact axiom audit](theorem21_all_inputs_axiom_audit.log), and [source-linked build receipt](theorem21_all_inputs_receipt.json).
+- [Current source audit](source_audit.json): all 881 Lean sources, exactly four project axioms, no proof escape tokens, no missing local imports or cycles, and all modules reachable from the verification target.
+- [Markdown source check](markdown_source_check.json): math delimiters, TeX grouping, equation-label conventions, and local links. This check does not by itself verify browser rendering.
+
+Theorem 2.1 is `UniformHiding.theorem2_1`, with unnormalized form `theorem2_1_unscaled`. The public `corollary2_2` has the manuscript's quantitative statement; `corollary2_2_s62` gives the source-scale form. `corollary2_2_unscaled` and `corollary2_2_s62_scaled` retain names from the earlier preparation as compatibility aliases. The audit prints both proposition specifications and their proof declarations so the new dimension range is visible.
+
+Exactly three Lean files differ from version 1.1.0. The other 878 Lean sources, including all 225 pinned companion sources, remain unchanged. [The semantic-change manifest](../docs/COROLLARY22_RELEASE.json) records the new source hashes and the verified preceding text; the historical renaming audit does not treat new proofs as naming changes.
+
+The build reused pinned dependencies and unaffected compiled modules. It was a fresh build invocation, not a wholly uncached build or a separate independent kernel-checker run. The GitHub clone and Zenodo package contain the same verified Lean source bytes. Earlier `corollary22_*` receipts describe the preceding preparation, before the all-input statement was promoted to Theorem 2.1; the current receipt linked above supersedes them for the public endpoint map.
+
+Proposition 4.1 remains partly formalized: its conditional sector-reference-mass theorem assumes the photon-sector identification. The complete maximizing-squeezing and uniform Stirling conclusions are not claimed. Route 2's hiding comparison remains unformalized. See [the component ledger](../docs/PAPER_COMPARISON.md#proposition-41-partial-coverage).
+
+## Historical verification for version 1.1.0
+
+The dated evidence below retains its original snapshot meaning. Statements that all Lean sources were unchanged concern those earlier documentation revisions.
+
 ## Markdown equation layout — 7 September 2026
 
 **Passed.** The seven Markdown files contain 453 math expressions, including 55 display equations. The live GitHub check found no renderer errors, unsupported numbered rows, or horizontal overflow at the current browser width. All 12 corrected numbered displays and all nine README display equations were also inspected visually. [The layout receipt](markdown_layout_check.json) records the checks and their scope.
@@ -12,6 +35,7 @@ All 881 Lean sources are unchanged by this formatting correction. Lean was not r
 
 **Passed.** After the module and identifier renaming, the pinned project build and a separate execution of `HidingVerification.lean` both returned exit code zero. All seven public endpoints matched their exact expected axiom sets: four hiding/Route 1 endpoints use the four literature axioms plus three foundations; the two companion endpoints and the conditional Route 2 deduction use only the three foundations. No project axiom was added.
 
+- The same public targets also compiled successfully in the actual GitHub Desktop clone: [clone build log](theorem21_github_clone_build.log).
 - [Current build log](module_naming_build.log) and [current endpoint audit](module_naming_axiom_audit.log) record these fresh executions.
 - [Current build receipt](module_naming_build_receipt.json) records the source hashes, commands, toolchain, log hashes, and endpoint counts.
 - [Naming and documentation checks](module_naming_checks.json) verify all 881 Lean sources against the exact naming rules, all local documentation links, and preservation of all 452 mathematical expressions. The audit was also tested against an altered proof and an invalid reverse edit; both were rejected.

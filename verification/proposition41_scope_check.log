@@ -1,0 +1,253 @@
+theorem LogdetLean.GramHafnian.ThreePaper.RelativeAccuracy.sectorReferenceMass : ∀ (r : ℝ) {M K n : ℕ},
+  0 < M →
+    ∀ (P_N : ℝ),
+      P_N =
+          LogdetLean.GramHafnian.LocalAnticoncentration.equalSqueezingOpticalPrefactor r (2 * n) K *
+              LogdetLean.GramHafnian.gramHafnianSigma K n ^ 2 /
+            ↑(2 * n).factorial →
+        ↑(M.choose (2 * n)) * LogdetLean.GramHafnian.LocalAnticoncentration.gbsGaussianReferenceProbability r M K n =
+          ↑(M.descFactorial (2 * n)) / ↑M ^ (2 * n) * P_N :=
+fun r {M K n} hM P_N hTotalPhoton =>
+  have hMreal := ne_of_gt (Nat.cast_pos'.mpr hM);
+  have hfac := ne_of_gt (Nat.cast_pos'.mpr (Nat.factorial_pos (2 * n)));
+  have hdesc :=
+    cast
+      (Eq.symm
+        (Eq.trans (congrArg (Eq ↑(M.descFactorial (2 * n))) (Nat.cast_mul._simp_1 (2 * n).factorial (M.choose (2 * n))))
+          Nat.cast_inj._simp_1))
+      (Nat.descFactorial_eq_factorial_mul_choose M (2 * n));
+  Eq.mpr
+    (id
+      (congrArg
+        (fun _a =>
+          ↑(M.choose (2 * n)) * LogdetLean.GramHafnian.LocalAnticoncentration.gbsGaussianReferenceProbability r M K n =
+            ↑(M.descFactorial (2 * n)) / ↑M ^ (2 * n) * _a)
+        hTotalPhoton))
+    (Eq.mpr
+      (id
+        (congrArg
+          (fun _a =>
+            ↑(M.choose (2 * n)) *
+                LogdetLean.GramHafnian.LocalAnticoncentration.gbsGaussianReferenceProbability r M K n =
+              _a / ↑M ^ (2 * n) *
+                (LogdetLean.GramHafnian.LocalAnticoncentration.equalSqueezingOpticalPrefactor r (2 * n) K *
+                    LogdetLean.GramHafnian.gramHafnianSigma K n ^ 2 /
+                  ↑(2 * n).factorial))
+          hdesc))
+      (id
+        (id
+          (of_eq_true
+            (Eq.trans
+              (Mathlib.Tactic.FieldSimp.eq_eq_cancel_eq
+                (Mathlib.Tactic.FieldSimp.eq_mul_of_eq_eq_eq_mul
+                  (Eq.trans
+                    (congr_arg₂ HMul.hMul rfl
+                      (Eq.trans
+                        (congr_arg₂ HMul.hMul (Eq.trans (congr_arg₂ HDiv.hDiv rfl rfl) rfl)
+                          (Eq.trans (congr_arg (fun x => x ^ 2) rfl) rfl))
+                        rfl))
+                    rfl)
+                  (Eq.trans
+                    (Mathlib.Tactic.FieldSimp.NF.mul_eq_eval
+                      (Eq.trans (Eq.refl ↑(M.choose (2 * n)))
+                        (Mathlib.Tactic.FieldSimp.NF.atom_eq_eval ↑(M.choose (2 * n))))
+                      (Mathlib.Tactic.FieldSimp.NF.mul_eq_eval
+                        (Mathlib.Tactic.FieldSimp.NF.div_eq_eval
+                          (Eq.trans
+                            (Eq.refl
+                              (LogdetLean.GramHafnian.LocalAnticoncentration.equalSqueezingOpticalPrefactor r (2 * n)
+                                K))
+                            (Mathlib.Tactic.FieldSimp.NF.atom_eq_eval
+                              (LogdetLean.GramHafnian.LocalAnticoncentration.equalSqueezingOpticalPrefactor r (2 * n)
+                                K)))
+                          (Eq.trans (Eq.refl (↑M ^ (2 * n))) (Mathlib.Tactic.FieldSimp.NF.atom_eq_eval (↑M ^ (2 * n))))
+                          (Mathlib.Tactic.FieldSimp.NF.div_eq_eval₃ (1, ↑M ^ (2 * n))
+                            (div_one
+                              ((1,
+                                    LogdetLean.GramHafnian.LocalAnticoncentration.equalSqueezingOpticalPrefactor r
+                                      (2 * n) K) ::ᵣ
+                                  []).eval)))
+                        (Mathlib.Tactic.FieldSimp.NF.pow_eq_eval (of_decide_eq_true (id (Eq.refl true)))
+                          (Eq.trans (Eq.refl (LogdetLean.GramHafnian.gramHafnianSigma K n))
+                            (Mathlib.Tactic.FieldSimp.NF.atom_eq_eval (LogdetLean.GramHafnian.gramHafnianSigma K n))))
+                        (Mathlib.Tactic.FieldSimp.NF.mul_eq_eval₃ (2, LogdetLean.GramHafnian.gramHafnianSigma K n)
+                          (mul_one
+                            ((-1, ↑M ^ (2 * n)) ::ᵣ
+                                ((1,
+                                    LogdetLean.GramHafnian.LocalAnticoncentration.equalSqueezingOpticalPrefactor r
+                                      (2 * n) K) ::ᵣ
+                                  [])).eval)))
+                      (Mathlib.Tactic.FieldSimp.NF.mul_eq_eval₃ (2, LogdetLean.GramHafnian.gramHafnianSigma K n)
+                        (Mathlib.Tactic.FieldSimp.NF.mul_eq_eval₃ (-1, ↑M ^ (2 * n))
+                          (Mathlib.Tactic.FieldSimp.NF.mul_eq_eval₃
+                            (1,
+                              LogdetLean.GramHafnian.LocalAnticoncentration.equalSqueezingOpticalPrefactor r (2 * n) K)
+                            (mul_one ((1, ↑(M.choose (2 * n))) ::ᵣ []).eval)))))
+                    (Eq.symm
+                      (Mathlib.Tactic.FieldSimp.NF.eval_mul_eval_cons 2 (LogdetLean.GramHafnian.gramHafnianSigma K n)
+                        (Mathlib.Tactic.FieldSimp.NF.eval_cons_mul_eval (-1) (↑M ^ (2 * n))
+                          (Mathlib.Tactic.FieldSimp.NF.eval_mul_eval_cons 1
+                            (LogdetLean.GramHafnian.LocalAnticoncentration.equalSqueezingOpticalPrefactor r (2 * n) K)
+                            (Mathlib.Tactic.FieldSimp.NF.eval_mul_eval_cons 1 (↑(M.choose (2 * n)))
+                              (one_mul (Mathlib.Tactic.FieldSimp.NF.eval []))))))))
+                  rfl
+                  (Mathlib.Tactic.FieldSimp.eq_div_of_eq_one_of_subst
+                    (Mathlib.Tactic.FieldSimp.NF.cons_eq_div_of_eq_div 2 (LogdetLean.GramHafnian.gramHafnianSigma K n)
+                      (Mathlib.Tactic.FieldSimp.NF.cons_eq_div_of_eq_div 1
+                        (LogdetLean.GramHafnian.LocalAnticoncentration.equalSqueezingOpticalPrefactor r (2 * n) K)
+                        (Mathlib.Tactic.FieldSimp.NF.cons_eq_div_of_eq_div 1 (↑(M.choose (2 * n)))
+                          (Eq.symm (div_one 1)))))
+                    (Eq.trans
+                      (Mathlib.Tactic.FieldSimp.NF.eval_cons (2, LogdetLean.GramHafnian.gramHafnianSigma K n)
+                        ((1,
+                            LogdetLean.GramHafnian.LocalAnticoncentration.equalSqueezingOpticalPrefactor r (2 * n)
+                              K) ::ᵣ
+                          ((1, ↑(M.choose (2 * n))) ::ᵣ [])))
+                      (congr_arg₂ HMul.hMul
+                        (Eq.trans
+                          (Mathlib.Tactic.FieldSimp.NF.eval_cons
+                            (1,
+                              LogdetLean.GramHafnian.LocalAnticoncentration.equalSqueezingOpticalPrefactor r (2 * n) K)
+                            ((1, ↑(M.choose (2 * n))) ::ᵣ []))
+                          (congr_arg₂ HMul.hMul
+                            (Eq.mpr
+                              (id
+                                (congrArg (fun _a => _a = ↑(M.choose (2 * n)))
+                                  (Mathlib.Tactic.FieldSimp.NF.eval_cons (1, ↑(M.choose (2 * n))) [])))
+                              (Eq.trans
+                                (one_mul
+                                  (Mathlib.Tactic.FieldSimp.zpow' (1, ↑(M.choose (2 * n))).2
+                                    (1, ↑(M.choose (2 * n))).1))
+                                (Mathlib.Tactic.FieldSimp.zpow'_one ↑(M.choose (2 * n)))))
+                            (Mathlib.Tactic.FieldSimp.zpow'_one
+                              (LogdetLean.GramHafnian.LocalAnticoncentration.equalSqueezingOpticalPrefactor r (2 * n)
+                                K))))
+                        (Mathlib.Tactic.FieldSimp.zpow'_ofNat (LogdetLean.GramHafnian.gramHafnianSigma K n)
+                          (of_decide_eq_true (id (Eq.refl true))))))))
+                (Mathlib.Tactic.FieldSimp.eq_mul_of_eq_eq_eq_mul
+                  (Eq.trans
+                    (congr_arg₂ HMul.hMul
+                      (Eq.trans (congr_arg₂ HDiv.hDiv (Eq.trans (congr_arg₂ HMul.hMul rfl rfl) rfl) rfl) rfl)
+                      (Eq.trans
+                        (congr_arg₂ HDiv.hDiv
+                          (Eq.trans (congr_arg₂ HMul.hMul rfl (Eq.trans (congr_arg (fun x => x ^ 2) rfl) rfl)) rfl) rfl)
+                        rfl))
+                    rfl)
+                  (Eq.trans
+                    (Mathlib.Tactic.FieldSimp.NF.mul_eq_eval
+                      (Mathlib.Tactic.FieldSimp.NF.div_eq_eval
+                        (Mathlib.Tactic.FieldSimp.NF.mul_eq_eval
+                          (Eq.trans (Eq.refl ↑(2 * n).factorial)
+                            (Mathlib.Tactic.FieldSimp.NF.atom_eq_eval ↑(2 * n).factorial))
+                          (Eq.trans (Eq.refl ↑(M.choose (2 * n)))
+                            (Mathlib.Tactic.FieldSimp.NF.atom_eq_eval ↑(M.choose (2 * n))))
+                          (Mathlib.Tactic.FieldSimp.NF.mul_eq_eval₁ (1, ↑(2 * n).factorial)
+                            (one_mul ((1, ↑(M.choose (2 * n))) ::ᵣ []).eval)))
+                        (Eq.trans (Eq.refl (↑M ^ (2 * n))) (Mathlib.Tactic.FieldSimp.NF.atom_eq_eval (↑M ^ (2 * n))))
+                        (Mathlib.Tactic.FieldSimp.NF.div_eq_eval₁ (1, ↑(2 * n).factorial)
+                          (Mathlib.Tactic.FieldSimp.NF.div_eq_eval₃ (1, ↑M ^ (2 * n))
+                            (div_one ((1, ↑(M.choose (2 * n))) ::ᵣ []).eval))))
+                      (Mathlib.Tactic.FieldSimp.NF.div_eq_eval
+                        (Mathlib.Tactic.FieldSimp.NF.mul_eq_eval
+                          (Eq.trans
+                            (Eq.refl
+                              (LogdetLean.GramHafnian.LocalAnticoncentration.equalSqueezingOpticalPrefactor r (2 * n)
+                                K))
+                            (Mathlib.Tactic.FieldSimp.NF.atom_eq_eval
+                              (LogdetLean.GramHafnian.LocalAnticoncentration.equalSqueezingOpticalPrefactor r (2 * n)
+                                K)))
+                          (Mathlib.Tactic.FieldSimp.NF.pow_eq_eval (of_decide_eq_true (id (Eq.refl true)))
+                            (Eq.trans (Eq.refl (LogdetLean.GramHafnian.gramHafnianSigma K n))
+                              (Mathlib.Tactic.FieldSimp.NF.atom_eq_eval (LogdetLean.GramHafnian.gramHafnianSigma K n))))
+                          (Mathlib.Tactic.FieldSimp.NF.mul_eq_eval₃ (2, LogdetLean.GramHafnian.gramHafnianSigma K n)
+                            (mul_one
+                              ((1,
+                                    LogdetLean.GramHafnian.LocalAnticoncentration.equalSqueezingOpticalPrefactor r
+                                      (2 * n) K) ::ᵣ
+                                  []).eval)))
+                        (Eq.trans (Eq.refl ↑(2 * n).factorial)
+                          (Mathlib.Tactic.FieldSimp.NF.atom_eq_eval ↑(2 * n).factorial))
+                        (Mathlib.Tactic.FieldSimp.NF.div_eq_eval₃ (1, ↑(2 * n).factorial)
+                          (div_one
+                            ((2, LogdetLean.GramHafnian.gramHafnianSigma K n) ::ᵣ
+                                ((1,
+                                    LogdetLean.GramHafnian.LocalAnticoncentration.equalSqueezingOpticalPrefactor r
+                                      (2 * n) K) ::ᵣ
+                                  [])).eval)))
+                      (Mathlib.Tactic.FieldSimp.NF.mul_eq_eval₂ 1 (-1) (↑(2 * n).factorial)
+                        (Mathlib.Tactic.FieldSimp.NF.mul_eq_eval₃ (2, LogdetLean.GramHafnian.gramHafnianSigma K n)
+                          (Mathlib.Tactic.FieldSimp.NF.mul_eq_eval₁ (-1, ↑M ^ (2 * n))
+                            (Mathlib.Tactic.FieldSimp.NF.mul_eq_eval₃
+                              (1,
+                                LogdetLean.GramHafnian.LocalAnticoncentration.equalSqueezingOpticalPrefactor r (2 * n)
+                                  K)
+                              (mul_one ((1, ↑(M.choose (2 * n))) ::ᵣ []).eval))))))
+                    (Eq.symm
+                      (Mathlib.Tactic.FieldSimp.NF.eval_mul_eval_cons_zero
+                        (Mathlib.Tactic.FieldSimp.NF.eval_mul_eval_cons 2 (LogdetLean.GramHafnian.gramHafnianSigma K n)
+                          (Mathlib.Tactic.FieldSimp.NF.eval_cons_mul_eval (-1) (↑M ^ (2 * n))
+                            (Mathlib.Tactic.FieldSimp.NF.eval_mul_eval_cons 1
+                              (LogdetLean.GramHafnian.LocalAnticoncentration.equalSqueezingOpticalPrefactor r (2 * n) K)
+                              (Mathlib.Tactic.FieldSimp.NF.eval_mul_eval_cons 1 (↑(M.choose (2 * n)))
+                                (one_mul (Mathlib.Tactic.FieldSimp.NF.eval []))))))
+                        (Mathlib.Tactic.FieldSimp.NF.eval_cons_of_pow_eq_zero (of_decide_eq_true (id (Eq.refl true)))
+                          hfac
+                          ((2, LogdetLean.GramHafnian.gramHafnianSigma K n) ::ᵣ
+                            ((1,
+                                LogdetLean.GramHafnian.LocalAnticoncentration.equalSqueezingOpticalPrefactor r (2 * n)
+                                  K) ::ᵣ
+                              ((1, ↑(M.choose (2 * n))) ::ᵣ [])))))))
+                  rfl
+                  (Mathlib.Tactic.FieldSimp.eq_div_of_eq_one_of_subst
+                    (Mathlib.Tactic.FieldSimp.NF.cons_eq_div_of_eq_div 2 (LogdetLean.GramHafnian.gramHafnianSigma K n)
+                      (Mathlib.Tactic.FieldSimp.NF.cons_eq_div_of_eq_div 1
+                        (LogdetLean.GramHafnian.LocalAnticoncentration.equalSqueezingOpticalPrefactor r (2 * n) K)
+                        (Mathlib.Tactic.FieldSimp.NF.cons_eq_div_of_eq_div 1 (↑(M.choose (2 * n)))
+                          (Eq.symm (div_one 1)))))
+                    (Eq.trans
+                      (Mathlib.Tactic.FieldSimp.NF.eval_cons (2, LogdetLean.GramHafnian.gramHafnianSigma K n)
+                        ((1,
+                            LogdetLean.GramHafnian.LocalAnticoncentration.equalSqueezingOpticalPrefactor r (2 * n)
+                              K) ::ᵣ
+                          ((1, ↑(M.choose (2 * n))) ::ᵣ [])))
+                      (congr_arg₂ HMul.hMul
+                        (Eq.trans
+                          (Mathlib.Tactic.FieldSimp.NF.eval_cons
+                            (1,
+                              LogdetLean.GramHafnian.LocalAnticoncentration.equalSqueezingOpticalPrefactor r (2 * n) K)
+                            ((1, ↑(M.choose (2 * n))) ::ᵣ []))
+                          (congr_arg₂ HMul.hMul
+                            (Eq.mpr
+                              (id
+                                (congrArg (fun _a => _a = ↑(M.choose (2 * n)))
+                                  (Mathlib.Tactic.FieldSimp.NF.eval_cons (1, ↑(M.choose (2 * n))) [])))
+                              (Eq.trans
+                                (one_mul
+                                  (Mathlib.Tactic.FieldSimp.zpow' (1, ↑(M.choose (2 * n))).2
+                                    (1, ↑(M.choose (2 * n))).1))
+                                (Mathlib.Tactic.FieldSimp.zpow'_one ↑(M.choose (2 * n)))))
+                            (Mathlib.Tactic.FieldSimp.zpow'_one
+                              (LogdetLean.GramHafnian.LocalAnticoncentration.equalSqueezingOpticalPrefactor r (2 * n)
+                                K))))
+                        (Mathlib.Tactic.FieldSimp.zpow'_ofNat (LogdetLean.GramHafnian.gramHafnianSigma K n)
+                          (of_decide_eq_true (id (Eq.refl true))))))))
+                (Mathlib.Tactic.FieldSimp.NF.cons_ne_zero (-1) (ne_of_gt (pow_pos (Nat.cast_pos'.mpr hM) (2 * n)))
+                  one_ne_zero))
+              (eq_self
+                (↑(M.choose (2 * n)) *
+                    LogdetLean.GramHafnian.LocalAnticoncentration.equalSqueezingOpticalPrefactor r (2 * n) K *
+                  LogdetLean.GramHafnian.gramHafnianSigma K n ^ 2)))))))
+'LogdetLean.GramHafnian.ThreePaper.RelativeAccuracy.sectorReferenceMass' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+LogdetLean.GramHafnian.ThreePaper.RelativeAccuracy.collisionFreeLabelSpace_card (M N : ℕ) :
+  Fintype.card (LogdetLean.GramHafnian.ThreePaper.RelativeAccuracy.CollisionFreeLabel M N) = M.choose N
+LogdetLean.GramHafnian.ThreePaper.RelativeAccuracy.exactSectorScaleIdentity (r : ℝ) (M K n : ℕ) (w : ℂ) :
+  LogdetLean.GramHafnian.LocalAnticoncentration.gbsProbabilityFromScaledAmplitude r M K n w *
+      LogdetLean.GramHafnian.gramHafnianSigma K n ^ 2 =
+    LogdetLean.GramHafnian.LocalAnticoncentration.gbsGaussianReferenceProbability r M K n * Complex.normSq w
+LogdetLean.GramHafnian.ThreePaper.RelativeAccuracy.normalizedSectorProbability {r : ℝ} (hr : 0 < r) {M K : ℕ}
+  (hM : 0 < M) (hK : 0 < K) (n : ℕ) (w : ℂ) :
+  LogdetLean.GramHafnian.LocalAnticoncentration.gbsProbabilityFromScaledAmplitude r M K n w /
+      LogdetLean.GramHafnian.LocalAnticoncentration.gbsGaussianReferenceProbability r M K n =
+    Complex.normSq w / LogdetLean.GramHafnian.gramHafnianSigma K n ^ 2
