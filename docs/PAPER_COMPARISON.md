@@ -2,7 +2,7 @@
 
 The theorem numbers refer to the revised manuscript, *Uniform Hiding and Two Routes to Relative Accuracy in Gaussian Boson Sampling*. `Theorem21` means Theorem **2.1**, not Theorem 21. The names beginning `theorem3_2_route1` mean the Route 1 part of Theorem **3.2**.
 
-This correspondence also applies to the one-column layout prepared on 9 September 2026. The mathematical text and all theorem, equation, section, and figure numbers are unchanged. References below use those labels rather than PDF page numbers.
+This correspondence uses the 48-page arXiv preparation from 9 September 2026. The [completion ledger](FORMALIZATION_COMPLETION.md) supersedes the earlier partial-coverage entries for Proposition 4.1, Corollaries 3.3 and 4.2, and Proposition G.2. It also corrects the earlier assessment of Lemma 6.2. Route 2 is excluded from the completion.
 
 | Manuscript claim | Public declaration / source | Verification boundary |
 | --- | --- | --- |
@@ -46,26 +46,43 @@ The revised Appendix A documents what the formalization assumes and why the cite
 
 These source-to-axiom arguments explain why the imported mathematical statements are justified. They are not presented as separate proofs checked in Lean. The naming revision preserves the mathematical contracts of the four axioms and the public theorem endpoints under the recorded identifier substitutions.
 
-## Proposition 4.1: partial coverage
+<a id="proposition-41-partial-coverage"></a>
 
-Proposition 4.1, *Probability scale and the size of the label set*, is **not fully formalized**. Its components have different statuses:
+## Proposition 4.1: completed deductions
 
-| Part of Proposition 4.1 | Current Lean coverage |
+The former partial-coverage status is superseded by the fresh completion. All entries below have checked proofs using only the three standard foundations.
+
+| Component | Declaration in namespace `GBSHiding`, unless specified |
 | --- | --- |
-| Cardinality $`D_{M,N}=\binom MN`$ | `RelativeAccuracy.collisionFreeLabelSpace_card` |
-| Cancellation between the optical probability and its Gaussian reference scale | `RelativeAccuracy.exactSectorScaleIdentity` and `normalizedSectorProbability` |
-| Sector reference-mass algebra | `RelativeAccuracy.sectorReferenceMass` proves $`D_{M,N}p_1=(M)_N M^{-N}P_N`$ **assuming** `hTotalPhoton`, which identifies $`P_N`$ with the optical prefactor times $`\sigma_{K,n}^2/N!`$ |
-| The printed negative-binomial photon-sector law and its full identification with the physical total-photon probability | Not assembled by that theorem; its premise must not be reported as a proof of this formula |
-| The maximizing squeezing $`\tanh^2\xi=N/(K+N)`$ | No complete theorem in this release |
-| Uniform Stirling asymptotic for $`K\ge4n`$ | No complete theorem in this release |
-| The concluding $`\Theta(N^{-1/2})`$ statement with $`N^2/M\to0`$ | No complete theorem in this release |
+| Collision-free label count | `RelativeAccuracy.collisionFreeLabelSpace_card` |
+| Normalized negative-binomial input law | `squeezedInputPairCount_eq`, `squeezedInputPhotonCount_even`, `squeezedInputPhotonCount_odd` |
+| Generating function | `squeezedInputPairCount_generatingFunction` |
+| Passive number conservation and sector probability | `passiveOptics_preserves_photonNumberLaw`, `proposition4_1_output_sector_probability` |
+| Exact reference scale, without `hTotalPhoton` | `proposition4_1_reference_scale` |
+| Maximizer and unique parameter | `proposition4_1_maximizer`, `pairMass_eq_optimal_iff` |
+| Equivalent squeezing condition | `squeezing_mean_match_iff` |
+| Uniform error, including odd input counts | `proposition4_1_uniform_relative_error`, `proposition4_1_stirling_isBigO` |
+| Finite-population limit and final inverse-square-root scale | `finitePopulationFactor_tendsto_one`, `proposition4_1_reference_scale_isTheta` |
 
-Here $`(M)_N`$ in the Lean algebra description denotes the descending factorial. The manuscript writes the same factor as $`\prod_{j=0}^{N-1}(1-j/M)`$ after dividing by $`M^N`$. The relevant source is [RelativeAccuracyApplicationEndpoints.lean](../LogdetLean/GramHafnian/ThreePaper/RelativeAccuracyApplicationEndpoints.lean). Version 1.2.0 adds Corollary 2.2; it does not add or claim a complete Proposition 4.1 endpoint. A [fresh Lean inspection of these existing declarations](../verification/proposition41_scope_check.log) confirms the conditional type of `sectorReferenceMass`; that algebraic theorem uses only the three foundations.
+The [completion ledger](FORMALIZATION_COMPLETION.md#proposition-41) explains the optical model and its conditional-sector representation. The single-mode coefficients and passive tensor action define the adopted model. Their normalization, convolution and preservation of number sectors are proved. The old conditional `sectorReferenceMass` remains available for compatibility; it is no longer the endpoint used to claim the completed scale identity.
 
-## Scope beyond the selected endpoints
+## Other named manuscript statements
 
-The source tree includes supporting calculations and older application interfaces. The published archive's older equation crosswalk addresses its own manuscript snapshot; it must not be read as a claim that every equation of the current manuscript has a single unconditional endpoint.
+| Manuscript claim | Coverage |
+| --- | --- |
+| Corollary 3.3 | Route 1's optimized public bound tends to zero by `GBSHiding.corollary3_3_route1_public`. The Route 2 half is excluded. |
+| Corollary 4.2 | `GBSHiding.collisionFreeSamplerRelative_averageTV` and `collisionFreeSamplerRelativeOptimized_averageTV` use the actual average-TV hypothesis, including zero error. Only Route 1 is included. |
+| Lemma 6.1 | The existing concrete Haar–Stiefel recursion and independent beta/sphere sampling development is retained. |
+| Lemma 6.2 | The signed Markov contraction and concrete variation-norm derivative transport were already present. Both are included in the fresh dependency audit; the earlier missing-coverage report was mistaken. |
+| Lemma 6.3 | `hidingLemmaIII3_eventwise_A1A2A3A4` gives the actual event paths, regularity and all five derivative bounds. |
+| Proposition 6.4 | Existing concrete adjacent-ambient law bounds expose the evaluated constant 615138 and its weakening to 615172 in `HidingOutsideCDPaperFacing.lean`. |
+| Lemma 6.5 | The rectangular density/entropy comparison and sparse branch are already proved and retained. |
+| Lemma C.1 | Existing fixed-direction integrable derivatives, event regularity and differentiation/integration exchange cover the paper's dense range. |
+| Corollary G.1 | `GBSHiding.observableHidingAllInputs` and `orderedFixedPatternPanelAllInputs` cover all positive input counts. |
+| Proposition G.2 | `GBSHiding.orderedDisjointMaxScoreCdfTransferAllInputs` and `orderedDisjointHeavyCountBinomialTransferAllInputs` now cover the full range, including fewer inputs than selected rows. |
 
-The broader development does not fully assemble the photon-sector identity, universal uniform Stirling statement, or every sampler application. The newly assembled Route 1 threshold infimum resolves that specific optimization connection, not all sampler/optimized-certificate connections. Route 2's cited hiding theorem remains outside the formal proof. Complete formalization of every revised manuscript statement is not claimed.
+## Remaining boundaries
 
-Four literature axioms are required for hiding and Route 1. The companion main Gaussian theorems have no additional scientific axioms. These two statements about formalization must not be conflated.
+The non-Route-2 gaps listed above are closed relative to the existing literature and optical-model boundary. Route 2's cited matrix comparison remains unformalized; its existing conditional deduction does not prove that hypothesis. The two-route minima and Route 2 envelope claim are excluded from this completion.
+
+A1–A4 are still literature axioms. The companion main Gaussian results require only the standard foundations. Appendix A's source-to-axiom justifications, the optical model's derivation from quantum dynamics, literature comparisons, illustrations and prose are not claimed as newly checked Lean proofs. The older equation crosswalk retains its own manuscript-snapshot scope.

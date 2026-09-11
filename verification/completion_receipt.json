@@ -1,66 +1,478 @@
 {
-  "audit_type": "source-only",
-  "axiom_declarations_match_expected": true,
-  "changed_inherited_sources": [],
-  "completion_baseline_commit": "98bf9ef85d4f881b164c2a1729f6a49b89f95657",
-  "completion_errors": [],
-  "completion_files": [
+  "recorded_utc": "2026-09-10T05:05:15.203888+00:00",
+  "scope": "Hiding paper only; remaining non-Route-2 deductions",
+  "publication_performed": false,
+  "lean_version": "Lean 4.33.0-rc2",
+  "lean_commit": "d8b18978322de05a8f3dba51ef03cf5461676c17",
+  "mathlib_revision": "641fbd329d4ffb62bef83c51f54088469056bd36",
+  "baseline_commit": "98bf9ef85d4f881b164c2a1729f6a49b89f95657",
+  "current_module_count": 893,
+  "added_lean_modules": 12,
+  "changed_baseline_lean_entrypoints": [
     "GBSHiding.lean",
-    "GBSHiding/AllInputApplications.lean",
-    "GBSHiding/AverageTVSampler.lean",
-    "GBSHiding/Completion.lean",
-    "GBSHiding/CompletionAudit.lean",
-    "GBSHiding/OptimalPhotonSector.lean",
-    "GBSHiding/OptimizedRouteOneAsymptotics.lean",
-    "GBSHiding/PassivePhotonNumber.lean",
-    "GBSHiding/PhotonPairLaw.lean",
-    "GBSHiding/PhotonSector.lean",
-    "GBSHiding/SectorScaleAsymptotics.lean",
-    "GBSHiding/SectorStirling.lean",
-    "GBSHiding/SqueezedPhotonNumber.lean",
     "HidingVerification.lean"
   ],
-  "forbidden_tokens": [],
-  "historical_restoration_scope": "Validate every completion source hash and restore its recorded version 1.2.0 baseline. Then restore the three version 1.2.0 public-file baselines and reverse historical naming edits. New completion modules are checked separately, never treated as naming changes. Current proof correctness is checked by Lean.",
-  "import_cycles": [],
-  "inherited_comparison": "Exact original bytes restored using the recorded naming-only edits, then compared with the pinned upstream hashes.",
-  "inherited_module_count": 225,
-  "journal_named_lean_paths": [],
-  "lean_executed_by_this_script": false,
-  "missing_imports": [],
-  "module_count": 893,
-  "passed": true,
-  "project_axiom_declarations": [
-    {
-      "file": "LogdetLean/GramHafnian/UltimateHiding/DenseScore/H5_FriedmanMelloA1External.lean",
-      "line": 97,
-      "name": "matrixLaw_external"
+  "unchanged_baseline_lean_modules": 879,
+  "unchanged_companion_modules": 225,
+  "project_axioms": 4,
+  "additional_project_axioms": 0,
+  "selected_endpoints": 47,
+  "four_literature_plus_foundations": 14,
+  "foundations_only": 33,
+  "endpoints": {
+    "GBSHiding.orderedDisjointPatternProductHidingAllInputs": {
+      "axiom_count": 7,
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "MatsumotoPaper.A4_matsumoto_theorem_3",
+        "Quot.sound",
+        "LogdetLean.GramHafnian.UltimateHiding.DenseScore.A2Prime_complexSymmetricTakagiWeyl_symmetricIntegration",
+        "LogdetLean.GramHafnian.UltimateHiding.DenseScore.A3_edelmanSutton_proposition_1_2",
+        "LogdetLean.GramHafnian.UltimateHiding.DenseScore.FriedmanMelloA1.matrixLaw_external"
+      ]
     },
-    {
-      "file": "LogdetLean/GramHafnian/UltimateHiding/DenseScore/H6_A3_EdelmanSuttonProp12Conditional.lean",
-      "line": 172,
-      "name": "A3_edelmanSutton_proposition_1_2"
+    "GBSHiding.orderedDisjointMaxScoreCdfTransferAllInputs": {
+      "axiom_count": 7,
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "MatsumotoPaper.A4_matsumoto_theorem_3",
+        "Quot.sound",
+        "LogdetLean.GramHafnian.UltimateHiding.DenseScore.A2Prime_complexSymmetricTakagiWeyl_symmetricIntegration",
+        "LogdetLean.GramHafnian.UltimateHiding.DenseScore.A3_edelmanSutton_proposition_1_2",
+        "LogdetLean.GramHafnian.UltimateHiding.DenseScore.FriedmanMelloA1.matrixLaw_external"
+      ]
     },
-    {
-      "file": "LogdetLean/GramHafnian/UltimateHiding/DenseScore/Literature/H6_A2Prime_TakagiWeylSymmetricIntegration.lean",
-      "line": 113,
-      "name": "A2Prime_complexSymmetricTakagiWeyl_symmetricIntegration"
+    "GBSHiding.orderedDisjointHeavyCountBinomialTransferAllInputs": {
+      "axiom_count": 7,
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "MatsumotoPaper.A4_matsumoto_theorem_3",
+        "Quot.sound",
+        "LogdetLean.GramHafnian.UltimateHiding.DenseScore.A2Prime_complexSymmetricTakagiWeyl_symmetricIntegration",
+        "LogdetLean.GramHafnian.UltimateHiding.DenseScore.A3_edelmanSutton_proposition_1_2",
+        "LogdetLean.GramHafnian.UltimateHiding.DenseScore.FriedmanMelloA1.matrixLaw_external"
+      ]
     },
-    {
-      "file": "LogdetLean/GramHafnian/UltimateHiding/DenseScore/MatsumotoTheorem3External.lean",
-      "line": 254,
-      "name": "A4_matsumoto_theorem_3"
+    "GBSHiding.corollary3_3_route1_optimized": {
+      "axiom_count": 3,
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ]
+    },
+    "GBSHiding.corollary3_3_route1_public": {
+      "axiom_count": 3,
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ]
+    },
+    "GBSHiding.averageTV_uniformLabel_mean": {
+      "axiom_count": 3,
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ]
+    },
+    "GBSHiding.averageTV_uniformLabel_markov": {
+      "axiom_count": 3,
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ]
+    },
+    "GBSHiding.collisionFreeSamplerRelative_averageTV": {
+      "axiom_count": 7,
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "MatsumotoPaper.A4_matsumoto_theorem_3",
+        "Quot.sound",
+        "LogdetLean.GramHafnian.UltimateHiding.DenseScore.A2Prime_complexSymmetricTakagiWeyl_symmetricIntegration",
+        "LogdetLean.GramHafnian.UltimateHiding.DenseScore.A3_edelmanSutton_proposition_1_2",
+        "LogdetLean.GramHafnian.UltimateHiding.DenseScore.FriedmanMelloA1.matrixLaw_external"
+      ]
+    },
+    "GBSHiding.collisionFreeSamplerRelativeOptimized_averageTV": {
+      "axiom_count": 7,
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "MatsumotoPaper.A4_matsumoto_theorem_3",
+        "Quot.sound",
+        "LogdetLean.GramHafnian.UltimateHiding.DenseScore.A2Prime_complexSymmetricTakagiWeyl_symmetricIntegration",
+        "LogdetLean.GramHafnian.UltimateHiding.DenseScore.A3_edelmanSutton_proposition_1_2",
+        "LogdetLean.GramHafnian.UltimateHiding.DenseScore.FriedmanMelloA1.matrixLaw_external"
+      ]
+    },
+    "GBSHiding.pairMass_hasSum_one": {
+      "axiom_count": 3,
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ]
+    },
+    "GBSHiding.photonPairPMF_add": {
+      "axiom_count": 3,
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ]
+    },
+    "GBSHiding.squeezedInputPairCount_eq": {
+      "axiom_count": 3,
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ]
+    },
+    "GBSHiding.squeezedInputPairCount_sector_mass": {
+      "axiom_count": 3,
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ]
+    },
+    "GBSHiding.singleMode_pair_mass": {
+      "axiom_count": 3,
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ]
+    },
+    "GBSHiding.squeezedInputPairCount_generatingFunction": {
+      "axiom_count": 3,
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ]
+    },
+    "GBSHiding.squeezedInputPhotonCount_even": {
+      "axiom_count": 3,
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ]
+    },
+    "GBSHiding.squeezedInputPhotonCount_odd": {
+      "axiom_count": 3,
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ]
+    },
+    "GBSHiding.photonTensorMatrix_unitary": {
+      "axiom_count": 3,
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ]
+    },
+    "GBSHiding.passiveOptics_preserves_bosonicSymmetry": {
+      "axiom_count": 3,
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ]
+    },
+    "GBSHiding.passiveOptics_preserves_photonNumberLaw": {
+      "axiom_count": 3,
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ]
+    },
+    "GBSHiding.proposition4_1_output_sector_probability": {
+      "axiom_count": 3,
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ]
+    },
+    "GBSHiding.proposition4_1_reference_scale": {
+      "axiom_count": 3,
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ]
+    },
+    "GBSHiding.proposition4_1_maximizer": {
+      "axiom_count": 3,
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ]
+    },
+    "GBSHiding.pairMass_eq_optimal_iff": {
+      "axiom_count": 3,
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ]
+    },
+    "GBSHiding.squeezing_mean_match_iff": {
+      "axiom_count": 3,
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ]
+    },
+    "GBSHiding.meanMatchedSqueezing": {
+      "axiom_count": 3,
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ]
+    },
+    "GBSHiding.logGammaStirlingError_halfNat_bound": {
+      "axiom_count": 3,
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ]
+    },
+    "GBSHiding.proposition4_1_uniform_log_error": {
+      "axiom_count": 3,
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ]
+    },
+    "GBSHiding.proposition4_1_uniform_relative_error": {
+      "axiom_count": 3,
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ]
+    },
+    "GBSHiding.proposition4_1_stirling_isBigO": {
+      "axiom_count": 3,
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ]
+    },
+    "GBSHiding.finitePopulationFactor_bounds": {
+      "axiom_count": 3,
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ]
+    },
+    "GBSHiding.finitePopulationFactor_tendsto_one": {
+      "axiom_count": 3,
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ]
+    },
+    "GBSHiding.proposition4_1_reference_scale_isTheta": {
+      "axiom_count": 3,
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ]
+    },
+    "LogdetLean.GramHafnian.ThreePaper.Verification.signedKernelContinuousLinearMap_norm_le_one": {
+      "axiom_count": 3,
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ]
+    },
+    "LogdetLean.GramHafnian.ThreePaper.Verification.ConcreteCongruenceKernelAdapter.congruenceKernel_eq_hide_commute_derivative": {
+      "axiom_count": 3,
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ]
+    },
+    "UniformHiding.theorem2_1": {
+      "axiom_count": 7,
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "MatsumotoPaper.A4_matsumoto_theorem_3",
+        "Quot.sound",
+        "LogdetLean.GramHafnian.UltimateHiding.DenseScore.A2Prime_complexSymmetricTakagiWeyl_symmetricIntegration",
+        "LogdetLean.GramHafnian.UltimateHiding.DenseScore.A3_edelmanSutton_proposition_1_2",
+        "LogdetLean.GramHafnian.UltimateHiding.DenseScore.FriedmanMelloA1.matrixLaw_external"
+      ]
+    },
+    "UniformHiding.theorem2_1_unscaled": {
+      "axiom_count": 7,
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "MatsumotoPaper.A4_matsumoto_theorem_3",
+        "Quot.sound",
+        "LogdetLean.GramHafnian.UltimateHiding.DenseScore.A2Prime_complexSymmetricTakagiWeyl_symmetricIntegration",
+        "LogdetLean.GramHafnian.UltimateHiding.DenseScore.A3_edelmanSutton_proposition_1_2",
+        "LogdetLean.GramHafnian.UltimateHiding.DenseScore.FriedmanMelloA1.matrixLaw_external"
+      ]
+    },
+    "UniformHiding.corollary2_2": {
+      "axiom_count": 7,
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "MatsumotoPaper.A4_matsumoto_theorem_3",
+        "Quot.sound",
+        "LogdetLean.GramHafnian.UltimateHiding.DenseScore.A2Prime_complexSymmetricTakagiWeyl_symmetricIntegration",
+        "LogdetLean.GramHafnian.UltimateHiding.DenseScore.A3_edelmanSutton_proposition_1_2",
+        "LogdetLean.GramHafnian.UltimateHiding.DenseScore.FriedmanMelloA1.matrixLaw_external"
+      ]
+    },
+    "UniformHiding.corollary2_2_unscaled": {
+      "axiom_count": 7,
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "MatsumotoPaper.A4_matsumoto_theorem_3",
+        "Quot.sound",
+        "LogdetLean.GramHafnian.UltimateHiding.DenseScore.A2Prime_complexSymmetricTakagiWeyl_symmetricIntegration",
+        "LogdetLean.GramHafnian.UltimateHiding.DenseScore.A3_edelmanSutton_proposition_1_2",
+        "LogdetLean.GramHafnian.UltimateHiding.DenseScore.FriedmanMelloA1.matrixLaw_external"
+      ]
+    },
+    "UniformHiding.corollary2_2_s62_scaled": {
+      "axiom_count": 7,
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "MatsumotoPaper.A4_matsumoto_theorem_3",
+        "Quot.sound",
+        "LogdetLean.GramHafnian.UltimateHiding.DenseScore.A2Prime_complexSymmetricTakagiWeyl_symmetricIntegration",
+        "LogdetLean.GramHafnian.UltimateHiding.DenseScore.A3_edelmanSutton_proposition_1_2",
+        "LogdetLean.GramHafnian.UltimateHiding.DenseScore.FriedmanMelloA1.matrixLaw_external"
+      ]
+    },
+    "UniformHiding.corollary2_2_s62": {
+      "axiom_count": 7,
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "MatsumotoPaper.A4_matsumoto_theorem_3",
+        "Quot.sound",
+        "LogdetLean.GramHafnian.UltimateHiding.DenseScore.A2Prime_complexSymmetricTakagiWeyl_symmetricIntegration",
+        "LogdetLean.GramHafnian.UltimateHiding.DenseScore.A3_edelmanSutton_proposition_1_2",
+        "LogdetLean.GramHafnian.UltimateHiding.DenseScore.FriedmanMelloA1.matrixLaw_external"
+      ]
+    },
+    "UniformHiding.routeOneSmallBall": {
+      "axiom_count": 7,
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "MatsumotoPaper.A4_matsumoto_theorem_3",
+        "Quot.sound",
+        "LogdetLean.GramHafnian.UltimateHiding.DenseScore.A2Prime_complexSymmetricTakagiWeyl_symmetricIntegration",
+        "LogdetLean.GramHafnian.UltimateHiding.DenseScore.A3_edelmanSutton_proposition_1_2",
+        "LogdetLean.GramHafnian.UltimateHiding.DenseScore.FriedmanMelloA1.matrixLaw_external"
+      ]
+    },
+    "UniformHiding.theorem3_2_route1": {
+      "axiom_count": 7,
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "MatsumotoPaper.A4_matsumoto_theorem_3",
+        "Quot.sound",
+        "LogdetLean.GramHafnian.UltimateHiding.DenseScore.A2Prime_complexSymmetricTakagiWeyl_symmetricIntegration",
+        "LogdetLean.GramHafnian.UltimateHiding.DenseScore.A3_edelmanSutton_proposition_1_2",
+        "LogdetLean.GramHafnian.UltimateHiding.DenseScore.FriedmanMelloA1.matrixLaw_external"
+      ]
+    },
+    "UniformHiding.theorem3_2_route1_optimized": {
+      "axiom_count": 7,
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "MatsumotoPaper.A4_matsumoto_theorem_3",
+        "Quot.sound",
+        "LogdetLean.GramHafnian.UltimateHiding.DenseScore.A2Prime_complexSymmetricTakagiWeyl_symmetricIntegration",
+        "LogdetLean.GramHafnian.UltimateHiding.DenseScore.A3_edelmanSutton_proposition_1_2",
+        "LogdetLean.GramHafnian.UltimateHiding.DenseScore.FriedmanMelloA1.matrixLaw_external"
+      ]
+    },
+    "ComplexGramHafnians.theorem2_1": {
+      "axiom_count": 3,
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ]
+    },
+    "ComplexGramHafnians.theorem2_3": {
+      "axiom_count": 3,
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ]
+    },
+    "UniformHiding.routeTwoConditional": {
+      "axiom_count": 3,
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ]
     }
-  ],
-  "renaming_coverage_matches": true,
-  "renaming_restoration_errors": [],
-  "scope": "Checks every shipped Lean source including the companion Challenge and HidingVerification; excludes dependency/build caches.",
-  "semantic_extension_errors": [],
-  "semantic_extension_files": [
-    "HidingStatement.lean",
-    "HidingVerification.lean",
-    "UniformHiding.lean"
-  ],
+  },
+  "executions": {
+    "completion_build.log": {
+      "command": "LEAN_NUM_THREADS=4 lake build UniformHiding HidingVerification",
+      "exit_code": 0,
+      "sha256": "3a15d8a548c5438048a52354a3e3bf86036c136b1c1558cc58885e2ce3215db9",
+      "last_output_utc": "2026-09-10T04:56:25.795710+00:00"
+    },
+    "completion_axiom_audit.log": {
+      "command": "LEAN_NUM_THREADS=4 lake env lean HidingVerification.lean",
+      "exit_code": 0,
+      "sha256": "01d2cf296466e358d519cb978a29a611705d4dd2fdbd74d914e357bdb5c20ad5",
+      "last_output_utc": "2026-09-10T04:56:56.271904+00:00"
+    },
+    "completion_types.log": {
+      "command": "LEAN_NUM_THREADS=4 lake env lean GBSHiding/CompletionAudit.lean",
+      "exit_code": 0,
+      "sha256": "8823c5ee3da39574d4dc5e3e849b1019e127044adbeac54c0f45b11d8f3aa6aa",
+      "last_output_utc": "2026-09-10T04:56:57.270120+00:00"
+    }
+  },
   "source_sha256": {
     "Challenge.lean": "3486324d874e1126aec5c05360d20beb472d4247d33ee124ef51ae13cb113a2a",
     "ComplexGramHafnians.lean": "3ab3b6daadd54f1b8b6adf354b6c95613432cbdb18e5a339dca9eca4b9dd7e68",
@@ -956,5 +1368,20 @@
     "LogdetLean/WishartSpectralRotation.lean": "186ab45cabe2ba79cb528cda9331b750d9bd88cd06c9fc72f06d8a02ef73b83f",
     "UniformHiding.lean": "269393e8467a59cb49b18a71f7b259e4d8db2b12623b5cc1398c048782e8294c"
   },
-  "unreachable_modules": []
+  "source_manifest_sha256": "33159a7337a16bdf9754cc94259affa3f79bbd9a551cbe09a171ef1fddeeee05",
+  "source_audit_sha256": "e037f51819cb21cf77e9201e96ec0718218cf381c092d43388180f08c93ffe30",
+  "manuscript": {
+    "filename": "Hiding_arXiv.pdf",
+    "pages": 48,
+    "sha256": "1e882353286b06289b83d54dcd2dc6216e40d402b253e8cfa0b2e12603bfc1ca",
+    "manuscript_modified": false
+  },
+  "build_scope": "Fresh public build, separate exact axiom execution, and separate new-endpoint type execution. Pinned dependency caches and unaffected local modules reused. No independent checker run.",
+  "retained_boundaries": [
+    "A1-A4 literature axioms",
+    "Adopted single-mode squeezing coefficients and passive tensor action; no derivation from Hamiltonian",
+    "Adopted optical hafnian probability formula",
+    "Route 2 excluded"
+  ],
+  "coverage_correction": "Signed Markov variation extension and derivative transport already existed in baseline; freshly audited, not newly proved."
 }

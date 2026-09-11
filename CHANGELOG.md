@@ -1,3 +1,14 @@
+# Changes in version 1.3.0 — 11 September 2026
+
+- Completes the non-Route-2 obligations in [the completion ledger](docs/FORMALIZATION_COMPLETION.md).
+- Proves the normalized photon-pair law, generating function, passive photon-number conservation, reference-scale identity, maximizing parameter and uniform Stirling/Theta conclusions in Proposition 4.1.
+- Adds Corollary 4.2 under average TV, including zero sampling error and the Route 1 square-root bound.
+- Connects Corollary 3.3 to the public optimized Route 1 bound and extends the order/count applications to all input counts.
+- Corrects the earlier report: the signed-measure extension and derivative transport in Lemma 6.2 were already present.
+- Preserves the four literature axioms and all companion sources. Route 2 remains excluded.
+- Adds fresh build, exact dependency, source-continuity and packaging records. The Zenodo archive adds Appendix E and the complete current-paper equation correspondence to the shared GitHub core.
+- Uses identical verified Lean sources in the local GitHub and Zenodo preparations. Release packaging reuses the successful completion build and 47-declaration audit; Lean is not rerun for metadata-only changes.
+
 # Changes in version 1.2.0 — 9 September 2026
 
 - Strengthens Theorem 2.1 to all positive row and input counts fitting in the ambient matrix, using the existing all-input proof. The previous row-count-versus-input-count restriction is removed.
@@ -8,7 +19,7 @@
 - Preserves all four literature axioms and every companion proof source. No project axiom is added.
 - Records a fresh public-target build, separate exact axiom audit, and source checks in [verification/STATUS.md](verification/STATUS.md).
 - Uses the same revised Lean sources for GitHub and the Zenodo version 1.2.0 package.
-- Records the version 1.2.0 archive identifier, [10.5281/zenodo.22670050](https://doi.org/10.5281/zenodo.22670050).
+- Prepared the version 1.2.0 Zenodo upload. That draft is superseded by version 1.3.0 under the same reserved identifier, [10.5281/zenodo.22670050](https://doi.org/10.5281/zenodo.22670050).
 - Keeps manuscript correspondence valid in both column layouts by using the unchanged appendix and equation labels. This documentation update does not change any Lean proof source.
 
 # Changes in version 1.1.0

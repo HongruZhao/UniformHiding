@@ -3,6 +3,7 @@ import LogdetLean.GramHafnian.ThreePaper.RelativeAccuracy
 import LogdetLean.GramHafnian.ThreePaper.UniformMatrixHidingEndpointsAudit
 import LogdetLean.GramHafnian.ThreePaper.RelativeAccuracyEndpointsAudit
 import GBSHiding.OptimizedCertificates
+import GBSHiding.Completion
 
 /-!
 # Uniform hiding and the two routes

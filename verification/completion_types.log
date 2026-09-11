@@ -1,0 +1,218 @@
+PASS GBSHiding.orderedDisjointPatternProductHidingAllInputs: exactly 7 axioms: [propext,
+ Classical.choice,
+ MatsumotoPaper.A4_matsumoto_theorem_3,
+ Quot.sound,
+ LogdetLean.GramHafnian.UltimateHiding.DenseScore.A2Prime_complexSymmetricTakagiWeyl_symmetricIntegration,
+ LogdetLean.GramHafnian.UltimateHiding.DenseScore.A3_edelmanSutton_proposition_1_2,
+ LogdetLean.GramHafnian.UltimateHiding.DenseScore.FriedmanMelloA1.matrixLaw_external]
+PASS GBSHiding.orderedDisjointMaxScoreCdfTransferAllInputs: exactly 7 axioms: [propext,
+ Classical.choice,
+ MatsumotoPaper.A4_matsumoto_theorem_3,
+ Quot.sound,
+ LogdetLean.GramHafnian.UltimateHiding.DenseScore.A2Prime_complexSymmetricTakagiWeyl_symmetricIntegration,
+ LogdetLean.GramHafnian.UltimateHiding.DenseScore.A3_edelmanSutton_proposition_1_2,
+ LogdetLean.GramHafnian.UltimateHiding.DenseScore.FriedmanMelloA1.matrixLaw_external]
+PASS GBSHiding.orderedDisjointHeavyCountBinomialTransferAllInputs: exactly 7 axioms: [propext,
+ Classical.choice,
+ MatsumotoPaper.A4_matsumoto_theorem_3,
+ Quot.sound,
+ LogdetLean.GramHafnian.UltimateHiding.DenseScore.A2Prime_complexSymmetricTakagiWeyl_symmetricIntegration,
+ LogdetLean.GramHafnian.UltimateHiding.DenseScore.A3_edelmanSutton_proposition_1_2,
+ LogdetLean.GramHafnian.UltimateHiding.DenseScore.FriedmanMelloA1.matrixLaw_external]
+PASS GBSHiding.corollary3_3_route1_optimized: exactly 3 axioms: [propext, Classical.choice, Quot.sound]
+PASS GBSHiding.corollary3_3_route1_public: exactly 3 axioms: [propext, Classical.choice, Quot.sound]
+PASS GBSHiding.averageTV_uniformLabel_mean: exactly 3 axioms: [propext, Classical.choice, Quot.sound]
+PASS GBSHiding.averageTV_uniformLabel_markov: exactly 3 axioms: [propext, Classical.choice, Quot.sound]
+PASS GBSHiding.collisionFreeSamplerRelative_averageTV: exactly 7 axioms: [propext,
+ Classical.choice,
+ MatsumotoPaper.A4_matsumoto_theorem_3,
+ Quot.sound,
+ LogdetLean.GramHafnian.UltimateHiding.DenseScore.A2Prime_complexSymmetricTakagiWeyl_symmetricIntegration,
+ LogdetLean.GramHafnian.UltimateHiding.DenseScore.A3_edelmanSutton_proposition_1_2,
+ LogdetLean.GramHafnian.UltimateHiding.DenseScore.FriedmanMelloA1.matrixLaw_external]
+PASS GBSHiding.collisionFreeSamplerRelativeOptimized_averageTV: exactly 7 axioms: [propext,
+ Classical.choice,
+ MatsumotoPaper.A4_matsumoto_theorem_3,
+ Quot.sound,
+ LogdetLean.GramHafnian.UltimateHiding.DenseScore.A2Prime_complexSymmetricTakagiWeyl_symmetricIntegration,
+ LogdetLean.GramHafnian.UltimateHiding.DenseScore.A3_edelmanSutton_proposition_1_2,
+ LogdetLean.GramHafnian.UltimateHiding.DenseScore.FriedmanMelloA1.matrixLaw_external]
+PASS GBSHiding.pairMass_hasSum_one: exactly 3 axioms: [propext, Classical.choice, Quot.sound]
+PASS GBSHiding.photonPairPMF_add: exactly 3 axioms: [propext, Classical.choice, Quot.sound]
+PASS GBSHiding.squeezedInputPairCount_eq: exactly 3 axioms: [propext, Classical.choice, Quot.sound]
+PASS GBSHiding.squeezedInputPairCount_sector_mass: exactly 3 axioms: [propext, Classical.choice, Quot.sound]
+PASS GBSHiding.singleMode_pair_mass: exactly 3 axioms: [propext, Classical.choice, Quot.sound]
+PASS GBSHiding.squeezedInputPairCount_generatingFunction: exactly 3 axioms: [propext, Classical.choice, Quot.sound]
+PASS GBSHiding.squeezedInputPhotonCount_even: exactly 3 axioms: [propext, Classical.choice, Quot.sound]
+PASS GBSHiding.squeezedInputPhotonCount_odd: exactly 3 axioms: [propext, Classical.choice, Quot.sound]
+PASS GBSHiding.photonTensorMatrix_unitary: exactly 3 axioms: [propext, Classical.choice, Quot.sound]
+PASS GBSHiding.passiveOptics_preserves_bosonicSymmetry: exactly 3 axioms: [propext, Classical.choice, Quot.sound]
+PASS GBSHiding.passiveOptics_preserves_photonNumberLaw: exactly 3 axioms: [propext, Classical.choice, Quot.sound]
+PASS GBSHiding.proposition4_1_output_sector_probability: exactly 3 axioms: [propext, Classical.choice, Quot.sound]
+PASS GBSHiding.proposition4_1_reference_scale: exactly 3 axioms: [propext, Classical.choice, Quot.sound]
+PASS GBSHiding.proposition4_1_maximizer: exactly 3 axioms: [propext, Classical.choice, Quot.sound]
+PASS GBSHiding.pairMass_eq_optimal_iff: exactly 3 axioms: [propext, Classical.choice, Quot.sound]
+PASS GBSHiding.squeezing_mean_match_iff: exactly 3 axioms: [propext, Classical.choice, Quot.sound]
+PASS GBSHiding.meanMatchedSqueezing: exactly 3 axioms: [propext, Classical.choice, Quot.sound]
+PASS GBSHiding.logGammaStirlingError_halfNat_bound: exactly 3 axioms: [propext, Classical.choice, Quot.sound]
+PASS GBSHiding.proposition4_1_uniform_log_error: exactly 3 axioms: [propext, Classical.choice, Quot.sound]
+PASS GBSHiding.proposition4_1_uniform_relative_error: exactly 3 axioms: [propext, Classical.choice, Quot.sound]
+PASS GBSHiding.proposition4_1_stirling_isBigO: exactly 3 axioms: [propext, Classical.choice, Quot.sound]
+PASS GBSHiding.finitePopulationFactor_bounds: exactly 3 axioms: [propext, Classical.choice, Quot.sound]
+PASS GBSHiding.finitePopulationFactor_tendsto_one: exactly 3 axioms: [propext, Classical.choice, Quot.sound]
+PASS GBSHiding.proposition4_1_reference_scale_isTheta: exactly 3 axioms: [propext, Classical.choice, Quot.sound]
+PASS LogdetLean.GramHafnian.ThreePaper.Verification.signedKernelContinuousLinearMap_norm_le_one: exactly 3 axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+PASS LogdetLean.GramHafnian.ThreePaper.Verification.ConcreteCongruenceKernelAdapter.congruenceKernel_eq_hide_commute_derivative: exactly 3 axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+GBSHiding.orderedDisjointMaxScoreCdfTransferAllInputs
+  (H : LogdetLean.GramHafnian.LocalAnticoncentration.UnitaryHaarProbabilityFamily) (M L K q N : ℕ) (hL : 1 ≤ L)
+  (hLM : L ≤ M) (hK : 1 ≤ K) (hKM : K ≤ M) (rows : Fin q → Fin N ↪ Fin L)
+  (hrows :
+    Pairwise fun a b =>
+      Disjoint (LogdetLean.GramHafnian.ThreePaper.DisjointGaussianRows.rowRange (rows a))
+        (LogdetLean.GramHafnian.ThreePaper.DisjointGaussianRows.rowRange (rows b)))
+  (h : Matrix (Fin N) (Fin N) ℂ → ℝ) (hh : Measurable h) (t : ℝ) :
+  have P := LogdetLean.GramHafnian.UltimateHiding.normalizedGaussianTransposeGramLaw N K;
+  have muH :=
+    MeasureTheory.Measure.map (LogdetLean.GramHafnian.ThreePaper.UniformMatrixHiding.orderedPatternPanel rows)
+      (MeasureTheory.Measure.map
+        (LogdetLean.GramHafnian.ThreePaper.UniformMatrixHiding.preselectedPrincipalSubmatrixTuple q L
+          (LogdetLean.GramHafnian.ThreePaper.UniformMatrixHiding.orderedPatternSets rows))
+        (LogdetLean.GramHafnian.UltimateHiding.normalizedHaarTransposeGramLaw H M L K));
+  |muH.real {A | ∀ (j : Fin q), h (A j) ≤ t} - (MeasureTheory.Measure.map h P).real (Set.Iic t) ^ q| ≤
+    min 1 (615172 * LogdetLean.GramHafnian.UltimateHiding.ultimateSquaredHidingRate M L)
+GBSHiding.orderedDisjointHeavyCountBinomialTransferAllInputs
+  (H : LogdetLean.GramHafnian.LocalAnticoncentration.UnitaryHaarProbabilityFamily) (M L K q N : ℕ) (hL : 1 ≤ L)
+  (hLM : L ≤ M) (hK : 1 ≤ K) (hKM : K ≤ M) (rows : Fin q → Fin N ↪ Fin L)
+  (hrows :
+    Pairwise fun a b =>
+      Disjoint (LogdetLean.GramHafnian.ThreePaper.DisjointGaussianRows.rowRange (rows a))
+        (LogdetLean.GramHafnian.ThreePaper.DisjointGaussianRows.rowRange (rows b)))
+  (h : Matrix (Fin N) (Fin N) ℂ → ℝ) (hh : Measurable h) (t : ℝ) :
+  LogdetLean.GramHafnian.LocalAnticoncentration.probabilityTotalVariationLE
+    (MeasureTheory.Measure.map (LogdetLean.GramHafnian.ThreePaper.UniformMatrixHiding.orderedPanelHeavyCount h t)
+      (LogdetLean.GramHafnian.ThreePaper.UniformMatrixHiding.orderedPatternPanelHaarLaw H M L K q N rows))
+    (ProbabilityTheory.binomial q
+      (LogdetLean.GramHafnian.ThreePaper.UniformMatrixHiding.gaussianScoreTailParameter N K h t))
+    (min 1 (615172 * LogdetLean.GramHafnian.UltimateHiding.ultimateSquaredHidingRate M L))
+GBSHiding.corollary3_3_route1_public.{u_1} (Ω : ℕ → Type u_1) [(n : ℕ) → MeasurableSpace (Ω n)]
+  (μ : (n : ℕ) → MeasureTheory.Measure (Ω n)) (deltaP : (n : ℕ) → Ω n → ℝ) (K M : ℕ → ℕ) (r rho tau : ℕ → ℝ) {c a : ℝ}
+  (hc : 0 < c) (ha : 1 / 2 + 3 / (4 * c) < a) (hrho : ∀ (n : ℕ), 0 < rho n)
+  (hp :
+    ∀ (n : ℕ), 0 < LogdetLean.GramHafnian.LocalAnticoncentration.gbsGaussianReferenceProbability (r n) (M n) (K n) n)
+  (htau : ∀ (n : ℕ), 0 ≤ tau n)
+  (hratio :
+    ∀ᶠ (n : ℕ) in Filter.atTop,
+      tau n /
+          (rho n * LogdetLean.GramHafnian.LocalAnticoncentration.gbsGaussianReferenceProbability (r n) (M n) (K n) n) =
+        ↑(2 * n) ^ (-a))
+  (hsmall :
+    Filter.Tendsto
+      (fun n =>
+        (μ n).real
+          (LogdetLean.GramHafnian.ThreePaper.FairAbsoluteThresholdComparison.absoluteAdditiveFailureEvent (deltaP n)
+            (tau n)))
+      Filter.atTop (nhds 0))
+  (hK4 : ∀ᶠ (n : ℕ) in Filter.atTop, 4 * n ≤ K n)
+  (hlower : ∀ᶠ (n : ℕ) in Filter.atTop, c * ↑(2 * n) ^ 2 / Real.log ↑(2 * n) ≤ ↑(K n))
+  (hMsquared : Filter.Tendsto (fun n => ↑(2 * n) ^ 2 / ↑(M n)) Filter.atTop (nhds 0)) :
+  Filter.Tendsto (fun n => UniformHiding.optimizedRouteOneBound (μ n) (deltaP n) (r n) (M n) (K n) n (rho n))
+    Filter.atTop (nhds 0)
+GBSHiding.collisionFreeSamplerRelative_averageTV.{u_1} {χ : Type u_1} [Countable χ]
+  (H : LogdetLean.GramHafnian.LocalAnticoncentration.UnitaryHaarProbabilityFamily) {r : ℝ} (hr : 0 < r) (M K n : ℕ)
+  (hn : 1 ≤ n) (hKanti : 4 * n ≤ K) (hKM : K ≤ M) (labels : Finset χ) (hlabels : labels.Nonempty)
+  (decode : ↥labels ≃ LogdetLean.GramHafnian.ThreePaper.RelativeAccuracy.CollisionFreeLabel M (2 * n))
+  (P Q : ↥(Matrix.unitaryGroup (Fin M) ℂ) → PMF χ) (hp : ∀ (x : χ), Measurable fun U => GBSHiding.pmfMass (P U) x)
+  (hq : ∀ (x : χ), Measurable fun U => GBSHiding.pmfMass (Q U) x) {eps zeta rho : ℝ} (heps : 0 ≤ eps) (hzeta : 0 < zeta)
+  (hrho : 0 < rho)
+  (havg : ∫ (U : ↥(Matrix.unitaryGroup (Fin M) ℂ)), GBSHiding.discreteTotalVariation (P U) (Q U) ∂H.law M ≤ eps)
+  (hpPhysical :
+    ∀ (U : ↥(Matrix.unitaryGroup (Fin M) ℂ)) (x : ↥labels),
+      GBSHiding.pmfMass (P U) ↑x =
+        LogdetLean.GramHafnian.LocalAnticoncentration.gbsProbabilityFromScaledAmplitude r M K n
+          (LogdetLean.GramHafnian.ThreePaper.RelativeAccuracy.collisionFreeHafnianAmplitude M K n hKM U (decode x))) :
+  ∫ (U : ↥(Matrix.unitaryGroup (Fin M) ℂ)),
+      LogdetLean.GramHafnian.ThreePaper.RelativeAccuracy.samplerRelativeFailureFraction
+        (fun U x => GBSHiding.pmfMass (P U) ↑x) (fun U x => GBSHiding.pmfMass (Q U) ↑x) rho U ∂H.law M ≤
+    min 1
+      (zeta +
+          LogdetLean.GramHafnian.ThreePaper.RelativeAccuracy.samplerRelativeConstant
+              (LogdetLean.GramHafnian.shiftedAnticoncentrationConstant K n) eps rho (↑(M.choose (2 * n)))
+              (LogdetLean.GramHafnian.LocalAnticoncentration.gbsGaussianReferenceProbability r M K n) /
+            zeta +
+        LogdetLean.GramHafnian.ThreePaper.UniformMatrixHiding.hidingRemainder M (2 * n))
+GBSHiding.collisionFreeSamplerRelativeOptimized_averageTV.{u_1} {χ : Type u_1} [Countable χ]
+  (H : LogdetLean.GramHafnian.LocalAnticoncentration.UnitaryHaarProbabilityFamily) {r : ℝ} (hr : 0 < r) (M K n : ℕ)
+  (hn : 1 ≤ n) (hKanti : 4 * n ≤ K) (hKM : K ≤ M) (labels : Finset χ) (hlabels : labels.Nonempty)
+  (decode : ↥labels ≃ LogdetLean.GramHafnian.ThreePaper.RelativeAccuracy.CollisionFreeLabel M (2 * n))
+  (P Q : ↥(Matrix.unitaryGroup (Fin M) ℂ) → PMF χ) (hp : ∀ (x : χ), Measurable fun U => GBSHiding.pmfMass (P U) x)
+  (hq : ∀ (x : χ), Measurable fun U => GBSHiding.pmfMass (Q U) x) {eps rho : ℝ} (heps : 0 ≤ eps) (hrho : 0 < rho)
+  (havg : ∫ (U : ↥(Matrix.unitaryGroup (Fin M) ℂ)), GBSHiding.discreteTotalVariation (P U) (Q U) ∂H.law M ≤ eps)
+  (hpPhysical :
+    ∀ (U : ↥(Matrix.unitaryGroup (Fin M) ℂ)) (x : ↥labels),
+      GBSHiding.pmfMass (P U) ↑x =
+        LogdetLean.GramHafnian.LocalAnticoncentration.gbsProbabilityFromScaledAmplitude r M K n
+          (LogdetLean.GramHafnian.ThreePaper.RelativeAccuracy.collisionFreeHafnianAmplitude M K n hKM U (decode x))) :
+  ∫ (U : ↥(Matrix.unitaryGroup (Fin M) ℂ)),
+      LogdetLean.GramHafnian.ThreePaper.RelativeAccuracy.samplerRelativeFailureFraction
+        (fun U x => GBSHiding.pmfMass (P U) ↑x) (fun U x => GBSHiding.pmfMass (Q U) ↑x) rho U ∂H.law M ≤
+    min 1
+      (LogdetLean.GramHafnian.ThreePaper.UniformMatrixHiding.hidingRemainder M (2 * n) +
+        2 *
+          √(LogdetLean.GramHafnian.ThreePaper.RelativeAccuracy.samplerRelativeConstant
+              (LogdetLean.GramHafnian.shiftedAnticoncentrationConstant K n) eps rho (↑(M.choose (2 * n)))
+              (LogdetLean.GramHafnian.LocalAnticoncentration.gbsGaussianReferenceProbability r M K n)))
+GBSHiding.proposition4_1_output_sector_probability {M : ℕ} (U : ↥(Matrix.unitaryGroup (Fin M) ℂ)) (K n : ℕ) (r : ℝ)
+  (v : GBSHiding.BosonicUnitSector M (2 * n)) :
+  GBSHiding.photonSectorMass
+      ((GBSHiding.photonTensorMatrix U (2 * n)).mulVec (GBSHiding.squeezedSectorVector K n r v)) =
+    GBSHiding.sectorWeight K n r
+GBSHiding.proposition4_1_reference_scale (M K n : ℕ) (hM : 0 < M) (hNM : 2 * n ≤ M) (hK : 0 < K) (r : ℝ) :
+  ↑(M.choose (2 * n)) * LogdetLean.GramHafnian.LocalAnticoncentration.gbsGaussianReferenceProbability r M K n =
+    GBSHiding.sectorWeight K n r * GBSHiding.finitePopulationFactor M (2 * n)
+GBSHiding.proposition4_1_maximizer (K n : ℕ) (hK : 0 < K) (hn : 0 < n) (r rstar : ℝ) (hr : 0 < r)
+  (hmatch : ↑K * Real.sinh rstar ^ 2 = 2 * ↑n) : GBSHiding.sectorWeight K n r ≤ GBSHiding.sectorWeight K n rstar
+GBSHiding.proposition4_1_uniform_relative_error (K n : ℕ) (hn : 0 < n) (hK : 4 * n ≤ K) :
+  |GBSHiding.optimalPairMass (↑K / 2) n * GBSHiding.sectorGaussianDenominator K n - 1| ≤ 2 / (3 * ↑n)
+GBSHiding.proposition4_1_stirling_isBigO (K : ℕ → ℕ) (hK : ∀ᶠ (n : ℕ) in Filter.atTop, 4 * n ≤ K n) :
+  (fun n => GBSHiding.optimalPairMass (↑(K n) / 2) n * GBSHiding.sectorGaussianDenominator (K n) n - 1) =O[Filter.atTop]
+    fun n => 1 / ↑n
+GBSHiding.proposition4_1_reference_scale_isTheta (M K : ℕ → ℕ) (r : ℕ → ℝ)
+  (hK : ∀ᶠ (n : ℕ) in Filter.atTop, 4 * n ≤ K n) (hNM : ∀ᶠ (n : ℕ) in Filter.atTop, 2 * n ≤ M n)
+  (hmatch : ∀ᶠ (n : ℕ) in Filter.atTop, ↑(K n) * Real.sinh (r n) ^ 2 = 2 * ↑n)
+  (hscale : Filter.Tendsto (fun n => (2 * ↑n) ^ 2 / ↑(M n)) Filter.atTop (nhds 0)) :
+  (fun n =>
+      ↑((M n).choose (2 * n)) *
+        LogdetLean.GramHafnian.LocalAnticoncentration.gbsGaussianReferenceProbability (r n) (M n) (K n)
+          n) =Θ[Filter.atTop]
+    fun n => 1 / √(2 * ↑n)
+LogdetLean.GramHafnian.ThreePaper.Verification.ConcreteCongruenceKernelAdapter.congruenceKernel_eq_hide_commute_derivative
+  (N : ℕ) (xi : MeasureTheory.Measure (LogdetLean.GramHafnian.UltimateHiding.Dense.ComplexMatrixGL N))
+  (mu : MeasureTheory.Measure (LogdetLean.GramHafnian.UltimateHiding.Dense.ConcreteMatrixState N))
+  [MeasureTheory.IsProbabilityMeasure xi] [MeasureTheory.IsProbabilityMeasure mu] (hN : 1 ≤ N)
+  (hmu : LogdetLean.GramHafnian.UltimateHiding.Dense.IsUnitaryCongruenceInvariant N mu)
+  (hxi : LogdetLean.GramHafnian.UltimateHiding.Dense.IsUnitaryConjugationInvariant N xi) (I : Set ℝ) (hI : IsOpen I)
+  (r j : ℕ)
+  (hf :
+    ContDiffOn ℝ (↑r)
+      (LogdetLean.GramHafnian.ThreePaper.Verification.ConcreteCongruenceKernelAdapter.orbitalVariationCurve N hN mu) I)
+  (hj : j ≤ r) (s : ℝ) (hs : s ∈ I) :
+  iteratedDerivWithin j
+        (LogdetLean.GramHafnian.ThreePaper.Verification.ConcreteCongruenceKernelAdapter.orbitalAfterCongruenceVariationCurve
+          N hN xi mu)
+        I s =
+      (LogdetLean.GramHafnian.ThreePaper.Verification.ConcreteCongruenceKernelAdapter.congruenceKernelVariationMarkovOperator
+            N xi).toLinearMap
+        (iteratedDerivWithin j
+          (LogdetLean.GramHafnian.ThreePaper.Verification.ConcreteCongruenceKernelAdapter.orbitalVariationCurve N hN mu)
+          I s) ∧
+    ‖iteratedDerivWithin j
+          (LogdetLean.GramHafnian.ThreePaper.Verification.ConcreteCongruenceKernelAdapter.orbitalAfterCongruenceVariationCurve
+            N hN xi mu)
+          I s‖ ≤
+      ‖iteratedDerivWithin j
+          (LogdetLean.GramHafnian.ThreePaper.Verification.ConcreteCongruenceKernelAdapter.orbitalVariationCurve N hN mu)
+          I s‖

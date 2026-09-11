@@ -1,0 +1,68 @@
+{
+  "baseline_commit": "98bf9ef85d4f881b164c2a1729f6a49b89f95657",
+  "baseline_module_count": 881,
+  "current_module_count": 893,
+  "scope": "Remaining non-Route-2 deductions for the 48-page hiding manuscript. A1-A4 and all companion sources unchanged.",
+  "files": {
+    "GBSHiding/AllInputApplications.lean": {
+      "kind": "new",
+      "current_sha256": "1f2cb47e9884611930f8b1fd13519e8ccc224f21cdf388ab968f50cf0a34b9d4"
+    },
+    "GBSHiding/AverageTVSampler.lean": {
+      "kind": "new",
+      "current_sha256": "c6c1281e7cd127e3c7a8495a1045e4b17fefb5814867be5b07283fbb960c3c6e"
+    },
+    "GBSHiding/Completion.lean": {
+      "kind": "new",
+      "current_sha256": "c4f6c5a82967868dfb0568ad1aba8d65254a1b12058388520165eec603edbcd6"
+    },
+    "GBSHiding/CompletionAudit.lean": {
+      "kind": "new",
+      "current_sha256": "0acbfb25f8981d995d9d74311a986978b012cbcc3cd19eaaceb5cb48dbc59d84"
+    },
+    "GBSHiding/OptimalPhotonSector.lean": {
+      "kind": "new",
+      "current_sha256": "1583376836b2255e5c6e8cb098438214e3f3a2bb24b32d53bcad156d9a8791ae"
+    },
+    "GBSHiding/OptimizedRouteOneAsymptotics.lean": {
+      "kind": "new",
+      "current_sha256": "74a4d4f4e95948526865fd6b45893cafcd4047f3eb1af5cd60eb04c642458f19"
+    },
+    "GBSHiding/PassivePhotonNumber.lean": {
+      "kind": "new",
+      "current_sha256": "9375be0809e68e8c961bdd46a8fb910952c678e08acc5118329079b17934face"
+    },
+    "GBSHiding/PhotonPairLaw.lean": {
+      "kind": "new",
+      "current_sha256": "513338486900bb9c78fc2269d2df2c7b394247cb61d306f270945f6e6db81309"
+    },
+    "GBSHiding/PhotonSector.lean": {
+      "kind": "new",
+      "current_sha256": "ea56636ef861c7d16826ee50ab7168551686e316ce1ad50f97dc9dc007b65494"
+    },
+    "GBSHiding/SectorScaleAsymptotics.lean": {
+      "kind": "new",
+      "current_sha256": "2c2a167595630bbcf54de7f2cf29235f8b2aeb839c0c505f0d6f58a69cc21a96"
+    },
+    "GBSHiding/SectorStirling.lean": {
+      "kind": "new",
+      "current_sha256": "cd775b9b8449fb9045a432f04a6a39b35bff4d6d9a535da62b6909e5a6026682"
+    },
+    "GBSHiding/SqueezedPhotonNumber.lean": {
+      "kind": "new",
+      "current_sha256": "3c3336ba0c2cab1b5d847834c9bf211892eb64770e0952791bd71e9225329b9d"
+    },
+    "GBSHiding.lean": {
+      "kind": "modified",
+      "current_sha256": "89445b675572817f96d3527df3fbda364452dee8aa7690ddeec7e229a6c19f93",
+      "baseline_sha256": "cf6bcfb1e6bb5ff160c4283fad9be355cde13308879789e67450a046aabc17d6",
+      "baseline_text": "import GBSHiding.AllInputs\nimport LogdetLean.GramHafnian.ThreePaper.RelativeAccuracy\nimport LogdetLean.GramHafnian.ThreePaper.UniformMatrixHidingEndpointsAudit\nimport LogdetLean.GramHafnian.ThreePaper.RelativeAccuracyEndpointsAudit\nimport GBSHiding.OptimizedCertificates\n\n/-!\n# Uniform hiding and the two routes\n\nPublic statements for the merged Quantum manuscript. The underlying proofs\nretain their original namespaces so that the source refactor does not rename\nthousands of checked dependencies. See the current local execution receipts.\nSee README.md and docs/ASSUMPTIONS.md before interpreting these declarations.\n-/\n\nopen MeasureTheory\nopen LogdetLean.GramHafnian\nopen LogdetLean.GramHafnian.LocalAnticoncentration\nopen LogdetLean.GramHafnian.UltimateHiding\n\nnamespace GBSHiding\n\nnoncomputable section\n\n/-- Original finite product-law theorem, conditional on the four recorded literature inputs. -/\ntheorem uniformHiding : UniformProductMatrixHidingSquaredAt 615172 :=\n  LogdetLean.GramHafnian.ThreePaper.UniformMatrixHiding.matrixLaw\n\n/-- The normalized statement for `1 \u2264 N \u2264 K \u2264 M`. -/\ntheorem normalizedHiding\n    (H : UnitaryHaarProbabilityFamily)\n    (M N K : \u2115) (hN : 1 \u2264 N) (hNK : N \u2264 K) (hKM : K \u2264 M) :\n    probabilityTotalVariationLE\n      (normalizedHaarTransposeGramLaw H M N K)\n      (normalizedGaussianTransposeGramLaw N K)\n      (min 1 (615172 * ultimateSquaredHidingRate M N)) :=\n  LogdetLean.GramHafnian.ThreePaper.UniformMatrixHiding.normalizedMatrixLaw\n    H M N K hN hNK hKM\n\n/-- Finite-Haar local bound obtained by combining the hiding and Gaussian proofs. -/\ntheorem finiteHaarSmallBall\n    (H : UnitaryHaarProbabilityFamily)\n    {M n K : \u2115} (hn : 1 \u2264 n) (hK : 4 * n \u2264 K) (hKM : K \u2264 M)\n    (z : \u2102) (eps : \u211d) (heps : 0 \u2264 eps) :\n    (scaledHaarGramHafnianLaw H M n K).real\n        (shiftedComplexDisk z (eps * gramHafnianSigma K n)) \u2264\n      min 1\n        (shiftedAnticoncentrationConstant K n * eps ^ 2 +\n          615172 * ultimateSquaredHidingRate M (2 * n)) :=\n  LogdetLean.GramHafnian.ThreePaper.RelativeAccuracy.finiteHaarShiftedSmallBall\n    H hn hK hKM z eps heps\n\nend\nend GBSHiding\n\n#print axioms GBSHiding.uniformHiding\n#print axioms GBSHiding.normalizedHiding\n#print axioms GBSHiding.finiteHaarSmallBall\n#print axioms GBSHiding.lowerBound_optimizedCertificate\n\n#print axioms GBSHiding.normalizedHidingAllInputs\n#print axioms GBSHiding.observableHidingAllInputs\n\n#print axioms GBSHiding.orderedFixedPatternPanelAllInputs\n"
+    },
+    "HidingVerification.lean": {
+      "kind": "modified",
+      "current_sha256": "90e694d471377f1fdf4600659497e79d2b4b210afa1bc5b10d539f38c0c1c45c",
+      "baseline_sha256": "ec9ac82afc5498fcd2d0ed8e02b8c82bec16c677fb5ca4cc4c009bc851b2fbd6",
+      "baseline_text": "import UniformHiding\nimport Lean.Util.CollectAxioms\n\nopen Lean Elab Command\n\n/-! The build fails on any unexpected or missing proof dependency. -/\nrun_cmd do\n  let foundations : Array Name := #[``propext, ``Classical.choice, ``Quot.sound]\n  let literature : Array Name := #[\n    ``LogdetLean.GramHafnian.UltimateHiding.DenseScore.FriedmanMelloA1.matrixLaw_external,\n    ``LogdetLean.GramHafnian.UltimateHiding.DenseScore.A2Prime_complexSymmetricTakagiWeyl_symmetricIntegration,\n    ``LogdetLean.GramHafnian.UltimateHiding.DenseScore.A3_edelmanSutton_proposition_1_2,\n    ``MatsumotoPaper.A4_matsumoto_theorem_3]\n  for decl in #[``UniformHiding.theorem2_1,\n    ``UniformHiding.theorem2_1_unscaled,\n    ``UniformHiding.corollary2_2, ``UniformHiding.corollary2_2_unscaled,\n    ``UniformHiding.corollary2_2_s62_scaled, ``UniformHiding.corollary2_2_s62,\n    ``UniformHiding.routeOneSmallBall,\n    ``UniformHiding.theorem3_2_route1, ``UniformHiding.theorem3_2_route1_optimized,\n    ``ComplexGramHafnians.theorem2_1, ``ComplexGramHafnians.theorem2_3,\n    ``UniformHiding.routeTwoConditional] do\n    let expected := if decl.getRoot == `ComplexGramHafnians ||\n      decl == ``UniformHiding.routeTwoConditional then foundations else foundations ++ literature\n    let actual \u2190 Lean.collectAxioms decl\n    let unexpected := actual.filter fun ax => !expected.contains ax\n    let missing := expected.filter fun ax => !actual.contains ax\n    unless unexpected.isEmpty && missing.isEmpty do\n      throwError \"{decl}: unexpected axioms {unexpected}; missing expected axioms {missing}\"\n    logInfo m!\"PASS {decl}: exactly {actual.size} axioms: {actual}\"\n\n#print UniformHiding.Theorem21\n#print UniformHiding.Corollary22\n#print UniformHiding.theorem2_1\n#print UniformHiding.theorem2_1_unscaled\n#print UniformHiding.corollary2_2\n#print UniformHiding.corollary2_2_unscaled\n#print UniformHiding.corollary2_2_s62_scaled\n#print UniformHiding.corollary2_2_s62\n#print axioms UniformHiding.s62HaarProductLaw_eq_matrixLaw\n#print axioms UniformHiding.s62GaussianProductLaw_eq_matrixLaw\n#print UniformHiding.theorem3_2_route1\n#print UniformHiding.theorem3_2_route1_optimized\n#print UniformHiding.routeTwoConditional\n"
+    }
+  }
+}

@@ -2,6 +2,8 @@
 
 Lean verification accompanying Hongru Zhao's manuscript. The main hiding theorem and the Route 1 part of the relative-accuracy theorem are proved **conditional on four explicitly cited literature axioms**. The companion Gaussian anticoncentration theorem has no additional scientific axioms.
 
+Version **1.3.0** adds the photon-sector normalization and asymptotics, the average-TV sampler bound, the optimized Route 1 asymptotic conclusion, and the applications for all input counts. The [completion ledger](docs/FORMALIZATION_COMPLETION.md) explains these additions and their model assumptions. Route 2 remains outside the completion scope. The recorded audit checks 47 declarations without adding an axiom.
+
 ## Results and probability conventions
 
 Let $`U`$ be Haar distributed on the unitary group $`\mathrm{U}(M)`$, and let $`U_{N,K}`$ be its first $`N`$ rows and $`K`$ columns. Let $`G`$ be an $`N\times K`$ matrix of independent circular complex Gaussians with density $`\pi^{-1}e^{-|z|^2}`$; each real and imaginary component has variance $`1/2`$. The superscript $`T`$ denotes ordinary transpose. Total variation is $`d_{\mathrm{TV}}(\mu,\nu)=\sup_E|\mu(E)-\nu(E)|`$, with measurable $`E`$.
@@ -136,6 +138,8 @@ There are exactly four literature axioms. In addition, Lean uses `propext`, `Cla
 | [HidingStatement.lean](HidingStatement.lean) | Theorem 2.1, Corollary 2.2, source-scale (S62) specification, and Route 1 budget |
 | [UniformHiding.lean](UniformHiding.lean) | Public hiding, Corollary 2.2, source-scale measure identities, and Route 1 proofs |
 | [HidingVerification.lean](HidingVerification.lean) | Exact public proof dependency checks |
+| [GBSHiding/Completion.lean](GBSHiding/Completion.lean) | Added photon-sector, sampler, asymptotic and application proofs |
+| [docs/FORMALIZATION_COMPLETION.md](docs/FORMALIZATION_COMPLETION.md) | New endpoints, assumptions and fresh execution evidence |
 | [docs/PAPER_COMPARISON.md](docs/PAPER_COMPARISON.md) | Paper-to-Lean correspondence and scope limits |
 | [verification/STATUS.md](verification/STATUS.md) | Dated build evidence |
 | [docs/PROVENANCE.md](docs/PROVENANCE.md) | Source origin and companion dependency |
@@ -154,9 +158,9 @@ The pinned toolchain is selected automatically. A successful build checks these 
 
 ## Archive and citation
 
-Version **1.2.0** promotes the bound for all positive input counts to Theorem 2.1 and makes Corollary 2.2 its immediate quantitative specialization. The GitHub repository and the accompanying Zenodo source package contain the same Lean statements and proofs. See [the change history](CHANGELOG.md) and [source provenance](docs/PROVENANCE.md) for the relationship to version 1.1.0.
+Version **1.3.0** contains the completed non-Route-2 deductions described above. The GitHub repository and the Zenodo archive share the same 893 Lean sources in the `UniformHiding` directory. Zenodo additionally contains the Appendix E equation checks and the complete correspondence for the current manuscript. [The release record](verification/release_1_3_0_identity.json) identifies the checked source snapshot. See [the change history](CHANGELOG.md) and [source provenance](docs/PROVENANCE.md) for its relationship to the preceding release.
 
-The archive identifier for **version 1.2.0** is [10.5281/zenodo.22670050](https://doi.org/10.5281/zenodo.22670050). The preceding archives are [version 1.1.0](https://doi.org/10.5281/zenodo.22558885) and [version 1.0.0](https://doi.org/10.5281/zenodo.22122730). Cite the version actually used; see [CITATION.cff](CITATION.cff). The archive contains Lean sources and verification records, with no manuscript PDFs or LaTeX sources.
+The Zenodo identifier for **version 1.3.0** is [10.5281/zenodo.22670050](https://doi.org/10.5281/zenodo.22670050). Earlier archives are [version 1.1.0](https://doi.org/10.5281/zenodo.22558885) and [version 1.0.0](https://doi.org/10.5281/zenodo.22122730). The 1.2.0 source update is retained in the GitHub history; its Zenodo draft is superseded by this version. Cite the version actually used; see [CITATION.cff](CITATION.cff). The archive contains Lean sources and verification records, with no manuscript PDFs or LaTeX sources.
 
 Copyright © 2026 Hongru Zhao. Licensed under GPL-3.0-only.
 

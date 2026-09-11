@@ -5,13 +5,19 @@
       "file": "CHANGELOG.md",
       "display_math": 0,
       "inline_math": 0,
-      "sha256": "bbc7eab92260a97e9b232b99bb558ab439c85844292e9102b1295cfc2207dd15"
+      "sha256": "6dd92f171994b63e5327f70dbfafb55bcd5109402065b32688f719d802726057"
     },
     {
       "file": "README.md",
       "display_math": 11,
       "inline_math": 51,
-      "sha256": "cbc589a84c58a6865d6b374439d64aba434380ccc47f25164f7bf1fa78aae09b"
+      "sha256": "21697d19ac621a57d9327c1397255b2d827c8aa75800d38e23341370cb07c656"
+    },
+    {
+      "file": "README_FIRST.md",
+      "display_math": 0,
+      "inline_math": 0,
+      "sha256": "b4c6a02ad6d31ca3632f28d64fb235196c7119406298d1469b349f10ee30e418"
     },
     {
       "file": "docs/A2_SOURCE_DERIVATION.md",
@@ -32,25 +38,37 @@
       "sha256": "f2e4b5e3fa52f6ba70d04a331a9a4b6217e8848b1b066c0183f838ca98d020d2"
     },
     {
+      "file": "docs/FORMALIZATION_COMPLETION.md",
+      "display_math": 4,
+      "inline_math": 13,
+      "sha256": "5ba3e2a49d355fbd23521c9cd9bd3da95ed102cb8b5113a63006f92e22e5045e"
+    },
+    {
+      "file": "docs/FORMALIZATION_COMPLETION_PLAN.md",
+      "display_math": 0,
+      "inline_math": 0,
+      "sha256": "b53271805d11915918ceb089223a9105a2ceb4c3e8f2315c76d29cc6e2ace378"
+    },
+    {
       "file": "docs/PAPER_COMPARISON.md",
       "display_math": 0,
-      "inline_math": 40,
-      "sha256": "5ca16c3409ed85ce2e4bda5420231dddf0436bc30f07f853b05734f326946441"
+      "inline_math": 29,
+      "sha256": "609bffb61d9829975eeb604d207393ade66e679146ae31b9c5746612c87046df"
     },
     {
       "file": "docs/PROVENANCE.md",
       "display_math": 0,
       "inline_math": 0,
-      "sha256": "0d6d856b41e4669a2a946c845484b7f4ea15215f5dc99ae8e1cbd9eff09cf7e4"
+      "sha256": "a407474698038f82700b2ed5c340bfb178e1a8c4a701cae867fa685d4739da75"
     },
     {
       "file": "verification/STATUS.md",
       "display_math": 0,
       "inline_math": 0,
-      "sha256": "2257a08838c85310a0e449196fce5c22a06080579e9c513e142131f5dcbc4e2d"
+      "sha256": "cdf6407f63fc560189c38cf8b595e628a6bf9fb37fd2dddf7d1e912bb65848ad"
     }
   ],
   "errors": [],
-  "math_expression_count": 555,
+  "math_expression_count": 561,
   "scope": "Source delimiters, supported equation-label convention, TeX grouping, and local links. A populated math element is not evidence of correct layout; inspect the rendered GitHub page separately."
 }

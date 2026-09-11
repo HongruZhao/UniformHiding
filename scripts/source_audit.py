@@ -107,6 +107,25 @@ def audit(root):
     unreachable = sorted(set(sources) - seen)
     actual_axioms = sorted((item['file'], item['name']) for item in axioms)
     expected_axioms = sorted((item['file'], item['name']) for item in cfg['axioms'])
+    completion = json.loads((root / 'docs/COMPLETION_SOURCES.json').read_text())
+    completion_errors = []
+    prior_hashes = dict(hashes)
+    prior_texts = {}
+    for rel, item in completion['files'].items():
+        if hashes.get(rel) != item['current_sha256']:
+            completion_errors.append(rel + ': completion source hash mismatch')
+        if item['kind'] == 'new':
+            prior_hashes.pop(rel, None)
+        elif item['kind'] == 'modified':
+            digest = hashlib.sha256(item['baseline_text'].encode()).hexdigest()
+            if digest != item['baseline_sha256']:
+                completion_errors.append(rel + ': completion baseline hash mismatch')
+            prior_hashes[rel] = digest
+            prior_texts[rel] = item['baseline_text']
+        else:
+            completion_errors.append(rel + ': invalid completion change kind')
+    if len(prior_hashes) != completion['baseline_module_count'] or len(hashes) != completion['current_module_count']:
+        completion_errors.append('Completion module inventory mismatch')
     inherited = json.loads((root / 'docs/ANTICONCENTRATION_SNAPSHOT.json').read_text())['files']
     renaming = json.loads((root / 'docs/MODULE_RENAMING.json').read_text())['files']
     extension = json.loads((root / 'docs/COROLLARY22_RELEASE.json').read_text())['files']
@@ -115,7 +134,7 @@ def audit(root):
     if set(extension) != expected_extensions:
         extension_errors.append('Extension must cover exactly the three declared public Lean files')
     for rel, item in extension.items():
-        if hashes.get(rel) != item['current_sha256']:
+        if prior_hashes.get(rel) != item['current_sha256']:
             extension_errors.append(rel + ': new source hash mismatch')
         digest = hashlib.sha256(item['baseline_text'].encode()).hexdigest()
         if digest != item['baseline_sha256']:
@@ -134,10 +153,10 @@ def audit(root):
                 continue
             restored = item['baseline_text']
         else:
-            if hashes.get(current_path) != entry['current_sha256']:
+            if prior_hashes.get(current_path) != entry['current_sha256']:
                 restoration_errors.append(current_path + ': unchanged source hash mismatch')
                 continue
-            restored = (root / current_path).read_text()
+            restored = prior_texts.get(current_path, (root / current_path).read_text())
         for edit in reversed(entry['edits']):
             start = edit['start']
             if restored[start:start + len(edit['new'])] != edit['new']:
@@ -149,10 +168,10 @@ def audit(root):
         if digest != entry['original_sha256']:
             restoration_errors.append(current_path + ': restored source hash mismatch')
     mapped_paths = [entry['current_path'] for entry in renaming.values()]
-    renaming_coverage_matches = len(mapped_paths) == len(set(mapped_paths)) and set(mapped_paths) == set(hashes)
+    renaming_coverage_matches = len(mapped_paths) == len(set(mapped_paths)) and set(mapped_paths) == set(prior_hashes)
     changed_inherited = [rel for rel, digest in inherited.items() if restored_hashes.get(rel) != digest]
     journal_named_paths = [rel for rel in hashes if re.search(r'prl|prx|physicalreview', rel, re.I)]
-    passed = not (missing or forbidden or cycles or unreachable or changed_inherited or restoration_errors or extension_errors or journal_named_paths) and actual_axioms == expected_axioms and renaming_coverage_matches
+    passed = not (missing or forbidden or cycles or unreachable or changed_inherited or restoration_errors or extension_errors or completion_errors or journal_named_paths) and actual_axioms == expected_axioms and renaming_coverage_matches
     result = {'audit_type': 'source-only', 'lean_executed_by_this_script': False,
               'passed': passed, 'module_count': len(paths),
               'inherited_module_count': len(inherited), 'missing_imports': missing,
@@ -163,7 +182,10 @@ def audit(root):
               'inherited_comparison': 'Exact original bytes restored using the recorded naming-only edits, then compared with the pinned upstream hashes.',
               'semantic_extension_files': sorted(extension),
               'semantic_extension_errors': extension_errors,
-              'historical_restoration_scope': 'For three explicitly changed public files, restore the verified v1.1.0 baseline text. For all other files, restore the actual current text. Current proof correctness is checked separately by Lean.',
+              'completion_files': sorted(completion['files']),
+              'completion_errors': completion_errors,
+              'completion_baseline_commit': completion['baseline_commit'],
+              'historical_restoration_scope': 'Validate every completion source hash and restore its recorded version 1.2.0 baseline. Then restore the three version 1.2.0 public-file baselines and reverse historical naming edits. New completion modules are checked separately, never treated as naming changes. Current proof correctness is checked by Lean.',
               'renaming_restoration_errors': restoration_errors,
               'renaming_coverage_matches': renaming_coverage_matches,
               'journal_named_lean_paths': journal_named_paths,

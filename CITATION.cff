@@ -6,7 +6,7 @@ authors:
   - family-names: Zhao
     given-names: Hongru
     orcid: 'https://orcid.org/0000-0002-1753-4709'
-version: 1.2.0
+version: 1.3.0
 doi: '10.5281/zenodo.22670050'
 repository-code: 'https://github.com/HongruZhao/UniformHiding'
 url: 'https://github.com/HongruZhao/UniformHiding'

@@ -1,7 +1,10 @@
 import UniformHiding
+import GBSHiding.CompletionAudit
 import Lean.Util.CollectAxioms
 
 open Lean Elab Command
+
+run_cmd verifyHidingCompletionAxioms
 
 /-! The build fails on any unexpected or missing proof dependency. -/
 run_cmd do

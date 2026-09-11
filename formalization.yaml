@@ -11,7 +11,7 @@ sources:
   authors:
   - Hongru Zhao
   type: article
-  location: Theorem 2.1, Corollary 2.2, and Route 1 of Theorem 3.2
+  location: Theorem 2.1, Corollary 2.2, Proposition 4.1, Route 1 results, and supporting applications
   relationship: formalizes
   note: Revised local manuscript; literature assumptions are documented in docs/AXIOMS.md.
 classification:
@@ -19,8 +19,10 @@ classification:
   - quant-ph
   - math.PR
 status:
-  scope: All-input Theorem 2.1, its immediate quantitative Corollary 2.2 and S62 specialization, and the assembled Route 1 relative bound, conditional
-    on four literature axioms. Route 2 hiding is not formalized.
+  scope: All-input hiding and Route 1, photon-sector normalization and asymptotics,
+    average-TV sampling, and all-input order/count applications. Hiding deductions
+    retain A1-A4; photon-sector calculations use the standard foundations in the
+    adopted optical model. Route 2 is excluded from the completion.
   main_results:
   - declaration: UniformHiding.theorem2_1
     file: UniformHiding.lean
@@ -111,6 +113,42 @@ alignment:
     lean: UniformHiding.theorem3_2_route1_optimized
     module: UniformHiding
     status: conditional on four literature axioms
+  - source: Corollary 3.3, optimized Route 1 conclusion
+    lean: GBSHiding.corollary3_3_route1_public
+    module: GBSHiding.OptimizedRouteOneAsymptotics
+    status: proved with standard foundations
+  - source: Proposition 4.1, photon-sector identification
+    lean: GBSHiding.proposition4_1_output_sector_probability
+    module: GBSHiding.SqueezedPhotonNumber
+    status: proved with standard foundations in the adopted optical model
+  - source: Proposition 4.1, reference scale
+    lean: GBSHiding.proposition4_1_reference_scale
+    module: GBSHiding.PhotonSector
+    status: proved with standard foundations; no hTotalPhoton premise
+  - source: Proposition 4.1, maximizing squeezing
+    lean: GBSHiding.proposition4_1_maximizer
+    module: GBSHiding.OptimalPhotonSector
+    status: proved with standard foundations
+  - source: Proposition 4.1, uniform relative error
+    lean: GBSHiding.proposition4_1_uniform_relative_error
+    module: GBSHiding.SectorScaleAsymptotics
+    status: proved with standard foundations
+  - source: Proposition 4.1, final Theta conclusion
+    lean: GBSHiding.proposition4_1_reference_scale_isTheta
+    module: GBSHiding.SectorScaleAsymptotics
+    status: proved with standard foundations
+  - source: Corollary 4.2, average-TV Route 1 bound
+    lean: GBSHiding.collisionFreeSamplerRelativeOptimized_averageTV
+    module: GBSHiding.AverageTVSampler
+    status: proved relative to A1-A4 and the adopted optical probability formula
+  - source: Proposition G.2, maximum-CDF transfer
+    lean: GBSHiding.orderedDisjointMaxScoreCdfTransferAllInputs
+    module: GBSHiding.AllInputApplications
+    status: proved relative to A1-A4 for all input counts
+  - source: Proposition G.2, binomial-count transfer
+    lean: GBSHiding.orderedDisjointHeavyCountBinomialTransferAllInputs
+    module: GBSHiding.AllInputApplications
+    status: proved relative to A1-A4 for all input counts
 acknowledgements: Lean, mathlib and Lake contributors; the author proof library; PrimeGaps186
   for statement/proof/assumption organization; ComplexGramHafnians for the source-pinned
   anticoncentration dependency.

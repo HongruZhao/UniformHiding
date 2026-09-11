@@ -1,4 +1,18 @@
-# Verification status
+# Version 1.3.0 preparation — 10 September 2026
+
+The release preparation preserves all 893 Lean source files from the successful completion below. Source hashes and saved log hashes were rechecked; Lean was not rerun for version, citation and packaging edits. [The release record](release_1_3_0_identity.json) links this preparation to the exact 47-declaration audit. The current upload preparation preserves those verified Lean source bytes; the Zenodo version 1.3.0 identifier is 10.5281/zenodo.22670050.
+
+## Completion execution — 9 September 2026
+
+**Passed.** The public build completed successfully with 9,597 jobs. Separate executions of `HidingVerification.lean` and `GBSHiding/CompletionAudit.lean` returned exit code zero. The 47 selected declarations matched their exact expected axiom sets: 14 use A1–A4 plus three foundations, and 33 use only the foundations. No project axiom was added.
+
+The completion covers Proposition 4.1, Route 1 of Corollaries 3.3 and 4.2, and the all-input applications in Proposition G.2. The full signed-measure part of Lemma 6.2 was already proved; the previous missing-coverage claim was corrected. Route 2 remains excluded. The optical model and its formal representation are explained in [the completion ledger](../docs/FORMALIZATION_COMPLETION.md).
+
+- [Public build](completion_build.log), [separate combined axiom audit](completion_axiom_audit.log), [new endpoint types](completion_types.log), and [source-linked receipt](completion_receipt.json).
+- [Current source audit](source_audit.json): all 893 Lean modules are reachable, the import graph has no cycle or missing local module, and no proof escape tokens occur.
+- [Completion source manifest](../docs/COMPLETION_SOURCES.json): 12 new modules, two changed import/audit entrypoints and 879 unchanged baseline files. All 225 companion sources and the four literature axioms are preserved.
+
+These are fresh executions using the pinned dependency and unaffected-module caches, not an uncached rebuild or independent checker run. The completion extends the preceding version 1.2.0 source snapshot. Its Zenodo draft is superseded by version 1.3.0. Entries below describe their historical snapshots.
 
 ## Version 1.2.0: all-input Theorem 2.1 — 9 September 2026
 

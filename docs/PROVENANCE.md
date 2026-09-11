@@ -14,6 +14,14 @@ The earlier A2 source-attribution revision of 2026-09-07 replaced the former Hel
 
 The subsequent Appendix A alignment uses the same four-part structure for A1–A4 in [AXIOMS.md](AXIOMS.md): mathematical translation of the Lean axiom, source statement, justification of differences, and notation correspondence. [A2_SOURCE_DERIVATION.md](A2_SOURCE_DERIVATION.md) supplies the full A2 justification, including the one-sheeted ordered Takagi map, volume and chamber factors, and the concrete globally measurable selector. A3 spells out its coordinate map on singular samples; A4 states its supplied-law premise and the exact inverse-Gram/zonal coefficient conversion. That earlier documentation-only stage preserved all Lean files. The later naming revision changes module and identifier names and has its own execution evidence in [the verification status](../verification/STATUS.md). Historical build and axiom receipts retain their original source-snapshot meaning.
 
+## Version 1.3.0 completion
+
+[COMPLETION_SOURCES.json](COMPLETION_SOURCES.json) records the new modules and the exact version 1.2.0 baseline text of the two changed entrypoints. The baseline is the local clone at the recorded commit, checked against the independent pre-work hash inventory. All 879 other baseline modules, including all 225 companion sources, remain unchanged.
+
+The portable audit first checks every completion hash and restores those two preceding entrypoints. It then applies the existing version 1.2.0 and historical naming checks. New proof modules are explicitly distinguished from renaming changes. Thus the original companion-byte comparison is preserved, rather than weakened to accommodate new proofs. The fresh public build and 47-endpoint axiom audit are separate proof-execution evidence.
+
+Version 1.3.0 is prepared from these same 893 Lean sources. The GitHub repository and the Zenodo archive share the same code directory. [The release record](../verification/release_1_3_0_identity.json) records the source identity and reused execution evidence. The Zenodo identifier for version 1.3.0 is 10.5281/zenodo.22670050; the existing 1.2.0 draft is superseded rather than published separately. The two equation supplements are specific to Zenodo. The archived version descriptions below retain their original source-snapshot meaning.
+
 ## Theorem 2.1 and Corollary 2.2 in version 1.2.0
 
 The version 1.2.0 sources shared by GitHub and Zenodo are based on the [UniformHiding snapshot used for version 1.1.0](https://github.com/HongruZhao/UniformHiding/tree/db6d9e254a127a2ad9d1bab9126a0d81e1f8d853). It changes exactly three Lean files: `HidingStatement.lean`, `UniformHiding.lean`, and `HidingVerification.lean`. These are mathematical additions, not naming substitutions. Theorem 2.1 now includes all positive input counts, and Corollary 2.2 is its direct quantitative specialization. The GitHub clone and the Zenodo package use the same revised statements and proofs.
