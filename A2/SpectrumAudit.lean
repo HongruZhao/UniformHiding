@@ -1,0 +1,12 @@
+import A2.SpectrumMeasurable
+
+#print axioms A2Research.realRootPolynomial_injective_on_antitone
+#print axioms A2Research.isClosed_orderedSpectrumGraph
+#print axioms A2Research.injective_orderedSpectrumProjection
+#print axioms A2Research.measurableEmbedding_orderedSpectrumProjection
+#print axioms A2Research.measurable_hermitian_eigenvalues₀
+#print axioms A2Research.measurable_hermitian_eigenvalues
+#print axioms A2Research.measurable_eigenvalues₀
+#print axioms A2Research.measurable_eigenvalues
+#print axioms LogdetLean.GramHafnian.UltimateHiding.DenseScore.continuous_coeHermitianGap
+#print axioms LogdetLean.GramHafnian.UltimateHiding.DenseScore.measurable_canonicalGapSquaredSpectrum

@@ -1,0 +1,18 @@
+import A2.TakagiRadialRegularity
+
+open LogdetLean.GramHafnian.UltimateHiding.DenseScore
+
+#print axioms continuous_vandermondeAbs
+#print axioms vandermondeAbs_nonneg
+#print axioms vandermondeAbs_ne_zero_iff_injective
+#print axioms vandermondeAbs_pos_iff_injective
+#print axioms isOpen_regularTakagiSquaredRadii
+#print axioms a2_measurable_takagiFlatEigenvalueDensity
+#print axioms ae_mem_regularTakagiSquaredRadii_radialMeasure
+#print axioms regular_radial_withDensity_eq_flat
+#print axioms measurableSet_regularTakagiSquaredRadii
+#print axioms exists_vanishing_strictPair_of_not_injective
+#print axioms vandermondeAbs_eq_zero_of_not_injective
+#print axioms takagiFlatEigenvalueDensity_eq_zero_of_not_injective
+#print axioms takagi_radial_withDensity_eq_regularRestriction
+#print axioms takagiFlatEigenvalueRadialMeasure_eq_regularRestriction
