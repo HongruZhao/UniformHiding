@@ -1,10 +1,12 @@
-# A2: mathematical justification of the imported Lean axiom
+# A2: proved integration contract and source correspondence
 
-This is the expanded A2 comparison corresponding to manuscript Appendix A.2 and [the four-axiom audit](AXIOMS.md#a2). It explains why the cited results justify every clause accepted by Lean. The source-to-axiom justification is mathematical; it is not a separately formalized Lean proof.
+Version 2.0 constructs A2's exact integration law in [A2/WeylIntegrationProof.lean](../A2/WeylIntegrationProof.lean). The historical `A2Prime` consumer identifier is retained as a proved compatibility interface. See [the current release ledger](RELEASE_2_0.md) and [the inherited Zenodo verification receipt](../verification/FINAL_VERIFICATION.json) for the archived execution; [GITHUB_V2_VERIFICATION.json](../verification/GITHUB_V2_VERIFICATION.json) records the separate checkout recheck.
+
+The expanded mathematical comparison below retains manuscript Appendix A.2's formulas and [A2's source dictionary](AXIOMS.md#a2). It explains the literature correspondence; it is separate from the executable proof provider and does not claim a Lean endpoint for every explanatory sentence.
 
 <a id="a2-statement"></a>
 
-## 1. Exact mathematical translation of the Lean axiom
+## 1. Exact mathematical translation of the Lean contract
 
 For an integer $`N\ge1`$, use the Borel structures on Euclidean spaces and let
 
@@ -68,7 +70,7 @@ Here $`\sigma_g`$ is the action, $`p(x)\,\mathrm{d} x`$ is the invariant measure
 
 ## 3. Difference from the source and its justification
 
-The imported assertion includes the specific spectrum map's measurability on all square matrices, one constant before all tests, and arbitrary measurable targets.  The source supplies the geometric integration formula. The following deductions connect that formula to every imported clause. They are mathematical explanations of the bundled A2 input, not separate Lean proofs of those clauses.
+The formal contract includes the specific spectrum map's measurability on all square matrices, one constant before all tests, and arbitrary measurable targets.  The source supplies the geometric integration formula. The following deductions connect that formula to every clause of the contract. They are the retained mathematical source correspondence; the current A2 provider separately constructs the complete law.
 
 *The selected spectrum is globally measurable.* For Hermitian matrices $`A,B`$, the min–max formula gives, for consistently ordered eigenvalues,
 
@@ -161,6 +163,6 @@ The denominator is positive on an open chamber and finite by polynomial growth a
 
 FitzGerald and Warren's matrix $`X`$ is our $`C\in\mathcal S_N`$, their size $`n`$ is $`N`$, and their $`\lambda_i`$ are the eigenvalues of $`C^*C`$. Our vector $`\lambda(C)=1-\mathrm{eig}(I-C^*C)`$ contains this same multiset in a fixed order.  Their angular variables $`\Omega`$ become $`[U]\in\mathrm U(N)/H_N`$ with invariant probability measure in the calculation above.  Their proportionality constant becomes the single $`c_N=a_N/N!`$ when the ordered squared chamber is replaced by the full positive orthant.  In the An–Wang–Yan specialization, $`G=\mathrm U(N)`$, their $`K`$ is our $`H_N`$, $`X=\mathcal S_N^{\mathrm{reg}}`$, and $`Y`$ is the positive ordered diagonal section.  Their action is $`\sigma_g(C)=gCg^{\mathsf{T}}`$.  Their $`K`$ is a subgroup, whereas our $`K`$ elsewhere is an ambient dimension; their $`d`$ counts covering sheets, here one.
 
-In the formalization, A2 is applied with A1 to permutation invariant tests of the determinant weighted COE law.  Its constant $`c_N`$ cancels under probability normalization.  The odds and trace power maps are subsequent constructions, not clauses imported in A2.  Permutation invariance is essential to the axiom: an unrestricted equality between one canonically ordered eigenvalue vector and a measure on the full unordered orthant would be false.
+In the formalization, A2 is applied with A1 to permutation invariant tests of the determinant weighted COE law.  Its constant $`c_N`$ cancels under probability normalization.  The odds and trace power maps are subsequent constructions, not clauses of the A2 contract.  Permutation invariance is essential to the contract: an unrestricted equality between one canonically ordered eigenvalue vector and a measure on the full unordered orthant would be false.
 
-The unchanged declaration and structure are linked in [the declaration list](AXIOMS.md#declaration-locations). The remaining three literature axioms and the separate Route 2 comparison are documented in [AXIOMS.md](AXIOMS.md).
+The proved compatibility interface and law structure are linked in [the declaration list](AXIOMS.md#declaration-locations); the new construction is linked in [the provider map](RELEASE_2_0.md#proved-provider-contracts). The other three proved contracts and the separate conditional Route 2 comparison are documented in [AXIOMS.md](AXIOMS.md).

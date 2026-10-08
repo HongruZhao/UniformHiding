@@ -2,11 +2,13 @@
 
 The theorem numbers refer to the revised manuscript, *Uniform Hiding and Two Routes to Relative Accuracy in Gaussian Boson Sampling*. `Theorem21` means Theorem **2.1**, not Theorem 21. The names beginning `theorem3_2_route1` mean the Route 1 part of Theorem **3.2**.
 
-This correspondence uses the 48-page arXiv preparation from 9 September 2026. The [completion ledger](FORMALIZATION_COMPLETION.md) supersedes the earlier partial-coverage entries for Proposition 4.1, Corollaries 3.3 and 4.2, and Proposition G.2. It also corrects the earlier assessment of Lemma 6.2. Route 2 is excluded from the completion.
+Version 2.0 retains this correspondence for the 48-page arXiv preparation from 9 September 2026. The exact mathematical endpoint statements are preserved. A1–A4 are now proved through [the integrated providers](RELEASE_2_0.md#proved-provider-contracts); the published Zenodo execution is preserved in [FINAL_VERIFICATION.json](../verification/FINAL_VERIFICATION.json), and the GitHub checkout recheck is tracked separately in [GITHUB_V2_VERIFICATION.json](../verification/GITHUB_V2_VERIFICATION.json). The Zenodo equation supplements retain their own later manuscript-snapshot scope.
+
+This correspondence originally used the 48-page arXiv preparation from 9 September 2026. The [completion ledger](FORMALIZATION_COMPLETION.md) supersedes the earlier partial-coverage entries for Proposition 4.1, Corollaries 3.3 and 4.2, and Proposition G.2. It also corrects the earlier assessment of Lemma 6.2. Route 2 is excluded from the completion.
 
 | Manuscript claim | Public declaration / source | Verification boundary |
 | --- | --- | --- |
-| Theorem 2.1, normalized matrix-law TV bound for all $`1\le N,K\le M`$ | `UniformHiding.theorem2_1` | Includes $`K<N`$; four literature axioms A1–A4 plus the three foundations |
+| Theorem 2.1, normalized matrix-law TV bound for all $`1\le N,K\le M`$ | `UniformHiding.theorem2_1` | Includes $`K<N`$; the four proved A1–A4 providers; audit requires exactly the three foundations |
 | Theorem 2.1, equivalent unnormalized product bound | `UniformHiding.theorem2_1_unscaled` | Same full range and capped constant |
 | Corollary 2.2, direct quantitative consequence | `UniformHiding.corollary2_2` | $`n\ge1`$, $`2n\le M`$, $`1\le K\le M`$, $`\delta>0`$, $`M\ge n^2/\delta`$; bound $`4C_\ast\delta`$ |
 | Corollary 2.2, explicit quantitative (S62) specialization | `UniformHiding.corollary2_2_s62` | $`N=2n`$, $`\delta>0`$, $`m\ge n^2/\delta`$; source-scale product laws and bound $`4C_\ast\delta`$ |
@@ -29,22 +31,22 @@ The marginal hypothesis `Measure.map amplitude μ = scaledHaarGramHafnianLaw H M
 
 The event argument uses $`\Delta p=\widetilde p-p_S`$, $`\eta=\tau/p_1`$, and $`\eta/\rho=\tau/(\rho p_1)`$. It preserves $`\delta_1=\min(1,615172(2n)^2/M)`$ instead of silently replacing it by an uncapped error. The optimized endpoint is the infimum of the fully assembled physical-threshold bound, not merely an isolated scalar optimization certificate.
 
-## Appendix A: justification of the four Lean axioms
+## Appendix A: correspondence for the four now-proved contracts
 
-The revised Appendix A documents what the formalization assumes and why the cited sources justify those assumptions. It is not a list of missing steps in the mathematical proof. It has four axiom subsections and no A.5 subsection.
+The version 1.3.0 Appendix A documented the four literature axioms and their source correspondence. This version 2.0 now supplies proofs of their exact contracts. The original appendix numbering and source comparisons are retained.
 
-[AXIOMS.md](AXIOMS.md) follows the same four-part structure for every input: **(1) exact mathematical translation of the Lean axiom, (2) source statement, (3) differences and their justification, and (4) notation correspondence**. The translation is checked against the declaration and the definitions it uses, rather than relying on a code comment calling the result verbatim. Equation labels retain the paper's numbering.
+[AXIOMS.md](AXIOMS.md) follows the same four-part structure for every input: **(1) exact mathematical translation of the Lean contract, (2) source statement, (3) differences and their justification, and (4) notation correspondence**. The translation is checked against the declaration and the definitions it uses, rather than relying on a code comment calling the result verbatim. Equation labels retain the paper's numbering.
 
 | Input | Source-to-Lean correspondence |
 | --- | --- |
-| [A1](AXIOMS.md#a1) | The source's transposed COE product has the same Haar law. Independent symmetric coordinates and normalization give the imported matrix-law identity, including the boundary dimension case. |
+| [A1](AXIOMS.md#a1) | The source's transposed COE product has the same Haar law. Independent symmetric coordinates and normalization give the matrix-law contract, including the boundary dimension case. |
 | [A2](AXIOMS.md#a2) | The flat Takagi Jacobian gives one positive finite constant for every measurable symmetric test. The globally measurable selector and arbitrary target spaces are justified explicitly. |
-| [A3](AXIOMS.md#a3) | The unordered squared GSVD law is represented by a concrete Hermitian matrix; the total inverse is zero on singular samples. Global measurability is part of the imported assertion. |
+| [A3](AXIOMS.md#a3) | The unordered squared GSVD law is represented by a concrete Hermitian matrix; the total inverse is zero on singular samples. Global measurability is part of the proved contract. |
 | [A4](AXIOMS.md#a4) | A Wishart probability law satisfying the transform identity is supplied as a hypothesis. The paired moments use an inverse matching-Gram coefficient, identified with the cited zonal formula with its exact normalization. |
 
 [The expanded A2 justification](A2_SOURCE_DERIVATION.md) retains the full argument from FitzGerald–Warren's unnumbered Jacobian after Eq. (70) and An–Wang–Yan's Theorem 4.2 and following remark. It checks the positive ordered chamber, diagonal sign stabilizer, one-sheeted covering, differential, exceptional null set, coordinate-volume factor, chamber factor, and arbitrary measurable tests. In the notation dictionary, the integration theorem's subgroup $`K`$ is explicitly distinguished from the paper's ambient dimension.
 
-These source-to-axiom arguments explain why the imported mathematical statements are justified. They are not presented as separate proofs checked in Lean. The naming revision preserves the mathematical contracts of the four axioms and the public theorem endpoints under the recorded identifier substitutions.
+These source-comparison arguments retain the original mathematical explanation. The new [provider implementations](RELEASE_2_0.md#proved-provider-contracts) prove the exact contracts in Lean. The historical naming substitutions and current provider integration preserve the public theorem statements; the explanatory prose itself is not a list of separately audited declarations.
 
 <a id="proposition-41-partial-coverage"></a>
 
@@ -83,6 +85,6 @@ The [completion ledger](FORMALIZATION_COMPLETION.md#proposition-41) explains the
 
 ## Remaining boundaries
 
-The non-Route-2 gaps listed above are closed relative to the existing literature and optical-model boundary. Route 2's cited matrix comparison remains unformalized; its existing conditional deduction does not prove that hypothesis. The two-route minima and Route 2 envelope claim are excluded from this completion.
+The non-Route-2 deductions listed above are retained, with the former literature inputs now supplied by proofs. The adopted optical-model boundary is unchanged. Route 2's cited matrix comparison remains unformalized; its existing conditional deduction does not prove that hypothesis. The two-route minima and Route 2 envelope claim are excluded from this completion.
 
-A1–A4 are still literature axioms. The companion main Gaussian results require only the standard foundations. Appendix A's source-to-axiom justifications, the optical model's derivation from quantum dynamics, literature comparisons, illustrations and prose are not claimed as newly checked Lean proofs. The older equation crosswalk retains its own manuscript-snapshot scope.
+The exact A1–A4 contracts are proved in the integrated source tree. The hiding, Route 1 and companion public audits require only the three standard foundations. The optical model's derivation from quantum dynamics, literature comparisons, illustrations and prose are not claimed as newly checked Lean endpoints. The older equation crosswalk retains its own manuscript-snapshot scope.
