@@ -3,21 +3,10 @@ import Lean.Util.CollectAxioms
 
 open Lean Elab Command
 
-/-! Check exact transitive dependency sets, including the two signed-measure
-endpoints that were already present before this completion. -/
+/-! Version 1.4.0: check exact foundations-only transitive dependency sets,
+including the two retained signed-measure endpoints. -/
 def verifyHidingCompletionAxioms : CommandElabM Unit := do
   let foundations : Array Name := #[``propext, ``Classical.choice, ``Quot.sound]
-  let literature : Array Name := #[
-    ``LogdetLean.GramHafnian.UltimateHiding.DenseScore.FriedmanMelloA1.matrixLaw_external,
-    ``LogdetLean.GramHafnian.UltimateHiding.DenseScore.A2Prime_complexSymmetricTakagiWeyl_symmetricIntegration,
-    ``LogdetLean.GramHafnian.UltimateHiding.DenseScore.A3_edelmanSutton_proposition_1_2,
-    ``MatsumotoPaper.A4_matsumoto_theorem_3]
-  let hidingEndpoints : Array Name := #[
-    ``GBSHiding.orderedDisjointPatternProductHidingAllInputs,
-    ``GBSHiding.orderedDisjointMaxScoreCdfTransferAllInputs,
-    ``GBSHiding.orderedDisjointHeavyCountBinomialTransferAllInputs,
-    ``GBSHiding.collisionFreeSamplerRelative_averageTV,
-    ``GBSHiding.collisionFreeSamplerRelativeOptimized_averageTV]
   for decl in #[
     ``GBSHiding.orderedDisjointPatternProductHidingAllInputs,
     ``GBSHiding.orderedDisjointMaxScoreCdfTransferAllInputs,
@@ -54,7 +43,7 @@ def verifyHidingCompletionAxioms : CommandElabM Unit := do
     ``GBSHiding.proposition4_1_reference_scale_isTheta,
     ``LogdetLean.GramHafnian.ThreePaper.Verification.signedKernelContinuousLinearMap_norm_le_one,
     ``LogdetLean.GramHafnian.ThreePaper.Verification.ConcreteCongruenceKernelAdapter.congruenceKernel_eq_hide_commute_derivative] do
-    let expected := if hidingEndpoints.contains decl then foundations ++ literature else foundations
+    let expected := foundations
     let actual ← Lean.collectAxioms decl
     let unexpected := actual.filter fun ax => !expected.contains ax
     let missing := expected.filter fun ax => !actual.contains ax
