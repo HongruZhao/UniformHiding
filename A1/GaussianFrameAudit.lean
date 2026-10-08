@@ -1,0 +1,12 @@
+import A1.HaarBridgeCorner
+
+#print axioms A1Research.gaussianPolarFrame_gram
+#print axioms A1Research.gaussianPolarFrame_unitary_mul
+#print axioms A1Research.exists_unitary_firstColumns
+#print axioms A1Research.measurePreserving_unitaryTranspose
+#print axioms A1Research.stiefel_probability_eq_haar_firstColumns
+#print axioms A1Research.measurePreserving_unitaryGaussianMatrix
+#print axioms A1Research.gaussianPolarFrameLaw_orthonormal
+#print axioms A1Research.gaussianPolarFrameLaw_eq_haar
+#print axioms A1Research.gaussianPolarFrame_overlap_eq_normalizedTransposeGram
+#print axioms A1Research.normalizedTransposeGramLaw_eq_haar_coeCorner

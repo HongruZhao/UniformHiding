@@ -1,0 +1,28 @@
+import A1.GaussianGramPairLaw
+
+#print axioms A1Research.measurable_unpackComplexCoordinates
+#print axioms A1Research.unpack_packComplexCoordinates
+#print axioms A1Research.map_unpackComplexCoordinates_circularGaussian
+#print axioms A1Research.measurable_doubledRealRow
+#print axioms A1Research.map_doubledRealRow_circularGaussian
+#print axioms A1Research.measurable_doubledRealGaussianSumMatrix
+#print axioms A1Research.measurable_doubledRealGaussianMatrix
+#print axioms A1Research.map_doubledRealGaussianSumMatrix
+#print axioms A1Research.map_doubledRealGaussianMatrix
+#print axioms A1Research.measurable_realHalfGaussianGramCoordinates
+#print axioms A1Research.measurable_scaleRealGaussianRows
+#print axioms A1Research.map_scaleRealGaussianRows
+#print axioms A1Research.scaleRealGaussianRows_gram
+#print axioms A1Research.map_realHalfGaussianGramCoordinates
+#print axioms A1Research.doubledRealGramMatrix_isSymm
+#print axioms A1Research.measurable_doubledRealGramCoordinates
+#print axioms A1Research.map_doubledRealGramCoordinates
+#print axioms A1Research.map_doubledRealGramCoordinates_eq_ambientDensity
+#print axioms A1Research.ae_doubledRealGramMatrix_posDef
+#print axioms A1Research.doubledRealGramCoordinates_matrix
+#print axioms A1Research.doubledRealGramCoordinates_hermitianPart
+#print axioms A1Research.doubledRealGramCoordinates_symmetricPart
+#print axioms A1Research.doubledRealCoordinatePair_Gram
+#print axioms A1Research.gaussianGramPairCoordinates_eq_doubledMap
+#print axioms A1Research.measurable_gaussianGramPairCoordinates
+#print axioms A1Research.map_gaussianGramPairCoordinates_eq_doubledWishart
