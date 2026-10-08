@@ -1,0 +1,19 @@
+FINAL_ENDPOINT	LogdetLean.GramHafnian.UltimateHiding.DenseScore.FriedmanMelloA1.A1_friedmanMello_matrixLaw	propext,Classical.choice,Quot.sound
+FINAL_ENDPOINT	LogdetLean.GramHafnian.UltimateHiding.DenseScore.A2_takagi_weyl_integration	propext,Classical.choice,Quot.sound
+FINAL_ENDPOINT	LogdetLean.GramHafnian.UltimateHiding.DenseScore.A3_edelmanSutton_proposition_1_2	propext,Classical.choice,Quot.sound
+FINAL_ENDPOINT	MatsumotoPaper.completedMatsumotoTheorem3	propext,Classical.choice,Quot.sound
+FINAL_ENDPOINT	LogdetLean.GramHafnian.UltimateHiding.DenseScore.FriedmanMelloA1.matrixLaw_external	propext,Classical.choice,Quot.sound
+FINAL_ENDPOINT	LogdetLean.GramHafnian.UltimateHiding.DenseScore.A2Prime_complexSymmetricTakagiWeyl_symmetricIntegration	propext,Classical.choice,Quot.sound
+FINAL_ENDPOINT	MatsumotoPaper.A4_matsumoto_theorem_3	propext,Classical.choice,Quot.sound
+FINAL_ENDPOINT	GBSHiding.uniformHiding	propext,Classical.choice,Quot.sound
+FINAL_ENDPOINT	GBSHiding.normalizedHiding	propext,Classical.choice,Quot.sound
+FINAL_ENDPOINT	GBSHiding.finiteHaarSmallBall	propext,Classical.choice,Quot.sound
+FINAL_ENDPOINT	UniformHiding.theorem2_1	propext,Classical.choice,Quot.sound
+FINAL_ENDPOINT	UniformHiding.theorem2_1_unscaled	propext,Classical.choice,Quot.sound
+FINAL_ENDPOINT	UniformHiding.corollary2_2	propext,Classical.choice,Quot.sound
+FINAL_ENDPOINT	UniformHiding.corollary2_2_s62	propext,Classical.choice,Quot.sound
+FINAL_ENDPOINT	UniformHiding.theorem3_2_route1	propext,Classical.choice,Quot.sound
+FINAL_ENDPOINT	UniformHiding.theorem3_2_route1_optimized	propext,Classical.choice,Quot.sound
+FINAL_ENDPOINT	FinalHidingAudit.all_input_normalized_expanded	propext,Classical.choice,Quot.sound
+FINAL_ENDPOINT	FinalHidingAudit.all_input_product_expanded	propext,Classical.choice,Quot.sound
+FINAL_PUBLIC_TYPES_AND_AXIOMS_CHECKED

@@ -1,3 +1,11 @@
+# Current version 2.0 verification
+
+The fresh GitHub checkout recheck passed on 8 October 2026 at 23:34:55 UTC: the named public build completed 9,896 jobs, the exact 18 provider/public endpoints passed, and the imported inventory audited 19,639 theorem declarations across 1,162 modules from 1,241 active Lean sources. All three commands returned exit code zero. There are zero scientific axioms; only `propext`, `Classical.choice`, and `Quot.sound` remain. See [GITHUB_V2_VERIFICATION.json](GITHUB_V2_VERIFICATION.json) and [the version 2.0 ledger](../docs/RELEASE_2_0.md). Dependencies and unaffected compiled caches were reused; this was not a wholly uncached or independent-checker run.
+
+[FINAL_VERIFICATION.json](FINAL_VERIFICATION.json) preserves the earlier published Zenodo version 2.0 proof receipt unchanged. The dated September receipts, older `axiom_audit.log`, `source_audit.json`, release JSON records, and the material below describe earlier snapshots and their former four-scientific-axiom boundary. They are historical evidence, not the current proof boundary. Route 2 still requires its explicit matrix-comparison premise.
+
+## Historical verification records
+
 # Version 1.3.0 preparation — 10 September 2026
 
 The release preparation preserves all 893 Lean source files from the successful completion below. Source hashes and saved log hashes were rechecked; Lean was not rerun for version, citation and packaging edits. [The release record](release_1_3_0_identity.json) links this preparation to the exact 47-declaration audit. The current upload preparation preserves those verified Lean source bytes; the Zenodo version 1.3.0 identifier is 10.5281/zenodo.22670050.
