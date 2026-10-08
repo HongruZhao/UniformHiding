@@ -1,0 +1,21 @@
+import A1.DoubledWishartFiberIntegration
+
+#print axioms A1Research.doubledRealComplexPairMatrixLinearEquiv
+#print axioms A1Research.doubledRealCoordinatePairLinearEquiv
+#print axioms A1Research.real_posDef_iff_complexMap
+#print axioms A1Research.doubledAugmentation_isUnit
+#print axioms A1Research.augmentedComplexPair_doubledParts_det
+#print axioms A1Research.normalizedAugmentedPair_posDef_iff
+#print axioms A1Research.augmentedComplexPair_sqrt_congruence
+#print axioms A1Research.augmentedComplexPair_sqrt_det
+#print axioms A1Research.complexPairRealMatrix_posDef_iff_normalized
+#print axioms A1Research.complexPairRealMatrix_scaled_posDef_iff
+#print axioms A1Research.complexPairRealMatrix_scaled_det
+#print axioms A1Research.complexPairRealMatrix_trace
+#print axioms A1Research.measurable_normalizedComplexPairCoordinates
+#print axioms A1Research.normalizedComplexPairCoordinates_scaled
+#print axioms A1Research.complexPairRealCoordinates_not_posDef_of_hermitianPart
+#print axioms A1Research.doubledWishartKernel_scaled
+#print axioms A1Research.doubledPairWishartDensity_mul_jacobian
+#print axioms A1Research.lintegral_doubledPairWishartDensity_stat
+#print axioms A1Research.map_normalizedComplexPair_doubledDensity

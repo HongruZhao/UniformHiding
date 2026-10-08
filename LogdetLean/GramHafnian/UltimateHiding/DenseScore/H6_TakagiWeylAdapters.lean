@@ -1,3 +1,4 @@
+import AllFourIntegration.TakagiDefinitions
 import LogdetLean.GramHafnian.UltimateHiding.DenseScore.FriedmanMelloSupportFromDensity
 import LogdetLean.GramHafnian.UltimateHiding.DenseScore.H6_RadialContractsConditional
 import LogdetLean.GramHafnian.UltimateHiding.DenseScore.H6_RadialMeasureAdapters
@@ -32,12 +33,6 @@ open LogdetLean.GramHafnian.UltimateHiding.Dense
 open H6CoordinateAlgebra H6DensityTransform H6VectorChangeOfVariables
 open H6RadialMeasureAdapters
 
-/-- Flat measure on the embedded space of complex symmetric matrices, using
-exactly the independent upper-triangular coordinate convention of H5. -/
-def complexSymmetricMatrixVolume (N : ℕ) : Measure (ConcreteMatrixState N) :=
-  Measure.map (complexSymmetricMatrixOfCoordinates (N := N))
-    (complexSymmetricCoordinateVolume N)
-
 /-- The literal Friedman--Mello weight regarded as a function on matrices. -/
 def coeCornerMatrixDeterminantWeight (N K : ℕ)
     (C : ConcreteMatrixState N) : ℝ≥0∞ := by
@@ -47,17 +42,6 @@ def coeCornerMatrixDeterminantWeight (N K : ℕ)
         Real.rpow (Matrix.det (1 - C.conjTranspose * C)).re
           (coeCornerDensityExponent N K)
     else 0
-
-/-- Flat squared-Takagi density.  Its only coordinate factor is the absolute
-Vandermonde of power one; there is no `lambda_i` power. -/
-def takagiFlatEigenvalueDensity (N : ℕ) (lambda : Fin N → ℝ) : ℝ≥0∞ :=
-  ENNReal.ofReal (vandermondeAbs N lambda)
-
-/-- Unnormalized flat squared-Takagi radial measure on the full unordered
-positive orthant. -/
-def takagiFlatEigenvalueRadialMeasure (N : ℕ) : Measure (Fin N → ℝ) :=
-  (volume.restrict (openPositiveOrthant N)).withDensity
-    (takagiFlatEigenvalueDensity N)
 
 /-- The non-indicated boundary product. -/
 def coeTakagiBoundaryFactorDensity (N K : ℕ)

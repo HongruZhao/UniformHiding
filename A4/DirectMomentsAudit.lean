@@ -1,0 +1,27 @@
+import A4.DirectMomentsFirstDegree
+import A4.DirectMomentsDeterminantRecursion
+
+#print axioms MatsumotoPaper.W_d.interior_integrableExpSet_traceObservable
+#print axioms MatsumotoPaper.W_d.integrable_traceObservable_pow
+#print axioms MatsumotoPaper.W_d.memLp_traceObservable
+#print axioms MatsumotoPaper.W_d.mgf_traceObservable_eventually
+#print axioms MatsumotoPaper.W_d.integral_traceObservable_pow
+#print axioms MatsumotoPaper.W_d.integrable_prod_traceObservable
+#print axioms MatsumotoPaper.traceObservable_entryTraceDirection
+#print axioms MatsumotoPaper.W_d.integrable_prod_entries
+#print axioms MatsumotoPaper.W_d.integrable_prod_complex_entries
+#print axioms MatsumotoPaper.W_d.integrable_T
+#print axioms MatsumotoPaper.W_d.expectation_T_eq_entryMoments
+#print axioms MatsumotoPaper.hasDerivAt_det_identity_sub_smul_mul
+#print axioms MatsumotoPaper.W_d.integral_traceObservable
+#print axioms MatsumotoPaper.W_d.integral_entry
+#print axioms MatsumotoPaper.W_d.expectation_T_first
+#print axioms MatsumotoPaper.T_first_eq_identity
+#print axioms MatsumotoPaper.W_d.direct_matching_moment_one
+#print axioms MatsumotoPaper.contDiff_realPolynomial_eval
+#print axioms MatsumotoPaper.eval_directionDetPolynomial
+#print axioms MatsumotoPaper.eval_directionDetPolynomial_zero
+#print axioms MatsumotoPaper.W_d.mgf_traceObservable_eq_detPolynomial_eventually
+#print axioms MatsumotoPaper.W_d.mgf_traceObservable_derivative_ode_eventually
+#print axioms MatsumotoPaper.W_d.directional_moment_polynomial_identity
+#print axioms MatsumotoPaper.W_d.directional_moment_recurrence

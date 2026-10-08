@@ -1,0 +1,13 @@
+import A3.BetaMatrixSpectralDensity
+
+#print axioms A3Research.exists_hermitian_open_flag_chart
+#print axioms A3Research.regularHermitianFlagFiber_equiv_fin
+#print axioms A3Research.hasFDerivAt_hermitianCayleyOrbitChart
+#print axioms A3Research.abs_det_hermitianCayleyOrbitChartDerivative
+#print axioms A3Research.hermitianWeylIntegration_real
+#print axioms A3Research.hermitianWeylIntegration_complex
+#print axioms A3Research.hermitianWeyl_map_spectral_withDensity
+#print axioms A3Research.hermitianFlatRadial_weighted_beta_eq_raw
+#print axioms A3Research.mem_hermitianBetaDomain_iff_spectrum_cube
+#print axioms A3Research.betaMatrixDensity_eq_spectral_weight
+#print axioms A3Research.betaMatrixRawMeasure_symmetric_test_law

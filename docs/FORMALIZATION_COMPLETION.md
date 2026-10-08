@@ -2,9 +2,11 @@
 
 The remaining non-Route-2 deductions identified for the 48-page hiding manuscript now have checked Lean proofs: Proposition 4.1's sector law, maximization and asymptotics; the average-TV form of Corollary 4.2; the optimized Route 1 conclusion of Corollary 3.3; and the full input range in Proposition G.2.
 
-The public build and two separate Lean executions passed on 9 September 2026 in America/Chicago. The exact dependency audit checks **47 declarations**: 14 use the existing four literature axioms and the three standard foundations; 33 use only the foundations. There are **no additional project axioms**. The execution reused pinned dependency caches and rebuilt changed modules and their dependents. It was not a wholly uncached build or an independent checker run.
+**Current version 2.0:** the four former literature inputs are now supplied by [integrated proof providers](RELEASE_2_0.md#proved-provider-contracts), while all retained public endpoint statements and model hypotheses are preserved. The public audits require exactly the three standard foundations. The inherited published Zenodo execution is in [FINAL_VERIFICATION.json](../verification/FINAL_VERIFICATION.json); the separate GitHub checkout result is tracked in [GITHUB_V2_VERIFICATION.json](../verification/GITHUB_V2_VERIFICATION.json).
 
-The source tree has 893 Lean modules: 12 new modules, two changed import/audit entrypoints, and 879 byte-identical baseline modules. All 225 companion sources and all four literature-axiom declarations are unchanged. The [execution receipt](../verification/completion_receipt.json) records source hashes, endpoint dependencies and log hashes. The [source manifest](COMPLETION_SOURCES.json) preserves the preceding entrypoints for comparison.
+**Historical version 1.3.0 execution evidence:** the public build and two separate Lean executions passed on 9 September 2026 in America/Chicago. That snapshot's 47-declaration audit reported 14 declarations using four literature axioms plus three foundations, and 33 using only foundations. Those results belong to the preceding snapshot. The execution reused pinned dependency caches and rebuilt changed modules and their dependents; it was not wholly uncached or an independent checker run.
+
+The historical version 1.3.0 core had 893 Lean modules: 12 added modules, two changed import/audit entrypoints, and 879 byte-identical baseline modules. All 225 companion sources and the four literature-axiom declarations were unchanged in that stage. Version 2.0 adds the providers and replaces those four assumption declarations; the old counts and hashes do not describe the merged tree. The [execution receipt](../verification/completion_receipt.json) records source hashes, endpoint dependencies and log hashes. The [source manifest](COMPLETION_SOURCES.json) preserves the preceding entrypoints for comparison.
 
 ## Proposition 4.1
 
@@ -85,16 +87,12 @@ Here `Verification` abbreviates `LogdetLean.GramHafnian.ThreePaper.Verification`
 
 Route 2 was explicitly excluded. Its existing conditional interface remains; the symmetric-Gaussian matrix comparison and full Route 2 assembly have not been added. The two-route minima and Route 2 part of the envelope-separation statement are not newly claimed as complete.
 
-A1–A4 remain the four disclosed literature axioms. Their source-to-axiom explanations in Appendix A are mathematical documentation, not newly formalized proofs. Optical model derivations, literature/novelty comparisons, figures and prose are not certified by a Lean build. The [paper correspondence](PAPER_COMPARISON.md) distinguishes these boundaries from the proved deductions.
+A1–A4's exact contracts are now supplied by the integrated proofs. Appendix A's source comparisons remain explanatory documentation, distinct from the executable proof declarations. Optical model derivations, literature/novelty comparisons, figures and prose are not certified by a Lean build. The [paper correspondence](PAPER_COMPARISON.md) distinguishes these boundaries from the proved deductions.
 
 ## Reproduce the checks
 
 ```sh
-LEAN_NUM_THREADS=4 lake build UniformHiding HidingVerification
-LEAN_NUM_THREADS=4 lake env lean HidingVerification.lean
-LEAN_NUM_THREADS=4 lake env lean GBSHiding/CompletionAudit.lean
-python3 scripts/source_audit.py
-python3 scripts/markdown_audit.py
+python3 verify_final.py
 ```
 
-Follow the root README for the pinned Lean and dependency setup. The [combined audit](../verification/completion_axiom_audit.log) checks 47 exact dependency sets; the [type log](../verification/completion_types.log) prints the main added statements. The shared core contains these completed deductions. Zenodo version 1.3.0, identified by 10.5281/zenodo.22670050, additionally includes the Appendix E and current-paper equation supplements.
+Follow the root README for the actual SSD mount check, external project-specific build/cache storage and pinned Lean/Mathlib setup. The current verifier builds the three public targets and executes the transitive theorem inventory; [FINAL_VERIFICATION.json](../verification/FINAL_VERIFICATION.json) preserves the published Zenodo result; [GITHUB_V2_VERIFICATION.json](../verification/GITHUB_V2_VERIFICATION.json) records the separate checkout recheck. Version 2.0 is archived at [10.5281/zenodo.23250190](https://doi.org/10.5281/zenodo.23250190). The [combined September audit](../verification/completion_axiom_audit.log) and [type log](../verification/completion_types.log) are historical version 1.3.0 evidence. Zenodo [10.5281/zenodo.22670050](https://doi.org/10.5281/zenodo.22670050) identifies that baseline, whose archive additionally contains the Appendix E and current-paper equation supplements.

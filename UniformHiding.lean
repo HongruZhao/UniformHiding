@@ -11,8 +11,8 @@ open LogdetLean.GramHafnian.ThreePaper.FairAbsoluteThresholdComparison
 namespace UniformHiding
 noncomputable section
 
-/-- Theorem 2.1 for all `1 ≤ N,K ≤ M`, including `K < N`, conditional on
-exactly the four cited literature axioms. -/
+/-- Theorem 2.1 for all `1 ≤ N,K ≤ M`, including `K < N`, using the
+proved A1--A4 providers and only the standard foundations. -/
 theorem theorem2_1 : Theorem21 := GBSHiding.normalizedHidingAllInputs
 
 /-- The equivalent unnormalized product bound in Theorem 2.1. -/

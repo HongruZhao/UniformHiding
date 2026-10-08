@@ -5,67 +5,73 @@
       "file": "CHANGELOG.md",
       "display_math": 0,
       "inline_math": 0,
-      "sha256": "6dd92f171994b63e5327f70dbfafb55bcd5109402065b32688f719d802726057"
+      "sha256": "4c612abd064a9174c8b7bf216147f15a86ccaabca24b1c683ee158815626856c"
     },
     {
       "file": "README.md",
       "display_math": 11,
       "inline_math": 51,
-      "sha256": "21697d19ac621a57d9327c1397255b2d827c8aa75800d38e23341370cb07c656"
+      "sha256": "6bb132ca97ca614d74c9a8434b639c1dbe6cc305e02d7d5c69d724b67bbb0f13"
     },
     {
       "file": "README_FIRST.md",
       "display_math": 0,
       "inline_math": 0,
-      "sha256": "b4c6a02ad6d31ca3632f28d64fb235196c7119406298d1469b349f10ee30e418"
+      "sha256": "035218f067a52598894e48a24b54c2c9d5201db75c9c5086f26bfab3df6b21b9"
     },
     {
       "file": "docs/A2_SOURCE_DERIVATION.md",
       "display_math": 15,
       "inline_math": 116,
-      "sha256": "7741f8ba6cce0eb47e787f46219ccb8be1fb0e6a4849a017c5e2a38f3f7a9bd1"
+      "sha256": "307465d40718b558f2fe350cfa4c5077a9cda98daa918b560a36add631a79eda"
     },
     {
       "file": "docs/AXIOMS.md",
       "display_math": 31,
       "inline_math": 223,
-      "sha256": "2374f341aeaceb9907200c1b13aac6b584d26248c68446331eb5ead0d07036a0"
+      "sha256": "ccc1bb0a25e84b2910f6a28b00456632ad87758e7fc4a365ddbc097094950c39"
     },
     {
       "file": "docs/COROLLARY_2_2.md",
       "display_math": 4,
       "inline_math": 64,
-      "sha256": "f2e4b5e3fa52f6ba70d04a331a9a4b6217e8848b1b066c0183f838ca98d020d2"
+      "sha256": "a151c3c394500084b1cf03503523eb6728c7de8c1f586c1c9eec5f5994ff841c"
     },
     {
       "file": "docs/FORMALIZATION_COMPLETION.md",
       "display_math": 4,
       "inline_math": 13,
-      "sha256": "5ba3e2a49d355fbd23521c9cd9bd3da95ed102cb8b5113a63006f92e22e5045e"
+      "sha256": "aea00802397634de41f3dd00a164e98df9cbda1d1e645f71bf3cdad63930a2ae"
     },
     {
       "file": "docs/FORMALIZATION_COMPLETION_PLAN.md",
       "display_math": 0,
       "inline_math": 0,
-      "sha256": "b53271805d11915918ceb089223a9105a2ceb4c3e8f2315c76d29cc6e2ace378"
+      "sha256": "4b917f81c9681405b5554d04d2d7104ef2d3f00c007625200ac45736cb685fbb"
     },
     {
       "file": "docs/PAPER_COMPARISON.md",
       "display_math": 0,
       "inline_math": 29,
-      "sha256": "609bffb61d9829975eeb604d207393ade66e679146ae31b9c5746612c87046df"
+      "sha256": "59348ecc9587b82e5569375683be329ca6430b9ae254907404143dc2f02e68fe"
     },
     {
       "file": "docs/PROVENANCE.md",
       "display_math": 0,
       "inline_math": 0,
-      "sha256": "a407474698038f82700b2ed5c340bfb178e1a8c4a701cae867fa685d4739da75"
+      "sha256": "875d32b73b7a9f94b52f263f5dd56d9c06c3861228c6ae8378a5c4e921c9f0e8"
+    },
+    {
+      "file": "docs/RELEASE_2_0.md",
+      "display_math": 0,
+      "inline_math": 0,
+      "sha256": "23a8b88218f30cf042956ab315294461ac637456453729a4170652c5be64aa9b"
     },
     {
       "file": "verification/STATUS.md",
       "display_math": 0,
       "inline_math": 0,
-      "sha256": "cdf6407f63fc560189c38cf8b595e628a6bf9fb37fd2dddf7d1e912bb65848ad"
+      "sha256": "b777f49a6e63d3311e88d23a548ea15fa8ae45aaf3baa5c4dd9b8a0b88b49c16"
     }
   ],
   "errors": [],

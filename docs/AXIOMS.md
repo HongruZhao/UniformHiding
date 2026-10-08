@@ -1,12 +1,14 @@
-# The four literature axioms used in the Lean formalization
+# A1–A4: proved contracts and literature correspondence
 
-This document explains **what Lean assumes and why the cited mathematical results justify those assumptions**. The same four-part structure appears in the revised manuscript's Appendix A, “The four literature axioms used in the Lean formalization.” The appendix and equation labels are the same in the one-column and two-column layouts. These results are imported rather than reproved inside Lean.
+**Current status: version 2.0.** The former A1–A4 scientific axioms are now supplied by proofs of their exact contracts. [The provider map](RELEASE_2_0.md#proved-provider-contracts) links the four implementations. The inherited published Zenodo result is in [FINAL_VERIFICATION.json](../verification/FINAL_VERIFICATION.json); the separate fresh GitHub checkout result is tracked in [GITHUB_V2_VERIFICATION.json](../verification/GITHUB_V2_VERIFICATION.json). September receipts are historical evidence.
 
-**Part 1 of each axiom is its exact mathematical translation into the paper's notation. It is neither Lean code nor a verbatim quotation from a publication.** Parts 2–4 give the source statement, the justification of differences, and the notation dictionary. Mathematical source-to-axiom arguments are distinguished from separately checked Lean deductions. There are four literature axioms; there is no A5 axiom.
+This document preserves the mathematical translations, source comparisons and notation dictionaries from the version 1.3.0 manuscript's Appendix A, then titled “The four literature axioms used in the Lean formalization.” The original equation labels are retained. The sources provide attribution and mathematical context; the new Lean providers prove the contracts used by the consumer.
+
+**Part 1 of each contract is its exact mathematical translation into the paper's notation. It is neither Lean code nor a verbatim quotation from a publication.** Parts 2–4 retain the source statement, justification of differences and notation dictionary. These explanatory arguments remain distinct from the executable proof providers. A1–A4 were the four scientific axioms in the version 1.3.0 baseline; version 2.0 proves their contracts.
 
 All finite-dimensional spaces have their Borel structures. The notation $`f_{\#}\mu`$ means the pushforward measure. A permutation invariant test satisfies $`F(x\circ\pi)=F(x)`$ for every coordinate permutation $`\pi`$. Equation labels retain the manuscript's Appendix A numbering.
 
-Theorem 2.1 and the assembled Route 1 conclusions use these four literature axioms together with `propext`, `Classical.choice`, and `Quot.sound`. [HidingVerification.lean](../HidingVerification.lean) checks the actual endpoint dependencies. The companion Gaussian anticoncentration endpoints use only the three foundations.
+Theorem 2.1 and the assembled Route 1 conclusions now use the proved providers. [HidingVerification.lean](../HidingVerification.lean) requires exactly `propext`, `Classical.choice`, and `Quot.sound` for these endpoints and the companion Gaussian anticoncentration endpoints.
 
 <a id="a1"></a>
 
@@ -14,7 +16,7 @@ Theorem 2.1 and the assembled Route 1 conclusions use these four literature axio
 
 <a id="a1-statement"></a>
 
-### 1. Exact mathematical translation of the Lean axiom
+### 1. Exact mathematical translation of the Lean contract
 
 Let $`N,K`$ be integers with $`N\ge1`$ and $`2N\le K`$, and let $`h_K`$ be Haar probability measure on $`\mathrm U(K)`$.  Set
 
@@ -35,7 +37,7 @@ w_{N,K}(C)=
 \qquad Z_{N,K}=\int_{\mathcal S_N}w_{N,K}(C)\,\,\mathrm{d} C.
 ```
 
-The imported law identity is
+The proved law contract is
 
 **Equation (A.1).**
 
@@ -44,7 +46,7 @@ The imported law identity is
 =Z_{N,K}^{-1}w_{N,K}(C)\,\,\mathrm{d} C.
 ```
 
-The right-hand side is defined by normalizing the raw measure by its own total mass.  No closed gamma or pi prefactor is part of the axiom, and no separate differentiability or moment conclusion is imported.  On the support, the determinant is positive and real, so its real power is exactly the weight used in the formalization.  The use of $`N,K`$ here is a renaming of the axiom's general block and ambient dimensions, not a restriction of its scope.
+The right-hand side is defined by normalizing the raw measure by its own total mass.  No closed gamma or pi prefactor is part of the contract, and it does not separately assert differentiability or moment conclusions.  On the support, the determinant is positive and real, so its real power is exactly the weight used in the formalization.  The use of $`N,K`$ here is a renaming of the contract's general block and ambient dimensions, not a restriction of its scope.
 
 <a id="a1-source"></a>
 
@@ -63,9 +65,9 @@ The delta factor imposes complex symmetry.  The matrix-ball support comes from t
 
 ### 3. Difference from the source and its justification
 
-There are two changes of representation.  First, the source has $`U^{\mathsf{T}}U`$, whereas the axiom has $`UU^{\mathsf{T}}`$.  Transposition preserves Haar probability: for fixed $`A\in\mathrm U(n)`$, $`AU^{\mathsf{T}}=(UA^{\mathsf{T}})^{\mathsf{T}}`$, so right invariance of the law of $`U`$ makes the law of $`U^{\mathsf{T}}`$ left invariant.  Haar uniqueness then gives $`U^{\mathsf{T}}\overset{\mathrm{d}}{=} U`$, and consequently $`U^{\mathsf{T}}U\overset{\mathrm{d}}{=} UU^{\mathsf{T}}`$.  Taking the same principal block preserves equality in law.  This is not a pointwise equality of the two products.
+There are two changes of representation.  First, the source has $`U^{\mathsf{T}}U`$, whereas the contract has $`UU^{\mathsf{T}}`$.  Transposition preserves Haar probability: for fixed $`A\in\mathrm U(n)`$, $`AU^{\mathsf{T}}=(UA^{\mathsf{T}})^{\mathsf{T}}`$, so right invariance of the law of $`U`$ makes the law of $`U^{\mathsf{T}}`$ left invariant.  Haar uniqueness then gives $`U^{\mathsf{T}}\overset{\mathrm{d}}{=} U`$, and consequently $`U^{\mathsf{T}}U\overset{\mathrm{d}}{=} UU^{\mathsf{T}}`$.  Taking the same principal block preserves equality in law.  This is not a pointwise equality of the two products.
 
-Second, the axiom uses independent symmetric coordinates and their embedding, rather than the source's redundant coordinates and symmetry delta.  Removing the redundant coordinates changes only a fixed volume factor, which disappears on normalization.  The source density therefore has exactly the support and exponent in Eq. (A.1), and its probability normalization gives $`0\lt Z_{N,K}\lt \infty`$.  These convention conversions are included in the imported law identity; no stronger regularity statement is being attributed to Friedman and Mello.
+Second, the contract uses independent symmetric coordinates and their embedding, rather than the source's redundant coordinates and symmetry delta.  Removing the redundant coordinates changes only a fixed volume factor, which disappears on normalization.  The source density therefore has exactly the support and exponent in Eq. (A.1), and its probability normalization gives $`0\lt Z_{N,K}\lt \infty`$.  These convention conversions are included in the law contract; no stronger regularity statement is being attributed to Friedman and Mello.
 
 <a id="a1-notation"></a>
 
@@ -81,7 +83,7 @@ m_{\mathrm{source}}=N,\qquad
 s_{\mathrm{source}}\overset{\mathrm{d}}{=} C_{N,K}.
 ```
 
-The source's $`\dagger`$ is this paper's $`*`$; both mean conjugate transpose. Its $`S=U^{\mathsf{T}}U`$ corresponds in law to our $`UU^{\mathsf{T}}`$.  Its independent corner-entry volume becomes $`\,\mathrm{d} C`$, and its unspecified normalizer becomes $`Z_{N,K}^{-1}`$.  With this dictionary the imported Lean law is the density in Eq. (C.1).  Boundary regularity and score estimates are not part of A1.
+The source's $`\dagger`$ is this paper's $`*`$; both mean conjugate transpose. Its $`S=U^{\mathsf{T}}U`$ corresponds in law to our $`UU^{\mathsf{T}}`$.  Its independent corner-entry volume becomes $`\,\mathrm{d} C`$, and its unspecified normalizer becomes $`Z_{N,K}^{-1}`$.  With this dictionary the proved Lean law is the density in Eq. (C.1).  Boundary regularity and score estimates are not part of A1.
 
 <a id="a2"></a>
 
@@ -89,7 +91,7 @@ The source's $`\dagger`$ is this paper's $`*`$; both mean conjugate transpose. I
 
 <a id="a2-statement"></a>
 
-### 1. Exact mathematical translation of the Lean axiom
+### 1. Exact mathematical translation of the Lean contract
 
 For an integer $`N\ge1`$, use the Borel structures on Euclidean spaces and let
 
@@ -153,7 +155,7 @@ Here $`\sigma_g`$ is the action, $`p(x)\,\mathrm{d} x`$ is the invariant measure
 
 ### 3. Difference from the source and its justification
 
-A2 imports three clauses beyond the geometric Jacobian's displayed form: measurability of the chosen spectrum on all square matrices, a single positive finite constant before the choice of test, and a pushforward identity into every measurable target.
+A2's contract includes three clauses beyond the geometric Jacobian's displayed form: measurability of the chosen spectrum on all square matrices, a single positive finite constant before the choice of test, and a pushforward identity into every measurable target.
 
 The [full A2 justification](A2_SOURCE_DERIVATION.md#a2-justification) checks each clause:
 
@@ -163,7 +165,7 @@ The [full A2 justification](A2_SOURCE_DERIVATION.md#a2-justification) checks eac
 - Setting $`x_i=s_i^2`$ cancels the factors $`2s_i`$. Passing from the ordered chamber to the full orthant gives $`c_N=a_N/N!`$, with one positive finite constant independent of all tests. The Gaussian normalization gives $`c_1=\pi`$.
 - For each measurable subset $`B`$ of the target, the scalar integration formula is applied to the indicator of $`F^{-1}(B)`$. This yields the exact arbitrary-target measure equality.
 
-These are mathematical justifications of the assumption imported into Lean. They are not presented as a separate Lean proof of A2.
+These paragraphs retain the mathematical source correspondence. The separate [A2 provider](../A2/WeylIntegrationProof.lean) constructs the exact integration-law contract in Lean.
 
 <a id="a2-notation"></a>
 
@@ -171,7 +173,7 @@ These are mathematical justifications of the assumption imported into Lean. They
 
 FitzGerald and Warren's matrix $`X`$ is our $`C\in\mathcal S_N`$, their size $`n`$ is $`N`$, and their $`\lambda_i`$ are the eigenvalues of $`C^*C`$. Our vector $`\lambda(C)=1-\mathrm{eig}(I-C^*C)`$ contains this same multiset in a fixed order.  Their angular variables $`\Omega`$ become $`[U]\in\mathrm U(N)/H_N`$ with invariant probability measure in the calculation above.  Their proportionality constant becomes the single $`c_N=a_N/N!`$ when the ordered squared chamber is replaced by the full positive orthant.  In the An–Wang–Yan specialization, $`G=\mathrm U(N)`$, their $`K`$ is our $`H_N`$, $`X=\mathcal S_N^{\mathrm{reg}}`$, and $`Y`$ is the positive ordered diagonal section.  Their action is $`\sigma_g(C)=gCg^{\mathsf{T}}`$.  Their $`K`$ is a subgroup, whereas our $`K`$ elsewhere is an ambient dimension; their $`d`$ counts covering sheets, here one.
 
-In the formalization, A2 is applied with A1 to permutation invariant tests of the determinant weighted COE law.  Its constant $`c_N`$ cancels under probability normalization.  The odds and trace power maps are subsequent constructions, not clauses imported in A2.  Permutation invariance is essential to the axiom: an unrestricted equality between one canonically ordered eigenvalue vector and a measure on the full unordered orthant would be false.
+In the formalization, A2 is applied with A1 to permutation invariant tests of the determinant weighted COE law.  Its constant $`c_N`$ cancels under probability normalization.  The odds and trace power maps are subsequent constructions, not clauses of the A2 contract.  Permutation invariance is essential to the contract: an unrestricted equality between one canonically ordered eigenvalue vector and a measure on the full unordered orthant would be false.
 
 <a id="a3"></a>
 
@@ -179,7 +181,7 @@ In the formalization, A2 is applied with A1 to permutation invariant tests of th
 
 <a id="a3-statement"></a>
 
-### 1. Exact mathematical translation of the Lean axiom
+### 1. Exact mathematical translation of the Lean contract
 
 Let $`N\ge1`$, $`a,b\in\mathbb Z_{\ge0}`$, and $`\beta\in\lbrace 1,2\rbrace`$.  On the common sample space
 
@@ -209,7 +211,7 @@ Let $`\mathsf J_{N,a,b,\beta}`$ be the measure obtained by normalizing the follo
 \prod_{i\lt j}|t_i-t_j|^\beta\,\,\mathrm{d} t.
 ```
 
-The imported assertion has two conclusions: $`x:\Omega_{N,a,b}\to\mathbb R^N`$ is measurable on the whole sample space, and, for every measurable space $`\mathcal Y`$ and every measurable permutation invariant $`F:\mathbb R^N\to\mathcal Y`$,
+The proved contract has two conclusions: $`x:\Omega_{N,a,b}\to\mathbb R^N`$ is measurable on the whole sample space, and, for every measurable space $`\mathcal Y`$ and every measurable permutation invariant $`F:\mathbb R^N\to\mathcal Y`$,
 
 **Equation (A.5).**
 
@@ -217,7 +219,7 @@ The imported assertion has two conclusions: $`x:\Omega_{N,a,b}\to\mathbb R^N`$ i
 (F\circ x)_\#\mu_{N,a,b,\beta}=F_\#\mathsf J_{N,a,b,\beta}.
 ```
 
-Collision nullity, project parameter substitutions, and later trace laws are not additional conclusions of this axiom.
+Collision nullity, project parameter substitutions, and later trace laws are not additional conclusions of this contract.
 
 <a id="a3-source"></a>
 
@@ -241,11 +243,11 @@ The additional interface content is the concrete coordinate map and its global m
 RJR^{-1}=A(A+B)^{-1},\qquad 0\lt J\lt I_N.
 ```
 
-Thus the Hermitian matrix used in the axiom is similar to the source's matrix without any commutation assumption on $`A,B`$.  Its eigenvalues are the same squared GSVD coordinates.  The chosen values on the null singular set do not affect the probability law.
+Thus the Hermitian matrix used in the contract is similar to the source's matrix without any commutation assumption on $`A,B`$.  Its eigenvalues are the same squared GSVD coordinates.  The chosen values on the null singular set do not affect the probability law.
 
 For measurability on all of $`\Omega_{N,a,b}`$, the Gram maps and the positive matrix square root are continuous.  Inversion extended by zero is Borel: it is the continuous rational map $`\mathrm{adj}(R)/\det R`$ on the open invertible set and is constant on its closed complement.  Hence $`J`$ is measurable.  Continuity of ordered Hermitian eigenvalues, fixed reindexing, and the real square root proves measurability of $`x`$.  Since $`J\ge0`$ on every sample, squaring its real square-root eigenvalues does not change them.
 
-Finally, a permutation invariant $`F`$ has the same value on every ordering of the squared GSVD coordinates.  Apply the source's unordered law to the indicator of $`F^{-1}(D)`$ for each measurable $`D\subseteq\mathcal Y`$ to obtain Eq. (A.5).  This also covers arbitrary measurable targets.  These coordinate and measurability deductions explain the extension from Proposition 1.2; they are bundled into A3, not separately proved by that imported Lean declaration.  Collision nullity is then derived by the symmetric collision indicator and the null hyperplanes of the Jacobi density.
+Finally, a permutation invariant $`F`$ has the same value on every ordering of the squared GSVD coordinates.  Apply the source's unordered law to the indicator of $`F^{-1}(D)`$ for each measurable $`D\subseteq\mathcal Y`$ to obtain Eq. (A.5).  This also covers arbitrary measurable targets.  These coordinate and measurability deductions explain the extension from Proposition 1.2; they are clauses of the A3 contract now supplied by [the A3 proof provider](../A3/Proposition12Proof.lean).  Collision nullity is then derived by the symmetric collision indicator and the null hyperplanes of the Jacobi density.
 
 <a id="a3-notation"></a>
 
@@ -268,7 +270,7 @@ The two matrix sizes become $`(N+1)\times N`$ and $`(K-N)\times N`$; the two ind
 
 <a id="a4-statement"></a>
 
-### 1. Exact mathematical translation of the Lean axiom
+### 1. Exact mathematical translation of the Lean contract
 
 Let $`N,q\ge1`$, $`\beta,\gamma\in\mathbb R`$, and $`\sigma\in\mathrm{Sym}_N^+(\mathbb R)`$, with
 
@@ -285,7 +287,7 @@ Here $`q`$ is the moment order, and $`\beta`$ is the Wishart shape parameter, no
 =\det(I_N-\theta\sigma)^{-\beta}.
 ```
 
-This supplied probability law and its transform identity are hypotheses of A4, through the definition of $`W\sim W_N(\beta,\sigma;\mathbb R)`$. The axiom does not separately assert existence of a law for arbitrary shape parameters.  Write $`\mathbb{E}_\mu`$ for integration against this law.
+This supplied probability law and its transform identity are hypotheses of A4, through the definition of $`W\sim W_N(\beta,\sigma;\mathbb R)`$. The theorem does not separately assert existence of a law for arbitrary shape parameters.  Write $`\mathbb{E}_\mu`$ for integration against this law.
 
 For arbitrary complex $`N\times N`$ matrices $`m_1,\ldots,m_q`$, a permutation $`g\in S_{2q}`$, and real symmetric $`w`$, define
 
@@ -297,7 +299,7 @@ T_g(w;m)=\sum_{j_1,\ldots,j_{2q}=1}^N
 \left(\prod_{r=1}^q w_{j_{g(2r-1)},j_{g(2r)}}\right).
 ```
 
-Let $`\mathcal M(2q)`$ be the perfect matchings of $`\lbrace 1,\ldots,2q\rbrace`$ and $`M_0=\lbrace \lbrace 1,2\rbrace ,\ldots,\lbrace 2q-1,2q\rbrace \rbrace`$.  Represent a matching $`M`$ by the permutation $`g_M`$ that lists each pair increasingly and lists the first members of pairs increasingly.  Let $`\ell(M,L)`$ count the connected components in $`M\cup L`$ and put $`\kappa(g)=\ell(M_0,gM_0)`$. The coefficient used in the axiom is defined by the finite matching matrix:
+Let $`\mathcal M(2q)`$ be the perfect matchings of $`\lbrace 1,\ldots,2q\rbrace`$ and $`M_0=\lbrace \lbrace 1,2\rbrace ,\ldots,\lbrace 2q-1,2q\rbrace \rbrace`$.  Represent a matching $`M`$ by the permutation $`g_M`$ that lists each pair increasingly and lists the first members of pairs increasingly.  Let $`\ell(M,L)`$ count the connected components in $`M\cup L`$ and put $`\kappa(g)=\ell(M_0,gM_0)`$. The coefficient used in the contract is defined by the finite matching matrix:
 
 ```math
 G_z(M,L)=z^{\ell(M,L)},\qquad
@@ -307,7 +309,7 @@ G_z(M,L)=z^{\ell(M,L)},\qquad
 =(-1)^q2^q\mathrm{Wg}^{\mathrm O}_{\mathrm L}(g;-2\gamma).
 ```
 
-The subscript $`\mathrm L`$ distinguishes this definition from the source's definition below.  The matrix inverse is the ordinary inverse at $`z=-2\gamma`$; its existence throughout the stated range is justified in part (3).  The imported conclusion is the conjunction
+The subscript $`\mathrm L`$ distinguishes this definition from the source's definition below.  The matrix inverse is the ordinary inverse at $`z=-2\gamma`$; its existence throughout the stated range is justified in part (3).  The proved conclusion is the conjunction
 
 **Equation (A.9).**
 
@@ -397,7 +399,7 @@ This constructs a right inverse of the finite square matrix $`G_z`$. Consequentl
 
 The same factor $`(-1)^q2^q`$ then identifies the two modified coefficients. No additional factorial or sign is present [Matsumoto (2012), Eq. (4.10) and Lemma 5](https://doi.org/10.1007/s10959-011-0340-0).
 
-This proves mathematical equivalence of the two definitions in the whole range used by A4.  The code defines the inverse-Gram coefficient directly and imports the moment equalities with it; it does not separately formalize the zonal expansion and this conversion.  Similarly, the source supplies finite moments in its stated range, but the imported integral equalities should not be read as separate Lean integrability assertions.
+This proves mathematical equivalence of the two definitions in the whole range used by A4.  The code defines the inverse-Gram coefficient directly and the [A4 provider](../A4/FullTheorem.lean) proves the moment equalities with it. The source's zonal expansion and the explanatory convention conversion here are not separately claimed as executable Lean endpoints.  Similarly, the source supplies finite moments in its stated range, but the stated integral equalities should not be read as separate Lean integrability assertions.
 
 <a id="a4-notation"></a>
 
@@ -416,18 +418,18 @@ The condition $`K\ge2N+8`$ gives $`\gamma\ge7/2\gt 3=q-1`$. Variance-$`1/2`$ Gau
 
 ## Declaration locations
 
-- **A1:** `FriedmanMelloA1.matrixLaw_external` in [H5_FriedmanMelloA1External.lean](../LogdetLean/GramHafnian/UltimateHiding/DenseScore/H5_FriedmanMelloA1External.lean#L97).
-- **A2:** `A2Prime_complexSymmetricTakagiWeyl_symmetricIntegration` and `TakagiWeylSymmetricIntegrationLaw` in [the A2 module](../LogdetLean/GramHafnian/UltimateHiding/DenseScore/Literature/H6_A2Prime_TakagiWeylSymmetricIntegration.lean#L88). The literature input is called **A2**; `A2Prime` survives only in historical code identifiers for compatibility.
-- **A3:** `A3_edelmanSutton_proposition_1_2` and `EdelmanSuttonProposition12SymmetricContract` in [the A3 module](../LogdetLean/GramHafnian/UltimateHiding/DenseScore/H6_A3_EdelmanSuttonProp12Conditional.lean#L154).
-- **A4:** `MatsumotoPaper.A4_matsumoto_theorem_3` in [MatsumotoTheorem3External.lean](../LogdetLean/GramHafnian/UltimateHiding/DenseScore/MatsumotoTheorem3External.lean#L254). Its supplied-law definition is in the same module.
+- **A1:** `FriedmanMelloA1.matrixLaw_external` in [H5_FriedmanMelloA1External.lean](../LogdetLean/GramHafnian/UltimateHiding/DenseScore/H5_FriedmanMelloA1External.lean).
+- **A2:** `A2Prime_complexSymmetricTakagiWeyl_symmetricIntegration` is the proved interface in [the compatibility module](../LogdetLean/GramHafnian/UltimateHiding/DenseScore/Literature/H6_A2Prime_TakagiWeylSymmetricIntegration.lean); `TakagiWeylSymmetricIntegrationLaw` is defined in [A2/Target.lean](../A2/Target.lean), and the provider is in [A2/WeylIntegrationProof.lean](../A2/WeylIntegrationProof.lean). The literature input is called **A2**; `A2Prime` survives only in historical code identifiers for compatibility.
+- **A3:** `A3_edelmanSutton_proposition_1_2` is proved in [A3/Proposition12Proof.lean](../A3/Proposition12Proof.lean); `EdelmanSuttonProposition12SymmetricContract` is defined in [A3/Target.lean](../A3/Target.lean). [The retained consumer module](../LogdetLean/GramHafnian/UltimateHiding/DenseScore/H6_A3_EdelmanSuttonProp12Conditional.lean) imports that proof and supplies downstream adapters.
+- **A4:** `MatsumotoPaper.A4_matsumoto_theorem_3` in [MatsumotoTheorem3External.lean](../LogdetLean/GramHafnian/UltimateHiding/DenseScore/MatsumotoTheorem3External.lean). Its supplied-law definition is in [A4/Target.lean](../A4/Target.lean), and both moment identities are proved in [A4/FullTheorem.lean](../A4/FullTheorem.lean).
 
 ## The additional Route 2 reference
 
-[Shou, Gorshkov, Galitski and Miller (2026), Theorem 1.1](https://arxiv.org/html/2608.19314v1), supplies the asymptotic symmetric-Gaussian hiding rate $`O(N/\sqrt K)`$. The Route 2 interface takes a comparison estimate as a hypothesis; it does not formalize that literature theorem or fully assemble the actual symmetric-Gaussian Route 2. This additional literature result is **not a fifth Lean axiom**. A2 has two supporting references, so the number of bibliographic entries should not be confused with the number of axioms.
+[Shou, Gorshkov, Galitski and Miller (2026), Theorem 1.1](https://arxiv.org/html/2608.19314v1), supplies the asymptotic symmetric-Gaussian hiding rate $`O(N/\sqrt K)`$. The Route 2 interface takes a comparison estimate as a hypothesis; it does not formalize that literature theorem or fully assemble the actual symmetric-Gaussian Route 2. This additional literature result is **not a fifth Lean axiom**. A2 has two supporting references. Bibliographic entries do not count scientific axioms; the current four contracts are proved.
 
 ## Source and verification status
 
-The 7 September 2026 documentation update aligns this file and the expanded A2 justification with the rewritten Appendix A. The subsequent module-naming revision preserves the mathematical statements and proofs under the reversible substitutions documented in [PROVENANCE.md](PROVENANCE.md). No additional project axiom or separate formal proof of the source-to-axiom arguments is introduced. [The verification status](../verification/STATUS.md) records the execution evidence for each stage.
+Historically, the 7 September 2026 documentation update aligned this file and the expanded A2 justification with the rewritten Appendix A. The following module-naming revision preserved the mathematical statements and proofs under the reversible substitutions documented in [PROVENANCE.md](PROVENANCE.md). Those earlier stages introduced neither an additional project axiom nor formal proofs of the four contracts. Their execution evidence remains in [the historical verification status](../verification/STATUS.md). Version 2.0 separately adds the four proof providers. Its published Zenodo execution is preserved in [FINAL_VERIFICATION.json](../verification/FINAL_VERIFICATION.json); the GitHub checkout recheck is recorded separately in [GITHUB_V2_VERIFICATION.json](../verification/GITHUB_V2_VERIFICATION.json).
 
 ## Bibliographic details for A1–A4
 

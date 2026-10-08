@@ -1,5 +1,19 @@
 # Provenance and dependency
 
+## Current version 2.0
+
+Published [version 2.0](https://doi.org/10.5281/zenodo.23250190) merges the A1–A4 proof providers from the author's local `A1234HidingConsumer` workspace into the exact downloaded Zenodo version 1.3.0 core. [The current release ledger](RELEASE_2_0.md) maps provider modules, retained interfaces, scope and archive checksums. The original core is available in the preceding Zenodo archive; earlier documentation, audit sources and verification records are preserved in [the version 1.3.0 GitHub snapshot](https://github.com/HongruZhao/UniformHiding/tree/9e44d98852a558f1495642cd841d06b5ba279a32) and Git history. The published Zenodo version 2.0 package also retains the exact original version 1.3.0 ZIP byte-for-byte.
+
+The provider namespace adaptation connects the research proofs to the baseline's `LocalAnticoncentration` definitions. The public hiding and Route 1 theorem statements, dimension ranges and numerical constants remain fixed. The two executable public audits now require exactly the three standard foundations. [FINAL_VERIFICATION.json](../verification/FINAL_VERIFICATION.json) preserves the published Zenodo execution. The GitHub checkout recheck is tracked separately in [GITHUB_V2_VERIFICATION.json](../verification/GITHUB_V2_VERIFICATION.json); its result is not inferred from the inherited archive receipt.
+
+The four JSON manifests in this directory describe preceding snapshots. Their `current_sha256` fields mean current at that recorded historical stage. They are preserved provenance data, not manifests of version 2.0. The current version 2.0 DOI is [10.5281/zenodo.23250190](https://doi.org/10.5281/zenodo.23250190); the older DOI identifies the version 1.3.0 baseline.
+
+The current source gate is `python3 scripts/source_audit.py`, which invokes `verify_final.py --sources-only` against the frozen `SOURCE_HASHES.json`. It checks delivered file hashes and the active Lean source set; it does not perform a Lean build. The older GitHub source and Markdown audit scripts are preserved under [history/github_v1_3_0/scripts](../history/github_v1_3_0/scripts), with their original stage-specific role explained in [the historical README](../history/github_v1_3_0/README.md). Historical JSON source crosswalks and receipts retain their original scope.
+
+## Historical source and verification stages through version 1.3.0
+
+The remaining provenance narrative describes the preceding releases in their original stage-specific context. In particular, claims of unchanged assumption declarations and the historical four-axiom boundary refer to those earlier versions.
+
 This release reorganizes the author's local `GBS_Hiding_Two_Routes_Lean` development into public manuscript endpoints. Lean files, directories, namespaces, and identifiers use mathematical names. The physical probability definitions are in [GBSDefinitions.lean](../LogdetLean/GramHafnian/ThreePaper/GBSDefinitions.lean).
 
 The companion proofs come from [ComplexGramHafnians (the source version used in this release)](https://github.com/HongruZhao/ComplexGramHafnians/tree/95ab10dc594ac92207054413220ae9fd2adab08c). All 223 `LogdetLean` files of that repository and its `Challenge.lean` and `ComplexGramHafnians.lean` are included, with naming substitutions where needed. Their original hashes remain in [ANTICONCENTRATION_SNAPSHOT.json](ANTICONCENTRATION_SNAPSHOT.json). The shared source tree avoids compiling duplicate declarations. The companion `Challenge.lean` contains proposition specifications, not proof placeholders. Our own statement file is named `HidingStatement.lean` to avoid a module-name collision.

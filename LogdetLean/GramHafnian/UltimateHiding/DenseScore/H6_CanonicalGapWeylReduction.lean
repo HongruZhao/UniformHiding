@@ -1,10 +1,11 @@
+import AllFourIntegration.TakagiDefinitions
 import LogdetLean.GramHafnian.UltimateHiding.DenseScore.H6_TakagiWeylAdapters
 
 /-!
 # Selector-free canonical-gap reduction of the Takagi--Weyl input
 
 This module implements the selector-free geometric reduction used by the
-A2-prime production route.  It proves that the H6 COE-side reduction does not need an
+A2 production route.  It proves that the H6 COE-side reduction does not need an
 Autonne--Takagi factorization or a measurable unitary selector.
 
 The fixed statistic is the reflected ordered spectrum of the Hermitian gap
@@ -24,22 +25,6 @@ noncomputable section
 open LogdetLean.GramHafnian.UltimateHiding.Dense
 open H6CoordinateAlgebra H6DensityTransform H6VectorChangeOfVariables
 open H6RadialMeasureAdapters
-
-/-- The Hermitian right gap attached to an arbitrary complex matrix. -/
-def coeHermitianGap {N : ℕ} (C : ConcreteMatrixState N) :
-    ConcreteMatrixState N :=
-  1 - C.conjTranspose * C
-
-theorem coeHermitianGap_isHermitian {N : ℕ}
-    (C : ConcreteMatrixState N) : (coeHermitianGap C).IsHermitian := by
-  exact Matrix.isHermitian_one.sub
-    (Matrix.isHermitian_conjTranspose_mul_self C)
-
-/-- Canonical squared-singular-value statistic, without any Takagi vectors:
-`lambda_i = 1 - eigenvalue_i(I - Cᴴ C)`. -/
-def canonicalGapSquaredSpectrum (N : ℕ)
-    (C : ConcreteMatrixState N) : Fin N → ℝ :=
-  fun i ↦ 1 - (coeHermitianGap_isHermitian C).eigenvalues i
 
 /-- The COE support is exactly the upper spectral bound.  This is pure
 Hermitian spectral algebra and uses no Takagi representation. -/

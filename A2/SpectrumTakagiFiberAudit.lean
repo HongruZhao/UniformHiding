@@ -1,0 +1,26 @@
+import A2.SpectrumTakagiFiber
+
+open LogdetLean.GramHafnian.UltimateHiding.DenseScore
+
+#print axioms takagiSignUnitary_injective
+#print axioms takagiOrbit_mul
+#print axioms takagiOrbit_signUnitary
+#print axioms takagiOrbit_mul_sign
+#print axioms takagiOrbit_mul_conjTranspose
+#print axioms takagiStabilizer_commutes_squaredDiagonal
+#print axioms takagiStabilizer_offDiagonal_zero
+#print axioms takagiStabilizer_eq_diagonal
+#print axioms takagiStabilizer_diagonal_sq
+#print axioms takagiStabilizer_exists_unique_sign
+#print axioms takagiOrbit_eq_iff_exists_unique_sign
+#print axioms takagiPermutation_congruence_diagonal
+#print axioms takagiOrbit_permutationUnitary
+#print axioms takagiOrbit_mul_permutation
+#print axioms IsRegularTakagiSpectrum.comp_perm
+#print axioms takagiOrbit_eq_spectrum_permutation
+#print axioms regularTakagiRepresentation_injective
+#print axioms regularTakagiRepresentation_surjective
+#print axioms regularTakagiFiberEquiv
+#print axioms regularTakagiFiber_natCard
+#print axioms regularTakagiFiber_equiv_fin
+#print axioms regularTakagiFiber_equiv_fin_of_representation

@@ -1,0 +1,9 @@
+import A1.CornerMeasurable
+
+#print axioms A1Research.measurableSet_determinantWeight_support
+#print axioms A1Research.measurable_determinantWeight
+#print axioms A1Research.normalizedTransposeGram_isSymm
+#print axioms A1Research.measurable_normalizedTransposeGramCoordinates
+#print axioms A1Research.normalizedTransposeGramCoordinates_reconstruct
+#print axioms A1Research.map_reconstruct_normalizedTransposeGramCoordinates
+#print axioms A1Research.normalizedTransposeGramCoordinates_haar_reconstruction

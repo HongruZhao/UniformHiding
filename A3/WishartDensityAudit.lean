@@ -1,0 +1,18 @@
+import A3.WishartGramDensity
+
+#print axioms A3Research.wishartGramCoordinates_bijOn
+#print axioms A3Research.contDiffAt_wishartGramCoordinates
+#print axioms A3Research.det_fderiv_wishartGramCoordinates
+#print axioms A3Research.wishartTraceReal_gram
+#print axioms A3Research.wishartBartlettDensity_identity
+#print axioms A3Research.wishartCholesky_area
+#print axioms A3Research.wishartBartlettGram_eq_ambientDensity
+#print axioms A3Research.wishartRealBartlettGram_eq_ambientDensity
+#print axioms A3Research.wishartComplexBartlettGram_eq_ambientDensity
+
+#print axioms A3Research.wishartAmbientMeasure_real_mass
+#print axioms A3Research.wishartAmbientMeasure_complex_mass
+#print axioms A3Research.wishartAmbientMeasure_real_isFinite
+#print axioms A3Research.wishartAmbientMeasure_complex_isFinite
+#print axioms A3Research.realGaussianGramCoordinateLaw_eq_ambientDensity
+#print axioms A3Research.complexGaussianGramCoordinateLaw_eq_ambientDensity

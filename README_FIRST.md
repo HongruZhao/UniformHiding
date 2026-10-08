@@ -1,20 +1,17 @@
-# Hiding-paper Lean verification — version 1.3.0
+# Hiding-paper Lean sources — version 2.0
 
-This folder contains version 1.3.0, prepared locally on 10 September 2026 from the completed proofs. Start with the [completion ledger](docs/FORMALIZATION_COMPLETION.md), which describes the new results and assumptions in mathematical language. The [paper correspondence](docs/PAPER_COMPARISON.md) covers the named manuscript results.
+This version 2.0 integrates the full Lean formalizations of A1–A4 into the exact downloaded Zenodo version 1.3.0 core. The four scientific axiom assumptions are replaced by proved theorem/data declarations preserving their original full contracts. Version 2.0 is archived at [10.5281/zenodo.23250190](https://doi.org/10.5281/zenodo.23250190). Uniform hiding is proved without scientific axioms relative to Lean’s standard foundations and the explicit hypotheses in its public statement. Start with [the current release ledger](docs/RELEASE_2_0.md) for the provider map and trust boundary, then [README.md](README.md) for the public statements. The all-input uniformly-hiding theorem retains its statement and constant 615172.
 
-The public build and the 47-declaration exact axiom audit passed. There are four existing literature axioms and no new project axiom. Route 2 is excluded. The photon-sector calculations use the explicitly stated squeezed-input and passive-optics model.
+The current executable audits require exactly `propext`, `Classical.choice`, and `Quot.sound` for the hiding, Route 1 and companion endpoints. The four literature declarations are now supplied by proofs of their original contracts. The inherited [Zenodo version 2.0 receipt](verification/FINAL_VERIFICATION.json) records three successful commands, the exact 18 provider/public endpoints, and 19,639 imported local theorem declarations across 1,162 modules and 1,241 Lean sources with zero scientific axioms. Its build reused pinned dependencies and unaffected compiled caches. The separate [fresh GitHub checkout recheck](verification/GITHUB_V2_VERIFICATION.json) passed on 8 October 2026: the named build and both Lean audits exited zero, all 18 endpoints passed, and 19,639 theorems across 1,162 modules and 1,241 active Lean sources were checked with zero scientific axioms and only the three standard foundations. September receipts remain historical evidence.
 
-To reproduce the checks, install Lean through elan, open this folder in a terminal, and run:
+Connect the mounted SSD `/Volumes/Hongru‘s Second Brain`, install Lean through elan if needed, and run from this folder:
 
 ```sh
-lake exe cache get
-LEAN_NUM_THREADS=4 lake build UniformHiding HidingVerification
-LEAN_NUM_THREADS=4 lake env lean HidingVerification.lean
-LEAN_NUM_THREADS=4 lake env lean GBSHiding/CompletionAudit.lean
-python3 scripts/source_audit.py
-python3 scripts/markdown_audit.py
+python3 verify_final.py
 ```
 
-The toolchain and Mathlib revision are pinned in the included configuration files. Mathlib, Lean and compiled caches are obtained during setup; they are not bundled. The source archive includes the 893 Lean modules, the included companion sources, documentation, provenance manifests and execution records. It contains no manuscript PDF or LaTeX source and no Git or build cache.
+The verifier checks the actual mount, uses a separate project directory under `/Volumes/Hongru‘s Second Brain/lean/`, and keeps dependency caches, `.lake`, compilation files and temporary build directories there. It builds `UniformHiding`, `HidingVerification` and `FinalHidingAudit`, and executes `FinalInventory.lean` to inspect transitive theorem dependencies. If the SSD is unavailable, compilation and downloads must pause. The included configuration pins Lean and Mathlib; existing installed Lean executables may be reused.
 
-The citation file identifies software version 1.3.0. Its Zenodo identifier is [10.5281/zenodo.22670050](https://doi.org/10.5281/zenodo.22670050). The Zenodo archive adds the Appendix E and current-paper equation supplements to this shared core. The [completion receipt](verification/completion_receipt.json) records the exact Lean source bytes checked; the [release record](verification/release_1_3_0_identity.json) connects them to the local release preparation.
+Route 2 retains its explicit symmetric-Gaussian comparison premise. The squeezed-input and passive-optics models remain adopted definitions; deriving them or the optical hafnian formula from quantum dynamics is outside this development. A4 still takes a supplied Wishart law as an explicit theorem hypothesis.
+
+The current software archive is [Zenodo version 2.0](https://doi.org/10.5281/zenodo.23250190). [10.5281/zenodo.22670050](https://doi.org/10.5281/zenodo.22670050) identifies the preceding version 1.3.0 baseline. The original core is available in the preceding Zenodo archive, and the preceding documentation and audit sources are preserved in [the version 1.3.0 GitHub snapshot](https://github.com/HongruZhao/UniformHiding/tree/9e44d98852a558f1495642cd841d06b5ba279a32) and Git history. Historical source manifests and build receipts retain their original dates and scope.

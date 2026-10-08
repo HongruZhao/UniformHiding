@@ -1,6 +1,8 @@
 # Theorem 2.1, Corollary 2.2, and the quantitative product-hiding conjecture
 
-Version 1.2.0 states Theorem 2.1 for every positive row and input count that fits in the ambient matrix. The proof for the previously separated input range was already present in version 1.1.0. Corollary 2.2 is now the direct quantitative specialization of that stronger theorem. The companion proofs and the four literature axioms are unchanged.
+Version 2.0 retains the exact Theorem 2.1 and Corollary 2.2 statements and supplies proofs of the former A1–A4 contracts. The endpoint audits require exactly the three standard foundations; the published Zenodo execution is preserved in [FINAL_VERIFICATION.json](../verification/FINAL_VERIFICATION.json), and the GitHub checkout recheck is tracked separately in [GITHUB_V2_VERIFICATION.json](../verification/GITHUB_V2_VERIFICATION.json).
+
+Historically, version 1.2.0 extended Theorem 2.1 to every positive row and input count that fits in the ambient matrix and made Corollary 2.2 its direct specialization. That stage retained the companion proofs and four literature axioms. The proof for the previously separated input range had already been present in version 1.1.0.
 
 ## Theorem 2.1 in the manuscript
 
@@ -83,6 +85,6 @@ The public proof declarations are in [UniformHiding.lean](../UniformHiding.lean)
 | `s62HaarProductLaw_eq_matrixLaw` | Identification with the literal Haar block product law |
 | `s62GaussianProductLaw_eq_matrixLaw` | Identification with the literal scaled Gaussian product law |
 
-[HidingVerification.lean](../HidingVerification.lean) checks the exact axiom sets of the theorem, corollary, and source-scale bound declarations. The earlier preparation names `corollary2_2_unscaled` and `corollary2_2_s62_scaled` remain as compatibility aliases of `theorem2_1_unscaled` and `corollary2_2`, respectively. Each uses the same four literature inputs A1–A4 and the foundations `propext`, `Classical.choice`, and `Quot.sound`. The two measure-identification lemmas use only foundations. Full citations and mathematical translations of the four imported assumptions remain in [AXIOMS.md](AXIOMS.md).
+[HidingVerification.lean](../HidingVerification.lean) checks the exact axiom sets of the theorem, corollary, and source-scale bound declarations. The earlier preparation names `corollary2_2_unscaled` and `corollary2_2_s62_scaled` remain as compatibility aliases of `theorem2_1_unscaled` and `corollary2_2`, respectively. Each now uses the proved A1–A4 providers, and its audit requires exactly `propext`, `Classical.choice`, and `Quot.sound`. The two measure-identification lemmas also use only foundations. Full citations and mathematical translations of the four proved contracts remain in [AXIOMS.md](AXIOMS.md).
 
-[Verification status](../verification/STATUS.md) records the new build, separate axiom audit, and source checks. [The paper comparison](PAPER_COMPARISON.md) retains the remaining coverage gaps, including the incomplete Proposition 4.1. A proof of that entire proposition is not part of this release.
+[The inherited published Zenodo receipt](../verification/FINAL_VERIFICATION.json) records the archived merged-tree build and audits; [GITHUB_V2_VERIFICATION.json](../verification/GITHUB_V2_VERIFICATION.json) records the separate GitHub checkout check; [the earlier verification status](../verification/STATUS.md) retains the preceding snapshot's execution history. [The paper comparison](PAPER_COMPARISON.md) describes the completed Proposition 4.1 deductions, adopted optical model and remaining conditional Route 2 boundary.

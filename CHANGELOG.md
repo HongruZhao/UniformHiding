@@ -1,3 +1,15 @@
+# Changes in version 2.0 — 8 October 2026
+
+- Integrates the full A1–A4 Lean formalizations into the exact Zenodo version 1.3.0 baseline. Scientific axiom assumptions are removed and replaced by proved theorem/data declarations preserving their original full contracts and public hiding/Route 1 statements, dimension ranges and constants.
+- Replaces the four literature-axiom interfaces with proofs of their original contracts, including A2's historical `A2Prime` compatibility name.
+- Requires exactly the three standard foundations in both public endpoint audits. The final audit also checks all four provider contracts and the all-positive-input theorem; the inventory checks imported theorem dependencies.
+- Keeps the adopted optical model and the explicit Route 2 comparison premise. A4's supplied Wishart law remains an explicit theorem hypothesis.
+- Uses `python3 verify_final.py` with an actual SSD mount check and project-specific external build/cache storage. The inherited published Zenodo execution is recorded in `verification/FINAL_VERIFICATION.json`; the separate fresh GitHub checkout result belongs to `verification/GITHUB_V2_VERIFICATION.json`. This changelog does not substitute for either receipt.
+- Preserves the baseline identity and archive checksum records. The published Zenodo version 2.0 package retains the original version 1.3.0 ZIP byte-for-byte; this repository retains preceding sources and documentation in Git history. September receipts and manifests below are historical evidence only.
+- Version 2.0 is archived at [10.5281/zenodo.23250190](https://doi.org/10.5281/zenodo.23250190). The version 1.3.0 DOI remains a historical baseline.
+
+The entries below describe the preceding versions and retain their original assumption and execution boundaries.
+
 # Changes in version 1.3.0 — 11 September 2026
 
 - Completes the non-Route-2 obligations in [the completion ledger](docs/FORMALIZATION_COMPLETION.md).

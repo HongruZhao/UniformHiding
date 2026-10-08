@@ -1,8 +1,10 @@
 # Uniform Hiding and Two Routes to Relative Accuracy in Gaussian Boson Sampling
 
-Lean verification accompanying Hongru Zhao's manuscript. The main hiding theorem and the Route 1 part of the relative-accuracy theorem are proved **conditional on four explicitly cited literature axioms**. The companion Gaussian anticoncentration theorem has no additional scientific axioms.
+Lean sources accompanying Hongru Zhao's manuscript. Version **2.0**, archived at [10.5281/zenodo.23250190](https://doi.org/10.5281/zenodo.23250190), integrates the full Lean formalizations of A1–A4 into the complete hiding and Route 1 development. The former scientific axiom assumptions are replaced by proved theorem/data declarations with their original full contracts. The public theorem statements, dimension ranges and constants are preserved. The executable audits now require exactly `propext`, `Classical.choice`, and `Quot.sound`, with no scientific axioms.
 
-Version **1.3.0** adds the photon-sector normalization and asymptotics, the average-TV sampler bound, the optimized Route 1 asymptotic conclusion, and the applications for all input counts. The [completion ledger](docs/FORMALIZATION_COMPLETION.md) explains these additions and their model assumptions. Route 2 remains outside the completion scope. The recorded audit checks 47 declarations without adding an axiom.
+Uniform hiding is unconditionally proved relative to Lean’s standard foundations and the explicit probability-family and dimension hypotheses in its public statement. Route 1 retains its stated experiment, amplitude-marginal and estimator hypotheses.
+
+The [current release ledger](docs/RELEASE_2_0.md) maps the four proof providers to their existing interfaces. The inherited [published Zenodo verification receipt](verification/FINAL_VERIFICATION.json) records a successful build and two audits for the archived version 2.0 source tree: the exact 18 provider/public endpoints passed, and 19,639 imported local theorem declarations were audited across 1,162 modules and 1,241 current Lean sources, with zero scientific axioms. That run reused pinned dependencies and unaffected compiled caches; it was not wholly uncached or an independent checker run. Fresh GitHub checkout verification also passed on 8 October 2026, recorded separately in [GITHUB_V2_VERIFICATION.json](verification/GITHUB_V2_VERIFICATION.json). The named public build and both separate Lean audits exited zero; the exact 18 endpoints and 19,639 imported local theorem declarations across 1,162 modules and 1,241 active Lean sources passed with zero scientific axioms and only the three standard foundations. The photon-sector calculations, average-TV sampler bound, optimized Route 1 asymptotics and all-input applications from version 1.3.0 are retained. Route 2 keeps its explicit comparison premise, and the adopted optical model is unchanged.
 
 ## Results and probability conventions
 
@@ -41,7 +43,7 @@ The public declaration is `UniformHiding.corollary2_2`, with specification `Unif
 
 This establishes **[10, Conjecture 1 (Formal) and Supplemental Eq. (S62)]**, in Ehrenberg et al., *Transition of Anticoncentration in Gaussian Boson Sampling*, Physical Review Letters **134**, 140601 (2025), [published article](https://doi.org/10.1103/PhysRevLett.134.140601), [full preprint and supplement](https://arxiv.org/html/2312.08433v2#S0.S5). Here [10] is the hiding manuscript's reference number.
 
-`UniformHiding.corollary2_2_s62` gives the same quantitative bound after putting both product laws on the source's scale. The [theorem, corollary, and source correspondence](docs/COROLLARY_2_2.md) explains the block orientation, Gaussian variance, measure identities, and exact proof boundary. These results use the same four literature axioms.
+`UniformHiding.corollary2_2_s62` gives the same quantitative bound after putting both product laws on the source's scale. The [theorem, corollary, and source correspondence](docs/COROLLARY_2_2.md) explains the block orientation, Gaussian variance, measure identities, and exact proof boundary. These results now use the proved A1–A4 providers and the three standard foundations.
 
 ## Hafnian and the physical output probability
 
@@ -116,9 +118,9 @@ The additional external input is [Shou, Gorshkov, Galitski and Miller (2026), Th
 
 The repository retains `UniformHiding.routeTwoConditional` and the [Route 2 interface](LogdetLean/GramHafnian/ThreePaper/RouteTwoMatrixComparisonInterface.lean). These verify deductions **given** `ShouSymmetricMatrixComparisonAt` and the stated symmetric small-ball premise. They do not prove the Shou comparison or fully assemble the actual symmetric-Gaussian Route 2. This is the fifth external literature input in the two-route discussion, **not a fifth Lean axiom**. The unconditional symmetric-Gaussian small-ball result itself is available as `ComplexGramHafnians.theorem2_3`.
 
-## Four literature axioms
+## Proofs of the former A1–A4 inputs
 
-The axiom documentation explains **what Lean assumes and why the cited sources justify it**, following the revised manuscript's Appendix A. Each of A1–A4 is presented in the same order: **(1) exact mathematical translation from Lean, (2) statement in the source, (3) differences and their justification, and (4) notation correspondence**. The source-to-axiom arguments justify the imported assumptions; they are not presented as separately checked Lean proofs.
+The [A1–A4 contract documentation](docs/AXIOMS.md) retains each exact mathematical translation, source statement, justification of differences and notation dictionary. These were scientific axioms in version 1.3.0. Version 2.0 replaces their declarations with proofs of the same contracts. [The provider map](docs/RELEASE_2_0.md) links the new proofs; explanatory source-comparison prose is distinct from the executable declarations.
 
 | Input | Mathematical content | Source |
 | --- | --- | --- |
@@ -129,7 +131,7 @@ The axiom documentation explains **what Lean assumes and why the cited sources j
 
 [AXIOMS.md](docs/AXIOMS.md) gives the full mathematical statements, source comparisons, and declaration links. [The expanded A2 justification](docs/A2_SOURCE_DERIVATION.md) checks the Takagi integration map, normalization, global selector measurability, and arbitrary measurable targets. A3 explicitly includes the coordinate definition on singular samples. A4 distinguishes its supplied-law hypothesis from its moment conclusions and explains the inverse-Gram/zonal Weingarten equivalence.
 
-There are exactly four literature axioms. In addition, Lean uses `propext`, `Classical.choice`, and `Quot.sound`. The theorem axiom check must match that set; the imported anticoncentration endpoints must match only the three foundations. The stronger Theorem 2.1 and its quantitative corollary preserve these four mathematical contracts and add no axiom.
+All four former literature interfaces are proved. The hiding, Route 1 and companion endpoint audits must match exactly the three foundations `propext`, `Classical.choice`, and `Quot.sound`. An additional dependency or a missing expected foundation fails the audit. Theorem 2.1 and its quantitative corollary preserve their original mathematical statements.
 
 ## Files and verification
 
@@ -139,28 +141,28 @@ There are exactly four literature axioms. In addition, Lean uses `propext`, `Cla
 | [UniformHiding.lean](UniformHiding.lean) | Public hiding, Corollary 2.2, source-scale measure identities, and Route 1 proofs |
 | [HidingVerification.lean](HidingVerification.lean) | Exact public proof dependency checks |
 | [GBSHiding/Completion.lean](GBSHiding/Completion.lean) | Added photon-sector, sampler, asymptotic and application proofs |
-| [docs/FORMALIZATION_COMPLETION.md](docs/FORMALIZATION_COMPLETION.md) | New endpoints, assumptions and fresh execution evidence |
+| [docs/FORMALIZATION_COMPLETION.md](docs/FORMALIZATION_COMPLETION.md) | Retained non-Route-2 deductions and model boundary |
 | [docs/PAPER_COMPARISON.md](docs/PAPER_COMPARISON.md) | Paper-to-Lean correspondence and scope limits |
-| [verification/STATUS.md](verification/STATUS.md) | Dated build evidence |
+| [verification/FINAL_VERIFICATION.json](verification/FINAL_VERIFICATION.json) | Inherited published Zenodo version 2.0 build and audit result |
+| [verification/GITHUB_V2_VERIFICATION.json](verification/GITHUB_V2_VERIFICATION.json) | Separate fresh GitHub checkout recheck |
+| [docs/RELEASE_2_0.md](docs/RELEASE_2_0.md) | Provider integration and current trust boundary |
 | [docs/PROVENANCE.md](docs/PROVENANCE.md) | Source origin and companion dependency |
 
-With [elan](https://github.com/leanprover/elan) installed, run:
+With [elan](https://github.com/leanprover/elan) installed, connect the mounted SSD `/Volumes/Hongru‘s Second Brain` and run:
 
 ```sh
-lake exe cache get
-LEAN_NUM_THREADS=4 lake build UniformHiding HidingVerification
-LEAN_NUM_THREADS=4 lake env lean HidingVerification.lean
-python3 scripts/source_audit.py
-python3 scripts/markdown_audit.py
+python3 verify_final.py
 ```
 
-The pinned toolchain is selected automatically. A successful build checks these formal statements relative to the disclosed axioms; it does not certify every sentence in the manuscript. There is no `sorry`, `admit`, or additional project axiom in the released proof sources.
+The verifier checks the mount and resolves every build/cache location under that SSD's project-specific `lean` directory before invoking Lean or Lake. It builds `UniformHiding`, `HidingVerification` and `FinalHidingAudit`, then executes the complete imported-theorem inventory `FinalInventory.lean`. Keep `.lake`, dependencies, compilation outputs and temporary build directories on the SSD. If the SSD is unavailable, compilation and dependency downloads must pause. The pinned Lean and Mathlib revisions must be preserved; existing installed Lean executables can be reused.
+
+The separate GitHub execution receipt determines the result of the checkout recheck against the pinned toolchain and exact foundation set. `python3 scripts/source_audit.py` invokes the frozen-manifest source-only gate; it performs no Lean build. A source scan alone does not establish kernel verification. The build does not certify every sentence, illustration, literature comparison or physical-model derivation in the manuscript.
 
 ## Archive and citation
 
-Version **1.3.0** contains the completed non-Route-2 deductions described above. The GitHub repository and the Zenodo archive share the same 893 Lean sources in the `UniformHiding` directory. Zenodo additionally contains the Appendix E equation checks and the complete correspondence for the current manuscript. [The release record](verification/release_1_3_0_identity.json) identifies the checked source snapshot. See [the change history](CHANGELOG.md) and [source provenance](docs/PROVENANCE.md) for its relationship to the preceding release.
+Version **2.0 is archived on Zenodo** at [10.5281/zenodo.23250190](https://doi.org/10.5281/zenodo.23250190). The exact downloaded version 1.3.0 archive, its metadata, and preserved source history anchor this merge. [The change history](CHANGELOG.md) and [source provenance](docs/PROVENANCE.md) distinguish historical source identities from the current provider integration. The version 1.3.0 equation supplements retain their manuscript-snapshot scope.
 
-The Zenodo identifier for **version 1.3.0** is [10.5281/zenodo.22670050](https://doi.org/10.5281/zenodo.22670050). Earlier archives are [version 1.1.0](https://doi.org/10.5281/zenodo.22558885) and [version 1.0.0](https://doi.org/10.5281/zenodo.22122730). The 1.2.0 source update is retained in the GitHub history; its Zenodo draft is superseded by this version. Cite the version actually used; see [CITATION.cff](CITATION.cff). The archive contains Lean sources and verification records, with no manuscript PDFs or LaTeX sources.
+The preceding [version 1.3.0 archive](https://doi.org/10.5281/zenodo.22670050) remains historical. Earlier archives are [version 1.1.0](https://doi.org/10.5281/zenodo.22558885) and [version 1.0.0](https://doi.org/10.5281/zenodo.22122730). Cite the exact version used; [CITATION.cff](CITATION.cff) identifies version 2.0 and its DOI.
 
 Copyright © 2026 Hongru Zhao. Licensed under GPL-3.0-only.
 
