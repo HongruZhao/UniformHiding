@@ -1,0 +1,14 @@
+import A3.BetaJacobiNormalization
+import A3.FlagStabilizer
+import A3.MatrixInverseDerivativeRCLike
+
+#print axioms A3Research.betaJacobiNormalization_ne_top
+#print axioms A3Research.betaJacobiNormalization_ne_zero
+#print axioms A3Research.isProbabilityMeasure_betaJacobiProbabilityMeasure_nat
+#print axioms A3Research.ae_injective_real_coordinates
+#print axioms A3Research.isCompact_flagSpace
+#print axioms A3Research.flagEvaluation_injective
+#print axioms A3Research.isClosedEmbedding_flagEvaluation
+#print axioms A3Research.flagEvaluationHomeomorph
+#print axioms A3Research.hasFDerivAt_matrix_mul_rclike
+#print axioms A3Research.hasFDerivAt_matrix_nonsing_inv_rclike
