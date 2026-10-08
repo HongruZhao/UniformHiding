@@ -1,0 +1,1 @@
+Historical audit scripts from GitHub version 1.3.0 (commit 9e44d98852a558f1495642cd841d06b5ba279a32). These capture the former four-scientific-axiom gate and are reference evidence, not the current version 2.0 verifier. The original source and documentation remain in Git history. Current verification runs `python3 verify_final.py`.
