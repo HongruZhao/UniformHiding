@@ -8,22 +8,15 @@ theorem.  It exposes both the existential headline and the theorem at the
 fully evaluated universal constant.  All mathematical reductions between the
 four cited source inputs and these endpoints are checked by Lean.
 
-The complete scientific dependency list is exactly:
+The four historical source interfaces A1--A4 are now supplied by proved Lean
+packages: `A1.MatrixLawProof`, `A2.WeylIntegrationProof`,
+`A3.Proposition12Proof`, and `A4.FullTheorem`. Historical declaration names
+are retained for compatibility. Their full contracts and the public theorem
+are checked by `FinalHidingAudit` and the imported theorem inventory.
 
-* **A1:** `DenseScore.FriedmanMelloA1.matrixLaw_external` -- the
-  Friedman--Mello law of a principal block of `U Uᵀ` for Haar unitary `U`.
-* **A2':** `DenseScore.A2Prime_complexSymmetricTakagiWeyl_symmetricIntegration`
-  -- the tangent-space Takagi--Weyl integration formula for complex symmetric
-  matrices, restricted to measurable permutation-invariant spectral tests.
-* **A3:** `DenseScore.A3_edelmanSutton_proposition_1_2` -- the
-  Edelman--Sutton beta-Jacobi law for squared generalized singular values.
-* **A4:** `MatsumotoPaper.A4_matsumoto_theorem_3` -- Matsumoto's inverse
-  Wishart moment formula in the paper's variables.
+No scientific axiom remains in this endpoint's proof dependencies. The
+ordinary foundations `propext`, `Classical.choice`, and `Quot.sound` remain.
 
-There are no further scientific axioms in the dependency closure.  The
-ordinary logical foundations reported by `#print axioms` (`propext`,
-`Classical.choice`, and `Quot.sound`) are Lean's kernel foundations, not
-scientific assumptions.
 -/
 
 namespace LogdetLean.GramHafnian.UltimateHiding
