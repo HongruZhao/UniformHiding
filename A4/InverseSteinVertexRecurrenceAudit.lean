@@ -1,0 +1,7 @@
+import A4.InverseSteinVertexRecurrence
+
+#print axioms A4Research.InverseStein.vertexEntryPairList_switchLeft
+#print axioms A4Research.InverseStein.product_vertexEntryPairList_switchRight
+#print axioms A4Research.InverseStein.inverseVertexMomentTensor_recurrence_identity
+#print axioms A4Research.InverseStein.inverseVertexMomentTensor_zero
+#print axioms A4Research.InverseStein.inverseVertexMomentTensor_vertices
