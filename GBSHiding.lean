@@ -23,7 +23,7 @@ namespace GBSHiding
 
 noncomputable section
 
-/-- Original finite product-law theorem, conditional on the four recorded literature inputs. -/
+/-- Original finite product-law theorem, now using the proved A1--A4 providers. -/
 theorem uniformHiding : UniformProductMatrixHidingSquaredAt 615172 :=
   LogdetLean.GramHafnian.ThreePaper.UniformMatrixHiding.matrixLaw
 

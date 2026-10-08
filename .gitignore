@@ -7,3 +7,6 @@ __pycache__/
 *.olean.server
 
 verification/build*.log
+
+verification/runs/
+/.lake

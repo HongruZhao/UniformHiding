@@ -6,14 +6,10 @@ open Lean Elab Command
 
 run_cmd verifyHidingCompletionAxioms
 
-/-! The build fails on any unexpected or missing proof dependency. -/
+/-! Version 1.4.0: every endpoint must have exactly the three standard
+foundations after the A1--A4 proof providers are merged. -/
 run_cmd do
   let foundations : Array Name := #[``propext, ``Classical.choice, ``Quot.sound]
-  let literature : Array Name := #[
-    ``LogdetLean.GramHafnian.UltimateHiding.DenseScore.FriedmanMelloA1.matrixLaw_external,
-    ``LogdetLean.GramHafnian.UltimateHiding.DenseScore.A2Prime_complexSymmetricTakagiWeyl_symmetricIntegration,
-    ``LogdetLean.GramHafnian.UltimateHiding.DenseScore.A3_edelmanSutton_proposition_1_2,
-    ``MatsumotoPaper.A4_matsumoto_theorem_3]
   for decl in #[``UniformHiding.theorem2_1,
     ``UniformHiding.theorem2_1_unscaled,
     ``UniformHiding.corollary2_2, ``UniformHiding.corollary2_2_unscaled,
@@ -22,8 +18,7 @@ run_cmd do
     ``UniformHiding.theorem3_2_route1, ``UniformHiding.theorem3_2_route1_optimized,
     ``ComplexGramHafnians.theorem2_1, ``ComplexGramHafnians.theorem2_3,
     ``UniformHiding.routeTwoConditional] do
-    let expected := if decl.getRoot == `ComplexGramHafnians ||
-      decl == ``UniformHiding.routeTwoConditional then foundations else foundations ++ literature
+    let expected := foundations
     let actual ← Lean.collectAxioms decl
     let unexpected := actual.filter fun ax => !expected.contains ax
     let missing := expected.filter fun ax => !actual.contains ax

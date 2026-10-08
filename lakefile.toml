@@ -1,6 +1,6 @@
 name = "uniformHiding"
-version = "1.3.0"
-defaultTargets = ["UniformHiding", "HidingVerification"]
+version = "2.0.0"
+defaultTargets = ["UniformHiding", "HidingVerification", "FinalHidingAudit"]
 fixedToolchain = true
 [[require]]
 name = "mathlib"
@@ -22,3 +22,33 @@ leanOptions = { warningAsError = true }
 [[lean_lib]]
 name = "HidingVerification"
 leanOptions = { warningAsError = true }
+
+[[lean_lib]]
+name = "A1"
+
+[[lean_lib]]
+name = "A2"
+
+[[lean_lib]]
+name = "A3"
+
+[[lean_lib]]
+name = "A4"
+
+[[lean_lib]]
+name = "AllFourIntegration"
+
+[[lean_lib]]
+name = "AllFourProviderSmoke"
+
+[[lean_lib]]
+name = "AllFourReplacementAudit"
+
+[[lean_lib]]
+name = "AllFourInventory"
+
+[[lean_lib]]
+name = "FinalHidingAudit"
+
+[[lean_lib]]
+name = "FinalInventory"
