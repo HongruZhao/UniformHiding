@@ -25,5 +25,6 @@
       "file": "LogdetLean/GramHafnian/UltimateHiding/DenseScore/Literature/H6_A2Prime_TakagiWeylSymmetricIntegration.lean",
       "name": "A2Prime_complexSymmetricTakagiWeyl_symmetricIntegration"
     }
-  ]
+  ],
+  "_historical_notice": "Version 1.3.0 configuration, retained for provenance. Current version 2.0 uses verify_final.py and SOURCE_HASHES.json; the old audit scripts are preserved under history/github_v1_3_0/scripts."
 }
